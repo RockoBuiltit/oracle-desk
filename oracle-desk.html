@@ -8,7 +8,7 @@ INSTRUCTIONS FOR THE ORACLE BOT (not for the user). When the owner pastes this f
 5. Publish, and send the owner only the GitHub URL of the live desk.
 6. After every scan, digest and weekly summary, update oracle-feed.json and publish it, following your feed rules.
 7. Never connect wallets, sign, or handle keys. The page is read-only.
-8. Morning report: after every morning report, add a "report" object to oracle-feed.json. The Report button (top left) opens a page built from it. Keys: updated (ISO), full_report_url, takeaways (2-4 short strings), prelaunch [{project, ticker, theme, coming, when, score, why}], tokens [{project, ticker, theme, category, tier "Strong"|"Speculative"|"Avoid", price, market_cap, volume_24h, score, dex (DEX route name, or "" if none)}], impostors [{project, official, fakes}], safetrade [{project, ticker, theme, score, tier, note}]. Keep text short; money values are plain USD numbers. Leave out FDV.
+8. Oracle report: the source is your 8 AM Central daily morning report (the same report you publish as the full report page). Every day when you produce that 8 AM report, also copy its contents into a "report" object in oracle-feed.json and publish, so the desk's Report button shows that day's report; keep updated to the report's time and full_report_url to its page. The Report button opens a page built from it: the full report on web, a short version on phones. Keys: updated (ISO), full_report_url, intro, snapshots (snapshot times line), disclaimer, takeaways [strings], prelaunch [{project, ticker, theme, coming, when, score, why}], radar_only [names], tokens [{project, ticker, theme, category, tier, price, market_cap, volume_24h, score, dex}] (every active token, AI and quantum), impostors [{project, theme, fakes, official}], safetrade_source, safetrade [{project, ticker, theme, price, market_cap, volume_24h, score, tier, dex, note}], safetrade_venue {type, x, site, announcements, listing_posts, launchpad, trust_score, steps [{title, text}]}, notes [{section "prelaunch"|"tokens"|"impostors"|"safetrade", theme, text}], sources [{title, url}]. theme is "AI" or "Quantum"; dex is the DEX route name or "" if none; money values are plain USD numbers. Leave out FDV.
 -->
 <html lang="en">
 <head>
@@ -611,6 +611,66 @@ html.rp-open,html.rp-open body{overflow:hidden}
 .rp-card.k-take{--ic:#7de0b4}.rp-card.k-pre{--ic:#38d6f5}.rp-card.k-tok{--ic:#b79cff}.rp-card.k-imp{--ic:#ff6b6b}.rp-card.k-st{--ic:#ffc94a}
 .rp-card.k-imp .rp-name{color:#ffb3b3}
 .rp-item{border-color:var(--line2)}
+
+/* full report (web) / simplified (phone) */
+.rp-web,.rp-mob{display:grid;gap:16px}
+.rp-mob{display:none}
+@media (max-width:820px){.rp-web{display:none}.rp-mob{display:grid}.rp-seg{display:none}}
+.rp-seg button{white-space:nowrap}
+.rp-top-in{flex-wrap:wrap}
+.rp-card.k-info{--ic:#9a9a9a}.rp-card.k-venue{--ic:#ffc94a}.rp-card.k-src{--ic:#38d6f5}
+.rp-lead{margin:0 0 8px;font-size:15px;line-height:1.55;color:var(--text)}
+.rp-note{margin:12px 0 0;font-size:13px;color:var(--muted);line-height:1.5}
+.rp-disc{margin:10px 0 0;font-size:13px;color:var(--muted)}
+.rp-disc b{color:var(--text)}
+.rp-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.rp-mono{font-family:var(--mono);color:var(--muted);font-size:12.5px;white-space:nowrap}
+.rp-muted{color:var(--muted)}
+.rp-tier{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:7px;white-space:nowrap}
+.rp-tier.good{color:var(--mint-t);background:var(--mint-bg);border:1px solid var(--mint-bd)}
+.rp-tier.mid{color:#ffc94a;border:1px solid rgba(255,201,74,.4)}
+.rp-tier.bad{color:#ff8a8a;border:1px solid rgba(255,107,107,.4)}
+.rp-chiprow,.rp-tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
+.rp-fchip{border:1px solid var(--line2);background:#121214;border-radius:999px;padding:6px 13px;font-size:12.5px;font-weight:600;color:var(--muted);min-height:34px}
+.rp-fchip:hover{color:#fff}
+.rp-fchip.on{background:var(--text);color:#000;border-color:var(--text)}
+.rp-dexonly{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);margin-left:auto;cursor:pointer}
+.rp-dexonly input{accent-color:var(--mint);width:16px;height:16px}
+.rp-radar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px}
+.rp-pill{font-size:12.5px;padding:5px 11px;border-radius:999px;border:1px solid var(--line2);background:#121214;color:#d6d6d6}
+.rp-venue{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+.rp-venue dd{word-break:break-word}
+.rp-steps{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.rp-steps li{display:flex;gap:12px;background:#121214;border:1px solid var(--line2);border-radius:14px;padding:12px 14px;font-size:13.5px}
+.rp-steps .n{flex:none;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;font-weight:700;background:var(--text);color:#000}
+.rp-srcs{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px}
+.rp-src{display:flex;flex-direction:column;gap:2px;background:#121214;border:1px solid var(--line2);border-radius:14px;padding:10px 13px;color:var(--text)}
+.rp-src span{font-size:12px;color:var(--muted)}
+.rp-src:hover{border-color:#3a3a3a;color:#fff}
+.rp-tbl td.rp-fake{max-width:none}
+@media (max-width:1100px){.rp-venue{grid-template-columns:1fr}}
+
+/* ===== final polish ===== */
+/* project popup: two columns on web, sized to its content (scrolls only if the window is too short) */
+@media (min-width:641px){
+  .drawer{width:min(920px,calc(100vw - 48px));max-height:calc(100vh - 48px)}
+  .dr-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:start}
+  .dr-c2 > .sec:first-child{margin-top:18px}
+  .dr-c2 .trigs{grid-template-columns:1fr!important}
+}
+/* phone report: clean rows instead of boxes inside boxes */
+.rp-mob .rp-list{gap:0}
+.rp-mob .rp-item{background:none;border:0;border-radius:0;padding:14px 0;border-top:1px solid var(--line)}
+.rp-mob .rp-item:first-child{border-top:0;padding-top:4px}
+.rp-mob .rp-item:last-child{padding-bottom:0}
+.rp-mob .rp-k{display:block;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);font-weight:700;margin-top:8px}
+.rp-mob .rp-v{font-size:13.5px;color:#dcdcdc;line-height:1.45;margin-top:2px}
+.rp-mob .rp-clamp{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.rp-mob .rp-meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin-top:6px;font-size:12.5px;color:var(--muted)}
+.rp-mob .rp-meta b{color:var(--text);font-weight:600;font-family:var(--mono);font-size:12.5px}
+
+/* Oracle box keeps one fixed height on web; it never stretches with the column beside it */
+.a-avatar{align-self:start}
 </style>
 </head>
 <body>
@@ -638,7 +698,7 @@ html.rp-open,html.rp-open body{overflow:hidden}
       <button data-t="ai" aria-pressed="false">AI</button>
       <button data-t="q" aria-pressed="false">Quantum</button>
     </div>
-      <button class="rp-btn" id="rpBtn" aria-label="Open morning report"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg><span>Report</span></button>
+      <button class="rp-btn" id="rpBtn" aria-label="Open Oracle report"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg><span>Report</span></button>
   </div>
   <div class="marquee" aria-label="Latest updates"><div class="mq-track" id="mq"></div></div>
 </header>
@@ -696,7 +756,7 @@ html.rp-open,html.rp-open body{overflow:hidden}
     <section class="card a-radar" aria-label="Pre-launch radar">
       <div class="hd"><h2><span class="ic" style="color:var(--q)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><path d="M12 12 18 6"/></svg></span>Pre-launch radar</h2><span class="count" id="radarCount"></span></div>
       <div class="radar-box" id="radar"></div>
-      <div class="legend"><span><i style="background:#f4f3f1"></i>AI</span><span><i style="background:transparent;border:2px solid #f4f3f1;box-sizing:border-box"></i>Quantum</span><span><i style="background:#7de0b4"></i>≤7d</span><span><i style="background:#ffc94a"></i>≤30d</span><span><i style="background:#ff9f43"></i>≤90d</span><span><i style="background:#ff6b6b"></i>90d+</span><span><i style="background:#8a8a8a"></i>TBD</span><span>Closer = sooner · bigger = higher score · tap a dot</span></div>
+      <div class="legend"><span><i style="background:#7de0b4"></i>≤7d</span><span><i style="background:#ffc94a"></i>≤30d</span><span><i style="background:#ff9f43"></i>≤90d</span><span><i style="background:#ff6b6b"></i>90d+</span><span><i style="background:#8a8a8a"></i>TBD</span><span>Closer = sooner · bigger = higher score · tap a dot</span></div>
     </section>
 
     <section class="card a-updates" aria-label="Pre-launch updates">
@@ -737,10 +797,11 @@ html.rp-open,html.rp-open body{overflow:hidden}
   <span class="by">The Oracle · by <b>Rocko Development</b></span>
 </footer>
 
-<section class="rp" id="report" hidden aria-label="Morning report">
+<section class="rp" id="report" hidden aria-label="Oracle report">
   <div class="rp-top"><div class="rp-top-in">
     <button class="rp-back" id="rpBack" aria-label="Back to desk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg><span>Desk</span></button>
-    <div class="rp-title-wrap"><span class="rp-ic" style="--ic:#7de0b4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg></span><div class="rp-title"><b>Morning Report</b><span id="rpUpdated"></span></div></div>
+    <div class="rp-title-wrap"><span class="rp-ic" style="--ic:#7de0b4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg></span><div class="rp-title"><b>Oracle Report</b><span id="rpUpdated"></span></div></div>
+    <div class="seg rp-seg" id="rpSeg" role="group" aria-label="Report theme"><button data-v="all" aria-pressed="true">AI and quantum</button><button data-v="ai" aria-pressed="false">AI only</button><button data-v="q" aria-pressed="false">Quantum only</button></div>
     <a class="rp-full" id="rpFull" target="_blank" rel="noopener noreferrer" hidden>Full report ↗</a>
   </div></div>
   <div class="rp-body" id="rpBody"></div>
@@ -969,7 +1030,7 @@ function renderRadar() {
     return `<g class="dot" tabindex="0" role="button" data-name="${esc(w.name)}" data-deg="${deg}" aria-label="${esc(w.name)}, score ${s}, ${esc(w.next_milestone || 'milestone n/a')} ${w.milestone_date ? esc(rel(w.milestone_date)) : 'date TBD'}">
       <circle class="ping" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${sz.toFixed(1)}" style="fill:${col}"/>
       <circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(sz * 2.2).toFixed(1)}" style="fill:${col}" opacity=".14"/>
-      <circle class="core" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${sz.toFixed(1)}" style="${tk(w.theme) === 'q' ? `fill:#050505;stroke:${col};stroke-width:2.5` : `fill:${col}`}"/>
+      <circle class="core" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${sz.toFixed(1)}" style="fill:${col}"/>
       <text class="lab" x="${lx.toFixed(1)}" y="${(y + 3.5).toFixed(1)}" text-anchor="${right ? 'end' : 'start'}">${esc(w.ticker || w.name)}</text></g>`;
   }).join('');
   const slices = Array.from({ length: 8 }, (_, i) => {
@@ -1068,12 +1129,15 @@ function openDrawer(name) {
   const tier = w.tier ? `<span class="tier ${esc(String(w.tier).toUpperCase())}">${esc(w.tier)}</span>` : '';
   const trigs = [w.upgrade_if ? `<div class="trig up"><span class="lbl">Upgrade if</span>${esc(w.upgrade_if)}</div>` : '', w.downgrade_if ? `<div class="trig dn"><span class="lbl">Downgrade if</span>${esc(w.downgrade_if)}</div>` : ''].filter(Boolean);
   $('#drawer').innerHTML = `<div class="dr-h">${w.score != null ? ring(w.score, 64) : ''}<div class="dr-t"><h3>${esc(w.name)}${w.ticker ? `<span class="tk">$${esc(w.ticker)}</span>` : ''}</h3><div class="dr-tags">${badge(w.theme)}${tier}${arrow(trendOf(w))}</div></div><button class="x" id="drX" aria-label="Close">×</button></div>
+    <div class="dr-cols"><div class="dr-c1">
     <div class="dr-next"><span class="lbl" style="margin:0">Next milestone</span><div class="nm">${esc(w.next_milestone || 'n/a')}</div><div class="nd">${w.milestone_date ? `<span class="cd">${esc(rel(w.milestone_date))}</span><span>${tDT(w.milestone_date)} CT</span>` : '<span>Date TBD</span>'}</div></div>
     <div class="dr-stats"><div><div class="k">Price</div><div class="v">${price(w.price)}</div></div><div><div class="k">Market cap</div><div class="v">${money(w.market_cap)}</div></div><div><div class="k">24h volume</div><div class="v">${money(w.volume_24h)}</div></div></div>
     <dl class="dr-list"><dt>Stage</dt><dd class="${String(w.stage).toLowerCase() === 'live' ? 'is-live' : ''}">${esc(w.stage || 'n/a')}</dd><dt>DEX route</dt><dd>${esc(w.dex_route || 'n/a')}</dd><dt>Last update</dt><dd>${tDT(w.last_update)} CT</dd></dl>
+    </div><div class="dr-c2">
     <div class="sec"><span class="lbl">Score history</span>${spark(w.score_history, 0, 0, true)}</div>
     ${trigs.length ? `<div class="trigs" style="${trigs.length === 1 ? 'grid-template-columns:1fr' : ''}">${trigs.join('')}</div>` : ''}
-    <div class="sec"><span class="lbl">Links</span><div class="chips">${(w.links || []).length ? w.links.map(l => ext(l.url, esc(l.label || 'Link') + ' ↗', 'chip')).join('') : '<span class="muted">n/a</span>'}</div></div>`;
+    <div class="sec"><span class="lbl">Links</span><div class="chips">${(w.links || []).length ? w.links.map(l => ext(l.url, esc(l.label || 'Link') + ' ↗', 'chip')).join('') : '<span class="muted">n/a</span>'}</div></div>
+    </div></div>`;
   const d = $('#drawer'); d.style.transform = ''; d.scrollTop = 0;
   d.classList.add('show'); $('#ov').classList.add('show');
   $('#drX').addEventListener('click', closeDrawer); d.focus({ preventScroll: true });
@@ -1206,43 +1270,89 @@ function tickDeadlines() {
 }
 
 /* ---------- morning report ---------- */
-let rpAll = false;
 const RP_IC = {take: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>', pre: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><path d="M12 12 18 6"/></svg>', tok: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg>', imp: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg>', st: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6.5 7 .8-5.2 4.7 1.5 7L12 17.5 5.7 21l1.5-7L2 9.3l7-.8z"/></svg>'};
 const rpH = (k, title, n) => `<h3><span class="t"><span class="rp-ic">${RP_IC[k]}</span>${title}</span>${n ? `<span class="n">${n}</span>` : ''}</h3>`;
 const rpScore = v => v == null || v === '' ? 'n/a' : `<span class="rp-sc" style="color:${scoreCol(+v)}">${esc(v)}</span>`;
 const rpDex = d => d ? `<span class="rp-dex yes">✓ ${esc(d)}</span>` : '<span class="rp-dex no">No DEX</span>';
 const rpDexShort = d => d ? '<span class="rp-dex yes">✓ DEX</span>' : '<span class="rp-dex no">No DEX</span>';
+const rpF = { theme: 'all', aiCat: 'All', aiSort: 'score', aiDex: false, qTier: 'All', qSort: 'score', qDex: false, stTheme: 'All', stDex: false };
+RP_IC.src = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>';
+RP_IC.info = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5h.01"/></svg>';
+RP_IC.venue = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6"/></svg>';
+const isQ = t => tk(t) === 'q';
+const rpTier = t => { if (!t) return ''; const v = String(t).toLowerCase(); const c = /strong|benchmark/.test(v) ? 'good' : /watch|speculative/.test(v) ? 'mid' : 'bad'; return `<span class="rp-tier ${c}">${esc(t)}</span>`; };
+const rpNotes = (r, sec, th) => (r.notes || []).filter(n => n.section === sec && (!th || !n.theme || tk(n.theme) === th)).map(n => `<p class="rp-note">${esc(n.text)}</p>`).join('');
+const rpChips = (key, vals, cur) => `<div class="rp-chiprow">${vals.map(v => `<button class="rp-fchip${v === cur ? ' on' : ''}" data-rp="${key}" data-v="${esc(v)}">${esc(v)}</button>`).join('')}</div>`;
+const rpTools = (sortKey, dexKey) => `<div class="rp-tools"><button class="rp-fchip${rpF[sortKey] === 'score' ? ' on' : ''}" data-rp="${sortKey}" data-v="score">Sort by score</button><button class="rp-fchip${rpF[sortKey] === 'mcap' ? ' on' : ''}" data-rp="${sortKey}" data-v="mcap">Sort by market cap</button><label class="rp-dexonly"><input type="checkbox" data-rp="${dexKey}" ${rpF[dexKey] ? 'checked' : ''}> Only tokens with a DEX route</label></div>`;
+const rpSort = (list, k) => list.slice().sort((a, b) => k === 'mcap' ? (+b.market_cap || 0) - (+a.market_cap || 0) : (+b.score || 0) - (+a.score || 0));
+function rpPreTable(list) {
+  return `<div class="rp-scroll"><table class="rp-tbl"><thead><tr><th>Project</th><th>Ticker</th><th>What's coming</th><th>When</th><th class="num">Score</th><th>Why it's interesting</th></tr></thead><tbody>${list.map(p => `<tr><td><span class="rp-name">${esc(p.project)}</span></td><td class="rp-mono">${esc(p.ticker || '')}</td><td>${esc(p.coming || '')}</td><td class="rp-muted">${esc(p.when || '')}</td><td class="num">${rpScore(p.score)}</td><td class="rp-why">${esc(p.why || '')}</td></tr>`).join('')}</tbody></table></div>`;
+}
+function rpTokTable(list, withCat) {
+  return `<div class="rp-scroll"><table class="rp-tbl"><thead><tr><th>Project</th><th>Ticker</th>${withCat ? '<th>Category</th>' : ''}<th>Tier</th><th class="num">Price</th><th class="num">Mkt cap</th><th class="num">24h vol</th><th class="num">Score</th><th>DEX route</th></tr></thead><tbody>${list.length ? list.map(t => `<tr><td><span class="rp-name">${esc(t.project)}</span></td><td class="rp-mono">${esc(t.ticker || '')}</td>${withCat ? `<td class="rp-muted">${esc(t.category || '')}</td>` : ''}<td>${rpTier(t.tier)}</td><td class="num">${price(t.price)}</td><td class="num">${money(t.market_cap)}</td><td class="num">${money(t.volume_24h)}</td><td class="num">${rpScore(t.score)}</td><td>${rpDex(t.dex)}</td></tr>`).join('') : `<tr><td colspan="${withCat ? 9 : 8}" class="rp-muted">No tokens match these filters.</td></tr>`}</tbody></table></div>`;
+}
+function rpImpTable(list) {
+  return `<div class="rp-scroll"><table class="rp-tbl"><thead><tr><th>Project</th><th>Fake or confusing tokens</th><th>Official route</th></tr></thead><tbody>${list.map(i => `<tr><td><span class="rp-name">${esc(i.project)}</span></td><td class="rp-fake">${esc(i.fakes || '')}</td><td class="rp-ok">${esc(i.official || '')}</td></tr>`).join('')}</tbody></table></div>`;
+}
 function renderReport() {
   const r = feed && feed.report;
   if (!r) { $('#rpBody').innerHTML = ''; $('#rpUpdated').textContent = ''; $('#rpFull').hidden = true; return; }
   $('#rpUpdated').textContent = r.updated ? `Updated ${tDT(r.updated)} CT` : '';
   const full = $('#rpFull'); if (r.full_report_url) { full.href = safeUrl(r.full_report_url); full.hidden = false; } else full.hidden = true;
-  const out = [];
-  const take = (r.takeaways || []).filter(Boolean);
-  if (take.length) out.push(`<div class="rp-card k-take">${rpH('take', 'Key takeaways')}<ul class="rp-take">${take.map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>`);
+  document.querySelectorAll('#rpSeg button').forEach(x => x.setAttribute('aria-pressed', String(x.dataset.v === rpF.theme)));
+  const showAI = rpF.theme !== 'q', showQ = rpF.theme !== 'ai';
   const pre = (r.prelaunch || []).slice().sort((a, b) => (+b.score || 0) - (+a.score || 0));
-  if (pre.length) out.push(`<div class="rp-card k-pre">${rpH('pre', 'Pre-launch', `${pre.length} projects`)}
-    <table class="rp-tbl web-only"><thead><tr><th>Project</th><th>What's coming</th><th>When</th><th class="num">Score</th><th>Why it matters</th></tr></thead><tbody>
-    ${pre.map(p => `<tr><td><span class="rp-name">${esc(p.project)}</span>${p.ticker ? `<span class="rp-tk">${esc(p.ticker)}</span>` : ''}<div style="margin-top:6px">${badge(p.theme)}</div></td><td>${esc(p.coming || '')}</td><td style="color:var(--muted)">${esc(p.when || '')}</td><td class="num">${rpScore(p.score)}</td><td class="rp-why">${esc(p.why || '')}</td></tr>`).join('')}</tbody></table>
-    <ul class="rp-list mob-only">${pre.map(p => `<li class="rp-item"><div class="rp-row1"><span class="rp-name">${esc(p.project)}</span>${badge(p.theme)}${rpScore(p.score)}</div><div class="rp-sub">${esc(p.coming || '')}</div>${p.when ? `<div class="rp-when">${esc(p.when)}</div>` : ''}</li>`).join('')}</ul></div>`);
-  const toks = (r.tokens || []).slice().sort((a, b) => (+b.score || 0) - (+a.score || 0));
-  const strong = toks.filter(t => String(t.tier || '').toLowerCase() === 'strong' || (+t.score || 0) >= 70);
-  const rest = toks.filter(t => !strong.includes(t));
-  if (toks.length) {
-    const rows = list => list.map(t => `<tr><td><span class="rp-name">${esc(t.project)}</span>${t.ticker ? `<span class="rp-tk">${esc(t.ticker)}</span>` : ''}</td><td>${badge(t.theme)}</td><td style="color:var(--muted)">${esc(t.category || '')}</td><td class="num">${price(t.price)}</td><td class="num">${money(t.market_cap)}</td><td class="num">${money(t.volume_24h)}</td><td class="num">${rpScore(t.score)}</td><td>${rpDex(t.dex)}</td></tr>`).join('');
-    out.push(`<div class="rp-card k-tok">${rpH('tok', 'Strong active tokens', `${strong.length} of ${toks.length}`)}
-      <table class="rp-tbl web-only"><thead><tr><th>Project</th><th>Theme</th><th>Category</th><th class="num">Price</th><th class="num">Mkt cap</th><th class="num">24h vol</th><th class="num">Score</th><th>DEX</th></tr></thead><tbody>${rows(strong)}${rpAll ? rows(rest) : ''}</tbody></table>
-      ${rest.length ? `<button class="rp-more web-only" id="rpAllBtn">${rpAll ? 'Show strong only' : `Show all ${toks.length} tokens`}</button>` : ''}
-      <ul class="rp-list mob-only">${strong.map(t => `<li class="rp-item"><div class="rp-row1"><span class="rp-name">${esc(t.project)}</span>${t.ticker ? `<span class="rp-tk" style="margin:0">${esc(t.ticker)}</span>` : ''}${badge(t.theme)}${rpScore(t.score)}</div><div class="rp-when">${rpDexShort(t.dex)}${t.market_cap != null ? ` · ${money(t.market_cap)} mkt cap` : ''}</div></li>`).join('')}</ul></div>`);
+  const toks = r.tokens || [], imp = r.impostors || [], st = r.safetrade || [];
+  const take = (r.takeaways || []).filter(Boolean);
+  const W = [], Mo = [];
+
+  /* ---------- web: full report ---------- */
+  if (r.intro || r.snapshots || r.disclaimer) W.push(`<div class="rp-card k-info">${rpH('info', 'About this report')}${r.intro ? `<p class="rp-lead">${esc(r.intro)}</p>` : ''}${r.snapshots ? `<p class="rp-note">${esc(r.snapshots)}</p>` : ''}<p class="rp-disc"><b>Research only, not financial advice.</b> ${esc(r.disclaimer || '')}</p></div>`);
+  if (take.length) W.push(`<div class="rp-card k-take">${rpH('take', 'Key takeaways')}<ul class="rp-take">${take.map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>`);
+  const preAI = pre.filter(p => !isQ(p.theme)), preQ = pre.filter(p => isQ(p.theme));
+  const radar = (r.radar_only || []).filter(Boolean);
+  if (showAI && (preAI.length || radar.length)) W.push(`<div class="rp-card k-pre">${rpH('pre', 'AI pre-launch watchlist', `${preAI.length} projects`)}${rpPreTable(preAI)}${rpNotes(r, 'prelaunch', 'ai')}${radar.length ? `<div class="rp-radar"><span class="lbl" style="margin:0">Radar only</span>${radar.map(x => `<span class="rp-pill">${esc(x)}</span>`).join('')}</div>` : ''}</div>`);
+  if (showQ && preQ.length) W.push(`<div class="rp-card k-pre">${rpH('pre', 'Quantum pre-launch watchlist', `${preQ.length} projects`)}${rpPreTable(preQ)}${rpNotes(r, 'prelaunch', 'q')}</div>`);
+  const tAI = toks.filter(t => !isQ(t.theme)), tQ = toks.filter(t => isQ(t.theme));
+  if (showAI && tAI.length) {
+    const cats = ['All', ...[...new Set(tAI.map(t => t.category).filter(Boolean))]];
+    let l = tAI.filter(t => rpF.aiCat === 'All' || t.category === rpF.aiCat).filter(t => !rpF.aiDex || t.dex);
+    W.push(`<div class="rp-card k-tok">${rpH('tok', 'Active AI tokens', `${l.length} of ${tAI.length}`)}${rpChips('aiCat', cats, rpF.aiCat)}${rpTools('aiSort', 'aiDex')}${rpTokTable(rpSort(l, rpF.aiSort), true)}${rpNotes(r, 'tokens', 'ai')}</div>`);
   }
-  const imp = r.impostors || [], st = (r.safetrade || []).filter(x => !/reject|avoid/i.test(x.tier || '')).sort((a, b) => (+b.score || 0) - (+a.score || 0));
-  const impCard = imp.length ? `<div class="rp-card k-imp">${rpH('imp', 'Impostor warnings', imp.length)}
-    <table class="rp-tbl web-only"><thead><tr><th>Project</th><th>Use only</th><th>Fakes to avoid</th></tr></thead><tbody>${imp.map(i => `<tr><td><span class="rp-name">${esc(i.project)}</span></td><td class="rp-ok">${esc(i.official || '')}</td><td class="rp-fake">${esc(String(i.fakes || '').length > 140 ? String(i.fakes).slice(0, 139) + '…' : (i.fakes || ''))}</td></tr>`).join('')}</tbody></table>
-    <ul class="rp-list mob-only">${imp.map(i => `<li class="rp-item"><div class="rp-row1"><span class="rp-name">${esc(i.project)}</span></div><div class="rp-sub rp-ok">${esc(i.official || '')}</div></li>`).join('')}</ul></div>` : '';
-  const stCard = st.length ? `<div class="rp-card k-st">${rpH('st', 'SafeTrade picks', st.length)}<div class="rp-chips">${st.map(x => `<div class="rp-item"><div class="rp-row1"><span class="rp-name">${esc(x.project)}</span>${x.ticker ? `<span class="rp-tk" style="margin:0">${esc(x.ticker)}</span>` : ''}${rpScore(x.score)}</div><div class="rp-when">${esc(x.theme || '')}${x.tier ? ' · ' + esc(x.tier) : ''}</div>${x.note ? `<div class="rp-sub web-only">${esc(x.note)}</div>` : ''}</div>`).join('')}</div></div>` : '';
-  if (impCard || stCard) out.push(impCard && stCard ? `<div class="rp-grid2">${impCard}${stCard}</div>` : impCard + stCard);
-  out.push(`<p style="text-align:center;color:var(--faint);font-size:12px;margin:4px 0 0">Research only, not financial advice.${r.full_report_url ? ` ${ext(r.full_report_url, 'Full report ↗')}` : ''}</p>`);
-  $('#rpBody').innerHTML = out.join('');
+  if (showQ && tQ.length) {
+    const tiers = ['All', ...[...new Set(tQ.map(t => t.tier).filter(Boolean))]];
+    let l = tQ.filter(t => rpF.qTier === 'All' || t.tier === rpF.qTier).filter(t => !rpF.qDex || t.dex);
+    W.push(`<div class="rp-card k-tok">${rpH('tok', 'Active quantum tokens', `${l.length} of ${tQ.length}`)}${rpChips('qTier', tiers, rpF.qTier)}${rpTools('qSort', 'qDex')}${rpTokTable(rpSort(l, rpF.qSort), false)}${rpNotes(r, 'tokens', 'q')}</div>`);
+  }
+  const iAI = imp.filter(i => !isQ(i.theme)), iQ = imp.filter(i => isQ(i.theme));
+  if (showAI && iAI.length) W.push(`<div class="rp-card k-imp">${rpH('imp', 'AI impostor and look-alike tokens', iAI.length)}${rpImpTable(iAI)}${rpNotes(r, 'impostors', 'ai')}</div>`);
+  if (showQ && iQ.length) W.push(`<div class="rp-card k-imp">${rpH('imp', 'Quantum and SafeTrade impostor tokens', iQ.length)}${rpImpTable(iQ)}${rpNotes(r, 'impostors', 'q')}</div>`);
+  if (st.length) {
+    const themes = ['All', ...[...new Set(st.map(x => x.theme).filter(Boolean))]];
+    const l = st.filter(x => rpF.stTheme === 'All' || x.theme === rpF.stTheme).filter(x => !rpF.stDex || x.dex).sort((a, b) => (+b.score || 0) - (+a.score || 0));
+    W.push(`<div class="rp-card k-st">${rpH('st', 'SafeTrade list', `${l.length} of ${st.length}`)}${r.safetrade_source ? `<p class="rp-note" style="margin-top:0">${esc(r.safetrade_source)}</p>` : ''}${rpChips('stTheme', themes, rpF.stTheme)}<div class="rp-tools"><label class="rp-dexonly"><input type="checkbox" data-rp="stDex" ${rpF.stDex ? 'checked' : ''}> Only tokens with a DEX route</label></div>
+      <div class="rp-scroll"><table class="rp-tbl"><thead><tr><th>Project</th><th>Ticker</th><th>Theme</th><th class="num">Price</th><th class="num">Mkt cap</th><th class="num">24h vol</th><th class="num">Score</th><th>Tier</th><th>DEX &amp; notes</th></tr></thead><tbody>${l.map(x => `<tr><td><span class="rp-name">${esc(x.project)}</span></td><td class="rp-mono">${esc(x.ticker || '')}</td><td class="rp-muted">${esc(x.theme || '')}</td><td class="num">${price(x.price)}</td><td class="num">${money(x.market_cap)}</td><td class="num">${money(x.volume_24h)}</td><td class="num">${rpScore(x.score)}</td><td>${rpTier(x.tier)}</td><td class="rp-why">${x.dex ? rpDex(x.dex) + ' ' : ''}${esc(x.note || '')}</td></tr>`).join('')}</tbody></table></div>${rpNotes(r, 'safetrade')}</div>`);
+  }
+  const v = r.safetrade_venue;
+  if (v) {
+    const rows = [['Type', v.type], ['Official X', v.x], ['Site', v.site], ['Announcements', v.announcements], ['Listing posts', v.listing_posts], ['Launchpad', v.launchpad], ['CoinGecko trust score', v.trust_score]].filter(x => x[1]);
+    const link = t => /^https?:\/\//.test(String(t)) ? ext(t, esc(t)) : esc(t);
+    W.push(`<div class="rp-card k-venue">${rpH('venue', 'SafeTrade as a venue')}<div class="rp-venue"><dl class="dr-list" style="margin:0">${rows.map(([k, x]) => `<dt>${k}</dt><dd>${link(x)}</dd>`).join('')}</dl>${(v.steps || []).length ? `<ol class="rp-steps">${v.steps.map((x, i) => `<li><span class="n">${i + 1}</span><div><b>${esc(x.title || '')}</b><div class="rp-muted">${esc(x.text || '')}</div></div></li>`).join('')}</ol>` : ''}</div></div>`);
+  }
+  const src = r.sources || [];
+  if (src.length) W.push(`<div class="rp-card k-src">${rpH('src', 'Sources', src.length)}<div class="rp-srcs">${src.map(x => ext(x.url, `<b>${esc(x.title || x.url)}</b><span>${esc((() => { try { return new URL(x.url).hostname.replace(/^www\./, ''); } catch { return ''; } })())}</span>`, 'rp-src')).join('')}</div></div>`);
+
+  /* ---------- phone: simplified ---------- */
+  if (take.length) Mo.push(`<div class="rp-card k-take">${rpH('take', 'Key takeaways')}<ul class="rp-take">${take.map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>`);
+  if (pre.length) Mo.push(`<div class="rp-card k-pre">${rpH('pre', 'Pre-launch', `${pre.length} projects`)}<ul class="rp-list">${pre.map(p => `<li class="rp-item"><div class="rp-row1"><span class="rp-name">${esc(p.project)}</span>${p.ticker && p.ticker !== 'none' ? `<span class="rp-tk" style="margin:0">${esc(p.ticker)}</span>` : ''}${badge(p.theme)}${rpScore(p.score)}</div><div class="rp-v">${esc(p.coming || '')}</div>${p.when ? `<div class="rp-meta"><span>When: <b style="font-family:var(--body)">${esc(p.when)}</b></span></div>` : ''}${p.why ? `<div class="rp-v rp-clamp" style="color:var(--muted);font-size:12.5px;margin-top:6px">${esc(p.why)}</div>` : ''}</li>`).join('')}</ul></div>`);
+  const strong = rpSort(toks, 'score').filter(t => String(t.tier || '').toLowerCase() === 'strong' || (+t.score || 0) >= 70);
+  if (strong.length) Mo.push(`<div class="rp-card k-tok">${rpH('tok', 'Strong active tokens', `${strong.length} of ${toks.length}`)}<ul class="rp-list">${strong.map(t => `<li class="rp-item"><div class="rp-row1"><span class="rp-name">${esc(t.project)}</span>${t.ticker ? `<span class="rp-tk" style="margin:0">${esc(t.ticker)}</span>` : ''}${badge(t.theme)}${rpScore(t.score)}</div><div class="rp-meta">${t.price != null ? `<span>Price <b>${price(t.price)}</b></span>` : ''}${t.market_cap != null ? `<span>Mkt cap <b>${money(t.market_cap)}</b></span>` : ''}${t.volume_24h != null ? `<span>24h <b>${money(t.volume_24h)}</b></span>` : ''}${rpDex(t.dex)}</div></li>`).join('')}</ul></div>`);
+  if (imp.length) Mo.push(`<div class="rp-card k-imp">${rpH('imp', 'Impostor warnings', imp.length)}<ul class="rp-list">${imp.map(i => `<li class="rp-item"><div class="rp-row1"><span class="rp-name">${esc(i.project)}</span>${i.theme ? badge(i.theme) : ''}</div><span class="rp-k">Use only</span><div class="rp-v rp-ok">${esc(i.official || '')}</div>${i.fakes ? `<span class="rp-k">Fakes to avoid</span><div class="rp-v rp-clamp rp-fake" style="font-size:12px">${esc(i.fakes)}</div>` : ''}</li>`).join('')}</ul></div>`);
+  const picks = st.filter(x => !/reject|avoid/i.test(x.tier || '')).sort((a, b) => (+b.score || 0) - (+a.score || 0));
+  if (picks.length) Mo.push(`<div class="rp-card k-st">${rpH('st', 'SafeTrade picks', picks.length)}<ul class="rp-list">${picks.map(x => `<li class="rp-item"><div class="rp-row1"><span class="rp-name">${esc(x.project)}</span>${x.ticker ? `<span class="rp-tk" style="margin:0">${esc(x.ticker)}</span>` : ''}${rpScore(x.score)}</div><div class="rp-meta"><span>${esc(x.theme || '')}</span>${x.tier ? rpTier(x.tier) : ''}${x.market_cap != null ? `<span>Mkt cap <b>${money(x.market_cap)}</b></span>` : ''}${x.price != null ? `<span>Price <b>${price(x.price)}</b></span>` : ''}${rpDex(x.dex)}</div>${x.note ? `<div class="rp-v rp-clamp" style="color:var(--muted);font-size:12.5px;margin-top:6px">${esc(x.note)}</div>` : ''}</li>`).join('')}</ul></div>`);
+
+  const foot = `<p style="text-align:center;color:var(--faint);font-size:12px;margin:4px 0 0">Research only, not financial advice.${r.full_report_url ? ` ${ext(r.full_report_url, 'Full report ↗')}` : ''}</p>`;
+  $('#rpBody').innerHTML = `<div class="rp-web">${W.join('')}</div><div class="rp-mob">${Mo.join('')}</div>${foot}`;
 }
 function rpSync() {
   const open = location.hash === '#report';
@@ -1393,7 +1503,9 @@ $('#alerts').addEventListener('click', async e => {
 });
 $('#rpBtn').addEventListener('click', () => { location.hash = 'report'; });
 $('#rpBack').addEventListener('click', () => { if (history.length > 1 && location.hash === '#report') history.back(); else { history.replaceState(null, '', location.pathname + location.search); rpSync(); } });
-$('#rpBody').addEventListener('click', e => { if (e.target.closest('#rpAllBtn')) { rpAll = !rpAll; renderReport(); } });
+$('#rpBody').addEventListener('click', e => { const b = e.target.closest('button[data-rp]'); if (b) { rpF[b.dataset.rp] = b.dataset.v; renderReport(); } });
+$('#rpBody').addEventListener('change', e => { const c = e.target.closest('input[data-rp]'); if (c) { rpF[c.dataset.rp] = c.checked; renderReport(); } });
+$('#rpSeg').addEventListener('click', e => { const b = e.target.closest('button[data-v]'); if (b) { rpF.theme = b.dataset.v; renderReport(); } });
 window.addEventListener('hashchange', rpSync);
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape' && $('#drawer').classList.contains('show')) { closeDrawer(); return; }
