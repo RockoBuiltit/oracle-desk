@@ -532,6 +532,11 @@ html,body{background:#000}
 .a-watch{--ic:#b79cff}
 .a-digest{--ic:#ff9f43}
 .a-rejects{--ic:#9a9a9a}
+
+/* status line under the bot: fixed 2-line box so nothing below moves */
+.status{height:72px;min-height:72px;justify-content:flex-start;overflow:hidden}
+.typer{line-height:1.45;max-height:2.9em;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;max-width:100%}
+.status .meta{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
 </style>
 </head>
 <body>
@@ -607,8 +612,8 @@ html,body{background:#000}
       <div class="strip" id="alerts"></div>
     </section>
 
-    <section class="card a-deadlines" aria-label="Deadlines">
-      <div class="hd"><h2><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg></span>Deadlines</h2><span class="count" id="dlCount"></span></div>
+    <section class="card a-deadlines" aria-label="To Do">
+      <div class="hd"><h2><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg></span>To Do</h2><span class="count" id="dlCount"></span></div>
       <ul class="dl" id="deadlines"></ul>
       <div id="dlDone"></div>
     </section>
@@ -616,7 +621,7 @@ html,body{background:#000}
     <section class="card a-radar" aria-label="Pre-launch radar">
       <div class="hd"><h2><span class="ic" style="color:var(--q)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><path d="M12 12 18 6"/></svg></span>Pre-launch radar</h2><span class="count" id="radarCount"></span></div>
       <div class="radar-box" id="radar"></div>
-      <div class="legend"><span><i style="background:#fff"></i>AI</span><span><i style="background:transparent;border:2px solid #bdbdbd;box-sizing:border-box"></i>Quantum</span><span>Closer = sooner · bigger = higher score · tap a dot</span></div>
+      <div class="legend"><span><i style="background:#f4f3f1"></i>AI</span><span><i style="background:transparent;border:2px solid #f4f3f1;box-sizing:border-box"></i>Quantum</span><span><i style="background:#7de0b4"></i>≤7d</span><span><i style="background:#ffc94a"></i>≤30d</span><span><i style="background:#ff9f43"></i>≤90d</span><span><i style="background:#ff6b6b"></i>90d+</span><span><i style="background:#8a8a8a"></i>TBD</span><span>Closer = sooner · bigger = higher score · tap a dot</span></div>
     </section>
 
     <section class="card a-updates" aria-label="Pre-launch updates">
@@ -863,6 +868,7 @@ function renderAlerts() {
 
 /* ---------- radar ---------- */
 const C = 170, R = 158;
+function dueCol(ms) { if (ms == null) return '#8a8a8a'; const d = ms / 864e5; return d <= 7 ? '#7de0b4' : d <= 30 ? '#ffc94a' : d <= 90 ? '#ff9f43' : '#ff6b6b'; }
 function radFor(ms) { if (ms == null) return R; const d = Math.max(0, ms / 864e5); if (d > 90) return 144; return 22 + Math.sqrt(d / 90) * 112; }
 let radarDots = [], sweepEl = null, lastAng = 0;
 function renderRadar() {
@@ -874,13 +880,13 @@ function renderRadar() {
     const deg = hash(w.name) % 360, a = deg * Math.PI / 180;
     const r = radFor(msTo(w.milestone_date));
     const x = C + r * Math.sin(a), y = C - r * Math.cos(a);
-    const s = clamp(w.score, 0, 100), sz = 5 + s / 100 * 8, col = tcol(w.theme);
+    const s = clamp(w.score, 0, 100), sz = 5 + s / 100 * 8, col = dueCol(msTo(w.milestone_date));
     radarDots.push({ deg, name: w.name });
     const right = x > C, lx = right ? x - sz - 5 : x + sz + 5;
     return `<g class="dot" tabindex="0" role="button" data-name="${esc(w.name)}" data-deg="${deg}" aria-label="${esc(w.name)}, score ${s}, ${esc(w.next_milestone || 'milestone n/a')} ${w.milestone_date ? esc(rel(w.milestone_date)) : 'date TBD'}">
       <circle class="ping" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${sz.toFixed(1)}" style="fill:${col}"/>
       <circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(sz * 2.2).toFixed(1)}" style="fill:${col}" opacity=".14"/>
-      <circle class="core" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${sz.toFixed(1)}" style="${tk(w.theme) === 'q' ? 'fill:#050505;stroke:#bdbdbd;stroke-width:2.5' : 'fill:#fff'}"/>
+      <circle class="core" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${sz.toFixed(1)}" style="${tk(w.theme) === 'q' ? `fill:#050505;stroke:${col};stroke-width:2.5` : `fill:${col}`}"/>
       <text class="lab" x="${lx.toFixed(1)}" y="${(y + 3.5).toFixed(1)}" text-anchor="${right ? 'end' : 'start'}">${esc(w.ticker || w.name)}</text></g>`;
   }).join('');
   const slices = Array.from({ length: 8 }, (_, i) => {
@@ -1169,11 +1175,11 @@ function lines() {
   if (botState === 'alert') { const l = (feed?.alerts || []).slice().sort((a, b) => new Date(b.sent_at || 0) - new Date(a.sent_at || 0))[0]; return [`Alert sent: ${l ? l.name + (l.ticker ? ' $' + l.ticker : '') : 'new signal'}`]; }
   if (botState === 'scanning') { const a = (st.activity || []).filter(Boolean); return a.length ? a : ['Scanning sources']; }
   const ws = (feed?.watchlist || []).filter(w => ['pre-launch', 'testnet'].includes(String(w.stage).toLowerCase()) && w.next_milestone);
-  return [`Watching ${(feed?.watchlist || []).length} projects · next scan ${st.next_scan ? tTime(st.next_scan) + ' CT' : 'n/a'}`, ...ws.slice(0, 3).map(w => `${w.name}: ${w.next_milestone}${w.milestone_date ? ' ' + rel(w.milestone_date) : ''}`)];
+  return [`Watching ${(feed?.watchlist || []).length} projects · next scan ${st.next_scan ? tTime(st.next_scan) + ' CT' : 'n/a'}`, ...ws.slice(0, 3).map(w => { const suf = w.milestone_date ? ' · ' + rel(w.milestone_date) : ''; let base = `${w.name}: ${String(w.next_milestone).split(/[;(]/)[0].trim()}`; const room = 64 - suf.length; if (base.length > room) base = base.slice(0, room - 1).trimEnd() + '…'; return base + suf; })];
 }
 function typeLoop(idx = 0) {
   clearTimeout(typeTimer);
-  const L = lines(); const text = L[idx % L.length]; const el = $('#typed');
+  const L = lines(); const raw = String(L[idx % L.length]); const text = raw.length > 64 ? raw.slice(0, 63).trimEnd() + '…' : raw; const el = $('#typed');
   if (reduced()) { el.textContent = text; typeTimer = setTimeout(() => typeLoop(idx + 1), 3500); return; }
   let i = 0;
   const type = () => { el.textContent = text.slice(0, ++i); if (i < text.length) typeTimer = setTimeout(type, 22 + Math.random() * 30); else typeTimer = setTimeout(erase, botState === 'scanning' ? 1400 : 2600); };
