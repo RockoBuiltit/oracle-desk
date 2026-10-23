@@ -671,6 +671,17 @@ html.rp-open,html.rp-open body{overflow:hidden}
 
 /* Oracle box keeps one fixed height on web; it never stretches with the column beside it */
 .a-avatar{align-self:start}
+
+/* watchlist: token logos (top left) and HIGH / WATCH tag (top right on phones) */
+.wl-logo{display:inline-grid;place-items:center;flex:none;width:28px;height:28px;border-radius:8px;background:#f4f4f4;color:#000;font-weight:700;font-size:13px;overflow:hidden;margin-right:10px;vertical-align:middle}
+.wl-logo img{width:100%;height:100%;object-fit:contain;display:block}
+.tbl td.c-proj .pn{vertical-align:middle}
+@media (max-width:820px){
+  .tbl td.c-proj{position:relative;padding-right:84px;align-items:center}
+  .tbl td.c-proj .wl-logo{width:40px;height:40px;border-radius:11px;font-size:16px;margin-right:4px}
+  .tbl td.c-proj .tier{position:absolute;top:0;right:0}
+  .tbl td.c-proj .mob{padding-left:48px;margin-top:-6px}
+}
 </style>
 </head>
 <body>
@@ -1085,6 +1096,7 @@ const sv = (w, k) => {
   const v = w[k]; if (v == null || v === '') return null;
   return ['score', 'price', 'market_cap', 'volume_24h'].includes(k) ? +v : String(v).toLowerCase();
 };
+const wlLogo = w => { const u = typeof w.logo === 'string' && (/^https:\/\//.test(w.logo) || /^[\w\-\/.]+$/.test(w.logo)) ? w.logo : ''; const ini = esc(String(w.name || '?').trim().charAt(0).toUpperCase()); return `<span class="wl-logo" data-i="${ini}">${u ? `<img src="${esc(u)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.textContent=this.parentNode.dataset.i">` : ini}</span>`; };
 function renderWatch() {
   $('#thead').innerHTML = COLS.map(([k, l]) => `<th ${sortKey === k ? `aria-sort="${sortDir > 0 ? 'ascending' : 'descending'}"` : ''}><button data-sort="${k}">${l}${sortKey === k ? (sortDir > 0 ? ' ↑' : ' ↓') : ''}</button></th>`).join('');
   $('#sortSel').innerHTML = COLS.map(([k, l]) => `<option value="${k}" ${k === sortKey ? 'selected' : ''}>Sort: ${l}</option>`).join('');
@@ -1099,7 +1111,7 @@ function renderWatch() {
     const tier = String(w.tier || '').toUpperCase();
     const ms = w.next_milestone ? `${esc(w.next_milestone)}${w.milestone_date ? ` <span class="faint">· ${tDay(w.milestone_date)}</span>` : ''}` : '<span class="faint">n/a</span>';
     return `<tr data-name="${esc(w.name)}" style="--tc:${tcol(w.theme)}" class="${String(w.stage).toLowerCase() === 'archived' ? 'archived' : ''}" tabindex="0">
-      <td class="c-proj" data-label="Project"><span class="pn">${esc(w.name)}</span>${tier ? `<span class="tier ${esc(tier)}">${esc(tier)}</span>` : ''}<span class="mob">${w.ticker ? `<span class="mono muted">$${esc(w.ticker)}</span>` : ''}${badge(w.theme)}</span></td>
+      <td class="c-proj" data-label="Project">${wlLogo(w)}<span class="pn">${esc(w.name)}</span>${tier ? `<span class="tier ${esc(tier)}">${esc(tier)}</span>` : ''}<span class="mob">${w.ticker ? `<span class="mono muted">$${esc(w.ticker)}</span>` : ''}${badge(w.theme)}</span></td>
       <td class="c-tk mono" data-label="Ticker"><span class="cv">${w.ticker ? '$' + esc(w.ticker) : 'n/a'}</span></td>
       <td class="c-th" data-label="Theme"><span class="cv">${badge(w.theme)}</span></td>
       <td data-label="Stage"><span class="cv${String(w.stage).toLowerCase() === 'live' ? ' is-live' : ''}">${esc(w.stage || 'n/a')}</span></td>
