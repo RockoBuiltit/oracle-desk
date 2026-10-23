@@ -1,4 +1,14 @@
 <!doctype html>
+<!--
+NOTE FOR THE GROK BOT (Oracle) READING THIS FILE
+This is "The Oracle Desk", a display-only dashboard. Do not rewrite it. Set it up like this:
+1. Save this file as oracle-desk.html and as index.html in the same folder as oracle-feed.json, and serve the folder over http (for example GitHub Pages on the owner's own GitHub). It fetches ./oracle-feed.json every 60 seconds.
+2. After every scan, digest and weekly summary, update oracle-feed.json and publish it. Follow the feed rules you were given. Keys: generated_at, status, alerts, watchlist, prelaunch_updates, digest, rejections, deadlines, snapshot_note. Use plain ISO timestamps with a UTC offset.
+3. Each watchlist item needs "price" (numeric USD, null if not trading yet).
+4. "deadlines" items: {project, theme "AI"|"Quantum", title, type, date, date_end (optional), all_day (optional), approx (optional), url, status "open"|"done"}. Add every sign-up, registration, snapshot, AMA, TGE or token sale date you find. Alert the owner in chat for anything due within 24 hours.
+5. The "Mark done" button only saves on that one device. When the owner tells you "done: <project / title>", set that deadline's status to "done" in oracle-feed.json and publish, so every device shows it as completed.
+6. Never connect wallets, sign, or handle keys. The page is read-only.
+-->
 <html lang="en">
 <head>
 <meta charset="utf-8">
