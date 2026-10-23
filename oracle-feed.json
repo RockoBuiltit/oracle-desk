@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-23T02:43:24-05:00",
+ "generated_at": "2026-10-23T03:52:40-05:00",
  "status": {
   "state": "idle",
   "last_scan": "2026-10-22T20:08-05:00",
@@ -438,7 +438,7 @@
   {
    "project": "GenLayer",
    "theme": "AI",
-   "title": "Community AMA",
+   "title": "Pre-TGE community AMA",
    "type": "AMA",
    "date": "2026-10-23T08:30:00-05:00",
    "url": "https://x.com/GenLayer",
@@ -447,10 +447,9 @@
   {
    "project": "GenLayer",
    "theme": "AI",
-   "title": "Snapshot",
+   "title": "Season 1 snapshot (likely 23:59 UTC)",
    "type": "Snapshot",
-   "date": "2026-10-25T00:00:00-05:00",
-   "all_day": true,
+   "date": "2026-10-25T18:59:00-05:00",
    "approx": true,
    "url": "https://x.com/GenLayer",
    "status": "open"
@@ -458,12 +457,13 @@
   {
    "project": "GenLayer",
    "theme": "AI",
-   "title": "Registration closes",
+   "title": "Airdrop registration closes (time not announced)",
    "type": "Sign-up deadline",
    "date": "2026-10-26T00:00:00-05:00",
    "all_day": true,
-   "url": "https://x.com/GenLayer",
-   "status": "open"
+   "url": "https://airdrop.genlayer.com",
+   "status": "open",
+   "approx": true
   },
   {
    "project": "DATA Network",
