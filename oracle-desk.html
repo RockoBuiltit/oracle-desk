@@ -6,7 +6,7 @@ This is "The Oracle Desk", a display-only dashboard. Do not rewrite it. Set it u
 2. After every scan, digest and weekly summary, update oracle-feed.json and publish it. Follow the feed rules you were given. Keys: generated_at, status, alerts, watchlist, prelaunch_updates, digest, rejections, deadlines, snapshot_note. Use plain ISO timestamps with a UTC offset.
 3. Each watchlist item needs "price" (numeric USD, null if not trading yet).
 4. "deadlines" items: {project, theme "AI"|"Quantum", title, type, date, date_end (optional), all_day (optional), approx (optional), url, status "open"|"done"}. Add every sign-up, registration, snapshot, AMA, TGE or token sale date you find. Alert the owner in chat for anything due within 24 hours.
-5. The "Mark done" button only saves on that one device. When the owner tells you "done: <project / title>", set that deadline's status to "done" in oracle-feed.json and publish, so every device shows it as completed.
+5. The "Mark done" button saves on that device, and syncs to every device if SYNC_URL (one line near the top of the script) holds a store address such as https://textdb.dev/api/data/<long-random-id>. Leave it blank for this-device-only ticks. When the owner tells you "done: <project / title>", set that deadline's status to "done" in oracle-feed.json and publish, so every device shows it as completed.
 6. Never connect wallets, sign, or handle keys. The page is read-only.
 -->
 <html lang="en">
@@ -611,6 +611,9 @@ const $ = s => document.querySelector(s);
 const RM = matchMedia('(prefers-reduced-motion: reduce)');
 const reduced = () => RM.matches;
 
+/* SETTING: address of the small sync store that keeps "Mark done" ticks the same on every device. Leave blank for ticks saved on this device only. */
+const SYNC_URL = "https://textdb.dev/api/data/oracle-desk-eb752c6623f73777446e6d60";
+
 let feed = null, source = null, lastGen = null;
 let themeF = 'all', tierF = 'all', dexOnly = false, sortKey = 'score', sortDir = -1;
 let botState = 'idle', settleT = null, debugIdx = 0;
@@ -947,10 +950,11 @@ function dlDate(d) {
 }
 const DL_KEY = 'oracle-deadlines-v1';
 let dlStore = null, dlShowDone = false;
+const dlOn = v => !!v && !v.x;
 const dlKey = d => `${d.project || ''}|${d.title || ''}|${d.date || ''}`;
 function dlLoad() {
   if (dlStore) return dlStore;
-  try { const v = JSON.parse(localStorage.getItem(DL_KEY) || 'null'); if (v && typeof v === 'object') dlStore = { done: v.done || {}, seen: v.seen || {} }; } catch {}
+  try { const v = JSON.parse(localStorage.getItem(DL_KEY) || 'null'); if (v && typeof v === 'object') dlStore = { done: dlClean(v.done), seen: v.seen || {} }; } catch {}
   return dlStore || (dlStore = { done: {}, seen: {} });
 }
 function dlSave() { try { localStorage.setItem(DL_KEY, JSON.stringify(dlStore)); } catch {} }
@@ -959,7 +963,7 @@ function dlPrune() {
   const keys = all ? new Set(all.map(dlKey)) : null;
   for (const [k, v] of Object.entries(st.done)) {
     const end = v && v.end ? new Date(v.end).getTime() : NaN;
-    if ((isFinite(end) && now - end > D14) || (keys && !keys.has(k) && now - (v.t || 0) > D14)) delete st.done[k];
+    if ((isFinite(end) && now - end > D14) || (v && v.x && now - (v.t || 0) > D14) || (keys && !keys.has(k) && now - (v.t || 0) > D14)) delete st.done[k];
   }
   if (keys) for (const k of Object.keys(st.seen)) if (!keys.has(k)) delete st.seen[k];
 }
@@ -981,7 +985,7 @@ function dlRow(d, k, st, opts) {
 }
 function renderDeadlines() {
   const st = dlLoad(), order = { due: 0, open: 1 };
-  const items = (feed.deadlines || []).filter(passT).map(d => { const k = dlKey(d), s = dlStatus(d); return { d, k, st: s, manual: k in st.done && s !== 'done' }; });
+  const items = (feed.deadlines || []).filter(passT).map(d => { const k = dlKey(d), s = dlStatus(d); return { d, k, st: s, manual: dlOn(st.done[k]) && s !== 'done' }; });
   const active = items.filter(x => x.st !== 'done' && !x.manual).sort((a, b) => order[a.st] - order[b.st] || (new Date(a.d.date || 8.64e15) - new Date(b.d.date || 8.64e15)));
   const completed = items.filter(x => x.st === 'done' || x.manual).sort((a, b) => new Date(b.d.date || 0) - new Date(a.d.date || 0));
   const nDue = active.filter(x => x.st === 'due').length;
@@ -994,11 +998,47 @@ function renderDeadlines() {
 }
 function dlMark(k, li) {
   const st = dlLoad(); const d = (feed.deadlines || []).find(x => dlKey(x) === k);
-  st.done[k] = { t: Date.now(), end: d ? (d.date_end || d.date || null) : null }; dlSave();
+  st.done[k] = { t: Date.now(), end: d ? (d.date_end || d.date || null) : null }; dlSave(); syncNow();
   if (!li || reduced()) { renderDeadlines(); return; }
   li.style.height = li.offsetHeight + 'px'; void li.offsetHeight;
   li.classList.add('leaving'); li.style.height = '0px';
   setTimeout(renderDeadlines, 300);
+}
+/* ---------- device sync (ticks only; the feed is separate and scans never touch the store) ---------- */
+function dlClean(o) {
+  const out = {}; if (!o || typeof o !== 'object') return out;
+  for (const [k, v] of Object.entries(o)) if (v && typeof v === 'object' && isFinite(v.t)) out[k] = { t: +v.t, end: typeof v.end === 'string' ? v.end : null, ...(v.x ? { x: 1 } : {}) };
+  return out;
+}
+const dlSig = o => JSON.stringify(Object.keys(o).sort().map(k => [k, o[k].t, o[k].x ? 1 : 0]));
+function dlMerge(a, b) {            /* newest timestamp wins per key; x = undone (tombstone) */
+  const out = { ...a };
+  for (const [k, v] of Object.entries(b)) if (!out[k] || v.t > out[k].t) out[k] = v;
+  return out;
+}
+let syncBusy = null, syncAgain = false;
+async function syncRun() {
+  const st = dlLoad(); let remote = {};
+  const r = await fetch(SYNC_URL + (SYNC_URL.includes('?') ? '&' : '?') + 't=' + Date.now(), { cache: 'no-store' });
+  if (!r.ok) throw new Error('HTTP ' + r.status);
+  const txt = (await r.text()).trim();
+  if (txt) { try { const j = JSON.parse(txt); remote = dlClean(j && j.done); } catch { remote = {}; } }
+  const before = dlSig(st.done);
+  st.done = dlMerge(remote, st.done); dlPrune();
+  if (dlSig(st.done) !== before) { dlSave(); if (feed) renderDeadlines(); }
+  if (dlSig(st.done) !== dlSig(remote)) {
+    const w = await fetch(SYNC_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify({ v: 1, done: st.done }) });
+    if (!w.ok) throw new Error('HTTP ' + w.status);
+  }
+}
+function syncNow() {
+  if (!SYNC_URL) return Promise.resolve();
+  if (syncBusy) { syncAgain = true; return syncBusy; }
+  syncBusy = (async () => {
+    do { syncAgain = false; try { await syncRun(); } catch {} } while (syncAgain);
+    syncBusy = null;
+  })();
+  return syncBusy;
 }
 function tickDeadlines() {
   if (!feed) return;
@@ -1098,11 +1138,14 @@ async function init() {
   try { apply(await getJSON('./oracle-feed.json'), 'live'); }
   catch { apply({}, 'none'); }
   setInterval(poll, 60000);
+  syncNow();
 }
 async function poll() {
   try { apply(await getJSON('./oracle-feed.json'), 'live'); }
   catch {}
+  syncNow();
 }
+document.addEventListener('visibilitychange', () => { if (!document.hidden) syncNow(); });
 
 /* ---------- events ---------- */
 document.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => {
@@ -1121,7 +1164,7 @@ $('#radar').addEventListener('click', e => { const g = e.target.closest('.dot');
 $('#radar').addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { const g = e.target.closest('.dot'); if (g) { e.preventDefault(); openDrawer(g.dataset.name); } } });
 $('.a-deadlines').addEventListener('click', e => {
   const m = e.target.closest('[data-mark]'); if (m) { dlMark(m.dataset.mark, m.closest('li')); return; }
-  const u = e.target.closest('[data-undo]'); if (u) { delete dlLoad().done[u.dataset.undo]; dlSave(); renderDeadlines(); return; }
+  const u = e.target.closest('[data-undo]'); if (u) { const dn = dlLoad().done, uk = u.dataset.undo; dn[uk] = { t: Date.now(), end: dn[uk] ? dn[uk].end || null : null, x: 1 }; dlSave(); renderDeadlines(); syncNow(); return; }
   if (e.target.closest('#dlBar')) { dlShowDone = !dlShowDone; renderDeadlines(); }
 });
 $('#ov').addEventListener('click', closeDrawer);
