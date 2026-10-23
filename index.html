@@ -1,13 +1,13 @@
 <!doctype html>
 <!--
-NOTE FOR THE GROK BOT (Oracle) READING THIS FILE
-This is "The Oracle Desk", a display-only dashboard. Do not rewrite it. Set it up like this:
-1. Save this file as oracle-desk.html and as index.html in the same folder as oracle-feed.json, and serve the folder over http (for example GitHub Pages on the owner's own GitHub). It fetches ./oracle-feed.json every 60 seconds.
-2. After every scan, digest and weekly summary, update oracle-feed.json and publish it. Follow the feed rules you were given. Keys: generated_at, status, alerts, watchlist, prelaunch_updates, digest, rejections, deadlines, snapshot_note. Use plain ISO timestamps with a UTC offset.
-3. Each watchlist item needs "price" (numeric USD, null if not trading yet).
-4. "deadlines" items: {project, theme "AI"|"Quantum", title, type, date, date_end (optional), all_day (optional), approx (optional), url, status "open"|"done"}. Add every sign-up, registration, snapshot, AMA, TGE or token sale date you find. Alert the owner in chat for anything due within 24 hours.
-5. The "Mark done" button saves on that device, and syncs to every device if SYNC_URL (one line near the top of the script) holds a store address such as https://textdb.dev/api/data/<long-random-id>. Leave it blank for this-device-only ticks. When the owner tells you "done: <project / title>", set that deadline's status to "done" in oracle-feed.json and publish, so every device shows it as completed.
-6. Never connect wallets, sign, or handle keys. The page is read-only.
+INSTRUCTIONS FOR THE ORACLE BOT (not for the user). When the owner pastes this file and asks you to configure their live desk, do the following without asking them for anything:
+1. Save this file as oracle-desk.html and as index.html in the folder that holds oracle-feed.json, and publish the folder (including the logos folder) so it is served over http. Do not rewrite the page.
+2. Create the sync store: generate about 24 random hex characters and set the line near the top of the script to const SYNC_URL = "https://textdb.dev/api/data/oracle-desk-<those characters>". Use a fresh random name for this owner only. No account is needed. The store holds only the Mark done ticks and is separate from oracle-feed.json. Your scans never write to it.
+3. Test it: tick a deadline on a desktop-sized view, open a phone-sized view with a separate profile, and confirm the tick shows there. If the store can't be reached, leave SYNC_URL blank.
+4. Project images: for every project on the watchlist, save its real official logo as logos/<slug>.png (128x128 PNG, from the project's verified official X profile image or its CoinGecko listing; never an impostor's), and set "logo": "logos/<slug>.png" and "website": "<official site>" on its watchlist item. Each entry in digest.top3 is {name, why, logo, url} using the same logo path and the official website, and the page shows them on the Top 3 cards. Add the logo and website as soon as a project joins the watchlist.
+5. Publish, and send the owner only the GitHub URL of the live desk.
+6. After every scan, digest and weekly summary, update oracle-feed.json and publish it, following your feed rules.
+7. Never connect wallets, sign, or handle keys. The page is read-only.
 -->
 <html lang="en">
 <head>
@@ -474,6 +474,13 @@ footer .by b{color:#c3c3c3;font-weight:600}
 a{color:#e6e6e6}a:hover{color:#fff}
 footer .by b,.sub b{color:#fff}
 .chk input{accent-color:#fff}
+
+/* top3 logos + site link */
+.top3 .n.lg{background:#f4f4f4;padding:0;overflow:hidden;width:36px;height:36px;border-radius:10px}
+.top3 .n.lg img{width:100%;height:100%;object-fit:contain;display:block}
+.top3 li .bd{flex:1;min-width:0;display:block}
+.top3 .site{display:block;text-align:right;margin-top:8px;font-size:12px;color:#d4d4d4;text-decoration:none;font-family:var(--mono);letter-spacing:.02em}
+.top3 .site:hover{color:#fff;text-decoration:underline}
 </style>
 </head>
 <body>
@@ -754,7 +761,17 @@ function renderDigest() {
   const dd = d.date ? new Date(d.date + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }) : '';
   $('#digestDate').textContent = dd; $('#digestDate2').textContent = dd;
   const top = (d.top3 || []).slice(0, 3);
-  $('#top3').innerHTML = top.length ? top.map((t, i) => `<li><span class="n">${i + 1}</span><span><b>${esc(t.name)}</b><span class="why">${esc(t.why)}</span></span></li>`).join('') : '<li class="muted">No picks in this digest.</li>';
+  const wlFind = n => (feed.watchlist || []).find(w => String(w.name || '').toLowerCase() === String(n || '').toLowerCase()) || {};
+  const logoOk = u => typeof u === 'string' && (/^https:\/\//.test(u) || /^[\w\-\/.]+$/.test(u)) ? u : '';
+  $('#top3').innerHTML = top.length ? top.map((t, i) => {
+    const w = wlFind(t.name);
+    const logo = logoOk(t.logo || w.logo);
+    const site = t.url || w.website || ((w.links || [])[0] || {}).url || '';
+    const badgeHtml = logo ? `<span class="n lg" data-n="${i + 1}"><img src="${esc(logo)}" alt="${esc(t.name)} logo" loading="lazy" referrerpolicy="no-referrer"></span>` : `<span class="n">${i + 1}</span>`;
+    const link = site ? `<a class="site" href="${esc(safeUrl(site))}" target="_blank" rel="noopener noreferrer">Website \u2197</a>` : '';
+    return `<li>${badgeHtml}<span class="bd"><b>${esc(t.name)}</b><span class="why">${esc(t.why)}</span>${link}</span></li>`;
+  }).join('') : '<li class="muted">No picks in this digest.</li>';
+  document.querySelectorAll('#top3 .n.lg img').forEach(im => im.addEventListener('error', () => { const sp = im.parentNode; sp.classList.remove('lg'); sp.textContent = sp.dataset.n; }));
   const col = (key, arr) => `<div class="dgc"><h4>${badge(key)}</h4>${(arr || []).length ? `<ul style="--c:${tcol(key)}">${arr.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : '<div class="muted">Nothing new.</div>'}</div>`;
   const cols = [];
   if (themeF !== 'q') cols.push(col('AI', d.ai));

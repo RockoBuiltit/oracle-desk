@@ -48,7 +48,9 @@
       "upgrade_if": "Named-firm audit; more venues",
       "downgrade_if": "Chain halt; insider unlock pressure",
       "last_update": "2026-10-23T02:43:24-05:00",
-      "price": 88.85
+      "price": 88.85,
+      "logo": "logos/quantus.png",
+      "website": "https://www.quantus.com"
     },
     {
       "name": "Ritual",
@@ -78,7 +80,9 @@
       "upgrade_if": "Dated mainnet/TGE + audit",
       "downgrade_if": "Testnet stalls",
       "last_update": "2026-10-22T16:10-05:00",
-      "price": null
+      "price": null,
+      "logo": "logos/ritual.png",
+      "website": "https://ritual.net"
     },
     {
       "name": "GenLayer",
@@ -108,7 +112,9 @@
       "upgrade_if": "Dated TGE + official Arbitrum contract + audit",
       "downgrade_if": "TGE slips past October",
       "last_update": "2026-10-22T16:10-05:00",
-      "price": null
+      "price": null,
+      "logo": "logos/genlayer.png",
+      "website": "https://genlayer.com"
     },
     {
       "name": "DATA Network",
@@ -138,7 +144,9 @@
       "upgrade_if": "Migration date + audited Sui contracts",
       "downgrade_if": "Migration delays",
       "last_update": "2026-10-23T02:43:24-05:00",
-      "price": 0.147184
+      "price": 0.147184,
+      "logo": "logos/data-network.png",
+      "website": "https://www.datafdn.org"
     },
     {
       "name": "Quip Network",
@@ -168,7 +176,9 @@
       "upgrade_if": "Dated TGE, audit, mainnet",
       "downgrade_if": "More TGE slips",
       "last_update": "2026-10-22T16:10-05:00",
-      "price": null
+      "price": null,
+      "logo": "logos/quip-network.png",
+      "website": "https://quip.network"
     },
     {
       "name": "Fraction AI",
@@ -198,7 +208,9 @@
       "upgrade_if": "Official Nov 11 confirmation",
       "downgrade_if": "Date moves",
       "last_update": "2026-10-22T16:10-05:00",
-      "price": null
+      "price": null,
+      "logo": "logos/fraction-ai.png",
+      "website": "https://fractionai.xyz"
     },
     {
       "name": "Soqucoin",
@@ -228,7 +240,9 @@
       "upgrade_if": "Identifiable founders, DEX liquidity",
       "downgrade_if": "Pool centralization",
       "last_update": "2026-10-22T16:10-05:00",
-      "price": null
+      "price": null,
+      "logo": "logos/soqucoin.png",
+      "website": "https://soqu.org"
     },
     {
       "name": "Axis Robotics",
@@ -253,7 +267,9 @@
       "upgrade_if": "Verified team, audit",
       "downgrade_if": "Heavy unlocks",
       "last_update": "2026-10-23T02:43:24-05:00",
-      "price": 0.270413
+      "price": 0.270413,
+      "logo": "logos/axis-robotics.png",
+      "website": "https://axisrobotics.ai"
     },
     {
       "name": "Flop Network",
@@ -283,7 +299,9 @@
       "upgrade_if": "Testnet live on schedule",
       "downgrade_if": "Delays; impostor tokens",
       "last_update": "2026-10-22T16:10-05:00",
-      "price": null
+      "price": null,
+      "logo": "logos/flop-network.png",
+      "website": "https://flop.finance"
     },
     {
       "name": "Crynux",
@@ -308,7 +326,9 @@
       "upgrade_if": "Deeper liquidity, audit",
       "downgrade_if": "Liquidity stays thin",
       "last_update": "2026-10-23T02:43:24-05:00",
-      "price": 0.0015
+      "price": 0.0015,
+      "logo": "logos/crynux.png",
+      "website": "https://crynux.io"
     },
     {
       "name": "TermiX",
@@ -333,7 +353,9 @@
       "upgrade_if": "Dated TGE",
       "downgrade_if": "Revenue fades",
       "last_update": "2026-10-22T16:10-05:00",
-      "price": null
+      "price": null,
+      "logo": "logos/termix.png",
+      "website": "https://termix.ai"
     },
     {
       "name": "DAC Chain",
@@ -362,7 +384,9 @@
       "upgrade_if": "Official dated TGE + verified contract",
       "downgrade_if": "Second missed date",
       "last_update": "2026-10-22T16:10-05:00",
-      "price": null
+      "price": null,
+      "logo": "logos/dac-chain.png",
+      "website": "https://www.dachain.tech"
     }
   ],
   "prelaunch_updates": [
@@ -404,15 +428,21 @@
     "top3": [
       {
         "name": "GenLayer",
-        "why": "Airdrop registration closes Oct 26 and the Season 1 snapshot is expected Oct 25. Pre-TGE community AMA is today at 8:30 AM CT."
+        "why": "Airdrop registration closes Oct 26 and the Season 1 snapshot is expected Oct 25. Pre-TGE community AMA is today at 8:30 AM CT.",
+        "logo": "logos/genlayer.png",
+        "url": "https://genlayer.com"
       },
       {
         "name": "Quip Network",
-        "why": "Quantum project on the watchlist with no launch date yet. Watching for official launch date, tokenomics and airdrop rules."
+        "why": "Quantum project on the watchlist with no launch date yet. Watching for official launch date, tokenomics and airdrop rules.",
+        "logo": "logos/quip-network.png",
+        "url": "https://quip.network"
       },
       {
         "name": "Flop Network",
-        "why": "Pre-testnet and undated. Watching for testnet timing, tokenomics and airdrop or points rules."
+        "why": "Pre-testnet and undated. Watching for testnet timing, tokenomics and airdrop or points rules.",
+        "logo": "logos/flop-network.png",
+        "url": "https://flop.finance"
       }
     ]
   },

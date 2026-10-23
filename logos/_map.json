@@ -1,0 +1,74 @@
+{
+  "Quantus": {
+    "logo": "logos/quantus.png",
+    "url": "https://www.quantus.com",
+    "url_kind": "website",
+    "source": "CoinGecko image.large (id quantus); site linked from @QuantusNetwork and feed"
+  },
+  "Ritual": {
+    "logo": "logos/ritual.png",
+    "url": "https://ritual.net",
+    "url_kind": "website",
+    "source": "X profile image @ritualnet (_400x400); site = @ritualnet profile URL"
+  },
+  "GenLayer": {
+    "logo": "logos/genlayer.png",
+    "url": "https://genlayer.com",
+    "url_kind": "website",
+    "source": "CoinGecko image.large (id genlayer); site = @GenLayer profile URL + CoinGecko homepage"
+  },
+  "DATA Network": {
+    "logo": "logos/data-network.png",
+    "url": "https://www.datafdn.org",
+    "url_kind": "website",
+    "source": "X profile image @datafdn (_400x400) (The DATA Foundation, formerly Story); site = @datafdn profile URL"
+  },
+  "Quip Network": {
+    "logo": "logos/quip-network.png",
+    "url": "https://quip.network",
+    "url_kind": "website",
+    "source": "X profile image @quipnetwork (_400x400); quip.network links to twitter.com/quipnetwork; @quipnetwork bio links links.quip.network"
+  },
+  "Fraction AI": {
+    "logo": "logos/fraction-ai.png",
+    "url": "https://fractionai.xyz",
+    "url_kind": "website",
+    "source": "X profile image @FractionAI_xyz (_400x400); site = @FractionAI_xyz profile URL (403s curl from box, loads in WebFetch)"
+  },
+  "Soqucoin": {
+    "logo": "logos/soqucoin.png",
+    "url": "https://soqu.org",
+    "url_kind": "website",
+    "source": "CoinGecko image.large (id soqucoin); site = @soqucoin profile URL + CoinGecko"
+  },
+  "Axis Robotics": {
+    "logo": "logos/axis-robotics.png",
+    "url": "https://axisrobotics.ai",
+    "url_kind": "website",
+    "source": "CoinGecko image.large (id axis-robotics); CoinGecko homepage + @axisroboticsai bio; @axisrobotics bio only has linktr.ee/axisrobotics"
+  },
+  "Flop Network": {
+    "logo": "logos/flop-network.png",
+    "url": "https://flop.finance",
+    "url_kind": "website",
+    "source": "X profile image @flop_labs (_400x400); site = @flop_labs profile URL, site links back to x.com/flop_labs"
+  },
+  "Crynux": {
+    "logo": "logos/crynux.png",
+    "url": "https://crynux.io",
+    "url_kind": "website",
+    "source": "CoinGecko image.large (id crynux); site = @crynuxio profile URL + CoinGecko"
+  },
+  "TermiX": {
+    "logo": "logos/termix.png",
+    "url": "https://termix.ai",
+    "url_kind": "website",
+    "source": "X profile image @termix_ai (_400x400); termix.ai listed in @termix_ai bio (profile URL is link3.to/termix)"
+  },
+  "DAC Chain": {
+    "logo": "logos/dac-chain.png",
+    "url": "https://www.dachain.tech",
+    "url_kind": "website",
+    "source": "X profile image @dac_chain (_400x400); site = @dac_chain profile URL"
+  }
+}
