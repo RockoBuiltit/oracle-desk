@@ -8,6 +8,7 @@ INSTRUCTIONS FOR THE ORACLE BOT (not for the user). When the owner pastes this f
 5. Publish, and send the owner only the GitHub URL of the live desk.
 6. After every scan, digest and weekly summary, update oracle-feed.json and publish it, following your feed rules.
 7. Never connect wallets, sign, or handle keys. The page is read-only.
+8. Morning report: after every morning report, add a "report" object to oracle-feed.json. The Report button (top left) opens a page built from it. Keys: updated (ISO), full_report_url, takeaways (2-4 short strings), prelaunch [{project, ticker, theme, coming, when, score, why}], tokens [{project, ticker, theme, category, tier "Strong"|"Speculative"|"Avoid", price, market_cap, volume_24h, score, dex (DEX route name, or "" if none)}], impostors [{project, official, fakes}], safetrade [{project, ticker, theme, score, tier, note}]. Keep text short; money values are plain USD numbers. Leave out FDV.
 -->
 <html lang="en">
 <head>
@@ -537,6 +538,79 @@ html,body{background:#000}
 .status{height:72px;min-height:72px;justify-content:flex-start;overflow:hidden}
 .typer{line-height:1.45;max-height:2.9em;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;max-width:100%}
 .status .meta{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+
+/* ===== Morning report page ===== */
+.rp-btn{display:inline-flex;align-items:center;gap:7px;flex:none;height:40px;padding:0 13px;border-radius:12px;border:1px solid var(--line2);background:#000;color:var(--text);font-weight:600;font-size:13px}
+.rp-btn svg{width:17px;height:17px}
+.rp-btn:hover{border-color:#444;background:#0a0a0a}
+.rp{position:fixed;inset:0;z-index:45;background:#000;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+html.rp-open,html.rp-open body{overflow:hidden}
+.rp-top{position:sticky;top:0;z-index:2;background:#000;border-bottom:1px solid var(--line)}
+.rp-top-in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:12px max(18px,env(safe-area-inset-right)) 12px max(18px,env(safe-area-inset-left))}
+.rp-back{display:inline-flex;align-items:center;gap:4px;height:40px;padding:0 12px 0 8px;border-radius:12px;border:1px solid var(--line2);background:#121214;font-weight:600;font-size:13px}
+.rp-back svg{width:18px;height:18px}
+.rp-title{display:flex;flex-direction:column;line-height:1.25;margin-right:auto;min-width:0}
+.rp-title b{font-family:var(--display);font-size:18px;letter-spacing:.02em}
+.rp-title span{font-size:12px;color:var(--muted)}
+.rp-full{font-size:13px;font-weight:600;color:var(--mint-t);white-space:nowrap}
+.rp-body{max-width:1180px;margin:0 auto;padding:20px max(18px,env(safe-area-inset-right)) calc(40px + env(safe-area-inset-bottom)) max(18px,env(safe-area-inset-left));display:grid;gap:16px}
+.rp-card{background:#080808;border:1px solid var(--line);border-radius:22px;padding:20px;min-width:0}
+.rp-card h3{margin:0 0 14px;font-family:var(--display);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#cfcfcf;display:flex;align-items:center;gap:10px;justify-content:space-between}
+.rp-card h3 .n{font-family:var(--body);letter-spacing:0;text-transform:none;font-size:12px;color:var(--muted);font-weight:600}
+.rp-take{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.rp-take li{position:relative;padding-left:20px;font-size:15px;line-height:1.5;color:var(--text)}
+.rp-take li::before{content:"";position:absolute;left:2px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--mint);box-shadow:0 0 8px var(--mint)}
+.rp-tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.rp-tbl th{text-align:left;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;padding:0 10px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+.rp-tbl td{padding:12px 10px;border-bottom:1px solid #141414;vertical-align:top}
+.rp-tbl tr:last-child td{border-bottom:0}
+.rp-tbl .num{text-align:right;font-family:var(--mono);white-space:nowrap}
+.rp-tbl th.num{text-align:right}
+.rp-name{font-family:var(--display);font-weight:600;font-size:14.5px;white-space:nowrap}
+.rp-tk{font-family:var(--mono);color:var(--muted);font-size:12px;margin-left:6px}
+.rp-sc{font-family:var(--display);font-weight:700;font-size:16px}
+.rp-dex{font-weight:600;font-size:12px;white-space:nowrap}
+.rp-dex.yes{color:var(--mint-t)}.rp-dex.no{color:var(--faint)}
+.rp-why{color:var(--muted);font-size:12.5px;max-width:320px}
+.rp-ok{color:var(--mint-t)}
+.rp-fake{color:var(--faint);font-size:12.5px;font-family:var(--mono);overflow-wrap:anywhere}
+.rp-more{margin-top:12px;width:100%;border:1px dashed var(--line2);background:transparent;border-radius:12px;padding:9px;font-size:12.5px;color:var(--muted);font-weight:600;min-height:40px}
+.rp-more:hover{color:#fff}
+.rp-list{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.rp-item{background:#121214;border:1px solid var(--line2);border-radius:16px;padding:12px 14px}
+.rp-row1{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.rp-row1 .rp-sc{margin-left:auto}
+.rp-sub{font-size:13px;color:#d6d6d6;margin-top:6px;line-height:1.45}
+.rp-when{font-size:12px;color:var(--muted);margin-top:4px}
+.rp-chips{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px}
+.rp-grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mob-only{display:none}
+@media (max-width:820px){
+  .web-only{display:none!important}
+  .mob-only{display:block}
+  .rp-grid2{grid-template-columns:1fr}
+  .rp-btn span{display:none}
+  .rp-btn{padding:0 10px}
+  .rp-card{padding:16px;border-radius:20px}
+  .rp-take li{font-size:14px}
+  .rp-full{display:none}
+}
+
+/* report button on the right; phone keeps it on the first header row */
+@media (max-width:820px){
+  .brand{width:auto;flex:1 1 0;order:0}
+  .rp-btn{order:1;margin-left:auto}
+  .seg{order:2}
+}
+/* colour on the report page, matching the desk */
+.rp-card h3 .t{display:inline-flex;align-items:center;gap:10px}
+.rp-ic{width:28px;height:28px;border-radius:9px;display:grid;place-items:center;flex:none;color:var(--ic);background:color-mix(in srgb,var(--ic) 14%,#0b0b0b);border:1px solid color-mix(in srgb,var(--ic) 40%,transparent)}
+.rp-ic svg{width:15px;height:15px}
+.rp-title-wrap{display:flex;align-items:center;gap:12px;margin-right:auto;min-width:0}
+.rp-title-wrap .rp-title{margin-right:0}
+.rp-card.k-take{--ic:#7de0b4}.rp-card.k-pre{--ic:#38d6f5}.rp-card.k-tok{--ic:#b79cff}.rp-card.k-imp{--ic:#ff6b6b}.rp-card.k-st{--ic:#ffc94a}
+.rp-card.k-imp .rp-name{color:#ffb3b3}
+.rp-item{border-color:var(--line2)}
 </style>
 </head>
 <body>
@@ -564,6 +638,7 @@ html,body{background:#000}
       <button data-t="ai" aria-pressed="false">AI</button>
       <button data-t="q" aria-pressed="false">Quantum</button>
     </div>
+      <button class="rp-btn" id="rpBtn" aria-label="Open morning report"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg><span>Report</span></button>
   </div>
   <div class="marquee" aria-label="Latest updates"><div class="mq-track" id="mq"></div></div>
 </header>
@@ -662,6 +737,14 @@ html,body{background:#000}
   <span class="by">The Oracle · by <b>Rocko Development</b></span>
 </footer>
 
+<section class="rp" id="report" hidden aria-label="Morning report">
+  <div class="rp-top"><div class="rp-top-in">
+    <button class="rp-back" id="rpBack" aria-label="Back to desk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg><span>Desk</span></button>
+    <div class="rp-title-wrap"><span class="rp-ic" style="--ic:#7de0b4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg></span><div class="rp-title"><b>Morning Report</b><span id="rpUpdated"></span></div></div>
+    <a class="rp-full" id="rpFull" target="_blank" rel="noopener noreferrer" hidden>Full report ↗</a>
+  </div></div>
+  <div class="rp-body" id="rpBody"></div>
+</section>
 <div class="ov" id="ov"></div>
 <aside class="drawer" id="drawer" tabindex="-1" role="dialog" aria-modal="true" aria-label="Project details"></aside>
 <div class="toast" id="toast" role="status"></div>
@@ -1122,6 +1205,51 @@ function tickDeadlines() {
   });
 }
 
+/* ---------- morning report ---------- */
+let rpAll = false;
+const RP_IC = {take: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>', pre: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><path d="M12 12 18 6"/></svg>', tok: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg>', imp: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg>', st: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6.5 7 .8-5.2 4.7 1.5 7L12 17.5 5.7 21l1.5-7L2 9.3l7-.8z"/></svg>'};
+const rpH = (k, title, n) => `<h3><span class="t"><span class="rp-ic">${RP_IC[k]}</span>${title}</span>${n ? `<span class="n">${n}</span>` : ''}</h3>`;
+const rpScore = v => v == null || v === '' ? 'n/a' : `<span class="rp-sc" style="color:${scoreCol(+v)}">${esc(v)}</span>`;
+const rpDex = d => d ? `<span class="rp-dex yes">✓ ${esc(d)}</span>` : '<span class="rp-dex no">No DEX</span>';
+const rpDexShort = d => d ? '<span class="rp-dex yes">✓ DEX</span>' : '<span class="rp-dex no">No DEX</span>';
+function renderReport() {
+  const r = feed && feed.report;
+  if (!r) { $('#rpBody').innerHTML = ''; $('#rpUpdated').textContent = ''; $('#rpFull').hidden = true; return; }
+  $('#rpUpdated').textContent = r.updated ? `Updated ${tDT(r.updated)} CT` : '';
+  const full = $('#rpFull'); if (r.full_report_url) { full.href = safeUrl(r.full_report_url); full.hidden = false; } else full.hidden = true;
+  const out = [];
+  const take = (r.takeaways || []).filter(Boolean);
+  if (take.length) out.push(`<div class="rp-card k-take">${rpH('take', 'Key takeaways')}<ul class="rp-take">${take.map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>`);
+  const pre = (r.prelaunch || []).slice().sort((a, b) => (+b.score || 0) - (+a.score || 0));
+  if (pre.length) out.push(`<div class="rp-card k-pre">${rpH('pre', 'Pre-launch', `${pre.length} projects`)}
+    <table class="rp-tbl web-only"><thead><tr><th>Project</th><th>What's coming</th><th>When</th><th class="num">Score</th><th>Why it matters</th></tr></thead><tbody>
+    ${pre.map(p => `<tr><td><span class="rp-name">${esc(p.project)}</span>${p.ticker ? `<span class="rp-tk">${esc(p.ticker)}</span>` : ''}<div style="margin-top:6px">${badge(p.theme)}</div></td><td>${esc(p.coming || '')}</td><td style="color:var(--muted)">${esc(p.when || '')}</td><td class="num">${rpScore(p.score)}</td><td class="rp-why">${esc(p.why || '')}</td></tr>`).join('')}</tbody></table>
+    <ul class="rp-list mob-only">${pre.map(p => `<li class="rp-item"><div class="rp-row1"><span class="rp-name">${esc(p.project)}</span>${badge(p.theme)}${rpScore(p.score)}</div><div class="rp-sub">${esc(p.coming || '')}</div>${p.when ? `<div class="rp-when">${esc(p.when)}</div>` : ''}</li>`).join('')}</ul></div>`);
+  const toks = (r.tokens || []).slice().sort((a, b) => (+b.score || 0) - (+a.score || 0));
+  const strong = toks.filter(t => String(t.tier || '').toLowerCase() === 'strong' || (+t.score || 0) >= 70);
+  const rest = toks.filter(t => !strong.includes(t));
+  if (toks.length) {
+    const rows = list => list.map(t => `<tr><td><span class="rp-name">${esc(t.project)}</span>${t.ticker ? `<span class="rp-tk">${esc(t.ticker)}</span>` : ''}</td><td>${badge(t.theme)}</td><td style="color:var(--muted)">${esc(t.category || '')}</td><td class="num">${price(t.price)}</td><td class="num">${money(t.market_cap)}</td><td class="num">${money(t.volume_24h)}</td><td class="num">${rpScore(t.score)}</td><td>${rpDex(t.dex)}</td></tr>`).join('');
+    out.push(`<div class="rp-card k-tok">${rpH('tok', 'Strong active tokens', `${strong.length} of ${toks.length}`)}
+      <table class="rp-tbl web-only"><thead><tr><th>Project</th><th>Theme</th><th>Category</th><th class="num">Price</th><th class="num">Mkt cap</th><th class="num">24h vol</th><th class="num">Score</th><th>DEX</th></tr></thead><tbody>${rows(strong)}${rpAll ? rows(rest) : ''}</tbody></table>
+      ${rest.length ? `<button class="rp-more web-only" id="rpAllBtn">${rpAll ? 'Show strong only' : `Show all ${toks.length} tokens`}</button>` : ''}
+      <ul class="rp-list mob-only">${strong.map(t => `<li class="rp-item"><div class="rp-row1"><span class="rp-name">${esc(t.project)}</span>${t.ticker ? `<span class="rp-tk" style="margin:0">${esc(t.ticker)}</span>` : ''}${badge(t.theme)}${rpScore(t.score)}</div><div class="rp-when">${rpDexShort(t.dex)}${t.market_cap != null ? ` · ${money(t.market_cap)} mkt cap` : ''}</div></li>`).join('')}</ul></div>`);
+  }
+  const imp = r.impostors || [], st = (r.safetrade || []).filter(x => !/reject|avoid/i.test(x.tier || '')).sort((a, b) => (+b.score || 0) - (+a.score || 0));
+  const impCard = imp.length ? `<div class="rp-card k-imp">${rpH('imp', 'Impostor warnings', imp.length)}
+    <table class="rp-tbl web-only"><thead><tr><th>Project</th><th>Use only</th><th>Fakes to avoid</th></tr></thead><tbody>${imp.map(i => `<tr><td><span class="rp-name">${esc(i.project)}</span></td><td class="rp-ok">${esc(i.official || '')}</td><td class="rp-fake">${esc(String(i.fakes || '').length > 140 ? String(i.fakes).slice(0, 139) + '…' : (i.fakes || ''))}</td></tr>`).join('')}</tbody></table>
+    <ul class="rp-list mob-only">${imp.map(i => `<li class="rp-item"><div class="rp-row1"><span class="rp-name">${esc(i.project)}</span></div><div class="rp-sub rp-ok">${esc(i.official || '')}</div></li>`).join('')}</ul></div>` : '';
+  const stCard = st.length ? `<div class="rp-card k-st">${rpH('st', 'SafeTrade picks', st.length)}<div class="rp-chips">${st.map(x => `<div class="rp-item"><div class="rp-row1"><span class="rp-name">${esc(x.project)}</span>${x.ticker ? `<span class="rp-tk" style="margin:0">${esc(x.ticker)}</span>` : ''}${rpScore(x.score)}</div><div class="rp-when">${esc(x.theme || '')}${x.tier ? ' · ' + esc(x.tier) : ''}</div>${x.note ? `<div class="rp-sub web-only">${esc(x.note)}</div>` : ''}</div>`).join('')}</div></div>` : '';
+  if (impCard || stCard) out.push(impCard && stCard ? `<div class="rp-grid2">${impCard}${stCard}</div>` : impCard + stCard);
+  out.push(`<p style="text-align:center;color:var(--faint);font-size:12px;margin:4px 0 0">Research only, not financial advice.${r.full_report_url ? ` ${ext(r.full_report_url, 'Full report ↗')}` : ''}</p>`);
+  $('#rpBody').innerHTML = out.join('');
+}
+function rpSync() {
+  const open = location.hash === '#report';
+  $('#report').hidden = !open; document.documentElement.classList.toggle('rp-open', open);
+  if (open) { $('#report').scrollTop = 0; $('#rpBack').focus({ preventScroll: true }); }
+}
+
 /* ---------- the bot ---------- */
 const BOT_SVG = `<svg class="bot" viewBox="0 0 200 200" aria-hidden="true">
   <defs>
@@ -1199,7 +1327,7 @@ function setBot(state) {
 function comeAlive() { clearTimeout(settleT); setBot('scanning'); settleT = setTimeout(() => { settleT = null; setBot(feed?.status?.state || 'idle'); }, 5000); }
 
 /* ---------- data ---------- */
-function renderAll() { renderKPIs(); renderMarquee(); renderDigest(); renderAlerts(); renderDeadlines(); renderRadar(); renderUpdates(); renderWatch(); renderRejects(); }
+function renderAll() { renderReport(); setTimeout(rpSync, 0); renderKPIs(); renderMarquee(); renderDigest(); renderAlerts(); renderDeadlines(); renderRadar(); renderUpdates(); renderWatch(); renderRejects(); }
 function apply(data, src) {
   if (!data || typeof data !== 'object' || Array.isArray(data)) throw new Error('Feed is not a JSON object');
   const prev = source; feed = data; source = src;
@@ -1263,8 +1391,13 @@ $('#alerts').addEventListener('click', async e => {
   try { await navigator.clipboard.writeText(txt); } catch { const ta = document.createElement('textarea'); ta.value = txt; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); } catch {} ta.remove(); }
   b.textContent = 'Copied'; b.classList.add('done'); setTimeout(() => { b.textContent = 'Copy'; b.classList.remove('done'); }, 1500);
 });
+$('#rpBtn').addEventListener('click', () => { location.hash = 'report'; });
+$('#rpBack').addEventListener('click', () => { if (history.length > 1 && location.hash === '#report') history.back(); else { history.replaceState(null, '', location.pathname + location.search); rpSync(); } });
+$('#rpBody').addEventListener('click', e => { if (e.target.closest('#rpAllBtn')) { rpAll = !rpAll; renderReport(); } });
+window.addEventListener('hashchange', rpSync);
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape' && $('#drawer').classList.contains('show')) { closeDrawer(); return; }
+  if (e.key === 'Escape' && !$('#report').hidden) { $('#rpBack').click(); return; }
   if (e.target.closest('input,select,textarea')) return;
   if ((e.key === 'd' || e.key === 'D') && !e.metaKey && !e.ctrlKey && !e.altKey) { clearTimeout(settleT); settleT = null; setBot(['scanning', 'alert', 'idle'][debugIdx++ % 3]); }
 });
