@@ -952,7 +952,7 @@ function renderWatch() {
       <td class="c-proj" data-label="Project"><span class="pn">${esc(w.name)}</span>${tier ? `<span class="tier ${esc(tier)}">${esc(tier)}</span>` : ''}<span class="mob">${w.ticker ? `<span class="mono muted">$${esc(w.ticker)}</span>` : ''}${badge(w.theme)}</span></td>
       <td class="c-tk mono" data-label="Ticker"><span class="cv">${w.ticker ? '$' + esc(w.ticker) : 'n/a'}</span></td>
       <td class="c-th" data-label="Theme"><span class="cv">${badge(w.theme)}</span></td>
-      <td data-label="Stage"><span class="cv">${esc(w.stage || 'n/a')}</span></td>
+      <td data-label="Stage"><span class="cv${String(w.stage).toLowerCase() === 'live' ? ' is-live' : ''}">${esc(w.stage || 'n/a')}</span></td>
       <td data-label="Score"><span class="cv"><span class="sc"><b style="color:${scoreCol(+w.score || 0)}">${w.score ?? 'n/a'}</b>${arrow(trendOf(w))}${spark(w.score_history)}</span></span></td>
       <td class="mono" data-label="Mkt cap"><span class="cv">${money(w.market_cap)}</span></td>
       <td class="mono" data-label="Price"><span class="cv">${price(w.price)}</span></td>
@@ -981,7 +981,7 @@ function openDrawer(name) {
   $('#drawer').innerHTML = `<div class="dr-h">${w.score != null ? ring(w.score, 64) : ''}<div class="dr-t"><h3>${esc(w.name)}${w.ticker ? `<span class="tk">$${esc(w.ticker)}</span>` : ''}</h3><div class="dr-tags">${badge(w.theme)}${tier}${arrow(trendOf(w))}</div></div><button class="x" id="drX" aria-label="Close">×</button></div>
     <div class="dr-next"><span class="lbl" style="margin:0">Next milestone</span><div class="nm">${esc(w.next_milestone || 'n/a')}</div><div class="nd">${w.milestone_date ? `<span class="cd">${esc(rel(w.milestone_date))}</span><span>${tDT(w.milestone_date)} CT</span>` : '<span>Date TBD</span>'}</div></div>
     <div class="dr-stats"><div><div class="k">Price</div><div class="v">${price(w.price)}</div></div><div><div class="k">Market cap</div><div class="v">${money(w.market_cap)}</div></div><div><div class="k">24h volume</div><div class="v">${money(w.volume_24h)}</div></div></div>
-    <dl class="dr-list"><dt>Stage</dt><dd>${esc(w.stage || 'n/a')}</dd><dt>DEX route</dt><dd>${esc(w.dex_route || 'n/a')}</dd><dt>Last update</dt><dd>${tDT(w.last_update)} CT</dd></dl>
+    <dl class="dr-list"><dt>Stage</dt><dd class="${String(w.stage).toLowerCase() === 'live' ? 'is-live' : ''}">${esc(w.stage || 'n/a')}</dd><dt>DEX route</dt><dd>${esc(w.dex_route || 'n/a')}</dd><dt>Last update</dt><dd>${tDT(w.last_update)} CT</dd></dl>
     <div class="sec"><span class="lbl">Score history</span>${spark(w.score_history, 0, 0, true)}</div>
     ${trigs.length ? `<div class="trigs" style="${trigs.length === 1 ? 'grid-template-columns:1fr' : ''}">${trigs.join('')}</div>` : ''}
     <div class="sec"><span class="lbl">Links</span><div class="chips">${(w.links || []).length ? w.links.map(l => ext(l.url, esc(l.label || 'Link') + ' ↗', 'chip')).join('') : '<span class="muted">n/a</span>'}</div></div>`;
