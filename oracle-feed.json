@@ -1,19 +1,19 @@
 {
- "generated_at": "2026-10-23T12:16:00-05:00",
+ "generated_at": "2026-10-23T16:10:00-05:00",
  "status": {
   "state": "idle",
-  "last_scan": "2026-10-23T12:16:00-05:00",
-  "next_scan": "2026-10-23T16:00:00-05:00",
+  "last_scan": "2026-10-23T16:10:00-05:00",
+  "next_scan": "2026-10-23T20:00:00-05:00",
   "activity": [
-   "Noon X check of AI and quantum watch accounts",
+   "4 PM X check of AI and quantum watch accounts",
    "Keyword searches: post-quantum launches, AI TGEs and airdrops",
    "SafeTrade listings: no new tickers",
-   "GenLayer pre-TGE AMA held; no new TGE date",
-   "Quip: third-party says task dashboard live (unconfirmed)"
+   "Flop: @FlopNetwork is an unaffiliated fan account, not official",
+   "Asentum testnet passed 700,000 blocks (radar)"
   ],
   "alerts_used_today": 0,
   "alert_cap": 3,
-  "x_reads_left_today": 979
+  "x_reads_left_today": 973
  },
  "alerts": [],
  "watchlist": [
@@ -30,9 +30,9 @@
      "score": 81
     }
    ],
-   "market_cap": 26155883,
+   "market_cap": 26536767,
    "fdv": 500900000.0,
-   "volume_24h": 2262112,
+   "volume_24h": 1870444,
    "dex_route": "Rhea Finance (NEAR) qtc.omft.near; Solana/Base 'QTC' tokens are impostors",
    "next_milestone": "QTC lending on RHEA Lend (soon)",
    "milestone_date": null,
@@ -48,8 +48,8 @@
    ],
    "upgrade_if": "Named-firm audit; more venues",
    "downgrade_if": "Chain halt; insider unlock pressure",
-   "last_update": "2026-10-23T12:16:00-05:00",
-   "price": 87.2,
+   "last_update": "2026-10-23T16:10:00-05:00",
+   "price": 88.41,
    "logo": "logos/quantus.png",
    "website": "https://www.quantus.com"
   },
@@ -138,9 +138,9 @@
      "score": 69
     }
    ],
-   "market_cap": 51665960,
+   "market_cap": 57191691,
    "fdv": 150700000.0,
-   "volume_24h": 5319017,
+   "volume_24h": 9097357,
    "dex_route": "No verified DEX route",
    "next_milestone": "Sui migration date + swap instructions (TBA)",
    "milestone_date": null,
@@ -152,8 +152,8 @@
    ],
    "upgrade_if": "Migration date + audited Sui contracts",
    "downgrade_if": "Migration delays",
-   "last_update": "2026-10-23T08:15:00-05:00",
-   "price": 0.143346,
+   "last_update": "2026-10-23T16:10:00-05:00",
+   "price": 0.157901,
    "logo": "logos/data-network.png",
    "website": "https://www.datafdn.org"
   },
@@ -240,7 +240,7 @@
    ],
    "market_cap": null,
    "fdv": null,
-   "volume_24h": 351605,
+   "volume_24h": 324187,
    "dex_route": "Unverified: Solana pSOQ (pump.fun mint); project hasn't posted the contract",
    "next_milestone": "NonKYC listing; official pSOQ contract post; CMC listing",
    "milestone_date": null,
@@ -260,8 +260,8 @@
    ],
    "upgrade_if": "Identifiable founders, DEX liquidity",
    "downgrade_if": "Pool centralization",
-   "last_update": "2026-10-23T12:16:00-05:00",
-   "price": 4.885e-05,
+   "last_update": "2026-10-23T16:10:00-05:00",
+   "price": 4.715e-05,
    "logo": "logos/soqucoin.png",
    "website": "https://soqu.org"
   },
@@ -278,9 +278,9 @@
      "score": 57
     }
    ],
-   "market_cap": 45462304,
+   "market_cap": 42814433,
    "fdv": null,
-   "volume_24h": 169810528,
+   "volume_24h": 186725727,
    "dex_route": "Uniswap (Base) 0x5be75e3b0aff5d1a042a5363ae36acb1d6d755ea",
    "next_milestone": "Season 2 tasks live (post-TGE contributor airdrop); Coinbase trading enablement",
    "milestone_date": null,
@@ -296,8 +296,8 @@
    ],
    "upgrade_if": "Verified team, audit",
    "downgrade_if": "Heavy unlocks",
-   "last_update": "2026-10-23T08:15:00-05:00",
-   "price": 0.275529,
+   "last_update": "2026-10-23T16:10:00-05:00",
+   "price": 0.26218,
    "logo": "logos/axis-robotics.png",
    "website": "https://axisrobotics.ai"
   },
@@ -346,17 +346,17 @@
      "score": 51
     }
    ],
-   "market_cap": 2619254,
+   "market_cap": 2599931,
    "fdv": null,
-   "volume_24h": 6355,
+   "volume_24h": 3093,
    "dex_route": "Uniswap V4 (Base) 0x9557dd9e241bc9636732623b672b4090af519396 (thin)",
    "next_milestone": "Liquidity depth",
    "milestone_date": null,
    "links": [],
    "upgrade_if": "Deeper liquidity, audit",
    "downgrade_if": "Liquidity stays thin",
-   "last_update": "2026-10-23T08:15:00-05:00",
-   "price": 0.00150816,
+   "last_update": "2026-10-23T16:10:00-05:00",
+   "price": 0.00149703,
    "logo": "logos/crynux.png",
    "website": "https://crynux.io"
   },
@@ -420,6 +420,22 @@
   }
  ],
  "prelaunch_updates": [
+  {
+   "project": "Flop Labs",
+   "theme": "AI",
+   "source_type": "rumor",
+   "text": "@FlopNetwork, a 3-follower fan account that says it is not affiliated with Flop Labs, repeats the Nov 3 teaser. Nothing new from @flop_labs. Any FLOP token now is a scam.",
+   "at": "2026-10-23T16:10:00-05:00",
+   "url": "https://x.com/FlopNetwork/status/2113707395260293137"
+  },
+  {
+   "project": "Quip Network",
+   "theme": "Quantum",
+   "source_type": "rumor",
+   "text": "Third-party says Echoes NFTs give points multipliers (Rare 1.5x). Official account only reposted the CTO's Money20/20 interview; no TGE date. Any 'QUIP' token before an official contract is a scam.",
+   "at": "2026-10-23T16:10:00-05:00",
+   "url": "https://x.com/ShinyNfts/status/2113697130304897327"
+  },
   {
    "project": "GenLayer",
    "theme": "AI",
@@ -604,7 +620,7 @@
    "date": "2026-10-22"
   }
  ],
- "snapshot_note": "CoinGecko snapshot 10/23 08:10 CT; SafeTrade tickers 08:09 CT; times in Central",
+ "snapshot_note": "CoinGecko snapshot 10/23 16:08 CT; SafeTrade tickers 16:05 CT; times in Central",
  "deadlines": [
   {
    "project": "GenLayer",
