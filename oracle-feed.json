@@ -1,19 +1,19 @@
 {
-  "generated_at": "2026-10-24T08:20:00-05:00",
+  "generated_at": "2026-10-24T12:10:00-05:00",
   "status": {
     "state": "idle",
-    "last_scan": "2026-10-24T08:20:00-05:00",
-    "next_scan": "2026-10-24T12:00:00-05:00",
+    "last_scan": "2026-10-24T12:10:00-05:00",
+    "next_scan": "2026-10-24T16:00:00-05:00",
     "activity": [
-      "Overnight X sweep of AI and quantum watch accounts",
-      "Axis Robotics listed on Bithumb and LBank (official)",
-      "Parano1d: web wallet, launchpad and DEX from Nov 4 (radar)",
-      "Soqucoin up about 57% in 24h on CoinGecko",
+      "Noon sweep of AI and quantum watch accounts (quiet Saturday)",
+      "No new posts from AI pre-launch projects or launchpads",
+      "Algorand: existing accounts can switch to Falcon-1024 signing",
+      "Soqucoin up about 37% in 24h, Quantus down about 10% (price only)",
       "SafeTrade tickers: no new AI or quantum listing"
     ],
     "alerts_used_today": 0,
     "alert_cap": 3,
-    "x_reads_left_today": 954
+    "x_reads_left_today": 936
   },
   "alerts": [],
   "watchlist": [
@@ -30,9 +30,9 @@
           "score": 81
         }
       ],
-      "market_cap": 24637483,
+      "market_cap": 23700524,
       "fdv": 500900000.0,
-      "volume_24h": 1375353,
+      "volume_24h": 2774048,
       "dex_route": "Rhea Finance (NEAR) qtc.omft.near; Solana/Base 'QTC' tokens are impostors",
       "next_milestone": "QTC lending on RHEA Lend (soon)",
       "milestone_date": null,
@@ -48,8 +48,8 @@
       ],
       "upgrade_if": "Named-firm audit; more venues",
       "downgrade_if": "Chain halt; insider unlock pressure",
-      "last_update": "2026-10-24T08:20:00-05:00",
-      "price": 81.73,
+      "last_update": "2026-10-24T12:10:00-05:00",
+      "price": 78.54,
       "logo": "logos/quantus.png",
       "website": "https://www.quantus.com"
     },
@@ -138,9 +138,9 @@
           "score": 69
         }
       ],
-      "market_cap": 55673113,
+      "market_cap": 55469676,
       "fdv": 150700000.0,
-      "volume_24h": 24646702,
+      "volume_24h": 12444215,
       "dex_route": "No verified DEX route",
       "next_milestone": "Sui migration date + swap instructions (TBA)",
       "milestone_date": null,
@@ -152,8 +152,8 @@
       ],
       "upgrade_if": "Migration date + audited Sui contracts",
       "downgrade_if": "Migration delays",
-      "last_update": "2026-10-24T08:20:00-05:00",
-      "price": 0.154444,
+      "last_update": "2026-10-24T12:10:00-05:00",
+      "price": 0.153935,
       "logo": "logos/data-network.png",
       "website": "https://www.datafdn.org"
     },
@@ -240,7 +240,7 @@
       ],
       "market_cap": null,
       "fdv": null,
-      "volume_24h": 402978,
+      "volume_24h": 387274,
       "dex_route": "Unverified: Solana pSOQ (pump.fun mint); project hasn't posted the contract",
       "next_milestone": "NonKYC listing; official pSOQ contract post; CMC listing",
       "milestone_date": null,
@@ -260,8 +260,8 @@
       ],
       "upgrade_if": "Identifiable founders, DEX liquidity",
       "downgrade_if": "Pool centralization",
-      "last_update": "2026-10-24T08:20:00-05:00",
-      "price": 6.378e-05,
+      "last_update": "2026-10-24T12:10:00-05:00",
+      "price": 6.697e-05,
       "logo": "logos/soqucoin.png",
       "website": "https://soqu.org"
     },
@@ -278,9 +278,9 @@
           "score": 57
         }
       ],
-      "market_cap": 45980020,
+      "market_cap": 44005345,
       "fdv": null,
-      "volume_24h": 212304049,
+      "volume_24h": 41728160,
       "dex_route": "Uniswap (Base) 0x5be75e3b0aff5d1a042a5363ae36acb1d6d755ea",
       "next_milestone": "Coinbase trading enablement; unlock schedule (Bithumb and LBank listed Oct 24)",
       "milestone_date": null,
@@ -300,8 +300,8 @@
       ],
       "upgrade_if": "Verified team, audit",
       "downgrade_if": "Heavy unlocks",
-      "last_update": "2026-10-24T08:20:00-05:00",
-      "price": 0.275514,
+      "last_update": "2026-10-24T12:10:00-05:00",
+      "price": 0.262737,
       "logo": "logos/axis-robotics.png",
       "website": "https://axisrobotics.ai"
     },
@@ -350,17 +350,17 @@
           "score": 51
         }
       ],
-      "market_cap": 2848008,
+      "market_cap": 2724364,
       "fdv": null,
-      "volume_24h": 8059,
+      "volume_24h": 8806,
       "dex_route": "Uniswap V4 (Base) 0x9557dd9e241bc9636732623b672b4090af519396 (thin)",
       "next_milestone": "AI chat app on Crynux GPUs (previewed 10/23, undated)",
       "milestone_date": null,
       "links": [],
       "upgrade_if": "Deeper liquidity, audit",
       "downgrade_if": "Liquidity stays thin",
-      "last_update": "2026-10-24T08:20:00-05:00",
-      "price": 0.00163988,
+      "last_update": "2026-10-24T12:10:00-05:00",
+      "price": 0.00156863,
       "logo": "logos/crynux.png",
       "website": "https://crynux.io"
     },
