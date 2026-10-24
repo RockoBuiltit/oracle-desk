@@ -8,7 +8,7 @@ INSTRUCTIONS FOR THE ORACLE BOT (not for the user). When the owner pastes this f
 5. Publish, and send the owner only the GitHub URL of the live desk.
 6. After every scan, digest and weekly summary, update oracle-feed.json and publish it, following your feed rules.
 7. Never connect wallets, sign, or handle keys. The page is read-only.
-8. Oracle report: the source is your 8 AM Central daily morning report (the same report you publish as the full report page). Every day when you produce that 8 AM report, also copy its contents into a "report" object in oracle-feed.json and publish, so the desk's Report button shows that day's report; keep updated to the report's time and full_report_url to its page. The Report button opens a page built from it: the full report on web, a short version on phones. Keys: updated (ISO), full_report_url, intro, snapshots (snapshot times line), disclaimer, takeaways [strings], prelaunch [{project, ticker, theme, coming, when, score, why}], radar_only [names], tokens [{project, ticker, theme, category, tier, price, market_cap, volume_24h, score, dex}] (every active token, AI and quantum), impostors [{project, theme, fakes, official}], safetrade_source, safetrade [{project, ticker, theme, price, market_cap, volume_24h, score, tier, dex, note}], safetrade_venue {type, x, site, announcements, listing_posts, launchpad, trust_score, steps [{title, text}]}, notes [{section "prelaunch"|"tokens"|"impostors"|"safetrade", theme, text}], sources [{title, url}]. theme is "AI" or "Quantum"; dex is the DEX route name or "" if none; money values are plain USD numbers. Leave out FDV.
+8. Oracle report: the source is your 8 AM Central daily morning report (the same report you publish as the full report page). Every day when you produce that 8 AM report, also copy its contents into a "report" object in oracle-feed.json and publish, so the desk's Report button shows that day's report; keep updated to the report's time and full_report_url to its page. The Report button opens a page built from it: the full report on web, a short version on phones. Keys: updated (ISO), full_report_url, intro, snapshots (snapshot times line), disclaimer, takeaways [strings], prelaunch [{project, ticker, theme, coming, when, score, why}], radar_only [names], tokens [{project, ticker, theme, category, tier, price, market_cap, volume_24h, score, dex}] (every active token, AI and quantum), impostors [{project, theme, fakes, official}], safetrade_source, safetrade [{project, ticker, theme, pair (its SafeTrade trading pair, e.g. "PEARL/USDT"), price, market_cap, volume_24h, score, tier, dex, note}] (only tokens that trade on SafeTrade; the page marks each one "✓ SafeTrade"), safetrade_venue {type, x, site, announcements, listing_posts, launchpad, trust_score, steps [{title, text}]}, notes [{section "prelaunch"|"tokens"|"impostors"|"safetrade", theme, text}], sources [{title, url}]. theme is "AI" or "Quantum"; dex is the DEX route name or "" if none; money values are plain USD numbers. Leave out FDV.
 -->
 <html lang="en">
 <head>
@@ -952,8 +952,11 @@ function renderKPIs() {
 }
 
 /* ---------- marquee ---------- */
+/* pre-launch updates: only the newest 10 are shown; older ones drop off */
+const UPD_MAX = 10;
+const recentUpdates = () => (feed.prelaunch_updates || []).filter(passT).sort((a, b) => new Date(b.at || 0) - new Date(a.at || 0)).slice(0, UPD_MAX);
 function renderMarquee() {
-  const ups = (feed.prelaunch_updates || []).filter(passT).sort((a, b) => new Date(b.at || 0) - new Date(a.at || 0));
+  const ups = recentUpdates();
   const als = (feed.alerts || []).filter(passT).map(a => ({ project: a.name, text: `${a.event || 'Alert'} · ${a.event_date ? tDT(a.event_date) + ' CT' : 'date n/a'}`, source_type: 'alert' }));
   const items = [...als, ...ups].map(u => {
     const c = u.source_type === 'alert' ? 'var(--high)' : u.source_type === 'official' ? 'var(--ok)' : u.source_type === 'founder' ? 'var(--founder)' : 'var(--rumor)';
@@ -1076,7 +1079,7 @@ function radarLoop(t) {
 
 /* ---------- updates ---------- */
 function renderUpdates() {
-  const list = (feed.prelaunch_updates || []).filter(passT).sort((a, b) => new Date(b.at || 0) - new Date(a.at || 0));
+  const list = recentUpdates();
   const el = $('#updates');
   if (!list.length) { el.innerHTML = ''; return; }
   el.innerHTML = list.map(u => {
@@ -1286,6 +1289,7 @@ const RP_IC = {take: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
 const rpH = (k, title, n) => `<h3><span class="t"><span class="rp-ic">${RP_IC[k]}</span>${title}</span>${n ? `<span class="n">${n}</span>` : ''}</h3>`;
 const rpScore = v => v == null || v === '' ? 'n/a' : `<span class="rp-sc" style="color:${scoreCol(+v)}">${esc(v)}</span>`;
 const rpDex = d => d ? `<span class="rp-dex yes">✓ ${esc(d)}</span>` : '<span class="rp-dex no">No DEX</span>';
+const rpST = x => x.on_safetrade === false ? '' : `<span class="rp-dex yes">✓ SafeTrade${x.pair ? ' ' + esc(x.pair) : ''}</span>`;
 const rpDexShort = d => d ? '<span class="rp-dex yes">✓ DEX</span>' : '<span class="rp-dex no">No DEX</span>';
 const rpF = { theme: 'all', aiCat: 'All', aiSort: 'score', aiDex: false, qTier: 'All', qSort: 'score', qDex: false, stTheme: 'All', stDex: false };
 RP_IC.src = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>';
@@ -1343,7 +1347,7 @@ function renderReport() {
     const themes = ['All', ...[...new Set(st.map(x => x.theme).filter(Boolean))]];
     const l = st.filter(x => rpF.stTheme === 'All' || x.theme === rpF.stTheme).filter(x => !rpF.stDex || x.dex).sort((a, b) => (+b.score || 0) - (+a.score || 0));
     W.push(`<div class="rp-card k-st">${rpH('st', 'SafeTrade list', `${l.length} of ${st.length}`)}${r.safetrade_source ? `<p class="rp-note" style="margin-top:0">${esc(r.safetrade_source)}</p>` : ''}${rpChips('stTheme', themes, rpF.stTheme)}<div class="rp-tools"><label class="rp-dexonly"><input type="checkbox" data-rp="stDex" ${rpF.stDex ? 'checked' : ''}> Only tokens with a DEX route</label></div>
-      <div class="rp-scroll"><table class="rp-tbl"><thead><tr><th>Project</th><th>Ticker</th><th>Theme</th><th class="num">Price</th><th class="num">Mkt cap</th><th class="num">24h vol</th><th class="num">Score</th><th>Tier</th><th>DEX &amp; notes</th></tr></thead><tbody>${l.map(x => `<tr><td><span class="rp-name">${esc(x.project)}</span></td><td class="rp-mono">${esc(x.ticker || '')}</td><td class="rp-muted">${esc(x.theme || '')}</td><td class="num">${price(x.price)}</td><td class="num">${money(x.market_cap)}</td><td class="num">${money(x.volume_24h)}</td><td class="num">${rpScore(x.score)}</td><td>${rpTier(x.tier)}</td><td class="rp-why">${x.dex ? rpDex(x.dex) + ' ' : ''}${esc(x.note || '')}</td></tr>`).join('')}</tbody></table></div>${rpNotes(r, 'safetrade')}</div>`);
+      <div class="rp-scroll"><table class="rp-tbl"><thead><tr><th>Project</th><th>Ticker</th><th>Theme</th><th class="num">Price</th><th class="num">Mkt cap</th><th class="num">24h vol</th><th class="num">Score</th><th>Tier</th><th>DEX &amp; notes</th></tr></thead><tbody>${l.map(x => `<tr><td><span class="rp-name">${esc(x.project)}</span></td><td class="rp-mono">${esc(x.ticker || '')}</td><td class="rp-muted">${esc(x.theme || '')}</td><td class="num">${price(x.price)}</td><td class="num">${money(x.market_cap)}</td><td class="num">${money(x.volume_24h)}</td><td class="num">${rpScore(x.score)}</td><td>${rpTier(x.tier)}</td><td class="rp-why">${rpST(x)} ${x.dex ? rpDex(x.dex) + ' ' : ''}${esc(x.note || '')}</td></tr>`).join('')}</tbody></table></div>${rpNotes(r, 'safetrade')}</div>`);
   }
   const v = r.safetrade_venue;
   if (v) {
@@ -1361,7 +1365,7 @@ function renderReport() {
   if (strong.length) Mo.push(`<div class="rp-card k-tok">${rpH('tok', 'Strong active tokens', `${strong.length} of ${toks.length}`)}<ul class="rp-list">${strong.map(t => `<li class="rp-item"><div class="rp-row1"><span class="rp-name">${esc(t.project)}</span>${t.ticker ? `<span class="rp-tk" style="margin:0">${esc(t.ticker)}</span>` : ''}${badge(t.theme)}${rpScore(t.score)}</div><div class="rp-meta">${t.price != null ? `<span>Price <b>${price(t.price)}</b></span>` : ''}${t.market_cap != null ? `<span>Mkt cap <b>${money(t.market_cap)}</b></span>` : ''}${t.volume_24h != null ? `<span>24h <b>${money(t.volume_24h)}</b></span>` : ''}${rpDex(t.dex)}</div></li>`).join('')}</ul></div>`);
   if (imp.length) Mo.push(`<div class="rp-card k-imp">${rpH('imp', 'Impostor warnings', imp.length)}<ul class="rp-list">${imp.map(i => `<li class="rp-item"><div class="rp-row1"><span class="rp-name">${esc(i.project)}</span>${i.theme ? badge(i.theme) : ''}</div><span class="rp-k">Use only</span><div class="rp-v rp-ok">${esc(i.official || '')}</div>${i.fakes ? `<span class="rp-k">Fakes to avoid</span><div class="rp-v rp-clamp rp-fake" style="font-size:12px">${esc(i.fakes)}</div>` : ''}</li>`).join('')}</ul></div>`);
   const picks = st.filter(x => !/reject|avoid/i.test(x.tier || '')).sort((a, b) => (+b.score || 0) - (+a.score || 0));
-  if (picks.length) Mo.push(`<div class="rp-card k-st">${rpH('st', 'SafeTrade picks', picks.length)}<ul class="rp-list">${picks.map(x => `<li class="rp-item"><div class="rp-row1"><span class="rp-name">${esc(x.project)}</span>${x.ticker ? `<span class="rp-tk" style="margin:0">${esc(x.ticker)}</span>` : ''}${rpScore(x.score)}</div><div class="rp-meta"><span>${esc(x.theme || '')}</span>${x.tier ? rpTier(x.tier) : ''}${x.market_cap != null ? `<span>Mkt cap <b>${money(x.market_cap)}</b></span>` : ''}${x.price != null ? `<span>Price <b>${price(x.price)}</b></span>` : ''}${rpDex(x.dex)}</div>${x.note ? `<div class="rp-v rp-clamp" style="color:var(--muted);font-size:12.5px;margin-top:6px">${esc(x.note)}</div>` : ''}</li>`).join('')}</ul></div>`);
+  if (picks.length) Mo.push(`<div class="rp-card k-st">${rpH('st', 'SafeTrade picks', picks.length)}<ul class="rp-list">${picks.map(x => `<li class="rp-item"><div class="rp-row1"><span class="rp-name">${esc(x.project)}</span>${x.ticker ? `<span class="rp-tk" style="margin:0">${esc(x.ticker)}</span>` : ''}${rpScore(x.score)}</div><div class="rp-meta"><span>${esc(x.theme || '')}</span>${x.tier ? rpTier(x.tier) : ''}${x.market_cap != null ? `<span>Mkt cap <b>${money(x.market_cap)}</b></span>` : ''}${x.price != null ? `<span>Price <b>${price(x.price)}</b></span>` : ''}${rpST(x)}${rpDex(x.dex)}</div>${x.note ? `<div class="rp-v rp-clamp" style="color:var(--muted);font-size:12.5px;margin-top:6px">${esc(x.note)}</div>` : ''}</li>`).join('')}</ul></div>`);
 
   const foot = `<p style="text-align:center;color:var(--faint);font-size:12px;margin:4px 0 0">Research only, not financial advice.${r.full_report_url ? ` ${ext(r.full_report_url, 'Full report ↗')}` : ''}</p>`;
   $('#rpBody').innerHTML = `<div class="rp-web">${W.join('')}</div><div class="rp-mob">${Mo.join('')}</div>${foot}`;
