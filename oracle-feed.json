@@ -444,6 +444,14 @@
  ],
  "prelaunch_updates": [
   {
+   "project": "Quip Network",
+   "theme": "Quantum",
+   "source_type": "official",
+   "text": "OPEN CAMPAIGN: Quip Points are live now. Per the official rules, points convert to QUIP at TGE by leaderboard rank, and the Quest, Mindshare ($100k, top 315) and Quip Points campaigns each have their own pool from the 10% community share. No TGE date or conversion formula yet. Use only points.quip.network and the official @quipnetwork account; referral and airdrop links in replies are unsafe.",
+   "at": "2026-10-24T22:50:00-05:00",
+   "url": "https://points.quip.network/"
+  },
+  {
    "project": "Axis Robotics",
    "theme": "AI",
    "source_type": "official",
@@ -514,14 +522,6 @@
    "text": "Third-party post says a new task dashboard is live for points; no official TGE date. Any 'QUIP' token before an official contract is a scam.",
    "at": "2026-10-23T12:16:00-05:00",
    "url": "https://x.com/marcismus/status/2113608882526560694"
-  },
-  {
-   "project": "GenLayer",
-   "theme": "AI",
-   "source_type": "official",
-   "text": "Pre-TGE community AMA with Foundation CEO today 13:30 UTC (8:30 AM CT) on airdrop and TGE. Season 1 final snapshot Sun Oct 25; Season 2 points start Mon Oct 26.",
-   "at": "2026-10-23T08:15:00-05:00",
-   "url": "https://x.com/GenLayer/status/2113282850607026337"
   }
  ],
  "digest": {
@@ -601,11 +601,11 @@
    "name": "Solana '$AI' (Gensyn airdrop shill)",
    "theme": "AI",
    "score": 0,
-   "reason": "Impostor: Gensyn's AI token is on Ethereum/Gensyn chain, not Solana CA 47fwKU…",
+   "reason": "Impostor: Gensyn's AI token is on Ethereum/Gensyn chain, not Solana CA 47fwKU\u2026",
    "at": "2026-10-23T08:15:00-05:00"
   },
   {
-   "name": "Base 'QRL' 0x37696cd8…",
+   "name": "Base 'QRL' 0x37696cd8\u2026",
    "theme": "Quantum",
    "score": 0,
    "reason": "Impostor: QRL disowned this Base token on Oct 12; a 22k-follower list post linked it today",
@@ -974,19 +974,19 @@
    {
     "project": "GenLayer",
     "theme": "AI",
-    "fakes": "Base 0x457c…0f8D and 0x2322…c96C, flap.sh, four.meme and pump.fun GEN copies",
+    "fakes": "Base 0x457c\u20260f8D and 0x2322\u2026c96C, flap.sh, four.meme and pump.fun GEN copies",
     "official": "No token yet; links only from @GenLayer"
    },
    {
     "project": "Axis Robotics",
     "theme": "AI",
     "fakes": "Many copycat AXIS tokens on Solana, Base and Ethereum",
-    "official": "Base 0x5be7…d755ea (per CoinGecko)"
+    "official": "Base 0x5be7\u2026d755ea (per CoinGecko)"
    },
    {
     "project": "Ritual",
     "theme": "AI",
-    "fakes": "Base 0xfF2E…9E3572",
+    "fakes": "Base 0xfF2E\u20269E3572",
     "official": "No token yet"
    },
    {
@@ -998,7 +998,7 @@
    {
     "project": "QRL",
     "theme": "Quantum",
-    "fakes": "Base 0x3769…5bA3 (disowned Oct 12) and other ERC-20/Solana 'QRL'",
+    "fakes": "Base 0x3769\u20265bA3 (disowned Oct 12) and other ERC-20/Solana 'QRL'",
     "official": "No token contract"
    },
    {
