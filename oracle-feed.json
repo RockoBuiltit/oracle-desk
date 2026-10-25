@@ -246,8 +246,8 @@
    "market_cap": null,
    "fdv": null,
    "volume_24h": 513538,
-   "dex_route": "Unverified: Solana pSOQ (pump.fun mint); project hasn't posted the contract",
-   "next_milestone": "NonKYC listing; official pSOQ contract post; CMC listing",
+   "dex_route": "No DEX route; trades on SafeTrade (SOQ/USDT)",
+   "next_milestone": "NonKYC listing; CMC listing; team disclosure",
    "milestone_date": null,
    "links": [
     {
@@ -531,7 +531,7 @@
    },
    {
     "name": "Soqucoin",
-    "why": "Up about 57% in 24h with $403k volume. The team is still unidentified and its Solana pSOQ contract isn't posted by the project.",
+    "why": "Up about 57% in 24h with $403k volume. The team is still unidentified. Now mineable on LuxxPool (Luxxfolio, CSE: LUXX), merge-mined with Litecoin and Dogecoin.",
     "logo": "logos/soqucoin.png",
     "url": "https://soqu.org"
    }
@@ -710,7 +710,7 @@
    "No alerts. Closest pre-launch projects are Ritual (72) and GenLayer (70); both still lack a dated TGE, so they stay capped below the 75 alert bar.",
    "Axis Robotics listed on Bithumb and LBank overnight (official posts). Already trading, so it's a milestone note.",
    "GenLayer Season 1 snapshot is Sunday and registration closes Monday; only use airdrop.genlayer.com.",
-   "Soqucoin rose about 57% to $0.0000638 on $403k volume; team still unidentified and pSOQ unverified.",
+   "Soqucoin rose about 57% to $0.0000638 on $403k volume; team still unidentified.",
    "Parano1d says its web wallet, launchpad and DEX go live Nov 4; it stays on radar (anonymous dev, PQ scheme unverified)."
   ],
   "prelaunch": [
@@ -1023,7 +1023,7 @@
     "score": 62,
     "tier": "WATCH",
     "dex": "",
-    "note": "Up ~57% in 24h; pSOQ on Solana unverified",
+    "note": "Up ~57% in 24h; team still unidentified",
     "pair": "SOQ/USDT"
    },
    {
