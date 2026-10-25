@@ -31,9 +31,9 @@
      "score": 81
     }
    ],
-   "market_cap": 23429862,
+   "market_cap": 23434441,
    "fdv": 500900000.0,
-   "volume_24h": 2564392,
+   "volume_24h": 1608107,
    "dex_route": "Rhea Finance (NEAR) qtc.omft.near; Solana/Base 'QTC' tokens are impostors",
    "next_milestone": "QTC lending on RHEA Lend (soon)",
    "milestone_date": null,
@@ -49,10 +49,12 @@
    ],
    "upgrade_if": "Named-firm audit; more venues",
    "downgrade_if": "Chain halt; insider unlock pressure",
-   "last_update": "2026-10-24T20:10:00-05:00",
-   "price": 77.48,
+   "last_update": "2026-10-24T22:04:59-05:00",
+   "price": 77.39,
    "logo": "logos/quantus.png",
-   "website": "https://www.quantus.com"
+   "website": "https://www.quantus.com",
+   "cg_id": "quantus",
+   "price_updated": "2026-10-24T22:04:59-05:00"
   },
   {
    "name": "Ritual",
@@ -139,9 +141,9 @@
      "score": 69
     }
    ],
-   "market_cap": 56317201,
+   "market_cap": 54970063,
    "fdv": 150700000.0,
-   "volume_24h": 9082347,
+   "volume_24h": 17977468,
    "dex_route": "No verified DEX route",
    "next_milestone": "Sui migration date + swap instructions (TBA)",
    "milestone_date": null,
@@ -153,10 +155,12 @@
    ],
    "upgrade_if": "Migration date + audited Sui contracts",
    "downgrade_if": "Migration delays",
-   "last_update": "2026-10-24T16:12:00-05:00",
-   "price": 0.156198,
+   "last_update": "2026-10-24T22:04:59-05:00",
+   "price": 0.152469,
    "logo": "logos/data-network.png",
-   "website": "https://www.datafdn.org"
+   "website": "https://www.datafdn.org",
+   "cg_id": "story-2",
+   "price_updated": "2026-10-24T22:04:59-05:00"
   },
   {
    "name": "Quip Network",
@@ -245,7 +249,7 @@
    ],
    "market_cap": null,
    "fdv": null,
-   "volume_24h": 513538,
+   "volume_24h": 468064,
    "dex_route": "No DEX route; trades on SafeTrade (SOQ/USDT)",
    "next_milestone": "NonKYC listing; CMC listing; team disclosure",
    "milestone_date": null,
@@ -269,10 +273,12 @@
    ],
    "upgrade_if": "Identifiable founders, DEX liquidity",
    "downgrade_if": "Pool centralization returns or partner claims don't hold up",
-   "last_update": "2026-10-24T20:10:00-05:00",
-   "price": 0.00010834,
+   "last_update": "2026-10-24T22:04:59-05:00",
+   "price": 0.00010492,
    "logo": "logos/soqucoin.png",
-   "website": "https://soqu.org"
+   "website": "https://soqu.org",
+   "cg_id": "soqucoin",
+   "price_updated": "2026-10-24T22:04:59-05:00"
   },
   {
    "name": "Axis Robotics",
@@ -287,9 +293,9 @@
      "score": 57
     }
    ],
-   "market_cap": 42728571,
+   "market_cap": 40477751,
    "fdv": null,
-   "volume_24h": 183607406,
+   "volume_24h": 164046990,
    "dex_route": "Uniswap (Base) 0x5be75e3b0aff5d1a042a5363ae36acb1d6d755ea",
    "next_milestone": "Coinbase trading enablement; unlock schedule (Bithumb and LBank listed Oct 24)",
    "milestone_date": null,
@@ -309,10 +315,12 @@
    ],
    "upgrade_if": "Verified team, audit",
    "downgrade_if": "Heavy unlocks",
-   "last_update": "2026-10-24T20:10:00-05:00",
-   "price": 0.258961,
+   "last_update": "2026-10-24T22:04:59-05:00",
+   "price": 0.244826,
    "logo": "logos/axis-robotics.png",
-   "website": "https://axisrobotics.ai"
+   "website": "https://axisrobotics.ai",
+   "cg_id": "axis-robotics",
+   "price_updated": "2026-10-24T22:04:59-05:00"
   },
   {
    "name": "Flop Network",
@@ -359,19 +367,21 @@
      "score": 51
     }
    ],
-   "market_cap": 2658244,
+   "market_cap": 2729585,
    "fdv": null,
-   "volume_24h": 9127,
+   "volume_24h": 9901.76,
    "dex_route": "Uniswap V4 (Base) 0x9557dd9e241bc9636732623b672b4090af519396 (thin)",
    "next_milestone": "AI chat app on Crynux GPUs (previewed 10/23, undated)",
    "milestone_date": null,
    "links": [],
    "upgrade_if": "Deeper liquidity, audit",
    "downgrade_if": "Liquidity stays thin",
-   "last_update": "2026-10-24T20:10:00-05:00",
-   "price": 0.00153061,
+   "last_update": "2026-10-24T22:04:59-05:00",
+   "price": 0.00157169,
    "logo": "logos/crynux.png",
-   "website": "https://crynux.io"
+   "website": "https://crynux.io",
+   "cg_id": "crynux",
+   "price_updated": "2026-10-24T22:04:59-05:00"
   },
   {
    "name": "TermiX",
@@ -591,11 +601,11 @@
    "name": "Solana '$AI' (Gensyn airdrop shill)",
    "theme": "AI",
    "score": 0,
-   "reason": "Impostor: Gensyn's AI token is on Ethereum/Gensyn chain, not Solana CA 47fwKU\u2026",
+   "reason": "Impostor: Gensyn's AI token is on Ethereum/Gensyn chain, not Solana CA 47fwKU…",
    "at": "2026-10-23T08:15:00-05:00"
   },
   {
-   "name": "Base 'QRL' 0x37696cd8\u2026",
+   "name": "Base 'QRL' 0x37696cd8…",
    "theme": "Quantum",
    "score": 0,
    "reason": "Impostor: QRL disowned this Base token on Oct 12; a 22k-follower list post linked it today",
@@ -964,19 +974,19 @@
    {
     "project": "GenLayer",
     "theme": "AI",
-    "fakes": "Base 0x457c\u20260f8D and 0x2322\u2026c96C, flap.sh, four.meme and pump.fun GEN copies",
+    "fakes": "Base 0x457c…0f8D and 0x2322…c96C, flap.sh, four.meme and pump.fun GEN copies",
     "official": "No token yet; links only from @GenLayer"
    },
    {
     "project": "Axis Robotics",
     "theme": "AI",
     "fakes": "Many copycat AXIS tokens on Solana, Base and Ethereum",
-    "official": "Base 0x5be7\u2026d755ea (per CoinGecko)"
+    "official": "Base 0x5be7…d755ea (per CoinGecko)"
    },
    {
     "project": "Ritual",
     "theme": "AI",
-    "fakes": "Base 0xfF2E\u20269E3572",
+    "fakes": "Base 0xfF2E…9E3572",
     "official": "No token yet"
    },
    {
@@ -988,7 +998,7 @@
    {
     "project": "QRL",
     "theme": "Quantum",
-    "fakes": "Base 0x3769\u20265bA3 (disowned Oct 12) and other ERC-20/Solana 'QRL'",
+    "fakes": "Base 0x3769…5bA3 (disowned Oct 12) and other ERC-20/Solana 'QRL'",
     "official": "No token contract"
    },
    {
@@ -1197,5 +1207,6 @@
     "url": "https://api.coingecko.com/api/v3/exchanges/safe_trade/tickers"
    }
   ]
- }
+ },
+ "prices_updated": "2026-10-24T22:04:59-05:00"
 }
