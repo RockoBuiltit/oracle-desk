@@ -1,20 +1,20 @@
 {
- "generated_at": "2026-10-25T12:10:00-05:00",
+ "generated_at": "2026-10-25T16:15:00-05:00",
  "status": {
   "state": "idle",
-  "last_scan": "2026-10-25T12:10:00-05:00",
-  "next_scan": "2026-10-25T16:00:00-05:00",
+  "last_scan": "2026-10-25T16:15:00-05:00",
+  "next_scan": "2026-10-25T20:00:00-05:00",
   "activity": [
-   "Noon scan: 0 HIGH PRIORITY (0 of 3)",
-   "New quantum lead: QMS Network (post-quantum proof-of-useful-work L1, named CTO, public testnet since Sep 30, waitlist open, no token). Score 47, kept on radar",
-   "Open campaigns: GenLayer Season 1 snapshot Sun 10/25 (time TBA), registration closes Mon 10/26; Quip Points still open",
-   "Soqucoin: Luxxfolio + Soqucoin merge-mining promo post (already known); SafeTrade SOQ/USDT $0.00023, about $108k volume",
-   "AI accounts: no posts from Ritual, GenLayer, Fraction, Dataline, Pond, Flop, TermiX, DATA or Crynux. Virtuals weekly recap mentions agents buying native Pearl",
-   "SafeTrade: 48 bases, no change since the morning report; no @safetrade posts"
+   "4 PM scan: 0 HIGH PRIORITY (0 of 3)",
+   "Ritual (AI): exchange-side listing signals logged for the first time: Coinbase put RITUAL on its listing roadmap (Sep 16) and MEXC opened RITUAL pre-market (Sep 30, settlement TBA). Still no official TGE date or contract. Score 72 to 74 (cap for undated launches)",
+   "Ritual rumor: third parties spotted an airdrop.ritualfoundation.org subdomain; not announced by Ritual. Use only links posted by @ritualnet or @ritualfnd",
+   "GenLayer Season 1 snapshot Sun 10/25: official time still not announced (third parties say 23:59 UTC = 6:59 PM CDT); registration closes Mon 10/26",
+   "Quantum accounts: no official posts from Quantus, QRL, Quip, Soqucoin, DAC, QMS or Parano1d. Luxxfolio says its pool found Soqucoin blocks (already known partnership)",
+   "SafeTrade: 48 bases, no new AI or quantum listings; no @safetrade posts"
   ],
   "alerts_used_today": 0,
   "alert_cap": 3,
-  "x_reads_left_today": 874
+  "x_reads_left_today": 838
  },
  "alerts": [],
  "watchlist": [
@@ -62,28 +62,40 @@
    "theme": "AI",
    "stage": "testnet",
    "tier": "WATCH",
-   "score": 72,
+   "score": 74,
    "score_history": [
     {
      "date": "2026-10-22",
      "score": 72
+    },
+    {
+     "date": "2026-10-25",
+     "score": 74
     }
    ],
    "market_cap": null,
    "fdv": null,
    "volume_24h": null,
    "dex_route": "No token. Base 'Ritual' 0xfF2E...9E3572 is FAKE",
-   "next_milestone": "Mainnet + TGE (undated)",
+   "next_milestone": "Mainnet + TGE (undated). On Coinbase listing roadmap since Sep 16; MEXC pre-market open since Sep 30 (settlement TBA)",
    "milestone_date": null,
    "links": [
     {
      "label": "Tokenomics",
      "url": "https://tokenomics.ritualfoundation.org/"
+    },
+    {
+     "label": "MEXC pre-market notice",
+     "url": "https://www.mexc.com/announcements/article/mexc-pre-market-17827791538935"
+    },
+    {
+     "label": "Coinbase roadmap (news)",
+     "url": "https://phemex.com/news/article/coinbase-adds-blue-chip-and-ritual-to-listing-roadmap-96850"
     }
    ],
-   "upgrade_if": "Dated mainnet/TGE + audit",
+   "upgrade_if": "Official dated mainnet/TGE + verified contract + audit; Coinbase trading date",
    "downgrade_if": "Testnet stalls",
-   "last_update": "2026-10-22T16:10-05:00",
+   "last_update": "2026-10-25T16:15:00-05:00",
    "price": null,
    "logo": "logos/ritual.png",
    "website": "https://ritual.net"
@@ -105,7 +117,7 @@
    "fdv": null,
    "volume_24h": null,
    "dex_route": "No token yet; multiple fake GEN tokens on Base/BSC/Solana",
-   "next_milestone": "Season 1 final snapshot Sun 10/25 (time TBA); airdrop registration closes Mon 10/26; Season 2 points start Mon 10/26",
+   "next_milestone": "Season 1 final snapshot Sun 10/25 (official time TBA; third parties say 6:59 PM CDT, unconfirmed); airdrop registration closes Mon 10/26; Season 2 points start Mon 10/26",
    "milestone_date": "2026-10-25T23:59:00-05:00",
    "links": [
     {
@@ -123,7 +135,7 @@
    ],
    "upgrade_if": "Dated TGE + official Arbitrum contract + audit",
    "downgrade_if": "TGE slips past October",
-   "last_update": "2026-10-23T08:15:00-05:00",
+   "last_update": "2026-10-25T16:15:00-05:00",
    "price": null,
    "logo": "logos/genlayer.png",
    "website": "https://genlayer.com"
@@ -452,6 +464,22 @@
  ],
  "prelaunch_updates": [
   {
+   "project": "Ritual",
+   "theme": "AI",
+   "source_type": "rumor",
+   "text": "Third parties spotted a new airdrop.ritualfoundation.org subdomain and expect a checker or TGE soon. Ritual has not announced it, and there is no TGE date or official contract. Any RITUAL token now is a scam; use only links posted by @ritualnet or @ritualfnd.",
+   "at": "2026-10-25T16:15:00-05:00",
+   "url": "https://x.com/0xUzman/status/2114444617135292482"
+  },
+  {
+   "project": "Ritual",
+   "theme": "AI",
+   "source_type": "official",
+   "text": "Exchange-side announcements (first logged now): Coinbase added RITUAL to its listing roadmap on Sep 16 (no trading date), and MEXC opened RITUAL pre-market trading on Sep 30 (settlement TBA; total supply 10B). Pre-market is an IOU market, not a live token or DEX route.",
+   "at": "2026-10-25T16:15:00-05:00",
+   "url": "https://www.mexc.com/announcements/article/mexc-pre-market-17827791538935"
+  },
+  {
    "project": "QMS Network",
    "theme": "Quantum",
    "source_type": "official",
@@ -514,22 +542,6 @@
    "text": "Only third-party posts: October metrics (20,000+ PQ wallets, 500+ nodes) and 'Points convert to $QUIP at TGE'. No official TGE date. Any QUIP token now is a scam.",
    "at": "2026-10-24T08:20:00-05:00",
    "url": "https://x.com/i/trending/2113895326939480549"
-  },
-  {
-   "project": "GenLayer",
-   "theme": "AI",
-   "source_type": "official",
-   "text": "No new official post overnight. Season 1 snapshot is Sunday (time not announced) and registration closes Monday; use only airdrop.genlayer.com.",
-   "at": "2026-10-24T08:20:00-05:00",
-   "url": "https://x.com/GenLayer/status/2112934935921045716"
-  },
-  {
-   "project": "Crynux",
-   "theme": "AI",
-   "source_type": "official",
-   "text": "Previewed an AI chat app (chat, image generation, photo understanding) running on Crynux GPUs. Coming soon, no date.",
-   "at": "2026-10-23T20:12:00-05:00",
-   "url": "https://x.com/crynuxio/status/2113766211498430761"
   }
  ],
  "digest": {
@@ -578,7 +590,7 @@
    "at": "2026-10-25T08:20:00-05:00"
   }
  ],
- "snapshot_note": "Snapshot 2026-10-25 12:10 CT from X, CoinGecko and project sites. No real-time on-chain monitoring.",
+ "snapshot_note": "Snapshot 2026-10-25 16:15 CT from X, CoinGecko and project sites. No real-time on-chain monitoring.",
  "deadlines": [
   {
    "project": "GenLayer",
@@ -909,19 +921,19 @@
    {
     "project": "GenLayer",
     "theme": "AI",
-    "fakes": "Base 0x457c…0f8D and 0x2322…c96C, flap.sh, four.meme and pump.fun GEN copies",
+    "fakes": "Base 0x457c\u20260f8D and 0x2322\u2026c96C, flap.sh, four.meme and pump.fun GEN copies",
     "official": "No token yet; links only from @GenLayer"
    },
    {
     "project": "Axis Robotics",
     "theme": "AI",
     "fakes": "Many copycat AXIS tokens on Solana, Base and Ethereum",
-    "official": "Base 0x5be7…d755ea (per CoinGecko)"
+    "official": "Base 0x5be7\u2026d755ea (per CoinGecko)"
    },
    {
     "project": "Ritual",
     "theme": "AI",
-    "fakes": "Base 0xfF2E…9E3572",
+    "fakes": "Base 0xfF2E\u20269E3572",
     "official": "No token yet"
    },
    {
@@ -933,7 +945,7 @@
    {
     "project": "QRL",
     "theme": "Quantum",
-    "fakes": "Base 0x3769…5bA3 (disowned Oct 12) and other ERC-20/Solana 'QRL'",
+    "fakes": "Base 0x3769\u20265bA3 (disowned Oct 12) and other ERC-20/Solana 'QRL'",
     "official": "No token contract"
    },
    {
