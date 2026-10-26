@@ -87,9 +87,9 @@
      "score": 81
     }
    ],
-   "market_cap": 23035739,
+   "market_cap": 23079848,
    "fdv": 500900000.0,
-   "volume_24h": 1413734,
+   "volume_24h": 2293986,
    "dex_route": "Rhea Finance (NEAR) qtc.omft.near; Solana/Base 'QTC' tokens are impostors",
    "next_milestone": "QTC lending on RHEA Lend (soon, undated). CoinMarketCap listing went live Mon 10/26",
    "milestone_date": null,
@@ -109,12 +109,12 @@
    ],
    "upgrade_if": "Named-firm audit; more venues",
    "downgrade_if": "Chain halt; insider unlock pressure",
-   "last_update": "2026-10-26T16:23:32-05:00",
-   "price": 75.3,
+   "last_update": "2026-10-26T16:35:53-05:00",
+   "price": 75.43,
    "logo": "logos/quantus.png",
    "website": "https://www.quantus.com",
    "cg_id": "quantus",
-   "price_updated": "2026-10-26T16:23:32-05:00"
+   "price_updated": "2026-10-26T16:35:53-05:00"
   },
   {
    "name": "Ritual",
@@ -222,9 +222,9 @@
      "score": 69
     }
    ],
-   "market_cap": 50784594,
+   "market_cap": 50804959,
    "fdv": 150700000.0,
-   "volume_24h": 9591303,
+   "volume_24h": 9574263,
    "dex_route": "No verified DEX route",
    "next_milestone": "Sui migration date + swap instructions (TBA)",
    "milestone_date": null,
@@ -236,12 +236,12 @@
    ],
    "upgrade_if": "Migration date + audited Sui contracts",
    "downgrade_if": "Migration delays",
-   "last_update": "2026-10-26T16:23:32-05:00",
-   "price": 0.14082,
+   "last_update": "2026-10-26T16:35:53-05:00",
+   "price": 0.140896,
    "logo": "logos/data-network.png",
    "website": "https://www.datafdn.org",
    "cg_id": "story-2",
-   "price_updated": "2026-10-26T16:23:32-05:00"
+   "price_updated": "2026-10-26T16:35:53-05:00"
   },
   {
    "name": "Quip Network",
@@ -332,9 +332,9 @@
      "score": 65
     }
    ],
-   "market_cap": 323796,
+   "market_cap": 321403,
    "fdv": null,
-   "volume_24h": 155971,
+   "volume_24h": 155085,
    "dex_route": "No DEX route; CEX: SafeTrade (SOQ/USDT), NonKYC",
    "next_milestone": "CMC listing; team disclosure (both undated)",
    "milestone_date": null,
@@ -362,12 +362,12 @@
    ],
    "upgrade_if": "Identifiable founders, DEX liquidity",
    "downgrade_if": "Pool centralization returns or partner claims don't hold up",
-   "last_update": "2026-10-26T16:23:32-05:00",
-   "price": 0.00013377,
+   "last_update": "2026-10-26T16:35:53-05:00",
+   "price": 0.0001326,
    "logo": "logos/soqucoin.png",
    "website": "https://soqu.org",
    "cg_id": "soqucoin",
-   "price_updated": "2026-10-26T16:23:32-05:00"
+   "price_updated": "2026-10-26T16:35:53-05:00"
   },
   {
    "name": "Axis Robotics",
@@ -382,9 +382,9 @@
      "score": 57
     }
    ],
-   "market_cap": 44303277,
+   "market_cap": 43903788,
    "fdv": null,
-   "volume_24h": 101571503,
+   "volume_24h": 62850669,
    "dex_route": "Uniswap (Base) 0x5be75e3b0aff5d1a042a5363ae36acb1d6d755ea",
    "next_milestone": "Binance Alpha AXIS trading competition (live since Mon 10/26); Coinbase trading enablement and unlock schedule (undated)",
    "milestone_date": null,
@@ -404,12 +404,12 @@
    ],
    "upgrade_if": "Verified team, audit",
    "downgrade_if": "Heavy unlocks",
-   "last_update": "2026-10-26T16:23:32-05:00",
-   "price": 0.268448,
+   "last_update": "2026-10-26T16:35:53-05:00",
+   "price": 0.266084,
    "logo": "logos/axis-robotics.png",
    "website": "https://axisrobotics.ai",
    "cg_id": "axis-robotics",
-   "price_updated": "2026-10-26T16:23:32-05:00"
+   "price_updated": "2026-10-26T16:35:53-05:00"
   },
   {
    "name": "Flop Network",
@@ -456,21 +456,21 @@
      "score": 51
     }
    ],
-   "market_cap": 2468988,
+   "market_cap": 2469093,
    "fdv": null,
-   "volume_24h": 1482.05,
+   "volume_24h": 1482.1,
    "dex_route": "Uniswap V4 (Base) 0x9557dd9e241bc9636732623b672b4090af519396 (thin)",
    "next_milestone": "AI chat app on Crynux GPUs (previewed 10/23, undated). CNX is back in SafeTrade tickers",
    "milestone_date": null,
    "links": [],
    "upgrade_if": "Deeper liquidity, audit",
    "downgrade_if": "Liquidity stays thin",
-   "last_update": "2026-10-26T16:23:32-05:00",
-   "price": 0.00142165,
+   "last_update": "2026-10-26T16:35:53-05:00",
+   "price": 0.0014217,
    "logo": "logos/crynux.png",
    "website": "https://crynux.io",
    "cg_id": "crynux",
-   "price_updated": "2026-10-26T16:23:32-05:00"
+   "price_updated": "2026-10-26T16:35:53-05:00"
   },
   {
    "name": "TermiX",
@@ -1304,5 +1304,5 @@
    }
   ]
  },
- "prices_updated": "2026-10-26T16:23:32-05:00"
+ "prices_updated": "2026-10-26T16:35:53-05:00"
 }
