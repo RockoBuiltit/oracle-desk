@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-10-26T16:20:00-05:00",
+  "generated_at": "2026-10-26T16:08:00-05:00",
   "status": {
     "state": "idle",
-    "last_scan": "2026-10-26T16:20:00-05:00",
+    "last_scan": "2026-10-26T16:08:00-05:00",
     "next_scan": "2026-10-26T20:00:00-05:00",
     "activity": [
       "4 PM scan: no new HIGH PRIORITY (1 of 3 used today); no new official open campaigns",
-      "Ritual: Coinbase RITUAL-USD $0.02495 at 4:15 PM CT, 24h range $0.0175 to $0.09, volume 22.8M RITUAL; still no real DEX pool (Base Uniswap about $8) and no CoinGecko listing",
+      "Ritual: Coinbase RITUAL-USD $0.02495 at 4:05 PM CT, 24h range $0.0175 to $0.09, volume 22.8M RITUAL; still no real DEX pool (Base Uniswap about $8) and no CoinGecko listing",
       "Flop (third party): AirdropAlert says incentivized testnet Tue 11/3 and TGE Q1 2027, and links a Solana pump.fun 'FLOP'. Arthur Hayes says there is no FLOP token, so that token is fake",
       "SafeTrade: 50 bases; CNX (Crynux) back, XPM (Primecoin) new; neither is a new AI or quantum launch",
       "Asentum: new testnet game partner (XP quests); radar only, team and PQ scheme unverified",
@@ -163,11 +163,11 @@
       ],
       "upgrade_if": "Named-firm audit; real DEX liquidity on Base/BSC; more CEX listings",
       "downgrade_if": "Heavy airdrop or issuance selling; bridge or chain incident",
-      "last_update": "2026-10-26T16:20:00-05:00",
+      "last_update": "2026-10-26T16:08:00-05:00",
       "price": 0.02495,
       "logo": "logos/ritual.png",
       "website": "https://ritual.net",
-      "price_updated": "2026-10-26T16:15:00-05:00"
+      "price_updated": "2026-10-26T16:05:00-05:00"
     },
     {
       "name": "GenLayer",
@@ -438,7 +438,7 @@
       ],
       "upgrade_if": "Testnet live on schedule",
       "downgrade_if": "Delays; impostor tokens",
-      "last_update": "2026-10-26T16:20:00-05:00",
+      "last_update": "2026-10-26T16:08:00-05:00",
       "price": null,
       "logo": "logos/flop-network.png",
       "website": "https://flop.finance"
@@ -465,7 +465,7 @@
       "links": [],
       "upgrade_if": "Deeper liquidity, audit",
       "downgrade_if": "Liquidity stays thin",
-      "last_update": "2026-10-26T16:20:00-05:00",
+      "last_update": "2026-10-26T16:08:00-05:00",
       "price": 0.0014217,
       "logo": "logos/crynux.png",
       "website": "https://crynux.io",
@@ -675,17 +675,17 @@
       "theme": "AI",
       "score": 25,
       "reason": "AI-agent NFT 'creator program' posts with identical paid-campaign wording; no team, code or audit; NFT-mint airdrop pitch",
-      "at": "2026-10-26T16:20:00-05:00"
+      "at": "2026-10-26T16:08:00-05:00"
     },
     {
       "name": "Lowkey (LOWKEY)",
       "theme": "Quantum",
       "score": 10,
       "reason": "Fresh pump.fun token (8 followers) claiming 'post-quantum' trading terminal; no PQ scheme, code or team",
-      "at": "2026-10-26T16:20:00-05:00"
+      "at": "2026-10-26T16:08:00-05:00"
     }
   ],
-  "snapshot_note": "Coinbase, DexScreener and CoinGecko SafeTrade tickers 4:15 PM CT Mon Oct 26; X sweep since 12:10 PM CT Mon Oct 26.",
+  "snapshot_note": "Coinbase, DexScreener and CoinGecko SafeTrade tickers 4:05 PM CT Mon Oct 26; X sweep since 12:10 PM CT Mon Oct 26.",
   "deadlines": [
     {
       "project": "GenLayer",
