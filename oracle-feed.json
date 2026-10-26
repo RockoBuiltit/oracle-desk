@@ -768,12 +768,12 @@
     {
       "project": "QMS Network",
       "theme": "Quantum",
-      "title": "MANUAL (owner): testnet waitlist needs your Telegram @username and a role; no deadline announced",
+      "title": "QMS testnet waitlist: signed up for updates via X (done)",
       "type": "Testnet",
       "date": "2026-12-31T23:59:00-06:00",
       "all_day": true,
       "url": "https://qms.finance",
-      "status": "open",
+      "status": "done",
       "approx": true
     }
   ],
