@@ -23,6 +23,7 @@ INSTRUCTIONS FOR THE ORACLE BOT (not for the user). When the owner pastes this f
 16. Alert entry format (Oct 26): each item in alerts MUST use exactly these types or the desk page stops drawing: name, ticker, theme ("AI"|"Quantum"), event (string), event_date (ISO), score (number), breakdown (OBJECT with numeric keys team, tech, backing, security, tokenomics, dev, social; never a text string), why_legit (string), sources (LIST of {label, url}; never plain strings), risks (LIST of short strings; never one text string), contract (OBJECT {chain, address, verified}; never a text string), impostor_warning (string), market_cap, at, sent_at, status. After writing any alert, check these types before publishing.
 17. Contract "verified" (Oct 26): set contract.verified true ONLY when an official project account or official site published that exact address, or the block explorer shows the contract verified and the official source links to it. State the basis in the alert's sources. A bridged or third-party address, or a token whose only real venue is a centralized exchange (for example Coinbase), stays verified false.
 18. Radar by TGE date only (Oct 26): the pre-launch radar places a project only by its TGE or launch date, never by sign-up deadlines, registrations, snapshots or other events (those belong in deadlines and next_milestone). Set "tge_date" (ISO) on a pre-launch or testnet watchlist item only when the project itself (official account, docs or filing) has announced the TGE or launch date; update it when the date moves. A project with no announced TGE date has no tge_date and stays in the outer TBD ring.
+19. Alerts clear every morning (Oct 27): at each 8 AM report, delete from alerts every alert sent before the report time and set report.updated to the report time. The page also hides any alert whose sent_at is before the latest report.updated. Only alerts sent since that morning report show, and alerts_used_today resets to 0.
 -->
 <html lang="en">
 <head>
@@ -994,7 +995,7 @@ const UPD_MAX = 10;
 const recentUpdates = () => (feed.prelaunch_updates || []).filter(passT).sort((a, b) => new Date(b.at || 0) - new Date(a.at || 0)).slice(0, UPD_MAX);
 function renderMarquee() {
   const ups = recentUpdates();
-  const als = (feed.alerts || []).filter(passT).map(a => ({ project: a.name, text: `${a.event || 'Alert'} · ${a.event_date ? tDT(a.event_date) + (' '+TZL) : 'date n/a'}`, source_type: 'alert' }));
+  const als = alertsNow().filter(passT).map(a => ({ project: a.name, text: `${a.event || 'Alert'} · ${a.event_date ? tDT(a.event_date) + (' '+TZL) : 'date n/a'}`, source_type: 'alert' }));
   const items = [...als, ...ups].map(u => {
     const c = u.source_type === 'alert' ? 'var(--high)' : u.source_type === 'official' ? 'var(--ok)' : u.source_type === 'founder' ? 'var(--founder)' : 'var(--rumor)';
     const lab = u.source_type === 'alert' ? 'HIGH ALERT' : String(u.source_type || 'rumor').toUpperCase();
@@ -1032,9 +1033,11 @@ function renderDigest() {
 }
 
 /* ---------- alerts ---------- */
+/* alerts clear at each new morning report: an alert sent before the latest report time is hidden everywhere */
+function alertsNow() { const cut = feed && feed.report && feed.report.updated ? new Date(feed.report.updated).getTime() : 0; return (feed && feed.alerts || []).filter(a => { if (!cut || !isFinite(cut)) return true; const t = new Date(a.sent_at || a.at || a.event_date || 0).getTime(); return !isFinite(t) || t >= cut; }); }
 const BK = [['team', 'Team'], ['tech', 'Tech'], ['backing', 'Backing'], ['security', 'Security'], ['tokenomics', 'Tokens'], ['dev', 'Dev'], ['social', 'Social']];
 function renderAlerts() {
-  const list = (feed.alerts || []).filter(passT).sort((a, b) => new Date(b.sent_at || 0) - new Date(a.sent_at || 0));
+  const list = alertsNow().filter(passT).sort((a, b) => new Date(b.sent_at || 0) - new Date(a.sent_at || 0));
   $('#alertCount').textContent = list.length ? `${list.length} active` : '';
   const el = $('#alerts');
   if (!list.length) { el.style.display = 'block'; el.innerHTML = `<div class="empty">No HIGH PRIORITY alerts${themeF !== 'all' ? ' in this view' : ''}. The Oracle is staying quiet.</div>`; return; }
@@ -1485,7 +1488,7 @@ function spawnIcon() {
 let typeQ = [], typeTimer = null;
 function lines() {
   const st = feed?.status || {};
-  if (botState === 'alert') { const l = (feed?.alerts || []).slice().sort((a, b) => new Date(b.sent_at || 0) - new Date(a.sent_at || 0))[0]; return [`Alert sent: ${l ? l.name + (l.ticker ? ' $' + l.ticker : '') : 'new signal'}`]; }
+  if (botState === 'alert') { const l = alertsNow().slice().sort((a, b) => new Date(b.sent_at || 0) - new Date(a.sent_at || 0))[0]; return [`Alert sent: ${l ? l.name + (l.ticker ? ' $' + l.ticker : '') : 'new signal'}`]; }
   if (botState === 'scanning') { const a = (st.activity || []).filter(Boolean); return a.length ? a : ['Scanning sources']; }
   const ws = (feed?.watchlist || []).filter(w => ['pre-launch', 'testnet'].includes(String(w.stage).toLowerCase()) && w.next_milestone && (!w.milestone_date || msTo(w.milestone_date) > 0)).sort((x, y) => (x.milestone_date ? new Date(x.milestone_date) : 9e15) - (y.milestone_date ? new Date(y.milestone_date) : 9e15));
   return [`Watching ${(feed?.watchlist || []).length} projects · next scan ${st.next_scan ? tTime(st.next_scan) + (' '+TZL) : 'n/a'}`, ...ws.slice(0, 3).map(w => { const suf = w.milestone_date ? ' · ' + rel(w.milestone_date) : ''; let base = `${w.name}: ${String(w.next_milestone).split(/[;(]/)[0].trim()}`; const room = 64 - suf.length; if (base.length > room) base = base.slice(0, room - 1).trimEnd() + '…'; return base + suf; })];
