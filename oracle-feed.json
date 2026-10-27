@@ -1379,6 +1379,13 @@
       "ends": null,
       "url": "https://points.quip.network",
       "points_earned": 1018
+    },
+    {
+      "project": "TermiX",
+      "theme": "AI",
+      "what": "TermiX Points: free steps only (wallet sign-in, follow on X, Discord, creator contest). Paid hires and gas steps skipped.",
+      "ends": null,
+      "url": "https://www.agent.family"
     }
   ]
 }
