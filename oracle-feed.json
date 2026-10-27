@@ -88,9 +88,9 @@
      "score": 81
     }
    ],
-   "market_cap": 22886297,
+   "market_cap": 22712857,
    "fdv": 500900000.0,
-   "volume_24h": 1879955,
+   "volume_24h": 1839413,
    "dex_route": "Rhea Finance (NEAR) qtc.omft.near (~$9.9M liq); InstaSwap via NEAR Intents. Solana/Base QTC tokens are impostors",
    "next_milestone": "QTC lending on RHEA Lend (undated). Native QTC swaps live on InstaSwap via NEAR Intents (official, Tue 10/27)",
    "milestone_date": null,
@@ -110,12 +110,12 @@
    ],
    "upgrade_if": "Named-firm audit; more venues",
    "downgrade_if": "Chain halt; insider unlock pressure",
-   "last_update": "2026-10-27T08:30:00-05:00",
-   "price": 74.52,
+   "last_update": "2026-10-27T08:30:26-05:00",
+   "price": 73.93,
    "logo": "logos/quantus.png",
    "website": "https://www.quantus.com",
    "cg_id": "quantus",
-   "price_updated": "2026-10-27T08:30:00-05:00"
+   "price_updated": "2026-10-27T08:30:26-05:00"
   },
   {
    "name": "Ritual",
@@ -231,9 +231,9 @@
      "score": 69
     }
    ],
-   "market_cap": 49718883,
+   "market_cap": 49815249,
    "fdv": 150700000.0,
-   "volume_24h": 7877805,
+   "volume_24h": 7900048,
    "dex_route": "No official DEX route (exchanges only)",
    "next_milestone": "Sui migration date + swap instructions (TBA)",
    "milestone_date": null,
@@ -245,12 +245,12 @@
    ],
    "upgrade_if": "Migration date + audited Sui contracts",
    "downgrade_if": "Migration delays",
-   "last_update": "2026-10-27T08:30:00-05:00",
-   "price": 0.137871,
+   "last_update": "2026-10-27T08:30:26-05:00",
+   "price": 0.138139,
    "logo": "logos/data-network.png",
    "website": "https://www.datafdn.org",
    "cg_id": "story-2",
-   "price_updated": "2026-10-27T08:30:00-05:00"
+   "price_updated": "2026-10-27T08:30:26-05:00"
   },
   {
    "name": "Quip Network",
@@ -342,9 +342,9 @@
      "score": 65
     }
    ],
-   "market_cap": 421867,
+   "market_cap": 425420,
    "fdv": null,
-   "volume_24h": 234042,
+   "volume_24h": 233968,
    "dex_route": "No official DEX route; CEX: SafeTrade (SOQ/USDT), NonKYC",
    "next_milestone": "CMC listing; team disclosure (both undated)",
    "milestone_date": null,
@@ -372,12 +372,12 @@
    ],
    "upgrade_if": "Identifiable founders, DEX liquidity",
    "downgrade_if": "Pool centralization returns or partner claims don't hold up",
-   "last_update": "2026-10-27T08:30:00-05:00",
-   "price": 0.0001682,
+   "last_update": "2026-10-27T08:30:26-05:00",
+   "price": 0.00016961,
    "logo": "logos/soqucoin.png",
    "website": "https://soqu.org",
    "cg_id": "soqucoin",
-   "price_updated": "2026-10-27T08:30:00-05:00"
+   "price_updated": "2026-10-27T08:30:26-05:00"
   },
   {
    "name": "Axis Robotics",
@@ -392,9 +392,9 @@
      "score": 57
     }
    ],
-   "market_cap": 42388687,
+   "market_cap": 42546112,
    "fdv": null,
-   "volume_24h": 69433618,
+   "volume_24h": 70725983,
    "dex_route": "Uniswap v4 (Base) 0x5be75e3b0aff5d1a042a5363ae36acb1d6d755ea",
    "next_milestone": "OKX Wallet X Launch II trading contest ends Thu 10/29 5:00 AM CT; MEXC Airdrop+ ends Tue 11/3 7:00 AM CT (both need trading, not free); Coinbase enablement and unlock schedule undated",
    "milestone_date": "2026-10-29T05:00:00-05:00",
@@ -414,12 +414,12 @@
    ],
    "upgrade_if": "Verified team, audit",
    "downgrade_if": "Heavy unlocks",
-   "last_update": "2026-10-27T08:30:00-05:00",
-   "price": 0.257079,
+   "last_update": "2026-10-27T08:30:26-05:00",
+   "price": 0.257837,
    "logo": "logos/axis-robotics.png",
    "website": "https://axisrobotics.ai",
    "cg_id": "axis-robotics",
-   "price_updated": "2026-10-27T08:30:00-05:00"
+   "price_updated": "2026-10-27T08:30:26-05:00"
   },
   {
    "name": "Flop Network",
@@ -466,21 +466,21 @@
      "score": 51
     }
    ],
-   "market_cap": 2465975,
+   "market_cap": 2466078,
    "fdv": null,
-   "volume_24h": 800.22,
+   "volume_24h": 800.23,
    "dex_route": "Uniswap v4 (Base) 0x9557dd9e241bc9636732623b672b4090af519396 (thin)",
    "next_milestone": "AI chat app on Crynux GPUs (previewed 10/23, undated). CNX is back in SafeTrade tickers",
    "milestone_date": null,
    "links": [],
    "upgrade_if": "Deeper liquidity, audit",
    "downgrade_if": "Liquidity stays thin",
-   "last_update": "2026-10-27T08:30:00-05:00",
-   "price": 0.00141995,
+   "last_update": "2026-10-27T08:30:26-05:00",
+   "price": 0.00141997,
    "logo": "logos/crynux.png",
    "website": "https://crynux.io",
    "cg_id": "crynux",
-   "price_updated": "2026-10-27T08:30:00-05:00"
+   "price_updated": "2026-10-27T08:30:26-05:00"
   },
   {
    "name": "TermiX",
@@ -1389,7 +1389,7 @@
    }
   ]
  },
- "prices_updated": "2026-10-27T08:07:54-05:00",
+ "prices_updated": "2026-10-27T08:30:26-05:00",
  "airdrops": [
   {
    "project": "Quip Network",
