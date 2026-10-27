@@ -1318,9 +1318,7 @@
       "theme": "Quantum",
       "what": "Quip Points quests: Discord done; Telegram and YouTube left.",
       "ends": null,
-      "url": "https://points.quip.network",
-      "points": "50",
-      "points_note": "earned, 75 left"
+      "url": "https://points.quip.network"
     },
     {
       "project": "Ritual",

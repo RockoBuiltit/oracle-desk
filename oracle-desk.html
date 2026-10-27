@@ -713,9 +713,6 @@ html.rp-open,html.rp-open body{overflow:hidden}
 .ad-meta a:hover{color:#fff;border-color:#fff}
 .ad-sc{display:flex;flex-direction:column;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;border:2px solid var(--line2);font-family:var(--display);font-weight:700;font-size:18px;line-height:1}
 .ad-sc small{font-size:8px;letter-spacing:.12em;color:var(--muted);font-weight:700;margin-top:3px}
-.ad-pts{display:inline-flex;gap:6px;align-items:center;margin-top:7px;font-size:11.5px;font-family:var(--mono);color:#e4e4e4;background:rgba(255,255,255,.06);border:1px solid var(--line2);border-radius:8px;padding:3px 9px}
-.ad-pts b{font-family:var(--display);font-size:13px}
-.ad-pts i{font-style:normal;color:var(--muted)}
 .ad-sc.hi{border-color:#fff}.ad-sc.mid{border-color:#a3a3a3}.ad-sc.lo{border-color:#5a5a5a;color:#bfbfbf}
 @media (max-width:640px){
   .ad-list li{grid-template-columns:auto minmax(0,1fr);gap:10px 12px;padding:12px}
@@ -1537,7 +1534,6 @@ function renderAirdrops() {
       return '<li><div class="ad-logo">' + (logo ? '<img src="' + esc(logo) + '" alt="" loading="lazy" onerror="this.remove()">' : esc(a.project.slice(0, 1))) + '</div>' +
                 '<div class="ad-bd"><div class="ad-nm">' + esc(a.project) + (th ? '<span class="badge ' + (th === 'Quantum' ? 'q' : 'ai') + '">' + esc(th) + '</span>' : '') + '</div>' +
         '<div class="ad-what">' + esc(a.what || '') + '</div>' +
-        (a.points ? '<div class="ad-pts"><b>' + esc(a.points) + '</b> pts' + (a.points_note ? ' <i>' + esc(a.points_note) + '</i>' : '') + '</div>' : '') +
         '<div class="ad-meta"><span>' + esc(end) + '</span>' + (url ? '<a href="' + esc(url) + '" target="_blank" rel="noopener">Official link</a>' : '') + '</div></div>' +
         '<div class="ad-sc ' + cls + '">' + (score == null ? '-' : score) + '<small>SCORE</small></div></li>';
     }).join('');
