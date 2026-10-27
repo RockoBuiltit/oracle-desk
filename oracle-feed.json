@@ -1,8 +1,8 @@
 {
- "generated_at": "2026-10-27T16:10:00-05:00",
+ "generated_at": "2026-10-27T16:03:00-05:00",
  "status": {
   "state": "idle",
-  "last_scan": "2026-10-27T16:10:00-05:00",
+  "last_scan": "2026-10-27T16:03:00-05:00",
   "next_scan": "2026-10-27T20:00:00-05:00",
   "activity": [
    "4 PM scan: no new HIGH PRIORITY (0 of 3 used today); no new open campaigns",
@@ -660,7 +660,7 @@
    "at": "2026-10-27T12:15:00-05:00"
   }
  ],
- "snapshot_note": "SafeTrade tickers via CoinGecko 4:05 PM CT Tue Oct 27; X sweep since noon CT.",
+ "snapshot_note": "SafeTrade tickers via CoinGecko 4:02 PM CT Tue Oct 27; X sweep since noon CT.",
  "deadlines": [
   {
    "project": "Dataline",
