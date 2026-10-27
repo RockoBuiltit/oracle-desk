@@ -1537,7 +1537,7 @@ function renderAirdrops() {
       return '<li><div class="ad-logo">' + (logo ? '<img src="' + esc(logo) + '" alt="" loading="lazy" onerror="this.remove()">' : esc(a.project.slice(0, 1))) + '</div>' +
                 '<div class="ad-bd"><div class="ad-nm">' + esc(a.project) + (th ? '<span class="badge ' + (th === 'Quantum' ? 'q' : 'ai') + '">' + esc(th) + '</span>' : '') + '</div>' +
         '<div class="ad-what">' + esc(a.what || '') + '</div>' +
-        (a.points_earned != null ? '<div class="ad-pts"><b>' + esc(Number(a.points_earned).toLocaleString('en-US')) + (a.points_total ? ' / ' + esc(Number(a.points_total).toLocaleString('en-US')) : '') + '</b> pts' + (a.points_total ? '' : ' <span>(total not published)</span>') + '</div>' : '') +
+        (a.points_earned != null ? '<div class="ad-pts"><b>' + esc(Number(a.points_earned).toLocaleString('en-US')) + (a.points_total ? ' / ' + esc(Number(a.points_total).toLocaleString('en-US')) : '') + '</b> pts' + (a.points_total ? '' : ' <span>(total unknown)</span>') + '</div>' : '') +
         '<div class="ad-meta"><span>' + esc(end) + '</span>' + (url ? '<a href="' + esc(url) + '" target="_blank" rel="noopener">Official link</a>' : '') + '</div></div>' +
         '<div class="ad-sc ' + cls + '">' + (score == null ? '-' : score) + '<small>SCORE</small></div></li>';
     }).join('');
