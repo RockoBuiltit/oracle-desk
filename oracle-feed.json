@@ -1307,27 +1307,12 @@
   "prices_updated": "2026-10-26T19:20:28-05:00",
   "airdrops": [
     {
-      "project": "GenLayer",
-      "theme": "AI",
-      "what": "Airdrop registration done; site shows Not Eligible (no qualifying Discord role).",
-      "ends": "2026-10-26T23:59:00-05:00",
-      "url": "https://airdrop.genlayer.com",
-      "points_earned": 0
-    },
-    {
       "project": "Quip Network",
       "theme": "Quantum",
       "what": "Quip Points quests: Discord done; Telegram (25) and YouTube (25) left.",
       "ends": null,
       "url": "https://points.quip.network",
       "points_earned": 1018
-    },
-    {
-      "project": "Ritual",
-      "theme": "AI",
-      "what": "Official airdrop claim is open; heavy selling risk from recipients.",
-      "ends": null,
-      "url": "https://airdrop.ritualfoundation.org"
     }
   ]
 }
