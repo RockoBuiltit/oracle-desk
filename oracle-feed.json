@@ -1,22 +1,22 @@
 {
- "generated_at": "2026-10-26T16:08:00-05:00",
+ "generated_at": "2026-10-26T20:15:00-05:00",
  "status": {
   "state": "idle",
-  "last_scan": "2026-10-26T16:08:00-05:00",
-  "next_scan": "2026-10-26T20:00:00-05:00",
+  "last_scan": "2026-10-26T20:15:00-05:00",
+  "next_scan": "2026-10-27T08:00:00-05:00",
   "activity": [
-   "4 PM scan: no new HIGH PRIORITY (1 of 3 used today); no new official open campaigns",
-   "Ritual: Coinbase RITUAL-USD $0.02495 at 4:05 PM CT, 24h range $0.0175 to $0.09, volume 22.8M RITUAL; still no real DEX pool (Base Uniswap about $8) and no CoinGecko listing",
-   "Flop (third party): AirdropAlert says incentivized testnet Tue 11/3 and TGE Q1 2027, and links a Solana pump.fun 'FLOP'. Arthur Hayes says there is no FLOP token, so that token is fake",
-   "SafeTrade: 50 bases; CNX (Crynux) back, XPM (Primecoin) new; neither is a new AI or quantum launch",
-   "Asentum: new testnet game partner (XP quests); radar only, team and PQ scheme unverified",
-   "NEAR nearcore 2.14.0 (contracts verify post-quantum signatures) goes to mainnet vote Wed 11/4 per a NEAR dev; radar note",
-   "No new posts from Ritual, Quip, DATA, Fraction, Dataline, TermiX, Crynux, Axis, GenLayer, Quantus, QRL, Soqucoin, QMS",
-   "GenLayer registration closes Mon 10/26 (time TBA; owner skips)"
+   "8 PM scan: no new HIGH PRIORITY (1 of 3 used today); no new official open campaigns; no new pre-launch updates",
+   "Ritual: Coinbase RITUAL-USD $0.02251 at 8:11 PM CT, 24h range $0.0175 to $0.09, volume 29.1M RITUAL; official Base pool still about $4 liquidity (no real DEX route); not on CoinGecko yet",
+   "Flop: Arthur Hayes essay 'The Trifecta' on FLOP as a compute price benchmark; no dates, tokenomics or contract. No FLOP token exists",
+   "Quip: podcast clip on quantum attacks on old Bitcoin keys; no TGE or points news",
+   "SafeTrade: 49 bases; NEXA dropped, nothing new; no @safetrade posts",
+   "Rejected: DeepKey (DPKY, flap.sh 'quantum-safe' wallet token) and Synth Ape / AIUKI agent-NFT airdrop pitches",
+   "No new posts from Ritual, DATA, Fraction, Dataline, TermiX, Pond, Axis, Crynux, GenLayer, Quantus, QRL, QMS, DAC, Parano1d",
+   "GenLayer registration closes Mon 10/26 at 11:59 PM CT at the latest (time not announced; owner skips)"
   ],
   "alerts_used_today": 1,
   "alert_cap": 3,
-  "x_reads_left_today": 931
+  "x_reads_left_today": 994
  },
  "alerts": [
   {
@@ -163,11 +163,11 @@
    ],
    "upgrade_if": "Named-firm audit; real DEX liquidity on Base/BSC; more CEX listings",
    "downgrade_if": "Heavy airdrop or issuance selling; bridge or chain incident",
-   "last_update": "2026-10-26T16:08:00-05:00",
-   "price": 0.02495,
+   "last_update": "2026-10-26T20:15:00-05:00",
+   "price": 0.02251,
    "logo": "logos/ritual.png",
    "website": "https://ritual.net",
-   "price_updated": "2026-10-26T16:05:00-05:00"
+   "price_updated": "2026-10-26T20:11:00-05:00"
   },
   {
    "name": "GenLayer",
@@ -638,6 +638,8 @@
   "ai": [
    "Ritual mainnet + RITUAL live, Coinbase listing (HIGH PRIORITY, 76)",
    "4 PM: Ritual on Coinbase $0.02495 (24h range $0.0175 to $0.09); still no real DEX pool",
+   "8 PM: Ritual on Coinbase $0.02251 (24h range $0.0175 to $0.09, volume 29.1M RITUAL); official Base pool about $4, so still no real DEX route",
+   "Flop: Arthur Hayes essay on FLOP as a compute spot price benchmark; no new dates, still no FLOP token",
    "GenLayer: registration closes today, Mon 10/26 (official, no exact time); TGE still undated",
    "Flop: third party claims testnet 11/3 and TGE Q1 2027 and links a fake Solana FLOP; Hayes says no FLOP token exists",
    "Flop: Devnet opening in the coming days (Arthur Hayes); no allocation for Devnet",
@@ -648,6 +650,7 @@
   "quantum": [
    "Quantus QTC listed on CoinMarketCap (official)",
    "Quantus $71.83 (-5%), 24h range $71.65 to $75.94, volume $1.25M; 'Quantum Secure Bitcoin' post only",
+   "8 PM: no official milestones; Quip podcast only; DeepKey 'quantum-safe' flap.sh token rejected",
    "Soqucoin $0.000163, 24h range $0.000129 to $0.000259, volume $194k; no new milestone",
    "DAC: TGE reported moved to Sun 11/22 00:00 UTC, not posted by @dac_chain; stays REJECT 48",
    "QMS: QWAP testnet pools re-added Thu 10/29 9 AM UTC; Parano1d SDK on npm (radar)",
@@ -683,9 +686,23 @@
    "score": 10,
    "reason": "Fresh pump.fun token (8 followers) claiming 'post-quantum' trading terminal; no PQ scheme, code or team",
    "at": "2026-10-26T16:08:00-05:00"
+  },
+  {
+   "name": "DeepKey (DPKY)",
+   "theme": "Quantum",
+   "score": 15,
+   "reason": "Token launched on flap.sh (BSC meme launchpad) for a 'future-proof' fractal-key wallet; 330 followers, no named PQ algorithm, code, team or audit",
+   "at": "2026-10-26T20:15:00-05:00"
+  },
+  {
+   "name": "Synth Ape Syndicate (SYNAPE) / AIUKI",
+   "theme": "AI",
+   "score": 10,
+   "reason": "AI-agent NFT mints using Binance Agent ID with a 'planned' token airdrop after mint-out; tiny or brand-new accounts, no team, product or code",
+   "at": "2026-10-26T20:15:00-05:00"
   }
  ],
- "snapshot_note": "Coinbase, DexScreener and CoinGecko SafeTrade tickers 4:05 PM CT Mon Oct 26; X sweep since 12:10 PM CT Mon Oct 26.",
+ "snapshot_note": "Coinbase, DexScreener and CoinGecko SafeTrade tickers 8:11 PM CT Mon Oct 26; X sweep since 4:00 PM CT Mon Oct 26.",
  "deadlines": [
   {
    "project": "GenLayer",
