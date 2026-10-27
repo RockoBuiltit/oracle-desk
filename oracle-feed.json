@@ -64,7 +64,7 @@
       "contract": {
         "chain": "Base and BSC (bridged; native on Ritual chain 784 has no contract)",
         "address": "0x256Ea35422b2F36B24aC1D66159Fe69e75918C37",
-        "verified": true
+        "verified": false
       },
       "impostor_warning": "Solana pump.fun RITUAL, Robinhood chain RITUAL 0xC1F4C2f1E6342c058D542140cDeb8F71D5ec09B3 and Base 0xfF2EaA33008C46e7293748Cf6F8829e9349E3572 are not official",
       "market_cap": 62676000,
