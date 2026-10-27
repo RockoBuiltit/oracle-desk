@@ -1383,7 +1383,7 @@
     {
       "project": "TermiX",
       "theme": "AI",
-      "what": "TermiX Points: free steps only (wallet sign-in, follow on X, Discord, creator contest). Paid hires and gas steps skipped.",
+      "what": "Blocked: needs a minted .agent identity on BNB Chain (about $1 gas) before any points tasks open. Owner decision.",
       "ends": null,
       "url": "https://www.agent.family"
     }
