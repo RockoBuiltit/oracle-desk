@@ -1,1331 +1,1333 @@
 {
- "generated_at": "2026-10-26T16:08:00-05:00",
- "status": {
-  "state": "idle",
-  "last_scan": "2026-10-26T16:08:00-05:00",
-  "next_scan": "2026-10-26T20:00:00-05:00",
-  "activity": [
-   "4 PM scan: no new HIGH PRIORITY (1 of 3 used today); no new official open campaigns",
-   "Ritual: Coinbase RITUAL-USD $0.02495 at 4:05 PM CT, 24h range $0.0175 to $0.09, volume 22.8M RITUAL; still no real DEX pool (Base Uniswap about $8) and no CoinGecko listing",
-   "Flop (third party): AirdropAlert says incentivized testnet Tue 11/3 and TGE Q1 2027, and links a Solana pump.fun 'FLOP'. Arthur Hayes says there is no FLOP token, so that token is fake",
-   "SafeTrade: 50 bases; CNX (Crynux) back, XPM (Primecoin) new; neither is a new AI or quantum launch",
-   "Asentum: new testnet game partner (XP quests); radar only, team and PQ scheme unverified",
-   "NEAR nearcore 2.14.0 (contracts verify post-quantum signatures) goes to mainnet vote Wed 11/4 per a NEAR dev; radar note",
-   "No new posts from Ritual, Quip, DATA, Fraction, Dataline, TermiX, Crynux, Axis, GenLayer, Quantus, QRL, Soqucoin, QMS",
-   "GenLayer registration closes Mon 10/26 (time TBA; owner skips)"
+  "generated_at": "2026-10-26T16:08:00-05:00",
+  "status": {
+    "state": "idle",
+    "last_scan": "2026-10-26T16:08:00-05:00",
+    "next_scan": "2026-10-26T20:00:00-05:00",
+    "activity": [
+      "4 PM scan: no new HIGH PRIORITY (1 of 3 used today); no new official open campaigns",
+      "Ritual: Coinbase RITUAL-USD $0.02495 at 4:05 PM CT, 24h range $0.0175 to $0.09, volume 22.8M RITUAL; still no real DEX pool (Base Uniswap about $8) and no CoinGecko listing",
+      "Flop (third party): AirdropAlert says incentivized testnet Tue 11/3 and TGE Q1 2027, and links a Solana pump.fun 'FLOP'. Arthur Hayes says there is no FLOP token, so that token is fake",
+      "SafeTrade: 50 bases; CNX (Crynux) back, XPM (Primecoin) new; neither is a new AI or quantum launch",
+      "Asentum: new testnet game partner (XP quests); radar only, team and PQ scheme unverified",
+      "NEAR nearcore 2.14.0 (contracts verify post-quantum signatures) goes to mainnet vote Wed 11/4 per a NEAR dev; radar note",
+      "No new posts from Ritual, Quip, DATA, Fraction, Dataline, TermiX, Crynux, Axis, GenLayer, Quantus, QRL, Soqucoin, QMS",
+      "GenLayer registration closes Mon 10/26 (time TBA; owner skips)"
+    ],
+    "alerts_used_today": 1,
+    "alert_cap": 3,
+    "x_reads_left_today": 931
+  },
+  "alerts": [
+    {
+      "name": "Ritual",
+      "ticker": "RITUAL",
+      "theme": "AI",
+      "event": "Mainnet + TGE live; first exchange listing on Coinbase (RITUAL-USD)",
+      "event_date": "2026-10-26T09:56:46-05:00",
+      "score": 76,
+      "breakdown": {
+        "team": 18,
+        "tech": 18,
+        "backing": 15,
+        "security": 7,
+        "tokenomics": 9,
+        "dev": 6,
+        "social": 3
+      },
+      "why_legit": "Named founders (Niraj Pant, Akilesh Potti), $25M Archetype-led seed, public testnet since April, MiCA white paper, published tokenomics with insiders locked at least 1 year",
+      "sources": [
+        {
+          "label": "Mainnet post",
+          "url": "https://x.com/ritualnet/status/2114732978899448132"
+        },
+        {
+          "label": "Foundation thread",
+          "url": "https://x.com/ritualfnd/status/2114740894213759130"
+        },
+        {
+          "label": "Coinbase listing",
+          "url": "https://x.com/CoinbaseAssets/status/2114720006709616695"
+        },
+        {
+          "label": "Tokenomics",
+          "url": "https://tokenomics.ritualfoundation.org/"
+        }
+      ],
+      "risks": [
+        "Price fell from $0.06 open to about $0.035 within hours on Coinbase",
+        "uncapped supply with ongoing issuance",
+        "no named audit",
+        "no real DEX liquidity yet",
+        "early airdrop selling"
+      ],
+      "contract": {
+        "chain": "Base and BSC (bridged; native on Ritual chain 784 has no contract)",
+        "address": "0x256Ea35422b2F36B24aC1D66159Fe69e75918C37",
+        "verified": true
+      },
+      "impostor_warning": "Solana pump.fun RITUAL, Robinhood chain RITUAL 0xC1F4C2f1E6342c058D542140cDeb8F71D5ec09B3 and Base 0xfF2EaA33008C46e7293748Cf6F8829e9349E3572 are not official",
+      "market_cap": 62676000,
+      "at": "2026-10-26T12:25:00-05:00",
+      "sent_at": "2026-10-26T12:25:00-05:00",
+      "status": "sent"
+    }
   ],
-  "alerts_used_today": 1,
-  "alert_cap": 3,
-  "x_reads_left_today": 931
- },
- "alerts": [
-  {
-   "name": "Ritual",
-   "ticker": "RITUAL",
-   "theme": "AI",
-   "event": "Mainnet + TGE live; first exchange listing on Coinbase (RITUAL-USD)",
-   "event_date": "2026-10-26T09:56:46-05:00",
-   "score": 76,
-   "breakdown": {
-    "team": 18,
-    "tech": 18,
-    "backing": 15,
-    "security": 7,
-    "tokenomics": 9,
-    "dev": 6,
-    "social": 3
-   },
-   "why_legit": "Named founders (Niraj Pant, Akilesh Potti), $25M Archetype-led seed, public testnet since April, MiCA white paper, published tokenomics with insiders locked at least 1 year",
-   "sources": [
+  "watchlist": [
     {
-     "label": "Mainnet post",
-     "url": "https://x.com/ritualnet/status/2114732978899448132"
+      "name": "Quantus",
+      "ticker": "QTC",
+      "theme": "Quantum",
+      "stage": "live",
+      "tier": "HIGH",
+      "score": 81,
+      "score_history": [
+        {
+          "date": "2026-10-22",
+          "score": 81
+        }
+      ],
+      "market_cap": 23064857,
+      "fdv": 500900000.0,
+      "volume_24h": 2070905,
+      "dex_route": "Rhea Finance (NEAR) qtc.omft.near; Solana/Base 'QTC' tokens are impostors",
+      "next_milestone": "QTC lending on RHEA Lend (soon, undated). CoinMarketCap listing went live Mon 10/26",
+      "milestone_date": null,
+      "links": [
+        {
+          "label": "Quantus",
+          "url": "https://www.quantus.com"
+        },
+        {
+          "label": "CoinGecko",
+          "url": "https://www.coingecko.com/en/coins/quantus"
+        },
+        {
+          "label": "CoinMarketCap",
+          "url": "https://coinmarketcap.com/currencies/quantus/"
+        }
+      ],
+      "upgrade_if": "Named-firm audit; more venues",
+      "downgrade_if": "Chain halt; insider unlock pressure",
+      "last_update": "2026-10-26T19:07:46-05:00",
+      "price": 75.34,
+      "logo": "logos/quantus.png",
+      "website": "https://www.quantus.com",
+      "cg_id": "quantus",
+      "price_updated": "2026-10-26T19:07:46-05:00"
     },
     {
-     "label": "Foundation thread",
-     "url": "https://x.com/ritualfnd/status/2114740894213759130"
+      "name": "Ritual",
+      "ticker": "RITUAL",
+      "theme": "AI",
+      "stage": "live",
+      "tier": "HIGH",
+      "score": 76,
+      "score_history": [
+        {
+          "date": "2026-10-22",
+          "score": 72
+        },
+        {
+          "date": "2026-10-25",
+          "score": 74
+        },
+        {
+          "date": "2026-10-26",
+          "score": 76
+        }
+      ],
+      "market_cap": 44910000,
+      "fdv": null,
+      "volume_24h": null,
+      "dex_route": "Base/BSC bridged 0x256E...8C37; no real DEX pool yet (Coinbase only)",
+      "next_milestone": "DEX liquidity on Base or BSC, CoinGecko listing and more exchange listings (all undated); airdrop claim open now (no deadline given)",
+      "milestone_date": null,
+      "links": [
+        {
+          "label": "Mainnet post",
+          "url": "https://x.com/ritualnet/status/2114732978899448132"
+        },
+        {
+          "label": "Tokenomics",
+          "url": "https://tokenomics.ritualfoundation.org/"
+        },
+        {
+          "label": "Coinbase listing",
+          "url": "https://x.com/CoinbaseAssets/status/2114720006709616695"
+        },
+        {
+          "label": "Airdrop claim (official)",
+          "url": "https://airdrop.ritualfoundation.org/"
+        }
+      ],
+      "upgrade_if": "Named-firm audit; real DEX liquidity on Base/BSC; more CEX listings",
+      "downgrade_if": "Heavy airdrop or issuance selling; bridge or chain incident",
+      "last_update": "2026-10-26T16:08:00-05:00",
+      "price": 0.02495,
+      "logo": "logos/ritual.png",
+      "website": "https://ritual.net",
+      "price_updated": "2026-10-26T16:05:00-05:00"
     },
     {
-     "label": "Coinbase listing",
-     "url": "https://x.com/CoinbaseAssets/status/2114720006709616695"
+      "name": "GenLayer",
+      "ticker": "GEN",
+      "theme": "AI",
+      "stage": "testnet",
+      "tier": "WATCH",
+      "score": 70,
+      "score_history": [
+        {
+          "date": "2026-10-22",
+          "score": 70
+        }
+      ],
+      "market_cap": null,
+      "fdv": null,
+      "volume_24h": null,
+      "dex_route": "No token yet; multiple fake GEN tokens on Base/BSC/Solana",
+      "next_milestone": "Airdrop registration closes Mon 10/26 (official, time TBA); Season 2 points run until mainnet; TGE and claims undated",
+      "milestone_date": "2026-10-26T23:59:00-05:00",
+      "links": [
+        {
+          "label": "GenLayer on X",
+          "url": "https://x.com/GenLayer"
+        },
+        {
+          "label": "AMA post",
+          "url": "https://x.com/GenLayer/status/2113282850607026337"
+        },
+        {
+          "label": "Airdrop (official)",
+          "url": "https://airdrop.genlayer.com"
+        }
+      ],
+      "upgrade_if": "Dated TGE + official Arbitrum contract + audit",
+      "downgrade_if": "TGE slips past October",
+      "last_update": "2026-10-26T08:25:00-05:00",
+      "price": null,
+      "logo": "logos/genlayer.png",
+      "website": "https://genlayer.com"
     },
     {
-     "label": "Tokenomics",
-     "url": "https://tokenomics.ritualfoundation.org/"
-    }
-   ],
-   "risks": [
-    "Price fell from $0.06 open to about $0.035 within hours on Coinbase",
-    "uncapped supply with ongoing issuance",
-    "no named audit",
-    "no real DEX liquidity yet",
-    "early airdrop selling"
-   ],
-   "contract": {
-    "chain": "Base and BSC (bridged; native on Ritual chain 784 has no contract)",
-    "address": "0x256Ea35422b2F36B24aC1D66159Fe69e75918C37",
-    "verified": true
-   },
-   "impostor_warning": "Solana pump.fun RITUAL, Robinhood chain RITUAL 0xC1F4C2f1E6342c058D542140cDeb8F71D5ec09B3 and Base 0xfF2EaA33008C46e7293748Cf6F8829e9349E3572 are not official",
-   "market_cap": 62676000,
-   "at": "2026-10-26T12:25:00-05:00",
-   "sent_at": "2026-10-26T12:25:00-05:00",
-   "status": "sent"
-  }
- ],
- "watchlist": [
-  {
-   "name": "Quantus",
-   "ticker": "QTC",
-   "theme": "Quantum",
-   "stage": "live",
-   "tier": "HIGH",
-   "score": 81,
-   "score_history": [
-    {
-     "date": "2026-10-22",
-     "score": 81
-    }
-   ],
-   "market_cap": 23064857,
-   "fdv": 500900000.0,
-   "volume_24h": 2070905,
-   "dex_route": "Rhea Finance (NEAR) qtc.omft.near; Solana/Base 'QTC' tokens are impostors",
-   "next_milestone": "QTC lending on RHEA Lend (soon, undated). CoinMarketCap listing went live Mon 10/26",
-   "milestone_date": null,
-   "links": [
-    {
-     "label": "Quantus",
-     "url": "https://www.quantus.com"
+      "name": "DATA Network",
+      "ticker": "DATA",
+      "theme": "AI",
+      "stage": "live",
+      "tier": "WATCH",
+      "score": 69,
+      "score_history": [
+        {
+          "date": "2026-10-22",
+          "score": 69
+        }
+      ],
+      "market_cap": 52104451,
+      "fdv": 150700000.0,
+      "volume_24h": 9856983,
+      "dex_route": "No verified DEX route",
+      "next_milestone": "Sui migration date + swap instructions (TBA)",
+      "milestone_date": null,
+      "links": [
+        {
+          "label": "DATA on X",
+          "url": "https://x.com/datafdn"
+        }
+      ],
+      "upgrade_if": "Migration date + audited Sui contracts",
+      "downgrade_if": "Migration delays",
+      "last_update": "2026-10-26T19:07:46-05:00",
+      "price": 0.144498,
+      "logo": "logos/data-network.png",
+      "website": "https://www.datafdn.org",
+      "cg_id": "story-2",
+      "price_updated": "2026-10-26T19:07:46-05:00"
     },
     {
-     "label": "CoinGecko",
-     "url": "https://www.coingecko.com/en/coins/quantus"
+      "name": "Quip Network",
+      "ticker": "QUIP",
+      "theme": "Quantum",
+      "stage": "testnet",
+      "tier": "WATCH",
+      "score": 65,
+      "score_history": [
+        {
+          "date": "2026-10-22",
+          "score": 65
+        }
+      ],
+      "market_cap": null,
+      "fdv": null,
+      "volume_24h": null,
+      "dex_route": "No token yet; any QUIP token is a scam",
+      "next_milestone": "TGE (undated). Quip Points open now (2x for a deposited Quantum Echo)",
+      "milestone_date": null,
+      "links": [
+        {
+          "label": "Quip docs",
+          "url": "https://docs.quip.network"
+        }
+      ],
+      "upgrade_if": "Dated TGE, audit, mainnet",
+      "downgrade_if": "More TGE slips",
+      "last_update": "2026-10-22T16:10-05:00",
+      "price": null,
+      "logo": "logos/quip-network.png",
+      "website": "https://quip.network"
     },
     {
-     "label": "CoinMarketCap",
-     "url": "https://coinmarketcap.com/currencies/quantus/"
-    }
-   ],
-   "upgrade_if": "Named-firm audit; more venues",
-   "downgrade_if": "Chain halt; insider unlock pressure",
-   "last_update": "2026-10-26T19:07:46-05:00",
-   "price": 75.34,
-   "logo": "logos/quantus.png",
-   "website": "https://www.quantus.com",
-   "cg_id": "quantus",
-   "price_updated": "2026-10-26T19:07:46-05:00"
-  },
-  {
-   "name": "Ritual",
-   "ticker": "RITUAL",
-   "theme": "AI",
-   "stage": "live",
-   "tier": "HIGH",
-   "score": 76,
-   "score_history": [
-    {
-     "date": "2026-10-22",
-     "score": 72
+      "name": "Fraction AI",
+      "ticker": "FRAC",
+      "theme": "AI",
+      "stage": "pre-launch",
+      "tier": "WATCH",
+      "score": 63,
+      "score_history": [
+        {
+          "date": "2026-10-22",
+          "score": 63
+        }
+      ],
+      "market_cap": null,
+      "fdv": null,
+      "volume_24h": null,
+      "dex_route": "No token",
+      "next_milestone": "TGE Wed 11/11 per MiCA white paper (time TBA, not yet confirmed on X)",
+      "milestone_date": "2026-11-11T23:59:00-06:00",
+      "links": [
+        {
+          "label": "TGE Index",
+          "url": "https://tgeindex.com/tge/fraction-ai/"
+        }
+      ],
+      "upgrade_if": "Official Nov 11 confirmation",
+      "downgrade_if": "Date moves",
+      "last_update": "2026-10-22T16:10-05:00",
+      "price": null,
+      "logo": "logos/fraction-ai.png",
+      "website": "https://fractionai.xyz"
     },
     {
-     "date": "2026-10-25",
-     "score": 74
+      "name": "Soqucoin",
+      "ticker": "SOQ",
+      "theme": "Quantum",
+      "stage": "live",
+      "tier": "WATCH",
+      "score": 65,
+      "score_history": [
+        {
+          "date": "2026-10-22",
+          "score": 61
+        },
+        {
+          "date": "2026-10-23",
+          "score": 62
+        },
+        {
+          "date": "2026-10-24",
+          "score": 65
+        },
+        {
+          "date": "2026-10-25",
+          "score": 65
+        }
+      ],
+      "market_cap": 352610,
+      "fdv": null,
+      "volume_24h": 175142,
+      "dex_route": "No DEX route; CEX: SafeTrade (SOQ/USDT), NonKYC",
+      "next_milestone": "CMC listing; team disclosure (both undated)",
+      "milestone_date": null,
+      "links": [
+        {
+          "label": "Soqucoin on X",
+          "url": "https://x.com/soqucoin"
+        },
+        {
+          "label": "CoinGecko",
+          "url": "https://www.coingecko.com/en/coins/soqucoin"
+        },
+        {
+          "label": "SafeTrade SOQ/USDT",
+          "url": "https://safetrade.com/exchange/SOQ-USDT"
+        },
+        {
+          "label": "LuxxPool announcement",
+          "url": "https://x.com/LuxxfolioH/status/2114133595199885358"
+        },
+        {
+          "label": "NonKYC listing post",
+          "url": "https://x.com/soqucoin/status/2114206780641411156"
+        }
+      ],
+      "upgrade_if": "Identifiable founders, DEX liquidity",
+      "downgrade_if": "Pool centralization returns or partner claims don't hold up",
+      "last_update": "2026-10-26T19:07:46-05:00",
+      "price": 0.0001448,
+      "logo": "logos/soqucoin.png",
+      "website": "https://soqu.org",
+      "cg_id": "soqucoin",
+      "price_updated": "2026-10-26T19:07:46-05:00"
     },
     {
-     "date": "2026-10-26",
-     "score": 76
-    }
-   ],
-   "market_cap": 44910000,
-   "fdv": null,
-   "volume_24h": null,
-   "dex_route": "Base/BSC bridged 0x256E...8C37; no real DEX pool yet (Coinbase only)",
-   "next_milestone": "DEX liquidity on Base or BSC, CoinGecko listing and more exchange listings (all undated); airdrop claim open now (no deadline given)",
-   "milestone_date": null,
-   "links": [
-    {
-     "label": "Mainnet post",
-     "url": "https://x.com/ritualnet/status/2114732978899448132"
+      "name": "Axis Robotics",
+      "ticker": "AXIS",
+      "theme": "AI",
+      "stage": "live",
+      "tier": "WATCH",
+      "score": 57,
+      "score_history": [
+        {
+          "date": "2026-10-22",
+          "score": 57
+        }
+      ],
+      "market_cap": 42866232,
+      "fdv": null,
+      "volume_24h": 82309562,
+      "dex_route": "Uniswap (Base) 0x5be75e3b0aff5d1a042a5363ae36acb1d6d755ea",
+      "next_milestone": "Binance Alpha AXIS trading competition (live since Mon 10/26); Coinbase trading enablement and unlock schedule (undated)",
+      "milestone_date": null,
+      "links": [
+        {
+          "label": "Axis on X",
+          "url": "https://x.com/axisrobotics"
+        },
+        {
+          "label": "Season 2 post",
+          "url": "https://x.com/axisrobotics/status/2113450404965134793"
+        },
+        {
+          "label": "Bithumb listing",
+          "url": "https://x.com/axisrobotics/status/2113862605307793609"
+        }
+      ],
+      "upgrade_if": "Verified team, audit",
+      "downgrade_if": "Heavy unlocks",
+      "last_update": "2026-10-26T19:07:46-05:00",
+      "price": 0.259795,
+      "logo": "logos/axis-robotics.png",
+      "website": "https://axisrobotics.ai",
+      "cg_id": "axis-robotics",
+      "price_updated": "2026-10-26T19:07:46-05:00"
     },
     {
-     "label": "Tokenomics",
-     "url": "https://tokenomics.ritualfoundation.org/"
+      "name": "Flop Network",
+      "ticker": "FLOP",
+      "theme": "AI",
+      "stage": "Pre-devnet (Devnet \"coming very soon\")",
+      "tier": "WATCH",
+      "score": 55,
+      "score_history": [
+        {
+          "date": "2026-10-22",
+          "score": 55
+        }
+      ],
+      "market_cap": null,
+      "fdv": null,
+      "volume_24h": null,
+      "dex_route": "NO TOKEN EXISTS; any FLOP is a scam",
+      "next_milestone": "Public Devnet opens in the coming days (no token allocation). Incentivized testnet + airdrop Tue 11/3 per third parties (unconfirmed, time TBA); TGE Q1 2027 per a third party (unconfirmed)",
+      "milestone_date": "2026-11-03T23:59:00-06:00",
+      "links": [
+        {
+          "label": "Flop on X",
+          "url": "https://x.com/flop_labs"
+        }
+      ],
+      "upgrade_if": "Testnet live on schedule",
+      "downgrade_if": "Delays; impostor tokens",
+      "last_update": "2026-10-26T16:08:00-05:00",
+      "price": null,
+      "logo": "logos/flop-network.png",
+      "website": "https://flop.finance"
     },
     {
-     "label": "Coinbase listing",
-     "url": "https://x.com/CoinbaseAssets/status/2114720006709616695"
+      "name": "Crynux",
+      "ticker": "CNX",
+      "theme": "AI",
+      "stage": "live",
+      "tier": "WATCH",
+      "score": 51,
+      "score_history": [
+        {
+          "date": "2026-10-22",
+          "score": 51
+        }
+      ],
+      "market_cap": 2454689,
+      "fdv": null,
+      "volume_24h": 1507.86,
+      "dex_route": "Uniswap V4 (Base) 0x9557dd9e241bc9636732623b672b4090af519396 (thin)",
+      "next_milestone": "AI chat app on Crynux GPUs (previewed 10/23, undated). CNX is back in SafeTrade tickers",
+      "milestone_date": null,
+      "links": [],
+      "upgrade_if": "Deeper liquidity, audit",
+      "downgrade_if": "Liquidity stays thin",
+      "last_update": "2026-10-26T19:07:46-05:00",
+      "price": 0.0014134,
+      "logo": "logos/crynux.png",
+      "website": "https://crynux.io",
+      "cg_id": "crynux",
+      "price_updated": "2026-10-26T19:07:46-05:00"
     },
     {
-     "label": "Airdrop claim (official)",
-     "url": "https://airdrop.ritualfoundation.org/"
-    }
-   ],
-   "upgrade_if": "Named-firm audit; real DEX liquidity on Base/BSC; more CEX listings",
-   "downgrade_if": "Heavy airdrop or issuance selling; bridge or chain incident",
-   "last_update": "2026-10-26T16:08:00-05:00",
-   "price": 0.02495,
-   "logo": "logos/ritual.png",
-   "website": "https://ritual.net",
-   "price_updated": "2026-10-26T16:05:00-05:00"
-  },
-  {
-   "name": "GenLayer",
-   "ticker": "GEN",
-   "theme": "AI",
-   "stage": "testnet",
-   "tier": "WATCH",
-   "score": 70,
-   "score_history": [
-    {
-     "date": "2026-10-22",
-     "score": 70
-    }
-   ],
-   "market_cap": null,
-   "fdv": null,
-   "volume_24h": null,
-   "dex_route": "No token yet; multiple fake GEN tokens on Base/BSC/Solana",
-   "next_milestone": "Airdrop registration closes Mon 10/26 (official, time TBA); Season 2 points run until mainnet; TGE and claims undated",
-   "milestone_date": "2026-10-26T23:59:00-05:00",
-   "links": [
-    {
-     "label": "GenLayer on X",
-     "url": "https://x.com/GenLayer"
+      "name": "TermiX",
+      "ticker": "TMT",
+      "theme": "AI",
+      "stage": "pre-launch",
+      "tier": "WATCH",
+      "score": 50,
+      "score_history": [
+        {
+          "date": "2026-10-22",
+          "score": 50
+        }
+      ],
+      "market_cap": null,
+      "fdv": null,
+      "volume_24h": null,
+      "dex_route": "No token yet",
+      "next_milestone": "BNB Chain Set and Earn agent-hire tasks close Thu 11/5 (time TBA); TGE date + tokenomics (undated)",
+      "milestone_date": "2026-11-05T23:59:00-06:00",
+      "links": [],
+      "upgrade_if": "Dated TGE",
+      "downgrade_if": "Revenue fades",
+      "last_update": "2026-10-24T08:20:00-05:00",
+      "price": null,
+      "logo": "logos/termix.png",
+      "website": "https://termix.ai"
     },
     {
-     "label": "AMA post",
-     "url": "https://x.com/GenLayer/status/2113282850607026337"
-    },
-    {
-     "label": "Airdrop (official)",
-     "url": "https://airdrop.genlayer.com"
+      "name": "DAC Chain",
+      "ticker": "DACT",
+      "theme": "Quantum",
+      "stage": "pre-launch",
+      "tier": "REJECT",
+      "score": 48,
+      "score_history": [
+        {
+          "date": "2026-10-22",
+          "score": 51
+        },
+        {
+          "date": "2026-10-22",
+          "score": 48
+        }
+      ],
+      "market_cap": null,
+      "fdv": null,
+      "volume_24h": null,
+      "dex_route": "Unverified; Base DACT pair not linked by DAC",
+      "next_milestone": "TGE Sun 11/22 00:00 UTC (Sat 11/21 6 PM CT) as reported by many accounts; not yet posted by @dac_chain on X",
+      "milestone_date": "2026-11-21T18:00:00-06:00",
+      "links": [],
+      "upgrade_if": "Official dated TGE + verified contract",
+      "downgrade_if": "Second missed date",
+      "last_update": "2026-10-26T08:25:00-05:00",
+      "price": null,
+      "logo": "logos/dac-chain.png",
+      "website": "https://www.dachain.tech"
     }
-   ],
-   "upgrade_if": "Dated TGE + official Arbitrum contract + audit",
-   "downgrade_if": "TGE slips past October",
-   "last_update": "2026-10-26T08:25:00-05:00",
-   "price": null,
-   "logo": "logos/genlayer.png",
-   "website": "https://genlayer.com"
-  },
-  {
-   "name": "DATA Network",
-   "ticker": "DATA",
-   "theme": "AI",
-   "stage": "live",
-   "tier": "WATCH",
-   "score": 69,
-   "score_history": [
-    {
-     "date": "2026-10-22",
-     "score": 69
-    }
-   ],
-   "market_cap": 52104451,
-   "fdv": 150700000.0,
-   "volume_24h": 9856983,
-   "dex_route": "No verified DEX route",
-   "next_milestone": "Sui migration date + swap instructions (TBA)",
-   "milestone_date": null,
-   "links": [
-    {
-     "label": "DATA on X",
-     "url": "https://x.com/datafdn"
-    }
-   ],
-   "upgrade_if": "Migration date + audited Sui contracts",
-   "downgrade_if": "Migration delays",
-   "last_update": "2026-10-26T19:07:46-05:00",
-   "price": 0.144498,
-   "logo": "logos/data-network.png",
-   "website": "https://www.datafdn.org",
-   "cg_id": "story-2",
-   "price_updated": "2026-10-26T19:07:46-05:00"
-  },
-  {
-   "name": "Quip Network",
-   "ticker": "QUIP",
-   "theme": "Quantum",
-   "stage": "testnet",
-   "tier": "WATCH",
-   "score": 65,
-   "score_history": [
-    {
-     "date": "2026-10-22",
-     "score": 65
-    }
-   ],
-   "market_cap": null,
-   "fdv": null,
-   "volume_24h": null,
-   "dex_route": "No token yet; any QUIP token is a scam",
-   "next_milestone": "TGE (undated). Quip Points open now (2x for a deposited Quantum Echo)",
-   "milestone_date": null,
-   "links": [
-    {
-     "label": "Quip docs",
-     "url": "https://docs.quip.network"
-    }
-   ],
-   "upgrade_if": "Dated TGE, audit, mainnet",
-   "downgrade_if": "More TGE slips",
-   "last_update": "2026-10-22T16:10-05:00",
-   "price": null,
-   "logo": "logos/quip-network.png",
-   "website": "https://quip.network"
-  },
-  {
-   "name": "Fraction AI",
-   "ticker": "FRAC",
-   "theme": "AI",
-   "stage": "pre-launch",
-   "tier": "WATCH",
-   "score": 63,
-   "score_history": [
-    {
-     "date": "2026-10-22",
-     "score": 63
-    }
-   ],
-   "market_cap": null,
-   "fdv": null,
-   "volume_24h": null,
-   "dex_route": "No token",
-   "next_milestone": "TGE Wed 11/11 per MiCA white paper (time TBA, not yet confirmed on X)",
-   "milestone_date": "2026-11-11T23:59:00-06:00",
-   "links": [
-    {
-     "label": "TGE Index",
-     "url": "https://tgeindex.com/tge/fraction-ai/"
-    }
-   ],
-   "upgrade_if": "Official Nov 11 confirmation",
-   "downgrade_if": "Date moves",
-   "last_update": "2026-10-22T16:10-05:00",
-   "price": null,
-   "logo": "logos/fraction-ai.png",
-   "website": "https://fractionai.xyz"
-  },
-  {
-   "name": "Soqucoin",
-   "ticker": "SOQ",
-   "theme": "Quantum",
-   "stage": "live",
-   "tier": "WATCH",
-   "score": 65,
-   "score_history": [
-    {
-     "date": "2026-10-22",
-     "score": 61
-    },
-    {
-     "date": "2026-10-23",
-     "score": 62
-    },
-    {
-     "date": "2026-10-24",
-     "score": 65
-    },
-    {
-     "date": "2026-10-25",
-     "score": 65
-    }
-   ],
-   "market_cap": 352610,
-   "fdv": null,
-   "volume_24h": 175142,
-   "dex_route": "No DEX route; CEX: SafeTrade (SOQ/USDT), NonKYC",
-   "next_milestone": "CMC listing; team disclosure (both undated)",
-   "milestone_date": null,
-   "links": [
-    {
-     "label": "Soqucoin on X",
-     "url": "https://x.com/soqucoin"
-    },
-    {
-     "label": "CoinGecko",
-     "url": "https://www.coingecko.com/en/coins/soqucoin"
-    },
-    {
-     "label": "SafeTrade SOQ/USDT",
-     "url": "https://safetrade.com/exchange/SOQ-USDT"
-    },
-    {
-     "label": "LuxxPool announcement",
-     "url": "https://x.com/LuxxfolioH/status/2114133595199885358"
-    },
-    {
-     "label": "NonKYC listing post",
-     "url": "https://x.com/soqucoin/status/2114206780641411156"
-    }
-   ],
-   "upgrade_if": "Identifiable founders, DEX liquidity",
-   "downgrade_if": "Pool centralization returns or partner claims don't hold up",
-   "last_update": "2026-10-26T19:07:46-05:00",
-   "price": 0.0001448,
-   "logo": "logos/soqucoin.png",
-   "website": "https://soqu.org",
-   "cg_id": "soqucoin",
-   "price_updated": "2026-10-26T19:07:46-05:00"
-  },
-  {
-   "name": "Axis Robotics",
-   "ticker": "AXIS",
-   "theme": "AI",
-   "stage": "live",
-   "tier": "WATCH",
-   "score": 57,
-   "score_history": [
-    {
-     "date": "2026-10-22",
-     "score": 57
-    }
-   ],
-   "market_cap": 42866232,
-   "fdv": null,
-   "volume_24h": 82309562,
-   "dex_route": "Uniswap (Base) 0x5be75e3b0aff5d1a042a5363ae36acb1d6d755ea",
-   "next_milestone": "Binance Alpha AXIS trading competition (live since Mon 10/26); Coinbase trading enablement and unlock schedule (undated)",
-   "milestone_date": null,
-   "links": [
-    {
-     "label": "Axis on X",
-     "url": "https://x.com/axisrobotics"
-    },
-    {
-     "label": "Season 2 post",
-     "url": "https://x.com/axisrobotics/status/2113450404965134793"
-    },
-    {
-     "label": "Bithumb listing",
-     "url": "https://x.com/axisrobotics/status/2113862605307793609"
-    }
-   ],
-   "upgrade_if": "Verified team, audit",
-   "downgrade_if": "Heavy unlocks",
-   "last_update": "2026-10-26T19:07:46-05:00",
-   "price": 0.259795,
-   "logo": "logos/axis-robotics.png",
-   "website": "https://axisrobotics.ai",
-   "cg_id": "axis-robotics",
-   "price_updated": "2026-10-26T19:07:46-05:00"
-  },
-  {
-   "name": "Flop Network",
-   "ticker": "FLOP",
-   "theme": "AI",
-   "stage": "Pre-devnet (Devnet \"coming very soon\")",
-   "tier": "WATCH",
-   "score": 55,
-   "score_history": [
-    {
-     "date": "2026-10-22",
-     "score": 55
-    }
-   ],
-   "market_cap": null,
-   "fdv": null,
-   "volume_24h": null,
-   "dex_route": "NO TOKEN EXISTS; any FLOP is a scam",
-   "next_milestone": "Public Devnet opens in the coming days (no token allocation). Incentivized testnet + airdrop Tue 11/3 per third parties (unconfirmed, time TBA); TGE Q1 2027 per a third party (unconfirmed)",
-   "milestone_date": "2026-11-03T23:59:00-06:00",
-   "links": [
-    {
-     "label": "Flop on X",
-     "url": "https://x.com/flop_labs"
-    }
-   ],
-   "upgrade_if": "Testnet live on schedule",
-   "downgrade_if": "Delays; impostor tokens",
-   "last_update": "2026-10-26T16:08:00-05:00",
-   "price": null,
-   "logo": "logos/flop-network.png",
-   "website": "https://flop.finance"
-  },
-  {
-   "name": "Crynux",
-   "ticker": "CNX",
-   "theme": "AI",
-   "stage": "live",
-   "tier": "WATCH",
-   "score": 51,
-   "score_history": [
-    {
-     "date": "2026-10-22",
-     "score": 51
-    }
-   ],
-   "market_cap": 2454689,
-   "fdv": null,
-   "volume_24h": 1507.86,
-   "dex_route": "Uniswap V4 (Base) 0x9557dd9e241bc9636732623b672b4090af519396 (thin)",
-   "next_milestone": "AI chat app on Crynux GPUs (previewed 10/23, undated). CNX is back in SafeTrade tickers",
-   "milestone_date": null,
-   "links": [],
-   "upgrade_if": "Deeper liquidity, audit",
-   "downgrade_if": "Liquidity stays thin",
-   "last_update": "2026-10-26T19:07:46-05:00",
-   "price": 0.0014134,
-   "logo": "logos/crynux.png",
-   "website": "https://crynux.io",
-   "cg_id": "crynux",
-   "price_updated": "2026-10-26T19:07:46-05:00"
-  },
-  {
-   "name": "TermiX",
-   "ticker": "TMT",
-   "theme": "AI",
-   "stage": "pre-launch",
-   "tier": "WATCH",
-   "score": 50,
-   "score_history": [
-    {
-     "date": "2026-10-22",
-     "score": 50
-    }
-   ],
-   "market_cap": null,
-   "fdv": null,
-   "volume_24h": null,
-   "dex_route": "No token yet",
-   "next_milestone": "BNB Chain Set and Earn agent-hire tasks close Thu 11/5 (time TBA); TGE date + tokenomics (undated)",
-   "milestone_date": "2026-11-05T23:59:00-06:00",
-   "links": [],
-   "upgrade_if": "Dated TGE",
-   "downgrade_if": "Revenue fades",
-   "last_update": "2026-10-24T08:20:00-05:00",
-   "price": null,
-   "logo": "logos/termix.png",
-   "website": "https://termix.ai"
-  },
-  {
-   "name": "DAC Chain",
-   "ticker": "DACT",
-   "theme": "Quantum",
-   "stage": "pre-launch",
-   "tier": "REJECT",
-   "score": 48,
-   "score_history": [
-    {
-     "date": "2026-10-22",
-     "score": 51
-    },
-    {
-     "date": "2026-10-22",
-     "score": 48
-    }
-   ],
-   "market_cap": null,
-   "fdv": null,
-   "volume_24h": null,
-   "dex_route": "Unverified; Base DACT pair not linked by DAC",
-   "next_milestone": "TGE Sun 11/22 00:00 UTC (Sat 11/21 6 PM CT) as reported by many accounts; not yet posted by @dac_chain on X",
-   "milestone_date": "2026-11-21T18:00:00-06:00",
-   "links": [],
-   "upgrade_if": "Official dated TGE + verified contract",
-   "downgrade_if": "Second missed date",
-   "last_update": "2026-10-26T08:25:00-05:00",
-   "price": null,
-   "logo": "logos/dac-chain.png",
-   "website": "https://www.dachain.tech"
-  }
- ],
- "prelaunch_updates": [
-  {
-   "project": "Flop Network",
-   "theme": "AI",
-   "source_type": "rumor",
-   "text": "Third party (AirdropAlert): incentivized testnet Tue 11/3, mainnet and TGE Q1 2027, 4.4B genesis airdrop, early applications open on their site. None of this is on @flop_labs. Arthur Hayes says there is no FLOP token, so the Solana token AirdropAlert links is fake.",
-   "at": "2026-10-26T14:23:03-05:00",
-   "url": "https://x.com/Airdropalertcom/status/2114799991159918889"
-  },
-  {
-   "project": "Ritual",
-   "theme": "AI",
-   "source_type": "official",
-   "text": "Ritual mainnet and RITUAL token are live; first listing on Coinbase (RITUAL-USD). Bridged RITUAL on Base and BSC is 0x256E...8C37. 18% of 10B supply unlocked at launch; insiders locked 1 year; supply uncapped.",
-   "at": "2026-10-26T10:28:13-05:00",
-   "url": "https://x.com/ritualfnd/status/2114740894213759130"
-  },
-  {
-   "project": "Ritual",
-   "theme": "AI",
-   "source_type": "official",
-   "text": "Ritual airdrop claim open: 50M RITUAL (0.5%) for past Infernet operators, Frenrug users and long-time community members, fully unlocked. Retroactive only, nothing new to farm. Claim only at airdrop.ritualfoundation.org.",
-   "at": "2026-10-26T10:28:18-05:00",
-   "url": "https://x.com/ritualfnd/status/2114740914006741056"
-  },
-  {
-   "project": "GenLayer",
-   "theme": "AI",
-   "source_type": "official",
-   "text": "OPEN CAMPAIGN: GenLayer says airdrop registration closes today, Mon 10/26 (no exact time). Register only at airdrop.genlayer.com; fake GEN tokens trade on Base, BSC and Solana.",
-   "at": "2026-10-26T06:47:09-05:00",
-   "url": "https://x.com/GenLayer/status/2114685257987530972"
-  },
-  {
-   "project": "Flop Network",
-   "theme": "AI",
-   "source_type": "founder",
-   "text": "Arthur Hayes: Flop Labs opens a public Devnet in the coming days for miners, validators and agents. Devnet does not count toward any token allocation; Testnet and airdrop come after. No FLOP token exists.",
-   "at": "2026-10-26T02:17:39-05:00",
-   "url": "https://x.com/flop_labs/status/2114628648615772410"
-  },
-  {
-   "project": "DAC Chain",
-   "theme": "Quantum",
-   "source_type": "rumor",
-   "text": "Many accounts report the DACT TGE moved to Nov 22 00:00 UTC, with the 75M Grant/Airdrop tranche on 24-month linear vesting (vesting contracts dated from Oct 1). No @dac_chain X post found; treat as unconfirmed.",
-   "at": "2026-10-25T22:20:01-05:00",
-   "url": "https://x.com/i/trending/2114480794596942125"
-  },
-  {
-   "project": "QMS Network",
-   "theme": "Quantum",
-   "source_type": "official",
-   "text": "QWAP (QMS testnet DEX) deprecates and re-adds USDT, USDC, WBTC and WETH pools Thu 10/29 9 AM UTC; testnet LPs should withdraw first. Testnet only, no token.",
-   "at": "2026-10-26T08:01:09-05:00",
-   "url": "https://x.com/QMSNetwork/status/2114703882874179923"
-  },
-  {
-   "project": "Ritual",
-   "theme": "AI",
-   "source_type": "rumor",
-   "text": "Third parties spotted a new airdrop.ritualfoundation.org subdomain and expect a checker or TGE soon. Ritual has not announced it, and there is no TGE date or official contract. Any RITUAL token now is a scam; use only links posted by @ritualnet or @ritualfnd.",
-   "at": "2026-10-25T16:15:00-05:00",
-   "url": "https://x.com/0xUzman/status/2114444617135292482"
-  },
-  {
-   "project": "Ritual",
-   "theme": "AI",
-   "source_type": "official",
-   "text": "Exchange-side announcements (first logged now): Coinbase added RITUAL to its listing roadmap on Sep 16 (no trading date), and MEXC opened RITUAL pre-market trading on Sep 30 (settlement TBA; total supply 10B). Pre-market is an IOU market, not a live token or DEX route.",
-   "at": "2026-10-25T16:15:00-05:00",
-   "url": "https://www.mexc.com/announcements/article/mexc-pre-market-17827791538935"
-  },
-  {
-   "project": "QMS Network",
-   "theme": "Quantum",
-   "source_type": "official",
-   "text": "OPEN CAMPAIGN (waitlist, no deadline): QMS Network, a post-quantum proof-of-useful-work L1, has its waitlist open at qms.finance/#waitlist and a free public testnet (chain 19480). No token, airdrop or points program has been announced; third-party posts that hint at an airdrop are unconfirmed. Any QMS token today is a scam.",
-   "at": "2026-10-25T12:10:00-05:00",
-   "url": "https://qms.finance/#waitlist"
-  }
- ],
- "digest": {
-  "date": "2026-10-26",
-  "top3": [
-   {
-    "name": "Flop Network",
-    "why": "Public Devnet opens in the coming days (Arthur Hayes); it earns no token allocation, but it's the first live step toward the testnet and airdrop. No FLOP token exists, so any FLOP is a scam.",
-    "logo": "logos/flop-network.png",
-    "url": "https://x.com/flop_labs"
-   },
-   {
-    "name": "Quip Network",
-    "why": "Quip Points are open (up to 2x with a Quantum Echo) and the testnet shows 20k+ PQ wallets; no TGE date yet. Use only points.quip.network; any QUIP token now is a scam.",
-    "logo": "logos/quip-network.png",
-    "url": "https://quip.network"
-   },
-   {
-    "name": "Ritual",
-    "why": "Closest to the alert bar at 74: Coinbase roadmap plus MEXC pre-market, but still no dated TGE, no audit and no official airdrop page. Watch @ritualnet and @ritualfnd only.",
-    "logo": "logos/ritual.png",
-    "url": "https://ritual.net"
-   }
   ],
-  "ai": [
-   "Ritual mainnet + RITUAL live, Coinbase listing (HIGH PRIORITY, 76)",
-   "4 PM: Ritual on Coinbase $0.02495 (24h range $0.0175 to $0.09); still no real DEX pool",
-   "GenLayer: registration closes today, Mon 10/26 (official, no exact time); TGE still undated",
-   "Flop: third party claims testnet 11/3 and TGE Q1 2027 and links a fake Solana FLOP; Hayes says no FLOP token exists",
-   "Flop: Devnet opening in the coming days (Arthur Hayes); no allocation for Devnet",
-   "Axis: Binance Alpha AXIS trading competition live; $0.263, 24h range $0.249 to $0.312, volume $191M vs $43M market cap",
-   "DATA $0.141 (-2%); Crynux $0.00147, about $1k volume and gone from SafeTrade tickers",
-   "No new official posts: Ritual, Fraction, Dataline (sale details still expected this week), Pond, DATA"
+  "prelaunch_updates": [
+    {
+      "project": "Flop Network",
+      "theme": "AI",
+      "source_type": "rumor",
+      "text": "Third party (AirdropAlert): incentivized testnet Tue 11/3, mainnet and TGE Q1 2027, 4.4B genesis airdrop, early applications open on their site. None of this is on @flop_labs. Arthur Hayes says there is no FLOP token, so the Solana token AirdropAlert links is fake.",
+      "at": "2026-10-26T14:23:03-05:00",
+      "url": "https://x.com/Airdropalertcom/status/2114799991159918889"
+    },
+    {
+      "project": "Ritual",
+      "theme": "AI",
+      "source_type": "official",
+      "text": "Ritual mainnet and RITUAL token are live; first listing on Coinbase (RITUAL-USD). Bridged RITUAL on Base and BSC is 0x256E...8C37. 18% of 10B supply unlocked at launch; insiders locked 1 year; supply uncapped.",
+      "at": "2026-10-26T10:28:13-05:00",
+      "url": "https://x.com/ritualfnd/status/2114740894213759130"
+    },
+    {
+      "project": "Ritual",
+      "theme": "AI",
+      "source_type": "official",
+      "text": "Ritual airdrop claim open: 50M RITUAL (0.5%) for past Infernet operators, Frenrug users and long-time community members, fully unlocked. Retroactive only, nothing new to farm. Claim only at airdrop.ritualfoundation.org.",
+      "at": "2026-10-26T10:28:18-05:00",
+      "url": "https://x.com/ritualfnd/status/2114740914006741056"
+    },
+    {
+      "project": "GenLayer",
+      "theme": "AI",
+      "source_type": "official",
+      "text": "OPEN CAMPAIGN: GenLayer says airdrop registration closes today, Mon 10/26 (no exact time). Register only at airdrop.genlayer.com; fake GEN tokens trade on Base, BSC and Solana.",
+      "at": "2026-10-26T06:47:09-05:00",
+      "url": "https://x.com/GenLayer/status/2114685257987530972"
+    },
+    {
+      "project": "Flop Network",
+      "theme": "AI",
+      "source_type": "founder",
+      "text": "Arthur Hayes: Flop Labs opens a public Devnet in the coming days for miners, validators and agents. Devnet does not count toward any token allocation; Testnet and airdrop come after. No FLOP token exists.",
+      "at": "2026-10-26T02:17:39-05:00",
+      "url": "https://x.com/flop_labs/status/2114628648615772410"
+    },
+    {
+      "project": "DAC Chain",
+      "theme": "Quantum",
+      "source_type": "rumor",
+      "text": "Many accounts report the DACT TGE moved to Nov 22 00:00 UTC, with the 75M Grant/Airdrop tranche on 24-month linear vesting (vesting contracts dated from Oct 1). No @dac_chain X post found; treat as unconfirmed.",
+      "at": "2026-10-25T22:20:01-05:00",
+      "url": "https://x.com/i/trending/2114480794596942125"
+    },
+    {
+      "project": "QMS Network",
+      "theme": "Quantum",
+      "source_type": "official",
+      "text": "QWAP (QMS testnet DEX) deprecates and re-adds USDT, USDC, WBTC and WETH pools Thu 10/29 9 AM UTC; testnet LPs should withdraw first. Testnet only, no token.",
+      "at": "2026-10-26T08:01:09-05:00",
+      "url": "https://x.com/QMSNetwork/status/2114703882874179923"
+    },
+    {
+      "project": "Ritual",
+      "theme": "AI",
+      "source_type": "rumor",
+      "text": "Third parties spotted a new airdrop.ritualfoundation.org subdomain and expect a checker or TGE soon. Ritual has not announced it, and there is no TGE date or official contract. Any RITUAL token now is a scam; use only links posted by @ritualnet or @ritualfnd.",
+      "at": "2026-10-25T16:15:00-05:00",
+      "url": "https://x.com/0xUzman/status/2114444617135292482"
+    },
+    {
+      "project": "Ritual",
+      "theme": "AI",
+      "source_type": "official",
+      "text": "Exchange-side announcements (first logged now): Coinbase added RITUAL to its listing roadmap on Sep 16 (no trading date), and MEXC opened RITUAL pre-market trading on Sep 30 (settlement TBA; total supply 10B). Pre-market is an IOU market, not a live token or DEX route.",
+      "at": "2026-10-25T16:15:00-05:00",
+      "url": "https://www.mexc.com/announcements/article/mexc-pre-market-17827791538935"
+    },
+    {
+      "project": "QMS Network",
+      "theme": "Quantum",
+      "source_type": "official",
+      "text": "OPEN CAMPAIGN (waitlist, no deadline): QMS Network, a post-quantum proof-of-useful-work L1, has its waitlist open at qms.finance/#waitlist and a free public testnet (chain 19480). No token, airdrop or points program has been announced; third-party posts that hint at an airdrop are unconfirmed. Any QMS token today is a scam.",
+      "at": "2026-10-25T12:10:00-05:00",
+      "url": "https://qms.finance/#waitlist"
+    }
   ],
-  "quantum": [
-   "Quantus QTC listed on CoinMarketCap (official)",
-   "Quantus $71.83 (-5%), 24h range $71.65 to $75.94, volume $1.25M; 'Quantum Secure Bitcoin' post only",
-   "Soqucoin $0.000163, 24h range $0.000129 to $0.000259, volume $194k; no new milestone",
-   "DAC: TGE reported moved to Sun 11/22 00:00 UTC, not posted by @dac_chain; stays REJECT 48",
-   "QMS: QWAP testnet pools re-added Thu 10/29 9 AM UTC; Parano1d SDK on npm (radar)",
-   "Abelian +24% on only $59k volume (24h range $0.091 to $0.150): thin book, not scored",
-   "NEAR nearcore 2.14.0 (PQ signature verification for contracts) mainnet vote Wed 11/4 per a NEAR dev (third party); matters for QTC routing on NEAR"
+  "digest": {
+    "date": "2026-10-26",
+    "top3": [
+      {
+        "name": "Flop Network",
+        "why": "Public Devnet opens in the coming days (Arthur Hayes); it earns no token allocation, but it's the first live step toward the testnet and airdrop. No FLOP token exists, so any FLOP is a scam.",
+        "logo": "logos/flop-network.png",
+        "url": "https://x.com/flop_labs"
+      },
+      {
+        "name": "Quip Network",
+        "why": "Quip Points are open (up to 2x with a Quantum Echo) and the testnet shows 20k+ PQ wallets; no TGE date yet. Use only points.quip.network; any QUIP token now is a scam.",
+        "logo": "logos/quip-network.png",
+        "url": "https://quip.network"
+      },
+      {
+        "name": "Ritual",
+        "why": "Closest to the alert bar at 74: Coinbase roadmap plus MEXC pre-market, but still no dated TGE, no audit and no official airdrop page. Watch @ritualnet and @ritualfnd only.",
+        "logo": "logos/ritual.png",
+        "url": "https://ritual.net"
+      }
+    ],
+    "ai": [
+      "Ritual mainnet + RITUAL live, Coinbase listing (HIGH PRIORITY, 76)",
+      "4 PM: Ritual on Coinbase $0.02495 (24h range $0.0175 to $0.09); still no real DEX pool",
+      "GenLayer: registration closes today, Mon 10/26 (official, no exact time); TGE still undated",
+      "Flop: third party claims testnet 11/3 and TGE Q1 2027 and links a fake Solana FLOP; Hayes says no FLOP token exists",
+      "Flop: Devnet opening in the coming days (Arthur Hayes); no allocation for Devnet",
+      "Axis: Binance Alpha AXIS trading competition live; $0.263, 24h range $0.249 to $0.312, volume $191M vs $43M market cap",
+      "DATA $0.141 (-2%); Crynux $0.00147, about $1k volume and gone from SafeTrade tickers",
+      "No new official posts: Ritual, Fraction, Dataline (sale details still expected this week), Pond, DATA"
+    ],
+    "quantum": [
+      "Quantus QTC listed on CoinMarketCap (official)",
+      "Quantus $71.83 (-5%), 24h range $71.65 to $75.94, volume $1.25M; 'Quantum Secure Bitcoin' post only",
+      "Soqucoin $0.000163, 24h range $0.000129 to $0.000259, volume $194k; no new milestone",
+      "DAC: TGE reported moved to Sun 11/22 00:00 UTC, not posted by @dac_chain; stays REJECT 48",
+      "QMS: QWAP testnet pools re-added Thu 10/29 9 AM UTC; Parano1d SDK on npm (radar)",
+      "Abelian +24% on only $59k volume (24h range $0.091 to $0.150): thin book, not scored",
+      "NEAR nearcore 2.14.0 (PQ signature verification for contracts) mainnet vote Wed 11/4 per a NEAR dev (third party); matters for QTC routing on NEAR"
+    ]
+  },
+  "rejections": [
+    {
+      "name": "Ptah 'Proof of Agent' social mining",
+      "theme": "AI",
+      "score": 30,
+      "reason": "Overnight wave of near-identical '#ProofOfAgent' posts from tiny accounts pushing claim links for Binance Agent ID holders; Ptah already rejected (unverified team). Never use the shared links",
+      "at": "2026-10-26T08:25:00-05:00"
+    },
+    {
+      "name": "InterLink (ITLG)",
+      "theme": "AI",
+      "score": 15,
+      "reason": "Ambassador posts pair 'human-centered AI' with 'quantum-resistant blockchain' but name no PQ algorithm, code or audit; branding-only",
+      "at": "2026-10-26T08:25:00-05:00"
+    },
+    {
+      "name": "Motes (MOTES)",
+      "theme": "AI",
+      "score": 25,
+      "reason": "AI-agent NFT 'creator program' posts with identical paid-campaign wording; no team, code or audit; NFT-mint airdrop pitch",
+      "at": "2026-10-26T16:08:00-05:00"
+    },
+    {
+      "name": "Lowkey (LOWKEY)",
+      "theme": "Quantum",
+      "score": 10,
+      "reason": "Fresh pump.fun token (8 followers) claiming 'post-quantum' trading terminal; no PQ scheme, code or team",
+      "at": "2026-10-26T16:08:00-05:00"
+    }
+  ],
+  "snapshot_note": "Coinbase, DexScreener and CoinGecko SafeTrade tickers 4:05 PM CT Mon Oct 26; X sweep since 12:10 PM CT Mon Oct 26.",
+  "deadlines": [
+    {
+      "project": "GenLayer",
+      "theme": "AI",
+      "title": "Airdrop registration closes (official; time not announced)",
+      "type": "Sign-up deadline",
+      "date": "2026-10-26T00:00:00-05:00",
+      "all_day": true,
+      "url": "https://x.com/GenLayer/status/2114685257987530972",
+      "status": "open",
+      "approx": true
+    },
+    {
+      "project": "Dataline",
+      "theme": "AI",
+      "title": "Dataline token sale details expected",
+      "type": "Token sale",
+      "date": "2026-10-26T00:00:00-05:00",
+      "date_end": "2026-10-30T00:00:00-05:00",
+      "all_day": true,
+      "approx": true,
+      "url": "https://x.com/DatalineAI",
+      "status": "open"
+    },
+    {
+      "project": "Fraction AI",
+      "theme": "AI",
+      "title": "TGE (per MiCA filing)",
+      "type": "TGE",
+      "date": "2026-11-11T00:00:00-06:00",
+      "all_day": true,
+      "approx": true,
+      "url": "https://tgeindex.com/tge/fraction-ai/",
+      "status": "open"
+    },
+    {
+      "project": "GenLayer",
+      "theme": "AI",
+      "title": "Season 2 points start (run until mainnet)",
+      "type": "Airdrop",
+      "date": "2026-10-26T00:00:00-05:00",
+      "all_day": true,
+      "url": "https://x.com/GenLayer/status/2112934939867873677",
+      "status": "open"
+    },
+    {
+      "project": "TermiX",
+      "theme": "AI",
+      "title": "BNB Chain Set and Earn agent-hire tasks close",
+      "type": "Sign-up deadline",
+      "date": "2026-11-05T00:00:00-06:00",
+      "all_day": true,
+      "approx": true,
+      "url": "https://x.com/termix_ai/status/2113937329203322994",
+      "status": "open"
+    },
+    {
+      "project": "QMS Network",
+      "theme": "Quantum",
+      "title": "QWAP testnet pools re-added; LPs withdraw before",
+      "type": "Testnet",
+      "date": "2026-10-29T04:00:00-05:00",
+      "url": "https://x.com/QWAP_xyz/status/2114703675277111787",
+      "status": "open"
+    },
+    {
+      "project": "DAC Chain",
+      "theme": "Quantum",
+      "title": "TGE (reported, not posted by @dac_chain)",
+      "type": "TGE",
+      "date": "2026-11-21T18:00:00-06:00",
+      "approx": true,
+      "url": "https://x.com/i/trending/2114480794596942125",
+      "status": "open"
+    },
+    {
+      "project": "GenLayer",
+      "theme": "AI",
+      "title": "MANUAL (owner): link Discord on the Portal and get the community role; registration closes today, time not announced",
+      "type": "Sign-up deadline",
+      "date": "2026-10-26T23:59:00-05:00",
+      "all_day": true,
+      "url": "https://portal.genlayer.foundation",
+      "status": "done"
+    },
+    {
+      "project": "Quip Network",
+      "theme": "Quantum",
+      "title": "MANUAL (owner): Quip quests left: Telegram (50 pts, join t.me/quip_network, then claim) and YouTube (25 pts); Discord done (+50); no deadline announced",
+      "type": "Airdrop",
+      "date": "2026-12-31T23:59:00-06:00",
+      "all_day": true,
+      "url": "https://quest.quip.network/airdrop",
+      "status": "open",
+      "approx": true
+    },
+    {
+      "project": "QMS Network",
+      "theme": "Quantum",
+      "title": "QMS testnet waitlist: signed up for updates via X (done)",
+      "type": "Testnet",
+      "date": "2026-12-31T23:59:00-06:00",
+      "all_day": true,
+      "url": "https://qms.finance",
+      "status": "done",
+      "approx": true
+    }
+  ],
+  "report": {
+    "updated": "2026-10-26T08:25:00-05:00",
+    "intro": "Quiet night: no HIGH PRIORITY alerts (0 of 3). GenLayer's airdrop registration closes today, Mon 10/26, Flop's public Devnet opens in the coming days, and a reported Nov 22 DAC TGE is still unconfirmed by the project.",
+    "snapshots": "CoinGecko prices and SafeTrade tickers 8:15 AM CT Oct 26; X sweep since 8:05 PM CT Oct 25.",
+    "disclaimer": "Research, not financial advice. Snapshots only; verify every contract yourself.",
+    "takeaways": [
+      "No alerts. Closest are Ritual (74) and GenLayer (70); both lack a dated TGE and an audit, so they stay capped below 75.",
+      "Open campaigns: GenLayer registration closes today (airdrop.genlayer.com); Quip Points open with no end date (points.quip.network); QMS testnet waitlist (qms.finance).",
+      "Flop Labs: public Devnet in the coming days per Arthur Hayes; it earns no allocation, and there is still no FLOP token.",
+      "DAC Chain: TGE reportedly moved to Nov 22 00:00 UTC; no @dac_chain post found, so it stays REJECT (48).",
+      "Axis runs a Binance Alpha trading competition (buy volume only); volume is over 4x its market cap, so expect swings.",
+      "Rejected: Ptah 'Proof of Agent' claim-link spam and InterLink (ITLG) AI-plus-quantum branding with no named PQ scheme."
+    ],
+    "prelaunch": [
+      {
+        "project": "Ritual",
+        "ticker": "RITUAL",
+        "theme": "AI",
+        "coming": "Mainnet and TGE",
+        "when": "Undated",
+        "score": 74,
+        "why": "Coinbase roadmap and MEXC pre-market, but no date and no published audit keep it at 74."
+      },
+      {
+        "project": "GenLayer",
+        "ticker": "GEN",
+        "theme": "AI",
+        "coming": "Registration close, then TGE and claims",
+        "when": "Registration closes Mon 10/26 (time TBA); TGE undated",
+        "score": 70,
+        "why": "Needs a dated TGE and an official Arbitrum contract to reach the alert bar."
+      },
+      {
+        "project": "Quip Network",
+        "ticker": "QUIP",
+        "theme": "Quantum",
+        "coming": "TGE; Quip Points open now (2x with a Quantum Echo)",
+        "when": "Undated",
+        "score": 65,
+        "why": "Testnet and audited contracts; no TGE date. Any QUIP token is a scam."
+      },
+      {
+        "project": "Fraction AI",
+        "ticker": "FRAC",
+        "theme": "AI",
+        "coming": "TGE",
+        "when": "Wed 11/11 per MiCA filing (unconfirmed on X)",
+        "score": 63,
+        "why": "Date only in a filing, not announced by the project."
+      },
+      {
+        "project": "Dataline",
+        "ticker": "TBA",
+        "theme": "AI",
+        "coming": "Public sale on Uniswap CCA (Base)",
+        "when": "Details expected by Fri 10/30",
+        "score": 60,
+        "why": "Sale terms (FDV, float, vesting) not yet published."
+      },
+      {
+        "project": "Flop Network",
+        "ticker": "FLOP",
+        "theme": "AI",
+        "coming": "Public Devnet, then testnet and airdrop",
+        "when": "Devnet in the coming days; testnet Tue 11/3 per a third party",
+        "score": 55,
+        "why": "No token exists; any FLOP is a scam."
+      },
+      {
+        "project": "TermiX",
+        "ticker": "TMT",
+        "theme": "AI",
+        "coming": "TGE and tokenomics",
+        "when": "Undated",
+        "score": 50,
+        "why": "Set and Earn tasks close Thu 11/5; no TGE date."
+      }
+    ],
+    "radar_only": [
+      "Parano1d (NOID)",
+      "QMS Network",
+      "Asentum (ASE)",
+      "QRL 2.0",
+      "Pond",
+      "Prime Intellect",
+      "Nous Research",
+      "Teneo",
+      "Starknet PQ-L1 research",
+      "Stellar Bell (P30)",
+      "TRON PQ testnet"
+    ],
+    "tokens": [
+      {
+        "project": "Quantus",
+        "ticker": "QTC",
+        "theme": "Quantum",
+        "category": "Post-quantum L1",
+        "tier": "Strong",
+        "price": 71.83,
+        "market_cap": 21930065,
+        "volume_24h": 1253356,
+        "score": 81,
+        "dex": "Rhea Finance (NEAR)"
+      },
+      {
+        "project": "QRL",
+        "ticker": "QRL",
+        "theme": "Quantum",
+        "category": "Post-quantum L1",
+        "tier": "Strong",
+        "price": 1.23,
+        "market_cap": 96517243,
+        "volume_24h": 71056,
+        "score": 77,
+        "dex": ""
+      },
+      {
+        "project": "Algorand",
+        "ticker": "ALGO",
+        "theme": "Quantum",
+        "category": "L1 with Falcon accounts",
+        "tier": "Strong",
+        "price": 0.104375,
+        "market_cap": 947104308,
+        "volume_24h": 41054959,
+        "score": 78,
+        "dex": "Native Algorand DEXs"
+      },
+      {
+        "project": "Abelian",
+        "ticker": "ABEL",
+        "theme": "Quantum",
+        "category": "Post-quantum L1",
+        "tier": "Strong",
+        "price": 0.113708,
+        "market_cap": 16409602,
+        "volume_24h": 59011,
+        "score": 67,
+        "dex": ""
+      },
+      {
+        "project": "Soqucoin",
+        "ticker": "SOQ",
+        "theme": "Quantum",
+        "category": "Post-quantum coin",
+        "tier": "Speculative",
+        "price": 0.00016344,
+        "market_cap": 388956,
+        "volume_24h": 194240,
+        "score": 65,
+        "dex": ""
+      },
+      {
+        "project": "QANplatform",
+        "ticker": "QANX",
+        "theme": "Quantum",
+        "category": "Post-quantum L1",
+        "tier": "Speculative",
+        "price": 0.01192086,
+        "market_cap": 20265475,
+        "volume_24h": 177783,
+        "score": 58,
+        "dex": "PancakeSwap (BSC) / Uniswap (ETH)"
+      },
+      {
+        "project": "Cellframe",
+        "ticker": "CELL",
+        "theme": "Quantum",
+        "category": "Post-quantum L0",
+        "tier": "Speculative",
+        "price": 0.067857,
+        "market_cap": 2521261,
+        "volume_24h": 24746,
+        "score": 57,
+        "dex": "PancakeSwap (BSC) / Uniswap (ETH)"
+      },
+      {
+        "project": "Neptune Cash",
+        "ticker": "NPT",
+        "theme": "Quantum",
+        "category": "Post-quantum privacy",
+        "tier": "Speculative",
+        "price": 0.249709,
+        "market_cap": 1123447,
+        "volume_24h": 3130.01,
+        "score": 52,
+        "dex": "wNPT Base (tiny)"
+      },
+      {
+        "project": "DATA Network",
+        "ticker": "DATA",
+        "theme": "AI",
+        "category": "Data",
+        "tier": "Speculative",
+        "price": 0.140843,
+        "market_cap": 50783662,
+        "volume_24h": 10088261,
+        "score": 69,
+        "dex": ""
+      },
+      {
+        "project": "Pearl",
+        "ticker": "PEARL",
+        "theme": "AI",
+        "category": "Compute (PoUW)",
+        "tier": "Speculative",
+        "price": 1.82,
+        "market_cap": 652002513,
+        "volume_24h": 8191852,
+        "score": 72,
+        "dex": ""
+      },
+      {
+        "project": "Gonka",
+        "ticker": "GNK",
+        "theme": "AI",
+        "category": "Compute",
+        "tier": "Speculative",
+        "price": 0.169802,
+        "market_cap": null,
+        "volume_24h": 2988.81,
+        "score": 69,
+        "dex": "WGNK Uniswap (ETH)"
+      },
+      {
+        "project": "Axis Robotics",
+        "ticker": "AXIS",
+        "theme": "AI",
+        "category": "Robotics data",
+        "tier": "Speculative",
+        "price": 0.262808,
+        "market_cap": 43363259,
+        "volume_24h": 191028853,
+        "score": 57,
+        "dex": "Uniswap (Base)"
+      },
+      {
+        "project": "Clore.ai",
+        "ticker": "CLORE",
+        "theme": "AI",
+        "category": "GPU market",
+        "tier": "Speculative",
+        "price": 0.00160478,
+        "market_cap": 1020187,
+        "volume_24h": 68910,
+        "score": 52,
+        "dex": "Uniswap (ETH)"
+      },
+      {
+        "project": "Crynux",
+        "ticker": "CNX",
+        "theme": "AI",
+        "category": "Compute",
+        "tier": "Speculative",
+        "price": 0.00147213,
+        "market_cap": 2556690,
+        "volume_24h": 1004.61,
+        "score": 51,
+        "dex": "Uniswap V4 (Base), thin"
+      }
+    ],
+    "impostors": [
+      {
+        "project": "GenLayer",
+        "theme": "AI",
+        "fakes": "Base 0x457c…0f8D and 0x2322…c96C, flap.sh, four.meme and pump.fun GEN copies",
+        "official": "No token yet; links only from @GenLayer"
+      },
+      {
+        "project": "Axis Robotics",
+        "theme": "AI",
+        "fakes": "Many copycat AXIS tokens on Solana, Base and Ethereum",
+        "official": "Base 0x5be7…d755ea (per CoinGecko)"
+      },
+      {
+        "project": "Ritual",
+        "theme": "AI",
+        "fakes": "Base 0xfF2E…9E3572",
+        "official": "No token yet"
+      },
+      {
+        "project": "Quantus",
+        "theme": "Quantum",
+        "fakes": "Solana and Base 'QTC' tokens; Qubitcoin also uses QTC",
+        "official": "qtc.omft.near on NEAR only"
+      },
+      {
+        "project": "QRL",
+        "theme": "Quantum",
+        "fakes": "Base 0x3769…5bA3 (disowned Oct 12) and other ERC-20/Solana 'QRL'",
+        "official": "No token contract"
+      },
+      {
+        "project": "Quip Network",
+        "theme": "Quantum",
+        "fakes": "Any QUIP token before an official contract",
+        "official": "No token yet"
+      },
+      {
+        "project": "Flop Network",
+        "theme": "AI",
+        "fakes": "Any FLOP token (none exists, per Arthur Hayes); @FlopNetwork is an unaffiliated fan account; Solana pump.fun 'Flop Labs FLOP' HwCG1Jr6...pump (promoted by AirdropAlert 10/26)",
+        "official": "No token yet; @flop_labs only"
+      }
+    ],
+    "safetrade_source": "CoinGecko SafeTrade tickers, 8:15 AM CT Oct 26",
+    "safetrade": [
+      {
+        "project": "Quantus",
+        "ticker": "QUANTUS",
+        "theme": "Quantum",
+        "price": 71.83,
+        "market_cap": 21930065,
+        "volume_24h": 1253356,
+        "score": 81,
+        "tier": "Benchmark",
+        "dex": "Rhea Finance (NEAR)",
+        "note": "Trades on SafeTrade as QUANTUS; QTC there is Qubitcoin, not Quantus",
+        "pair": "QUANTUS/USDT"
+      },
+      {
+        "project": "Soqucoin",
+        "ticker": "SOQ",
+        "theme": "Quantum",
+        "price": 0.00016344,
+        "market_cap": 388956,
+        "volume_24h": 194240,
+        "score": 65,
+        "tier": "WATCH",
+        "dex": "",
+        "note": "Also on NonKYC; 24h range $0.000129 to $0.000259",
+        "pair": "SOQ/USDT"
+      },
+      {
+        "project": "Pearl",
+        "ticker": "PEARL",
+        "theme": "AI",
+        "price": 1.82,
+        "market_cap": 652002513,
+        "volume_24h": 8191852,
+        "score": 72,
+        "tier": "WATCH",
+        "dex": "",
+        "note": "Trades on SafeTrade (USDT, USDC, BTC pairs); no official DEX route",
+        "pair": "PEARL/USDT"
+      },
+      {
+        "project": "Gonka",
+        "ticker": "GNK",
+        "theme": "AI",
+        "price": 0.169802,
+        "market_cap": null,
+        "volume_24h": 2988.81,
+        "score": 69,
+        "tier": "WATCH",
+        "dex": "WGNK Uniswap (ETH)",
+        "note": "Official wrapped token on Ethereum",
+        "pair": "GNK/USDT"
+      },
+      {
+        "project": "Clore.ai",
+        "ticker": "CLORE",
+        "theme": "AI",
+        "price": 0.00160478,
+        "market_cap": 1020187,
+        "volume_24h": 68910,
+        "score": 52,
+        "tier": "WATCH",
+        "dex": "Uniswap (ETH)",
+        "note": "GPU marketplace",
+        "pair": "CLORE/USDT"
+      },
+      {
+        "project": "Neptune Cash",
+        "ticker": "NPT",
+        "theme": "Quantum",
+        "price": 0.249709,
+        "market_cap": 1123447,
+        "volume_24h": 3130.01,
+        "score": 52,
+        "tier": "WATCH",
+        "dex": "wNPT Base (tiny)",
+        "note": "Very thin volume",
+        "pair": "NPT/USDT"
+      },
+      {
+        "project": "Qubitcoin",
+        "ticker": "QTC",
+        "theme": "Quantum",
+        "price": 0.479441,
+        "market_cap": 1106671,
+        "volume_24h": 5691.38,
+        "score": 30,
+        "tier": "Avoid",
+        "dex": "",
+        "note": "Ticker clash with Quantus",
+        "pair": "QTC/USDT"
+      },
+      {
+        "project": "Parano1d",
+        "ticker": "NOID",
+        "theme": "Quantum",
+        "price": 0.354588,
+        "market_cap": null,
+        "volume_24h": 108128,
+        "score": null,
+        "tier": "Radar",
+        "dex": "",
+        "note": "Radar only: anonymous dev, PQ scheme unverified; -24% in 24h (range $0.31 to $0.47); SDK on npm",
+        "pair": "NOID/USDT"
+      }
+    ],
+    "safetrade_venue": {
+      "type": "Centralized exchange (no launchpad; AMM pools 'coming soon')",
+      "x": "https://x.com/safetrade",
+      "site": "https://safetrade.com",
+      "announcements": "https://x.com/safetrade",
+      "listing_posts": "No @safetrade posts overnight. Versus the Oct 23 baseline, NOID is new; CNX (Crynux), KMD and XPM no longer show in CoinGecko tickers",
+      "launchpad": "None",
+      "trust_score": 2,
+      "steps": [
+        {
+          "title": "Check the ticker",
+          "text": "On SafeTrade, QUANTUS is Quantus and QTC is Qubitcoin."
+        },
+        {
+          "title": "Prefer a DEX route",
+          "text": "For a DEX-only buyer, use the DEX route listed per token; several SafeTrade tokens have none."
+        },
+        {
+          "title": "Verify contracts",
+          "text": "Only use contracts posted by the project itself."
+        }
+      ]
+    },
+    "notes": [
+      {
+        "section": "prelaunch",
+        "theme": "AI",
+        "text": "Ritual (74) and GenLayer (70) are closest to the bar; each still needs a dated TGE and a published audit, and GenLayer an official Arbitrum contract."
+      },
+      {
+        "section": "prelaunch",
+        "theme": "Quantum",
+        "text": "DAC's Nov 22 TGE is reported by many accounts but not posted by @dac_chain; a second missed date already left it at REJECT."
+      },
+      {
+        "section": "tokens",
+        "theme": "AI",
+        "text": "Axis volume ($191M) is over 4x its $43M market cap during the Binance Alpha competition; expect volatility."
+      },
+      {
+        "section": "tokens",
+        "theme": "Quantum",
+        "text": "Abelian's +24% came on about $59k volume (range $0.091 to $0.150); treat it as a thin-book move."
+      },
+      {
+        "section": "impostors",
+        "theme": "AI",
+        "text": "Before an official contract, any token named GenLayer, Ritual, Fraction, Dataline, Pond or Flop is a scam."
+      },
+      {
+        "section": "safetrade",
+        "theme": "AI",
+        "text": "Crynux (CNX/USDT) no longer appears in SafeTrade tickers on CoinGecko; its DEX route is Uniswap V4 on Base (thin)."
+      }
+    ],
+    "sources": [
+      {
+        "title": "GenLayer: registration closes today (official)",
+        "url": "https://x.com/GenLayer/status/2114685257987530972"
+      },
+      {
+        "title": "GenLayer airdrop (official)",
+        "url": "https://airdrop.genlayer.com"
+      },
+      {
+        "title": "Flop Labs: Devnet coming very soon",
+        "url": "https://x.com/flop_labs/status/2114628648615772410"
+      },
+      {
+        "title": "Axis: Binance Alpha trading competition",
+        "url": "https://x.com/axisrobotics/status/2114683118905098693"
+      },
+      {
+        "title": "DAC TGE date story (X summary, unconfirmed)",
+        "url": "https://x.com/i/trending/2114480794596942125"
+      },
+      {
+        "title": "QMS / QWAP pool notice",
+        "url": "https://x.com/QMSNetwork/status/2114703882874179923"
+      },
+      {
+        "title": "Parano1d SDK post",
+        "url": "https://x.com/Parano1dComm/status/2114670174775169092"
+      },
+      {
+        "title": "Quip Points (official)",
+        "url": "https://points.quip.network/"
+      },
+      {
+        "title": "Quantus 'Quantum Secure Bitcoin' post",
+        "url": "https://x.com/QuantusNetwork/status/2114620143791751633"
+      },
+      {
+        "title": "CoinGecko SafeTrade tickers",
+        "url": "https://www.coingecko.com/en/exchanges/safe_trade"
+      }
+    ]
+  },
+  "prices_updated": "2026-10-26T19:07:46-05:00",
+  "airdrops": [
+    {
+      "project": "GenLayer",
+      "theme": "AI",
+      "what": "Airdrop registration (official site only).",
+      "ends": "2026-10-26T23:59:00-05:00",
+      "url": "https://airdrop.genlayer.com"
+    },
+    {
+      "project": "Quip Network",
+      "theme": "Quantum",
+      "what": "Quip Points quests: Discord done; Telegram and YouTube left.",
+      "ends": null,
+      "url": "https://points.quip.network",
+      "points": "50",
+      "points_note": "earned · 75 more available (Telegram 50, YouTube 25)"
+    },
+    {
+      "project": "Ritual",
+      "theme": "AI",
+      "what": "Official airdrop claim is open; heavy selling risk from recipients.",
+      "ends": null,
+      "url": "https://airdrop.ritualfoundation.org"
+    }
   ]
- },
- "rejections": [
-  {
-   "name": "Ptah 'Proof of Agent' social mining",
-   "theme": "AI",
-   "score": 30,
-   "reason": "Overnight wave of near-identical '#ProofOfAgent' posts from tiny accounts pushing claim links for Binance Agent ID holders; Ptah already rejected (unverified team). Never use the shared links",
-   "at": "2026-10-26T08:25:00-05:00"
-  },
-  {
-   "name": "InterLink (ITLG)",
-   "theme": "AI",
-   "score": 15,
-   "reason": "Ambassador posts pair 'human-centered AI' with 'quantum-resistant blockchain' but name no PQ algorithm, code or audit; branding-only",
-   "at": "2026-10-26T08:25:00-05:00"
-  },
-  {
-   "name": "Motes (MOTES)",
-   "theme": "AI",
-   "score": 25,
-   "reason": "AI-agent NFT 'creator program' posts with identical paid-campaign wording; no team, code or audit; NFT-mint airdrop pitch",
-   "at": "2026-10-26T16:08:00-05:00"
-  },
-  {
-   "name": "Lowkey (LOWKEY)",
-   "theme": "Quantum",
-   "score": 10,
-   "reason": "Fresh pump.fun token (8 followers) claiming 'post-quantum' trading terminal; no PQ scheme, code or team",
-   "at": "2026-10-26T16:08:00-05:00"
-  }
- ],
- "snapshot_note": "Coinbase, DexScreener and CoinGecko SafeTrade tickers 4:05 PM CT Mon Oct 26; X sweep since 12:10 PM CT Mon Oct 26.",
- "deadlines": [
-  {
-   "project": "GenLayer",
-   "theme": "AI",
-   "title": "Airdrop registration closes (official; time not announced)",
-   "type": "Sign-up deadline",
-   "date": "2026-10-26T00:00:00-05:00",
-   "all_day": true,
-   "url": "https://x.com/GenLayer/status/2114685257987530972",
-   "status": "open",
-   "approx": true
-  },
-  {
-   "project": "Dataline",
-   "theme": "AI",
-   "title": "Dataline token sale details expected",
-   "type": "Token sale",
-   "date": "2026-10-26T00:00:00-05:00",
-   "date_end": "2026-10-30T00:00:00-05:00",
-   "all_day": true,
-   "approx": true,
-   "url": "https://x.com/DatalineAI",
-   "status": "open"
-  },
-  {
-   "project": "Fraction AI",
-   "theme": "AI",
-   "title": "TGE (per MiCA filing)",
-   "type": "TGE",
-   "date": "2026-11-11T00:00:00-06:00",
-   "all_day": true,
-   "approx": true,
-   "url": "https://tgeindex.com/tge/fraction-ai/",
-   "status": "open"
-  },
-  {
-   "project": "GenLayer",
-   "theme": "AI",
-   "title": "Season 2 points start (run until mainnet)",
-   "type": "Airdrop",
-   "date": "2026-10-26T00:00:00-05:00",
-   "all_day": true,
-   "url": "https://x.com/GenLayer/status/2112934939867873677",
-   "status": "open"
-  },
-  {
-   "project": "TermiX",
-   "theme": "AI",
-   "title": "BNB Chain Set and Earn agent-hire tasks close",
-   "type": "Sign-up deadline",
-   "date": "2026-11-05T00:00:00-06:00",
-   "all_day": true,
-   "approx": true,
-   "url": "https://x.com/termix_ai/status/2113937329203322994",
-   "status": "open"
-  },
-  {
-   "project": "QMS Network",
-   "theme": "Quantum",
-   "title": "QWAP testnet pools re-added; LPs withdraw before",
-   "type": "Testnet",
-   "date": "2026-10-29T04:00:00-05:00",
-   "url": "https://x.com/QWAP_xyz/status/2114703675277111787",
-   "status": "open"
-  },
-  {
-   "project": "DAC Chain",
-   "theme": "Quantum",
-   "title": "TGE (reported, not posted by @dac_chain)",
-   "type": "TGE",
-   "date": "2026-11-21T18:00:00-06:00",
-   "approx": true,
-   "url": "https://x.com/i/trending/2114480794596942125",
-   "status": "open"
-  },
-  {
-   "project": "GenLayer",
-   "theme": "AI",
-   "title": "MANUAL (owner): link Discord on the Portal and get the community role; registration closes today, time not announced",
-   "type": "Sign-up deadline",
-   "date": "2026-10-26T23:59:00-05:00",
-   "all_day": true,
-   "url": "https://portal.genlayer.foundation",
-   "status": "done"
-  },
-  {
-   "project": "Quip Network",
-   "theme": "Quantum",
-   "title": "MANUAL (owner): Quip quests left: Telegram (50 pts, join t.me/quip_network, then claim) and YouTube (25 pts); Discord done (+50); no deadline announced",
-   "type": "Airdrop",
-   "date": "2026-12-31T23:59:00-06:00",
-   "all_day": true,
-   "url": "https://quest.quip.network/airdrop",
-   "status": "open",
-   "approx": true
-  },
-  {
-   "project": "QMS Network",
-   "theme": "Quantum",
-   "title": "QMS testnet waitlist: signed up for updates via X (done)",
-   "type": "Testnet",
-   "date": "2026-12-31T23:59:00-06:00",
-   "all_day": true,
-   "url": "https://qms.finance",
-   "status": "done",
-   "approx": true
-  }
- ],
- "report": {
-  "updated": "2026-10-26T08:25:00-05:00",
-  "intro": "Quiet night: no HIGH PRIORITY alerts (0 of 3). GenLayer's airdrop registration closes today, Mon 10/26, Flop's public Devnet opens in the coming days, and a reported Nov 22 DAC TGE is still unconfirmed by the project.",
-  "snapshots": "CoinGecko prices and SafeTrade tickers 8:15 AM CT Oct 26; X sweep since 8:05 PM CT Oct 25.",
-  "disclaimer": "Research, not financial advice. Snapshots only; verify every contract yourself.",
-  "takeaways": [
-   "No alerts. Closest are Ritual (74) and GenLayer (70); both lack a dated TGE and an audit, so they stay capped below 75.",
-   "Open campaigns: GenLayer registration closes today (airdrop.genlayer.com); Quip Points open with no end date (points.quip.network); QMS testnet waitlist (qms.finance).",
-   "Flop Labs: public Devnet in the coming days per Arthur Hayes; it earns no allocation, and there is still no FLOP token.",
-   "DAC Chain: TGE reportedly moved to Nov 22 00:00 UTC; no @dac_chain post found, so it stays REJECT (48).",
-   "Axis runs a Binance Alpha trading competition (buy volume only); volume is over 4x its market cap, so expect swings.",
-   "Rejected: Ptah 'Proof of Agent' claim-link spam and InterLink (ITLG) AI-plus-quantum branding with no named PQ scheme."
-  ],
-  "prelaunch": [
-   {
-    "project": "Ritual",
-    "ticker": "RITUAL",
-    "theme": "AI",
-    "coming": "Mainnet and TGE",
-    "when": "Undated",
-    "score": 74,
-    "why": "Coinbase roadmap and MEXC pre-market, but no date and no published audit keep it at 74."
-   },
-   {
-    "project": "GenLayer",
-    "ticker": "GEN",
-    "theme": "AI",
-    "coming": "Registration close, then TGE and claims",
-    "when": "Registration closes Mon 10/26 (time TBA); TGE undated",
-    "score": 70,
-    "why": "Needs a dated TGE and an official Arbitrum contract to reach the alert bar."
-   },
-   {
-    "project": "Quip Network",
-    "ticker": "QUIP",
-    "theme": "Quantum",
-    "coming": "TGE; Quip Points open now (2x with a Quantum Echo)",
-    "when": "Undated",
-    "score": 65,
-    "why": "Testnet and audited contracts; no TGE date. Any QUIP token is a scam."
-   },
-   {
-    "project": "Fraction AI",
-    "ticker": "FRAC",
-    "theme": "AI",
-    "coming": "TGE",
-    "when": "Wed 11/11 per MiCA filing (unconfirmed on X)",
-    "score": 63,
-    "why": "Date only in a filing, not announced by the project."
-   },
-   {
-    "project": "Dataline",
-    "ticker": "TBA",
-    "theme": "AI",
-    "coming": "Public sale on Uniswap CCA (Base)",
-    "when": "Details expected by Fri 10/30",
-    "score": 60,
-    "why": "Sale terms (FDV, float, vesting) not yet published."
-   },
-   {
-    "project": "Flop Network",
-    "ticker": "FLOP",
-    "theme": "AI",
-    "coming": "Public Devnet, then testnet and airdrop",
-    "when": "Devnet in the coming days; testnet Tue 11/3 per a third party",
-    "score": 55,
-    "why": "No token exists; any FLOP is a scam."
-   },
-   {
-    "project": "TermiX",
-    "ticker": "TMT",
-    "theme": "AI",
-    "coming": "TGE and tokenomics",
-    "when": "Undated",
-    "score": 50,
-    "why": "Set and Earn tasks close Thu 11/5; no TGE date."
-   }
-  ],
-  "radar_only": [
-   "Parano1d (NOID)",
-   "QMS Network",
-   "Asentum (ASE)",
-   "QRL 2.0",
-   "Pond",
-   "Prime Intellect",
-   "Nous Research",
-   "Teneo",
-   "Starknet PQ-L1 research",
-   "Stellar Bell (P30)",
-   "TRON PQ testnet"
-  ],
-  "tokens": [
-   {
-    "project": "Quantus",
-    "ticker": "QTC",
-    "theme": "Quantum",
-    "category": "Post-quantum L1",
-    "tier": "Strong",
-    "price": 71.83,
-    "market_cap": 21930065,
-    "volume_24h": 1253356,
-    "score": 81,
-    "dex": "Rhea Finance (NEAR)"
-   },
-   {
-    "project": "QRL",
-    "ticker": "QRL",
-    "theme": "Quantum",
-    "category": "Post-quantum L1",
-    "tier": "Strong",
-    "price": 1.23,
-    "market_cap": 96517243,
-    "volume_24h": 71056,
-    "score": 77,
-    "dex": ""
-   },
-   {
-    "project": "Algorand",
-    "ticker": "ALGO",
-    "theme": "Quantum",
-    "category": "L1 with Falcon accounts",
-    "tier": "Strong",
-    "price": 0.104375,
-    "market_cap": 947104308,
-    "volume_24h": 41054959,
-    "score": 78,
-    "dex": "Native Algorand DEXs"
-   },
-   {
-    "project": "Abelian",
-    "ticker": "ABEL",
-    "theme": "Quantum",
-    "category": "Post-quantum L1",
-    "tier": "Strong",
-    "price": 0.113708,
-    "market_cap": 16409602,
-    "volume_24h": 59011,
-    "score": 67,
-    "dex": ""
-   },
-   {
-    "project": "Soqucoin",
-    "ticker": "SOQ",
-    "theme": "Quantum",
-    "category": "Post-quantum coin",
-    "tier": "Speculative",
-    "price": 0.00016344,
-    "market_cap": 388956,
-    "volume_24h": 194240,
-    "score": 65,
-    "dex": ""
-   },
-   {
-    "project": "QANplatform",
-    "ticker": "QANX",
-    "theme": "Quantum",
-    "category": "Post-quantum L1",
-    "tier": "Speculative",
-    "price": 0.01192086,
-    "market_cap": 20265475,
-    "volume_24h": 177783,
-    "score": 58,
-    "dex": "PancakeSwap (BSC) / Uniswap (ETH)"
-   },
-   {
-    "project": "Cellframe",
-    "ticker": "CELL",
-    "theme": "Quantum",
-    "category": "Post-quantum L0",
-    "tier": "Speculative",
-    "price": 0.067857,
-    "market_cap": 2521261,
-    "volume_24h": 24746,
-    "score": 57,
-    "dex": "PancakeSwap (BSC) / Uniswap (ETH)"
-   },
-   {
-    "project": "Neptune Cash",
-    "ticker": "NPT",
-    "theme": "Quantum",
-    "category": "Post-quantum privacy",
-    "tier": "Speculative",
-    "price": 0.249709,
-    "market_cap": 1123447,
-    "volume_24h": 3130.01,
-    "score": 52,
-    "dex": "wNPT Base (tiny)"
-   },
-   {
-    "project": "DATA Network",
-    "ticker": "DATA",
-    "theme": "AI",
-    "category": "Data",
-    "tier": "Speculative",
-    "price": 0.140843,
-    "market_cap": 50783662,
-    "volume_24h": 10088261,
-    "score": 69,
-    "dex": ""
-   },
-   {
-    "project": "Pearl",
-    "ticker": "PEARL",
-    "theme": "AI",
-    "category": "Compute (PoUW)",
-    "tier": "Speculative",
-    "price": 1.82,
-    "market_cap": 652002513,
-    "volume_24h": 8191852,
-    "score": 72,
-    "dex": ""
-   },
-   {
-    "project": "Gonka",
-    "ticker": "GNK",
-    "theme": "AI",
-    "category": "Compute",
-    "tier": "Speculative",
-    "price": 0.169802,
-    "market_cap": null,
-    "volume_24h": 2988.81,
-    "score": 69,
-    "dex": "WGNK Uniswap (ETH)"
-   },
-   {
-    "project": "Axis Robotics",
-    "ticker": "AXIS",
-    "theme": "AI",
-    "category": "Robotics data",
-    "tier": "Speculative",
-    "price": 0.262808,
-    "market_cap": 43363259,
-    "volume_24h": 191028853,
-    "score": 57,
-    "dex": "Uniswap (Base)"
-   },
-   {
-    "project": "Clore.ai",
-    "ticker": "CLORE",
-    "theme": "AI",
-    "category": "GPU market",
-    "tier": "Speculative",
-    "price": 0.00160478,
-    "market_cap": 1020187,
-    "volume_24h": 68910,
-    "score": 52,
-    "dex": "Uniswap (ETH)"
-   },
-   {
-    "project": "Crynux",
-    "ticker": "CNX",
-    "theme": "AI",
-    "category": "Compute",
-    "tier": "Speculative",
-    "price": 0.00147213,
-    "market_cap": 2556690,
-    "volume_24h": 1004.61,
-    "score": 51,
-    "dex": "Uniswap V4 (Base), thin"
-   }
-  ],
-  "impostors": [
-   {
-    "project": "GenLayer",
-    "theme": "AI",
-    "fakes": "Base 0x457c…0f8D and 0x2322…c96C, flap.sh, four.meme and pump.fun GEN copies",
-    "official": "No token yet; links only from @GenLayer"
-   },
-   {
-    "project": "Axis Robotics",
-    "theme": "AI",
-    "fakes": "Many copycat AXIS tokens on Solana, Base and Ethereum",
-    "official": "Base 0x5be7…d755ea (per CoinGecko)"
-   },
-   {
-    "project": "Ritual",
-    "theme": "AI",
-    "fakes": "Base 0xfF2E…9E3572",
-    "official": "No token yet"
-   },
-   {
-    "project": "Quantus",
-    "theme": "Quantum",
-    "fakes": "Solana and Base 'QTC' tokens; Qubitcoin also uses QTC",
-    "official": "qtc.omft.near on NEAR only"
-   },
-   {
-    "project": "QRL",
-    "theme": "Quantum",
-    "fakes": "Base 0x3769…5bA3 (disowned Oct 12) and other ERC-20/Solana 'QRL'",
-    "official": "No token contract"
-   },
-   {
-    "project": "Quip Network",
-    "theme": "Quantum",
-    "fakes": "Any QUIP token before an official contract",
-    "official": "No token yet"
-   },
-   {
-    "project": "Flop Network",
-    "theme": "AI",
-    "fakes": "Any FLOP token (none exists, per Arthur Hayes); @FlopNetwork is an unaffiliated fan account; Solana pump.fun 'Flop Labs FLOP' HwCG1Jr6...pump (promoted by AirdropAlert 10/26)",
-    "official": "No token yet; @flop_labs only"
-   }
-  ],
-  "safetrade_source": "CoinGecko SafeTrade tickers, 8:15 AM CT Oct 26",
-  "safetrade": [
-   {
-    "project": "Quantus",
-    "ticker": "QUANTUS",
-    "theme": "Quantum",
-    "price": 71.83,
-    "market_cap": 21930065,
-    "volume_24h": 1253356,
-    "score": 81,
-    "tier": "Benchmark",
-    "dex": "Rhea Finance (NEAR)",
-    "note": "Trades on SafeTrade as QUANTUS; QTC there is Qubitcoin, not Quantus",
-    "pair": "QUANTUS/USDT"
-   },
-   {
-    "project": "Soqucoin",
-    "ticker": "SOQ",
-    "theme": "Quantum",
-    "price": 0.00016344,
-    "market_cap": 388956,
-    "volume_24h": 194240,
-    "score": 65,
-    "tier": "WATCH",
-    "dex": "",
-    "note": "Also on NonKYC; 24h range $0.000129 to $0.000259",
-    "pair": "SOQ/USDT"
-   },
-   {
-    "project": "Pearl",
-    "ticker": "PEARL",
-    "theme": "AI",
-    "price": 1.82,
-    "market_cap": 652002513,
-    "volume_24h": 8191852,
-    "score": 72,
-    "tier": "WATCH",
-    "dex": "",
-    "note": "Trades on SafeTrade (USDT, USDC, BTC pairs); no official DEX route",
-    "pair": "PEARL/USDT"
-   },
-   {
-    "project": "Gonka",
-    "ticker": "GNK",
-    "theme": "AI",
-    "price": 0.169802,
-    "market_cap": null,
-    "volume_24h": 2988.81,
-    "score": 69,
-    "tier": "WATCH",
-    "dex": "WGNK Uniswap (ETH)",
-    "note": "Official wrapped token on Ethereum",
-    "pair": "GNK/USDT"
-   },
-   {
-    "project": "Clore.ai",
-    "ticker": "CLORE",
-    "theme": "AI",
-    "price": 0.00160478,
-    "market_cap": 1020187,
-    "volume_24h": 68910,
-    "score": 52,
-    "tier": "WATCH",
-    "dex": "Uniswap (ETH)",
-    "note": "GPU marketplace",
-    "pair": "CLORE/USDT"
-   },
-   {
-    "project": "Neptune Cash",
-    "ticker": "NPT",
-    "theme": "Quantum",
-    "price": 0.249709,
-    "market_cap": 1123447,
-    "volume_24h": 3130.01,
-    "score": 52,
-    "tier": "WATCH",
-    "dex": "wNPT Base (tiny)",
-    "note": "Very thin volume",
-    "pair": "NPT/USDT"
-   },
-   {
-    "project": "Qubitcoin",
-    "ticker": "QTC",
-    "theme": "Quantum",
-    "price": 0.479441,
-    "market_cap": 1106671,
-    "volume_24h": 5691.38,
-    "score": 30,
-    "tier": "Avoid",
-    "dex": "",
-    "note": "Ticker clash with Quantus",
-    "pair": "QTC/USDT"
-   },
-   {
-    "project": "Parano1d",
-    "ticker": "NOID",
-    "theme": "Quantum",
-    "price": 0.354588,
-    "market_cap": null,
-    "volume_24h": 108128,
-    "score": null,
-    "tier": "Radar",
-    "dex": "",
-    "note": "Radar only: anonymous dev, PQ scheme unverified; -24% in 24h (range $0.31 to $0.47); SDK on npm",
-    "pair": "NOID/USDT"
-   }
-  ],
-  "safetrade_venue": {
-   "type": "Centralized exchange (no launchpad; AMM pools 'coming soon')",
-   "x": "https://x.com/safetrade",
-   "site": "https://safetrade.com",
-   "announcements": "https://x.com/safetrade",
-   "listing_posts": "No @safetrade posts overnight. Versus the Oct 23 baseline, NOID is new; CNX (Crynux), KMD and XPM no longer show in CoinGecko tickers",
-   "launchpad": "None",
-   "trust_score": 2,
-   "steps": [
-    {
-     "title": "Check the ticker",
-     "text": "On SafeTrade, QUANTUS is Quantus and QTC is Qubitcoin."
-    },
-    {
-     "title": "Prefer a DEX route",
-     "text": "For a DEX-only buyer, use the DEX route listed per token; several SafeTrade tokens have none."
-    },
-    {
-     "title": "Verify contracts",
-     "text": "Only use contracts posted by the project itself."
-    }
-   ]
-  },
-  "notes": [
-   {
-    "section": "prelaunch",
-    "theme": "AI",
-    "text": "Ritual (74) and GenLayer (70) are closest to the bar; each still needs a dated TGE and a published audit, and GenLayer an official Arbitrum contract."
-   },
-   {
-    "section": "prelaunch",
-    "theme": "Quantum",
-    "text": "DAC's Nov 22 TGE is reported by many accounts but not posted by @dac_chain; a second missed date already left it at REJECT."
-   },
-   {
-    "section": "tokens",
-    "theme": "AI",
-    "text": "Axis volume ($191M) is over 4x its $43M market cap during the Binance Alpha competition; expect volatility."
-   },
-   {
-    "section": "tokens",
-    "theme": "Quantum",
-    "text": "Abelian's +24% came on about $59k volume (range $0.091 to $0.150); treat it as a thin-book move."
-   },
-   {
-    "section": "impostors",
-    "theme": "AI",
-    "text": "Before an official contract, any token named GenLayer, Ritual, Fraction, Dataline, Pond or Flop is a scam."
-   },
-   {
-    "section": "safetrade",
-    "theme": "AI",
-    "text": "Crynux (CNX/USDT) no longer appears in SafeTrade tickers on CoinGecko; its DEX route is Uniswap V4 on Base (thin)."
-   }
-  ],
-  "sources": [
-   {
-    "title": "GenLayer: registration closes today (official)",
-    "url": "https://x.com/GenLayer/status/2114685257987530972"
-   },
-   {
-    "title": "GenLayer airdrop (official)",
-    "url": "https://airdrop.genlayer.com"
-   },
-   {
-    "title": "Flop Labs: Devnet coming very soon",
-    "url": "https://x.com/flop_labs/status/2114628648615772410"
-   },
-   {
-    "title": "Axis: Binance Alpha trading competition",
-    "url": "https://x.com/axisrobotics/status/2114683118905098693"
-   },
-   {
-    "title": "DAC TGE date story (X summary, unconfirmed)",
-    "url": "https://x.com/i/trending/2114480794596942125"
-   },
-   {
-    "title": "QMS / QWAP pool notice",
-    "url": "https://x.com/QMSNetwork/status/2114703882874179923"
-   },
-   {
-    "title": "Parano1d SDK post",
-    "url": "https://x.com/Parano1dComm/status/2114670174775169092"
-   },
-   {
-    "title": "Quip Points (official)",
-    "url": "https://points.quip.network/"
-   },
-   {
-    "title": "Quantus 'Quantum Secure Bitcoin' post",
-    "url": "https://x.com/QuantusNetwork/status/2114620143791751633"
-   },
-   {
-    "title": "CoinGecko SafeTrade tickers",
-    "url": "https://www.coingecko.com/en/exchanges/safe_trade"
-   }
-  ]
- },
- "prices_updated": "2026-10-26T19:07:46-05:00",
- "airdrops": [
-  {
-   "project": "GenLayer",
-   "theme": "AI",
-   "what": "Airdrop registration (official site only).",
-   "ends": "2026-10-26T23:59:00-05:00",
-   "url": "https://airdrop.genlayer.com"
-  },
-  {
-   "project": "Quip Network",
-   "theme": "Quantum",
-   "what": "Quip Points quests: Discord done; Telegram and YouTube left.",
-   "ends": null,
-   "url": "https://points.quip.network"
-  },
-  {
-   "project": "Ritual",
-   "theme": "AI",
-   "what": "Official airdrop claim is open; heavy selling risk from recipients.",
-   "ends": null,
-   "url": "https://airdrop.ritualfoundation.org"
-  }
- ]
 }
