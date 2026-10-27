@@ -1527,9 +1527,11 @@ function lines() {
 function typeLoop(idx = 0) {
   clearTimeout(typeTimer);
   const L = lines(); const raw = String(L[idx % L.length]); const text = raw.length > 64 ? raw.slice(0, 63).trimEnd() + '…' : raw; const el = $('#typed');
-  if (reduced()) { el.textContent = text; typeTimer = setTimeout(() => typeLoop(idx + 1), 3500); return; }
+  const gen = typeLoop.g = (typeLoop.g || 0) + 1, readEv = on => { if (typeLoop.g === gen) document.dispatchEvent(new CustomEvent('oracle-read', { detail: { on } })); };
+  readEv(true);
+  if (reduced()) { el.textContent = text; setTimeout(() => readEv(false), 1500); typeTimer = setTimeout(() => typeLoop(idx + 1), 3500); return; }
   let i = 0;
-  const type = () => { el.textContent = text.slice(0, ++i); if (i < text.length) typeTimer = setTimeout(type, 22 + Math.random() * 30); else typeTimer = setTimeout(erase, botState === 'scanning' ? 1400 : 2600); };
+  const type = () => { el.textContent = text.slice(0, ++i); if (i < text.length) typeTimer = setTimeout(type, 22 + Math.random() * 30); else { setTimeout(() => readEv(false), 700); typeTimer = setTimeout(erase, botState === 'scanning' ? 1400 : 2600); } };
   const erase = () => { el.textContent = text.slice(0, --i); if (i > 0) typeTimer = setTimeout(erase, 10); else typeTimer = setTimeout(() => typeLoop(idx + 1), 200); };
   type();
 }
@@ -1779,6 +1781,10 @@ void main(){
   const lerp = (a, b, k) => a + (b - a) * k;
   let col = [0.85, 0.85, 0.85], tgt = { x: 0, y: 0 }, cur = { x: 0, y: 0, yaw: 0, pitch: 0 };
   let nextBlink = 2, blinkT = -1, dbl = false, hopT = -10, wasAlert = false, scan = 0;
+  let reading = false, read = 0, hue = Math.random(), lastT = 0;
+  document.addEventListener('oracle-read', e => { reading = !!(e.detail && e.detail.on); });
+  /* colour cycle: smooth hue shift over time, blended with the state colour; returns linear RGB */
+  const hsl = (h, s, l) => { const f = n => { const k = (n + h * 12) % 12, a = s * Math.min(l, 1 - l); return l - a * Math.max(-1, Math.min(k - 3, 9 - k, 1)); }; return [f(0), f(8), f(4)].map(v => Math.pow(v, 2.2)); };
   document.addEventListener('oracle-look', e => { tgt.x = Math.max(-1, Math.min(1, e.detail.x)); tgt.y = Math.max(-1, Math.min(1, e.detail.y)); });
   const parseCol = s => {
     s = String(s || '').trim(); let m;
@@ -1799,11 +1805,15 @@ void main(){
     const scanning = av.classList.contains('s-scanning'), alert = av.classList.contains('s-alert');
     if (alert && !wasAlert) hopT = t; wasAlert = alert;
     scan = lerp(scan, scanning ? 1 : 0, 0.05);
+    const dt = Math.min(Math.max(t - lastT, 0), 0.1); lastT = t;
+    hue = (hue + dt * (still ? 0.006 : alert ? 0.16 : scanning ? 0.08 : 0.03)) % 1;
+    read = lerp(read, reading ? 1 : 0, still ? 0.2 : 0.07);
     let tx = tgt.x, ty = tgt.y;
     if (scanning && !still) { tx = Math.sin(t * 1.6); ty = Math.sin(t * 0.9) * 0.3; }
+    tx = lerp(tx, tx * 0.2, read); ty = lerp(ty, -1, read);
     cur.x = lerp(cur.x, tx, 0.09); cur.y = lerp(cur.y, ty, 0.09);
     cur.yaw = lerp(cur.yaw, cur.x * 0.42 + (still ? 0 : Math.sin(t * 0.55) * 0.05), 0.05);
-    cur.pitch = lerp(cur.pitch, -cur.y * 0.16 + (still ? 0 : Math.sin(t * 0.8) * 0.025), 0.05);
+    cur.pitch = lerp(cur.pitch, -cur.y * 0.16 + read * 0.26 + (still ? 0 : Math.sin(t * 0.8) * 0.025), 0.05);
     let blink = 1;
     if (!still) {
       if (blinkT < 0 && t > nextBlink) { blinkT = t; dbl = Math.random() < 0.2; }
@@ -1814,8 +1824,10 @@ void main(){
     const pulse = 0.5 + 0.5 * Math.sin(t * (alert ? 9 : scanning ? 5 : 2.2));
     gl.uniform2f(U.uRes, cv.width, cv.height); gl.uniform1f(U.uTime, t);
     gl.uniform3f(U.uRot, cur.yaw, cur.pitch, -cur.yaw * 0.12);
-    gl.uniform2f(U.uEye, cur.x * 0.13, cur.y * 0.06); gl.uniform1f(U.uBlink, blink);
-    gl.uniform3f(U.uCol, col[0], col[1], col[2]); gl.uniform1f(U.uBob, bob);
+    gl.uniform2f(U.uEye, cur.x * 0.13, cur.y * 0.06 - read * 0.03); gl.uniform1f(U.uBlink, blink);
+    const cyc = hsl(hue, 0.7, 0.6), mixK = alert ? 0.45 : 0.8, boost = 1 + (alert || scanning ? 0.3 * pulse : 0);
+    const cc = col.map((v, i) => lerp(v, cyc[i], mixK) * boost);
+    gl.uniform3f(U.uCol, cc[0], cc[1], cc[2]); gl.uniform1f(U.uBob, bob);
     gl.uniform1f(U.uScan, scan); gl.uniform1f(U.uPulse, pulse);
     gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT); gl.drawArrays(gl.TRIANGLES, 0, 3);
   }
