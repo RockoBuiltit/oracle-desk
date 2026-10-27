@@ -696,6 +696,25 @@ html.rp-open,html.rp-open body{overflow:hidden}
   .tbl td.c-proj .tier{position:absolute;top:0;right:0}
   .tbl td.c-proj .mob{padding-left:48px;margin-top:-6px}
 }
+/* ===== 3D Oracle bot ===== */
+.botbox{width:50%;height:40%}
+.bot .b3-head{transform-box:view-box;transform-origin:100px 150px;transition:transform 1s cubic-bezier(.3,.7,.2,1)}
+.bot .b3-body{transform-box:view-box;transform-origin:100px 200px;animation:b3breathe 4s ease-in-out infinite}
+.bot .b3-ear{fill:var(--state);filter:url(#eyeGlow);transition:fill .4s}
+.bot .b3-core{fill:var(--state);filter:url(#eyeGlow);animation:b3pulse 2.4s ease-in-out infinite;transition:fill .4s}
+.bot .ant-tip{fill:url(#b3Orb)}
+.bot .eye{rx:7.5}
+.bot .b3-shadow{transform-box:fill-box;transform-origin:center;animation:b3shadow 5s ease-in-out infinite}
+.s-scanning .bot .b3-core{animation-duration:.9s}
+.s-alert .bot .b3-core{animation-duration:.45s}
+@keyframes b3breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.015,.985)}}
+@keyframes b3pulse{0%,100%{opacity:.55}50%{opacity:1}}
+@keyframes b3shadow{0%,100%{transform:translateY(0) scale(1);opacity:.9}50%{transform:translateY(9px) scale(.82);opacity:.6}}
+
+/* ===== live 3D Oracle (WebGL) ===== */
+.botbox.b3d{width:92%;height:92%;animation:none!important}
+.botbox.b3d canvas{width:100%;height:100%;display:block}
+
 </style>
 </head>
 <body>
@@ -1398,22 +1417,39 @@ function rpSync() {
 }
 
 /* ---------- the bot ---------- */
-const BOT_SVG = `<svg class="bot" viewBox="0 0 200 200" aria-hidden="true">
+const BOT_SVG = `<svg class="bot" viewBox="0 20 200 140" aria-hidden="true">
   <defs>
-    <linearGradient id="shellG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".6" stop-color="#e9e9e9"/><stop offset="1" stop-color="#b8b8b8"/></linearGradient>
-    <linearGradient id="hiG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
-    <filter id="eyeGlow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-    <clipPath id="visorClip"><rect x="52" y="84" width="96" height="46" rx="23"/></clipPath>
+    <radialGradient id="b3Shell" cx="34%" cy="26%" r="80%"><stop offset="0" stop-color="#ffffff"/><stop offset=".45" stop-color="#e9ecf1"/><stop offset=".8" stop-color="#b9c0cb"/><stop offset="1" stop-color="#7d8592"/></radialGradient>
+    <radialGradient id="b3Body" cx="38%" cy="18%" r="85%"><stop offset="0" stop-color="#fbfcfd"/><stop offset=".55" stop-color="#d7dce3"/><stop offset="1" stop-color="#737b88"/></radialGradient>
+    <linearGradient id="b3Metal" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9aa2ae"/><stop offset=".5" stop-color="#4b525d"/><stop offset="1" stop-color="#22262d"/></linearGradient>
+    <linearGradient id="b3Visor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c2330"/><stop offset=".55" stop-color="#090c12"/><stop offset="1" stop-color="#030406"/></linearGradient>
+    <linearGradient id="b3Gloss" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <linearGradient id="b3VGloss" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <radialGradient id="b3Orb" cx="35%" cy="30%" r="70%"><stop offset="0" stop-color="#fff"/><stop offset=".35" stop-color="currentColor"/><stop offset="1" stop-color="currentColor" stop-opacity=".55"/></radialGradient>
+    <radialGradient id="b3Shadow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#000" stop-opacity=".7"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+    <filter id="eyeGlow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="2.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="b3Soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="1.4"/></filter>
+    <clipPath id="visorClip"><rect x="54" y="70" width="92" height="46" rx="23"/></clipPath>
   </defs>
-  <line x1="100" y1="44" x2="100" y2="22" stroke="#e6e6e6" stroke-width="4" stroke-linecap="round"/>
-  <circle class="ant-tip" cx="100" cy="17" r="7"/>
-  <rect x="26" y="88" width="16" height="36" rx="8" fill="#9a9a9a"/><rect x="158" y="88" width="16" height="36" rx="8" fill="#9a9a9a"/>
-  <rect class="shell" x="36" y="42" width="128" height="124" rx="56" fill="url(#shellG)"/>
-  <rect x="54" y="50" width="92" height="28" rx="14" fill="url(#hiG)" opacity=".8"/>
-  <rect class="visor" x="52" y="84" width="96" height="46" rx="23"/>
-  <g clip-path="url(#visorClip)"><rect class="scanline" x="52" y="105" width="96" height="3"/></g>
-  <g class="look" id="look"><g class="eyes"><rect class="eye" x="72" y="96" width="16" height="22" rx="8"/><rect class="eye" x="112" y="96" width="16" height="22" rx="8"/></g></g>
-  <path class="mouth" d="M86 146 Q100 154 114 146" fill="none" stroke-width="4" stroke-linecap="round"/>
+  <g class="b3-head" id="b3Head">
+    <g><circle cx="38" cy="92" r="13" fill="url(#b3Metal)"/><circle class="b3-ear" cx="38" cy="92" r="6"/><circle cx="36" cy="89.5" r="1.8" fill="#fff" opacity=".7"/></g>
+    <g><circle cx="162" cy="92" r="13" fill="url(#b3Metal)"/><circle class="b3-ear" cx="162" cy="92" r="6"/><circle cx="160" cy="89.5" r="1.8" fill="#fff" opacity=".7"/></g>
+    <rect class="shell" x="42" y="36" width="116" height="108" rx="52" fill="url(#b3Shell)"/>
+    <rect x="42" y="36" width="116" height="108" rx="52" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="1.2"/>
+    <ellipse cx="78" cy="54" rx="26" ry="12" fill="url(#b3Gloss)" transform="rotate(-18 78 54)" filter="url(#b3Soft)"/>
+    <rect x="50" y="66" width="100" height="54" rx="27" fill="#5a616d" opacity=".55"/>
+    <rect class="visor" x="54" y="70" width="92" height="46" rx="23" style="fill:url(#b3Visor)"/>
+    <g clip-path="url(#visorClip)">
+      <path d="M58 82 C80 70 120 70 142 82 L142 72 L58 72 Z" fill="url(#b3VGloss)"/>
+      <rect class="scanline" x="54" y="92" width="92" height="3"/>
+    </g>
+    <g class="look" id="look"><g class="eyes">
+      <rect class="eye" x="75" y="81" width="15" height="23" rx="7.5"/>
+      <rect class="eye" x="110" y="81" width="15" height="23" rx="7.5"/>
+      <circle cx="80" cy="86" r="2.4" fill="#fff" opacity=".9"/><circle cx="115" cy="86" r="2.4" fill="#fff" opacity=".9"/>
+    </g></g>
+    <path class="mouth" d="M90 129 Q100 135 110 129" fill="none" stroke-width="3.2" stroke-linecap="round"/>
+  </g>
 </svg>`;
 function initAvatar() { $('#botbox').innerHTML = BOT_SVG; }
 function lookAround() {
@@ -1421,6 +1457,8 @@ function lookAround() {
   const range = botState === 'scanning' ? 11 : 6;
   const x = (Math.random() * 2 - 1) * range, y = (Math.random() * 2 - 1) * (range * 0.45);
   g.style.transform = `translate(${x.toFixed(1)}px,${y.toFixed(1)}px)`;
+  document.dispatchEvent(new CustomEvent('oracle-look', { detail: { x: x / range, y: y / (range * 0.45) } }));
+  const h = document.getElementById('b3Head'); if (h) h.style.transform = `translateX(${(x * 0.35).toFixed(1)}px) rotate(${(x * 0.45).toFixed(1)}deg)`;
 }
 const ICONS = [
   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',
@@ -1559,6 +1597,153 @@ setInterval(() => feed && renderDeadlines(), 60000);
 setInterval(lookAround, 1700);
 requestAnimationFrame(radarLoop);
 init();
+})();
+</script>
+<script>
+/* ===== The Oracle: live 3D bot (raymarched in WebGL, no libraries). Falls back to the SVG bot if WebGL is unavailable. ===== */
+(() => {
+  const box = document.getElementById('botbox'), av = document.getElementById('avatar');
+  if (!box || !av) return;
+  const cv = document.createElement('canvas');
+  const gl = cv.getContext('webgl', { alpha: true, premultipliedAlpha: true, antialias: false, powerPreference: 'low-power' });
+  if (!gl) return;
+  const VS = 'attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
+  const FS = `
+precision highp float;
+uniform vec2 uRes; uniform float uTime; uniform vec3 uRot; uniform vec2 uEye; uniform float uBlink;
+uniform vec3 uCol; uniform float uBob; uniform float uScan; uniform float uPulse;
+vec3 HC; mat3 MI;
+mat3 rY(float a){float c=cos(a),s=sin(a);return mat3(c,0.,-s,0.,1.,0.,s,0.,c);}
+mat3 rX(float a){float c=cos(a),s=sin(a);return mat3(1.,0.,0.,0.,c,s,0.,-s,c);}
+mat3 rZ(float a){float c=cos(a),s=sin(a);return mat3(c,s,0.,-s,c,0.,0.,0.,1.);}
+float sdTorus(vec3 p, vec2 t){vec2 q=vec2(length(p.xz)-t.x,p.y);return length(q)-t.y;}
+vec2 ang(vec3 q){vec3 d=normalize(q);return vec2(atan(d.x,d.z),asin(clamp(d.y,-1.,1.)));}
+float eyeSD(vec2 g, float sx){
+  vec2 e=g-vec2(sx*0.29+uEye.x,0.1+uEye.y);
+  vec2 b=vec2(0.085,max(0.125*uBlink,0.014)); float r=min(b.x,b.y);
+  return length(max(abs(e)-b+r,0.))-r;
+}
+float flow(vec3 q){
+  float t=uTime*(0.55+uScan*0.9);
+  float a=0.038+0.03*uScan;
+  float n=sin(q.x*2.6+t*1.3)*sin(q.y*3.1-t*1.1)*sin(q.z*2.3+t*0.9);
+  n+=0.5*sin(q.x*5.3-t*1.7+q.z*1.9)*sin(q.y*4.7+t*1.4);
+  n+=0.25*sin(length(q.xy)*9.-t*3.);
+  return n*a;
+}
+float headSD(vec3 p){
+  vec3 q=MI*(p-HC);
+  float d=length(q/vec3(1.,0.95,1.))*0.975-1.0;
+  d+=flow(q)*(1.0-0.75*smoothstep(-0.2,0.6,normalize(q).z));
+  if(q.z>0.){ vec2 g=ang(q); float e=min(eyeSD(g,-1.),eyeSD(g,1.)); d+=0.045*(1.-smoothstep(-0.01,0.05,e)); }
+  return d;
+}
+float ringSD(vec3 p){ return sdTorus(p-vec3(0.,-1.22+uBob*0.3,0.), vec2(0.62,0.014)); }
+vec3 env(vec3 d){
+  vec3 c=mix(vec3(0.004,0.005,0.007),vec3(0.16,0.17,0.19),smoothstep(-0.25,0.9,d.y));
+  c+=vec3(0.07)*exp(-abs(d.y-0.05)*6.);
+  c+=vec3(0.9)*smoothstep(0.97,0.995,dot(normalize(d.xz+vec2(1e-4)),normalize(vec2(-0.9,0.45))))*smoothstep(-0.6,0.2,d.y)*smoothstep(0.7,0.2,d.y);
+  c+=vec3(0.06,0.065,0.075)*smoothstep(-0.2,-0.95,d.y);
+  c+=vec3(3.2)*pow(max(dot(d,normalize(vec3(-0.6,0.62,0.5))),0.),28.);
+  c+=vec3(1.8)*smoothstep(0.93,0.99,dot(d,normalize(vec3(0.75,0.35,0.55))));
+  c+=vec3(1.2)*smoothstep(0.96,0.995,dot(d,normalize(vec3(0.1,0.95,0.2))));
+  c+=uCol*1.6*pow(max(dot(d,normalize(vec3(0.,0.25,-1.))),0.),5.);
+  c+=uCol*0.22*pow(max(-d.y,0.),4.);
+  return c;
+}
+vec3 nrm(vec3 p){vec2 e=vec2(0.0015,0.);return normalize(vec3(headSD(p+e.xyy)-headSD(p-e.xyy),headSD(p+e.yxy)-headSD(p-e.yxy),headSD(p+e.yyx)-headSD(p-e.yyx)));}
+void main(){
+  vec2 uv=(gl_FragCoord.xy*2.-uRes)/uRes.y;
+  HC=vec3(0.,0.12+uBob,0.);
+  MI=rY(-uRot.x)*rX(-uRot.y)*rZ(-uRot.z);
+  vec3 ro=vec3(0.,0.1,5.2), ta=vec3(0.,-0.08,0.);
+  vec3 fw=normalize(ta-ro), rt=normalize(cross(fw,vec3(0.,1.,0.))), up=cross(rt,fw);
+  vec3 rd=normalize(uv.x*rt+uv.y*up+2.55*fw);
+  float t=3.6, minR=1e3; bool hit=false; vec3 p;
+  for(int i=0;i<100;i++){ p=ro+rd*t; float dh=headSD(p), dr=ringSD(p); minR=min(minR,dr);
+    if(dh<0.001){hit=true;break;} t+=min(dh,dr+0.02)*0.7; if(t>8.) break; }
+  vec3 col=vec3(0.); float a=0.;
+  if(hit){
+    vec3 n=nrm(p), v=-rd, q=MI*(p-HC), rf=reflect(rd,n);
+    float fr=pow(1.-max(dot(n,v),0.),3.);
+    vec3 film=0.5+0.5*cos(6.2831*(vec3(0.0,0.33,0.67)+fr*0.9+dot(n,vec3(0.2,0.5,0.1))*0.6));
+    vec3 tint=mix(vec3(0.82,0.84,0.88),film,0.18+0.25*fr);
+    col=env(rf)*tint*(0.85+0.4*fr);
+    col+=uCol*fr*0.35;
+    vec3 ringP=vec3(0.,-1.22+uBob*0.3,0.); col+=uCol*max(dot(n,normalize(ringP-p)),0.)*0.5/(1.+dot(ringP-p,ringP-p))*(1.+uPulse);
+    if(q.z>0.){
+      vec2 g=ang(q);
+      for(int k=0;k<2;k++){
+        float sx=k==0?-1.:1.; float sd=eyeSD(g,sx);
+        float core=1.-smoothstep(-0.006,0.008,sd);
+        col=mix(col,vec3(0.),(1.-smoothstep(-0.01,0.035,sd))*0.85);
+        col+=uCol*(core*2.8+exp(-max(sd,0.)*22.)*0.8)+vec3(1.)*core*smoothstep(0.,-0.055,sd)*0.9;
+      }
+    }
+    a=1.;
+  }
+  vec3 glow=uCol*exp(-minR*65.)*(1.1+0.6*uPulse)+uCol*exp(-minR*14.)*0.16;
+  col+=glow; if(!hit) a=clamp(max(glow.r,max(glow.g,glow.b)),0.,1.);
+  col=col*(2.51*col+0.03)/(col*(2.43*col+0.59)+0.14);
+  gl_FragColor=vec4(pow(clamp(col,0.,1.),vec3(1./2.2)),a);
+}`;
+  const sh = (type, src) => { const o = gl.createShader(type); gl.shaderSource(o, src); gl.compileShader(o); if (!gl.getShaderParameter(o, gl.COMPILE_STATUS)) { console.warn('[oracle-bot]', gl.getShaderInfoLog(o)); return null; } return o; };
+  const vs = sh(gl.VERTEX_SHADER, VS), fs = sh(gl.FRAGMENT_SHADER, FS);
+  if (!vs || !fs) return;
+  const pr = gl.createProgram(); gl.attachShader(pr, vs); gl.attachShader(pr, fs); gl.linkProgram(pr);
+  if (!gl.getProgramParameter(pr, gl.LINK_STATUS)) return;
+  gl.useProgram(pr);
+  const buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+  const loc = gl.getAttribLocation(pr, 'p'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+  const U = {}; ['uRes', 'uTime', 'uRot', 'uEye', 'uBlink', 'uCol', 'uBob', 'uScan', 'uPulse'].forEach(n => U[n] = gl.getUniformLocation(pr, n));
+  box.innerHTML = ''; box.appendChild(cv); box.classList.add('b3d');
+
+  const RM = matchMedia('(prefers-reduced-motion: reduce)');
+  const lerp = (a, b, k) => a + (b - a) * k;
+  let col = [0.85, 0.85, 0.85], tgt = { x: 0, y: 0 }, cur = { x: 0, y: 0, yaw: 0, pitch: 0 };
+  let nextBlink = 2, blinkT = -1, dbl = false, hopT = -10, wasAlert = false, scan = 0;
+  document.addEventListener('oracle-look', e => { tgt.x = Math.max(-1, Math.min(1, e.detail.x)); tgt.y = Math.max(-1, Math.min(1, e.detail.y)); });
+  const parseCol = s => {
+    s = String(s || '').trim(); let m;
+    if ((m = s.match(/^#([0-9a-f]{6})$/i))) { const n = parseInt(m[1], 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; }
+    if ((m = s.match(/^#([0-9a-f]{3})$/i))) return m[1].split('').map(h => parseInt(h + h, 16));
+    if ((m = s.match(/rgba?\(([^)]+)\)/))) return m[1].split(/[ ,\/]+/).slice(0, 3).map(Number);
+    return null;
+  };
+  const readCol = () => { const c = parseCol(getComputedStyle(av).getPropertyValue('--state')); if (c) col = c.map(v => Math.pow(v / 255, 2.2)); };
+  readCol(); setInterval(readCol, 400);
+  const resize = () => { const d = Math.min(window.devicePixelRatio || 1, 1.6); const w = Math.max(1, Math.round(box.clientWidth * d)), h = Math.max(1, Math.round(box.clientHeight * d)); if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; gl.viewport(0, 0, w, h); } };
+  if (window.ResizeObserver) new ResizeObserver(resize).observe(box); resize();
+  const t0 = performance.now();
+  function frame(now) {
+    requestAnimationFrame(frame);
+    if (document.hidden) return;
+    const t = (now - t0) / 1000, still = RM.matches;
+    const scanning = av.classList.contains('s-scanning'), alert = av.classList.contains('s-alert');
+    if (alert && !wasAlert) hopT = t; wasAlert = alert;
+    scan = lerp(scan, scanning ? 1 : 0, 0.05);
+    let tx = tgt.x, ty = tgt.y;
+    if (scanning && !still) { tx = Math.sin(t * 1.6); ty = Math.sin(t * 0.9) * 0.3; }
+    cur.x = lerp(cur.x, tx, 0.09); cur.y = lerp(cur.y, ty, 0.09);
+    cur.yaw = lerp(cur.yaw, cur.x * 0.42 + (still ? 0 : Math.sin(t * 0.55) * 0.05), 0.05);
+    cur.pitch = lerp(cur.pitch, -cur.y * 0.16 + (still ? 0 : Math.sin(t * 0.8) * 0.025), 0.05);
+    let blink = 1;
+    if (!still) {
+      if (blinkT < 0 && t > nextBlink) { blinkT = t; dbl = Math.random() < 0.2; }
+      if (blinkT >= 0) { const d = (t - blinkT) / 0.17; if (d >= (dbl ? 2.2 : 1)) { blinkT = -1; nextBlink = t + 2.4 + Math.random() * 3.6; } else { const ph = d % 1.1; blink = ph <= 1 ? 1 - Math.sin(ph * Math.PI) * 0.92 : 1; } }
+    }
+    let bob = still ? 0 : Math.sin(t * 1.25) * 0.075;
+    const hd = t - hopT; if (!still && hd < 1.8) bob += Math.abs(Math.sin(hd / 0.6 * Math.PI)) * 0.22 * (1 - hd / 1.8);
+    const pulse = 0.5 + 0.5 * Math.sin(t * (alert ? 9 : scanning ? 5 : 2.2));
+    gl.uniform2f(U.uRes, cv.width, cv.height); gl.uniform1f(U.uTime, t);
+    gl.uniform3f(U.uRot, cur.yaw, cur.pitch, -cur.yaw * 0.12);
+    gl.uniform2f(U.uEye, cur.x * 0.13, cur.y * 0.06); gl.uniform1f(U.uBlink, blink);
+    gl.uniform3f(U.uCol, col[0], col[1], col[2]); gl.uniform1f(U.uBob, bob);
+    gl.uniform1f(U.uScan, scan); gl.uniform1f(U.uPulse, pulse);
+    gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT); gl.drawArrays(gl.TRIANGLES, 0, 3);
+  }
+  requestAnimationFrame(frame);
 })();
 </script>
 </body>
