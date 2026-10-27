@@ -774,7 +774,7 @@
     {
       "project": "Quip Network",
       "theme": "Quantum",
-      "title": "MANUAL (owner): Quip quests left: Telegram (50 pts, join t.me/quip_network, then claim) and YouTube (25 pts); Discord done (+50); no deadline announced",
+      "title": "MANUAL (owner): Quip quests left: Telegram (25 pts, join t.me/quip_network, then claim) and YouTube (25 pts); Discord done (+50); no deadline announced",
       "type": "Airdrop",
       "date": "2026-12-31T23:59:00-06:00",
       "all_day": true,
@@ -1309,18 +1309,18 @@
     {
       "project": "GenLayer",
       "theme": "AI",
-      "what": "Airdrop registration (official site only).",
+      "what": "Airdrop registration done; site shows Not Eligible (no qualifying Discord role).",
       "ends": "2026-10-26T23:59:00-05:00",
-      "url": "https://airdrop.genlayer.com"
+      "url": "https://airdrop.genlayer.com",
+      "points_earned": 0
     },
     {
       "project": "Quip Network",
       "theme": "Quantum",
-      "what": "Quip Points quests: Discord done; Telegram and YouTube left.",
+      "what": "Quip Points quests: Discord done; Telegram (25) and YouTube (25) left.",
       "ends": null,
       "url": "https://points.quip.network",
-      "points_earned": 50,
-      "points_total": 125
+      "points_earned": 1018
     },
     {
       "project": "Ritual",
