@@ -225,7 +225,7 @@
    "market_cap": 50861639,
    "fdv": 150700000.0,
    "volume_24h": 9906446,
-   "dex_route": "No verified DEX route",
+   "dex_route": "No official DEX route (exchanges only)",
    "next_milestone": "Sui migration date + swap instructions (TBA)",
    "milestone_date": null,
    "links": [
@@ -335,7 +335,7 @@
    "market_cap": 330912,
    "fdv": null,
    "volume_24h": 169927,
-   "dex_route": "No DEX route; CEX: SafeTrade (SOQ/USDT), NonKYC",
+   "dex_route": "No official DEX route; CEX: SafeTrade (SOQ/USDT), NonKYC",
    "next_milestone": "CMC listing; team disclosure (both undated)",
    "milestone_date": null,
    "links": [
@@ -385,7 +385,7 @@
    "market_cap": 42061392,
    "fdv": null,
    "volume_24h": 74582457,
-   "dex_route": "Uniswap (Base) 0x5be75e3b0aff5d1a042a5363ae36acb1d6d755ea",
+   "dex_route": "Uniswap v4 (Base) 0x5be75e3b0aff5d1a042a5363ae36acb1d6d755ea",
    "next_milestone": "Binance Alpha AXIS trading competition (live since Mon 10/26); Coinbase trading enablement and unlock schedule (undated)",
    "milestone_date": null,
    "links": [
@@ -459,7 +459,7 @@
    "market_cap": 2466376,
    "fdv": null,
    "volume_24h": 1409.76,
-   "dex_route": "Uniswap V4 (Base) 0x9557dd9e241bc9636732623b672b4090af519396 (thin)",
+   "dex_route": "Uniswap v4 (Base) 0x9557dd9e241bc9636732623b672b4090af519396 (thin)",
    "next_milestone": "AI chat app on Crynux GPUs (previewed 10/23, undated). CNX is back in SafeTrade tickers",
    "milestone_date": null,
    "links": [],
@@ -1114,6 +1114,24 @@
     "theme": "AI",
     "fakes": "Any FLOP token (none exists, per Arthur Hayes); @FlopNetwork is an unaffiliated fan account; Solana pump.fun 'Flop Labs FLOP' HwCG1Jr6...pump (promoted by AirdropAlert 10/26)",
     "official": "No token yet; @flop_labs only"
+   },
+   {
+    "project": "Pearl",
+    "theme": "AI",
+    "fakes": "Solana \"PEARL\" pools showing $38M to $50M liquidity; WPRL on Uniswap is a third-party bridge token",
+    "official": "Ticker PRL; no official DEX route"
+   },
+   {
+    "project": "Abelian",
+    "theme": "Quantum",
+    "fakes": "Base and Solana \"ABEL\" tokens (about $0.0001 vs the real $0.115)",
+    "official": "Native chain only; no official DEX route"
+   },
+   {
+    "project": "Neptune Cash",
+    "theme": "Quantum",
+    "fakes": "wNPT on Base is SafeTrade's own wrapper, not an official route",
+    "official": "Native chain only; no official DEX route"
    }
   ],
   "safetrade_source": "CoinGecko SafeTrade tickers, 8:15 AM CT Oct 26",
@@ -1154,7 +1172,7 @@
     "score": 72,
     "tier": "WATCH",
     "dex": "",
-    "note": "Trades on SafeTrade (USDT, USDC, BTC pairs); official ticker is PRL; no official DEX (WPRL on Uniswap is a third-party bridge)",
+    "note": "Trades on SafeTrade (USDT, USDC, BTC pairs); official ticker is PRL. No official DEX route.",
     "pair": "PEARL/USDT"
    },
    {
@@ -1193,7 +1211,7 @@
     "score": 52,
     "tier": "WATCH",
     "dex": "",
-    "note": "Very thin volume; wNPT on Base is SafeTrade's own wrapper, not an official route",
+    "note": "Very thin volume. No official DEX route (wNPT on Base is SafeTrade's own wrapper).",
     "pair": "NPT/USDT"
    },
    {
@@ -1280,7 +1298,7 @@
    {
     "section": "tokens",
     "theme": "AI",
-    "text": "Pearl (PRL) has no official DEX. WPRL on Uniswap comes from a third-party bridge, and the Solana \"PEARL\" pools showing tens of millions are fakes. Its $644M market cap is circulating; fully diluted value is about $3.8B."
+    "text": "Pearl (PRL) has no official DEX route. The Uniswap WPRL token comes from a third-party bridge and the Solana \"PEARL\" pools showing tens of millions are fakes. Its $644M market cap is circulating; fully diluted value is about $3.8B."
    },
    {
     "section": "tokens",
