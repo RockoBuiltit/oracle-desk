@@ -10,7 +10,7 @@ if not live: print('no live tokens'); sys.exit(0)
 ids = ','.join(sorted({w['cg_id'] for w in live}))
 req = urllib.request.Request('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&per_page=100&ids=' + ids, headers={'User-Agent': 'oracle-desk'})
 data = {c['id']: c for c in json.load(urllib.request.urlopen(req, timeout=30))}
-now = datetime.datetime.now(zoneinfo.ZoneInfo('America/Chicago')).replace(microsecond=0).isoformat()
+now = datetime.datetime.now().astimezone().replace(microsecond=0).isoformat()  # machine's local zone
 n = 0
 for w in live:
     c = data.get(w['cg_id'])

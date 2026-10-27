@@ -838,7 +838,8 @@ html.rp-open,html.rp-open body{overflow:hidden}
 <script>
 (() => {
 'use strict';
-const TZ = 'America/Chicago';
+const TZ = Intl.DateTimeFormat().resolvedOptions().timeZone;
+const TZL = (new Intl.DateTimeFormat('en-US',{timeZone:TZ,timeZoneName:'short'}).formatToParts(new Date()).find(p=>p.type==='timeZoneName')||{}).value||'';
 const $ = s => document.querySelector(s);
 const RM = matchMedia('(prefers-reduced-motion: reduce)');
 const reduced = () => RM.matches;
@@ -930,18 +931,18 @@ function countUp(el, to) {
 
 /* ---------- header / KPIs ---------- */
 function tickClock() {
-  $('#clock').innerHTML = `<b>${fmt(new Date().toISOString(), { hour: 'numeric', minute: '2-digit', second: '2-digit' })}</b> CT`;
+  $('#clock').innerHTML = `<b>${fmt(new Date().toISOString(), { hour: 'numeric', minute: '2-digit', second: '2-digit' })}</b> ${TZL}`;
   if (!feed) return;
   const st = feed.status || {};
   const ms = msTo(st.next_scan);
   const k = $('#kNext');
   if (ms == null) { $('#kNextV').textContent = 'n/a'; $('#kNextS').textContent = ''; k.classList.remove('due'); return; }
-  if (ms <= 0) { $('#kNextV').textContent = 'due'; k.classList.add('due'); $('#kNextS').textContent = `Scheduled ${tTime(st.next_scan)} CT`; }
+  if (ms <= 0) { $('#kNextV').textContent = 'due'; k.classList.add('due'); $('#kNextS').textContent = `Scheduled ${tTime(st.next_scan)} ${TZL}`; }
   else {
     k.classList.remove('due');
     const s = Math.floor(ms / 1000), h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), sec = s % 60;
     $('#kNextV').textContent = (h ? h + ':' + String(m).padStart(2, '0') : m) + ':' + String(sec).padStart(2, '0');
-    $('#kNextS').textContent = `Last scan ${tTime(st.last_scan)} CT`;
+    $('#kNextS').textContent = `Last scan ${tTime(st.last_scan)} ${TZL}`;
   }
   $('#kNextAt').textContent = st.next_scan ? tTime(st.next_scan) : '';
   const a = new Date(st.last_scan).getTime(), b = new Date(st.next_scan).getTime();
@@ -963,8 +964,8 @@ function renderKPIs() {
   const reads = st.x_reads_left_today;
   if (reads == null) { $('#kReads').textContent = 'n/a'; $('#kReadsBar').style.width = '0'; }
   else { countUp($('#kReads'), reads); $('#kReadsBar').dataset.w = clamp(reads / 10, 0, 100); animateIn($('#kReadsBar').parentNode); }
-  $('#reads').textContent = `Last scan ${tTime(st.last_scan)} CT · ${(feed.watchlist || []).length} projects tracked`;
-  $('#snapshot').textContent = `Snapshot ${tDT(feed.generated_at)} CT${feed.snapshot_note ? ' · ' + feed.snapshot_note : ''}`;
+  $('#reads').textContent = `Last scan ${tTime(st.last_scan)} ${TZL} · ${(feed.watchlist || []).length} projects tracked`;
+  $('#snapshot').textContent = `Snapshot ${tDT(feed.generated_at)} ${TZL}${feed.snapshot_note ? ' · ' + feed.snapshot_note : ''}`;
   tickClock();
 }
 
@@ -974,7 +975,7 @@ const UPD_MAX = 10;
 const recentUpdates = () => (feed.prelaunch_updates || []).filter(passT).sort((a, b) => new Date(b.at || 0) - new Date(a.at || 0)).slice(0, UPD_MAX);
 function renderMarquee() {
   const ups = recentUpdates();
-  const als = (feed.alerts || []).filter(passT).map(a => ({ project: a.name, text: `${a.event || 'Alert'} · ${a.event_date ? tDT(a.event_date) + ' CT' : 'date n/a'}`, source_type: 'alert' }));
+  const als = (feed.alerts || []).filter(passT).map(a => ({ project: a.name, text: `${a.event || 'Alert'} · ${a.event_date ? tDT(a.event_date) + (' '+TZL) : 'date n/a'}`, source_type: 'alert' }));
   const items = [...als, ...ups].map(u => {
     const c = u.source_type === 'alert' ? 'var(--high)' : u.source_type === 'official' ? 'var(--ok)' : u.source_type === 'founder' ? 'var(--founder)' : 'var(--rumor)';
     const lab = u.source_type === 'alert' ? 'HIGH ALERT' : String(u.source_type || 'rumor').toUpperCase();
@@ -1029,14 +1030,14 @@ function renderAlerts() {
     const ms = msTo(a.event_date);
     return `<article class="al" style="--tc:${tcol(a.theme)};animation-delay:${i * 80}ms" data-i="${i}">
       <div class="al-top"><div><h3>${esc(a.name)}<span class="tk">${a.ticker ? '$' + esc(a.ticker) : ''}</span></h3><div class="row">${badge(a.theme)}<span class="tier HIGH">HIGH</span></div></div>${ring(a.score)}</div>
-      <div class="ev"><b>${esc(a.event || 'Event n/a')}</b><span class="when">${a.event_date ? `<span class="cd">${esc(rel(a.event_date))}</span>${tDT(a.event_date)} CT` : 'Date n/a'}</span></div>
+      <div class="ev"><b>${esc(a.event || 'Event n/a')}</b><span class="when">${a.event_date ? `<span class="cd">${esc(rel(a.event_date))}</span>${tDT(a.event_date)} ${TZL}` : 'Date n/a'}</span></div>
       ${a.why_legit ? `<p class="why">${esc(a.why_legit)}</p>` : ''}
       <div><span class="lbl">Score breakdown</span><div class="bk">${bars}</div></div>
       <div><span class="lbl">Confirmed by ${(a.sources || []).length} source${(a.sources || []).length === 1 ? '' : 's'}</span><div class="chips">${srcs || '<span class="muted">n/a</span>'}</div></div>
       ${risks ? `<div class="risks"><span class="lbl">Risks</span><ul>${risks}</ul></div>` : ''}
       ${c.address ? `<div class="contract"><span class="muted">${esc(c.chain || 'Chain n/a')}</span><span class="ver ${c.verified ? 'ok' : 'no'}">${c.verified ? '✓ VERIFIED' : 'UNVERIFIED'}</span><code>${esc(c.address)}</code><button class="copy" data-copy="${esc(c.address)}">Copy</button></div>` : ''}
       ${a.impostor_warning ? `<div class="imp">${ICON_WARN}<span>${esc(a.impostor_warning)}</span></div>` : ''}
-      <div class="sent">Sent ${tDT(a.sent_at)} CT</div></article>`;
+      <div class="sent">Sent ${tDT(a.sent_at)} ${TZL}</div></article>`;
   }).join('');
   animateIn(el);
 }
@@ -1162,9 +1163,9 @@ function openDrawer(name) {
   const trigs = [w.upgrade_if ? `<div class="trig up"><span class="lbl">Upgrade if</span>${esc(w.upgrade_if)}</div>` : '', w.downgrade_if ? `<div class="trig dn"><span class="lbl">Downgrade if</span>${esc(w.downgrade_if)}</div>` : ''].filter(Boolean);
   $('#drawer').innerHTML = `<div class="dr-h">${w.score != null ? ring(w.score, 64) : ''}<div class="dr-t"><h3>${esc(w.name)}${w.ticker ? `<span class="tk">$${esc(w.ticker)}</span>` : ''}</h3><div class="dr-tags">${badge(w.theme)}${tier}${arrow(trendOf(w))}</div></div><button class="x" id="drX" aria-label="Close">×</button></div>
     <div class="dr-cols"><div class="dr-c1">
-    <div class="dr-next"><span class="lbl" style="margin:0">Next milestone</span><div class="nm">${esc(w.next_milestone || 'n/a')}</div><div class="nd">${w.milestone_date ? `<span class="cd">${esc(rel(w.milestone_date))}</span><span>${tDT(w.milestone_date)} CT</span>` : '<span>Date TBD</span>'}</div></div>
+    <div class="dr-next"><span class="lbl" style="margin:0">Next milestone</span><div class="nm">${esc(w.next_milestone || 'n/a')}</div><div class="nd">${w.milestone_date ? `<span class="cd">${esc(rel(w.milestone_date))}</span><span>${tDT(w.milestone_date)} ${TZL}</span>` : '<span>Date TBD</span>'}</div></div>
     <div class="dr-stats"><div><div class="k">Price</div><div class="v">${price(w.price)}</div></div><div><div class="k">Market cap</div><div class="v">${money(w.market_cap)}</div></div><div><div class="k">24h volume</div><div class="v">${money(w.volume_24h)}</div></div></div>
-    <dl class="dr-list"><dt>Stage</dt><dd class="${String(w.stage).toLowerCase() === 'live' ? 'is-live' : ''}">${esc(w.stage || 'n/a')}</dd><dt>DEX route</dt><dd>${esc(w.dex_route || 'n/a')}</dd><dt>${w.price_updated ? 'Price updated' : 'Last update'}</dt><dd>${w.price_updated ? tDTS(w.price_updated) : tDT(w.last_update)} CT</dd></dl>
+    <dl class="dr-list"><dt>Stage</dt><dd class="${String(w.stage).toLowerCase() === 'live' ? 'is-live' : ''}">${esc(w.stage || 'n/a')}</dd><dt>DEX route</dt><dd>${esc(w.dex_route || 'n/a')}</dd><dt>${w.price_updated ? 'Price updated' : 'Last update'}</dt><dd>${w.price_updated ? tDTS(w.price_updated) : tDT(w.last_update)} ${TZL}</dd></dl>
     </div><div class="dr-c2">
     <div class="sec"><span class="lbl">Score history</span>${spark(w.score_history, 0, 0, true)}</div>
     ${trigs.length ? `<div class="trigs" style="${trigs.length === 1 ? 'grid-template-columns:1fr' : ''}">${trigs.join('')}</div>` : ''}
@@ -1197,7 +1198,7 @@ function dlCountdown(d) {
 function dlDate(d) {
   if (!d.date) return '';
   const hasTime = !d.all_day && /T\d{2}:\d{2}/.test(d.date);
-  const a = hasTime ? fmt(d.date, { weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }) + ' CT' : fmt(d.date, { weekday: 'short', month: 'short', day: 'numeric' });
+  const a = hasTime ? fmt(d.date, { weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }) + (' '+TZL) : fmt(d.date, { weekday: 'short', month: 'short', day: 'numeric' });
   const b = d.date_end ? fmt(d.date_end, { month: 'short', day: 'numeric' }) : '';
   return (d.approx ? '~' : '') + a + (b ? ' – ' + b : '');
 }
@@ -1333,7 +1334,7 @@ function rpImpTable(list) {
 function renderReport() {
   const r = feed && feed.report;
   if (!r) { $('#rpBody').innerHTML = ''; $('#rpUpdated').textContent = ''; $('#rpFull').hidden = true; return; }
-  $('#rpUpdated').textContent = r.updated ? `Updated ${tDT(r.updated)} CT` : '';
+  $('#rpUpdated').textContent = r.updated ? `Updated ${tDT(r.updated)} ${TZL}` : '';
   const full = $('#rpFull'); if (r.full_report_url) { full.href = safeUrl(r.full_report_url); full.hidden = false; } else full.hidden = true;
   document.querySelectorAll('#rpSeg button').forEach(x => x.setAttribute('aria-pressed', String(x.dataset.v === rpF.theme)));
   const showAI = rpF.theme !== 'q', showQ = rpF.theme !== 'ai';
@@ -1449,7 +1450,7 @@ function lines() {
   if (botState === 'alert') { const l = (feed?.alerts || []).slice().sort((a, b) => new Date(b.sent_at || 0) - new Date(a.sent_at || 0))[0]; return [`Alert sent: ${l ? l.name + (l.ticker ? ' $' + l.ticker : '') : 'new signal'}`]; }
   if (botState === 'scanning') { const a = (st.activity || []).filter(Boolean); return a.length ? a : ['Scanning sources']; }
   const ws = (feed?.watchlist || []).filter(w => ['pre-launch', 'testnet'].includes(String(w.stage).toLowerCase()) && w.next_milestone && (!w.milestone_date || msTo(w.milestone_date) > 0)).sort((x, y) => (x.milestone_date ? new Date(x.milestone_date) : 9e15) - (y.milestone_date ? new Date(y.milestone_date) : 9e15));
-  return [`Watching ${(feed?.watchlist || []).length} projects · next scan ${st.next_scan ? tTime(st.next_scan) + ' CT' : 'n/a'}`, ...ws.slice(0, 3).map(w => { const suf = w.milestone_date ? ' · ' + rel(w.milestone_date) : ''; let base = `${w.name}: ${String(w.next_milestone).split(/[;(]/)[0].trim()}`; const room = 64 - suf.length; if (base.length > room) base = base.slice(0, room - 1).trimEnd() + '…'; return base + suf; })];
+  return [`Watching ${(feed?.watchlist || []).length} projects · next scan ${st.next_scan ? tTime(st.next_scan) + (' '+TZL) : 'n/a'}`, ...ws.slice(0, 3).map(w => { const suf = w.milestone_date ? ' · ' + rel(w.milestone_date) : ''; let base = `${w.name}: ${String(w.next_milestone).split(/[;(]/)[0].trim()}`; const room = 64 - suf.length; if (base.length > room) base = base.slice(0, room - 1).trimEnd() + '…'; return base + suf; })];
 }
 function typeLoop(idx = 0) {
   clearTimeout(typeTimer);
