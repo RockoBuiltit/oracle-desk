@@ -693,6 +693,37 @@ html.rp-open,html.rp-open body{overflow:hidden}
   .tbl td.c-proj .tier{position:absolute;top:0;right:0}
   .tbl td.c-proj .mob{padding-left:48px;margin-top:-6px}
 }
+/*MYDESK-START*/
+/* Active airdrops box (owner desk only) */
+.a-left{grid-column:span 5;display:flex;flex-direction:column;gap:18px;align-self:start;min-width:0}
+@media (max-width:1180px){.a-left{grid-column:span 6}}
+@media (max-width:900px){.a-left{grid-column:1/-1!important}}
+.a-airdrops[hidden]{display:none}
+.a-airdrops .hd{margin-bottom:12px}
+.ad-list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.ad-list li{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;background:#121214;border:1px solid var(--line2);border-radius:14px;padding:12px 14px}
+.ad-logo{width:36px;height:36px;border-radius:10px;background:#f4f4f4;overflow:hidden;display:grid;place-items:center;font-family:var(--display);font-weight:700;color:#050505}
+.ad-logo img{width:100%;height:100%;object-fit:contain;display:block}
+.ad-bd{min-width:0}
+.ad-nm{font-family:var(--display);font-weight:700;font-size:15px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.ad-nm .badge{font-size:9.5px;padding:2px 8px}
+.ad-what{font-size:12.5px;color:#cbcbcb;margin-top:3px;line-height:1.35}
+.ad-meta{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:6px;font-size:11.5px;color:var(--muted);font-family:var(--mono)}
+.ad-meta a{color:#e4e4e4;text-decoration:none;border-bottom:1px solid var(--line2)}
+.ad-meta a:hover{color:#fff;border-color:#fff}
+.ad-sc{display:flex;flex-direction:column;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;border:2px solid var(--line2);font-family:var(--display);font-weight:700;font-size:18px;line-height:1}
+.ad-sc small{font-size:8px;letter-spacing:.12em;color:var(--muted);font-weight:700;margin-top:3px}
+.ad-sc.hi{border-color:#fff}.ad-sc.mid{border-color:#a3a3a3}.ad-sc.lo{border-color:#5a5a5a;color:#bfbfbf}
+@media (max-width:640px){
+  .ad-list li{grid-template-columns:auto minmax(0,1fr);gap:10px 12px;padding:12px}
+  .ad-sc{grid-column:2;grid-row:1;justify-self:end;width:44px;height:44px;font-size:16px;margin-top:-2px}
+  .ad-logo{grid-row:1}
+  .ad-bd{grid-column:1/-1;grid-row:2}
+  .ad-list li{position:relative}
+  .ad-sc{position:absolute;top:12px;right:12px}
+  .ad-nm{padding-right:54px}
+}
+/*MYDESK-END*/
 </style>
 </head>
 <body>
@@ -1470,7 +1501,48 @@ function setBot(state) {
 function comeAlive() { clearTimeout(settleT); setBot('scanning'); settleT = setTimeout(() => { settleT = null; setBot(feed?.status?.state || 'idle'); }, 5000); }
 
 /* ---------- data ---------- */
-function renderAll() { renderReport(); setTimeout(rpSync, 0); renderKPIs(); renderMarquee(); renderDigest(); renderAlerts(); renderDeadlines(); renderRadar(); renderUpdates(); renderWatch(); renderRejects(); }
+/*MYDESK-START*/
+function renderAirdrops() {
+  try {
+    const d = (typeof feed !== 'undefined' && feed) || {};
+    const av = document.getElementById('avatar');
+    if (!av) return;
+    let left = av.parentElement;
+    if (!left.classList.contains('a-left')) {
+      left = document.createElement('div'); left.className = 'a-left';
+      av.parentElement.insertBefore(left, av); left.appendChild(av);
+    }
+    let box = document.getElementById('airdropBox');
+    if (!box) {
+      box = document.createElement('section'); box.id = 'airdropBox'; box.className = 'card a-airdrops'; box.hidden = true;
+      box.setAttribute('aria-label', 'Active airdrops');
+      left.appendChild(box);
+    }
+    const wl = d.watchlist || [];
+    const now = Date.now();
+    const items = (d.airdrops || []).filter(a => a && a.project && !(a.ends && Date.parse(a.ends) < now));
+    if (!items.length) { box.hidden = true; box.innerHTML = ''; return; }
+    const day = iso => new Date(iso).toLocaleDateString('en-US', { weekday: 'short', month: 'numeric', day: 'numeric', timeZone: 'America/Chicago' });
+    const rows = items.map(a => {
+      const w = wl.find(x => x.name === a.project) || {};
+      const score = Number.isFinite(+w.score) ? +w.score : (Number.isFinite(+a.score) ? +a.score : null);
+      const cls = score == null ? 'lo' : score >= 70 ? 'hi' : score >= 50 ? 'mid' : 'lo';
+      const logo = w.logo || a.logo;
+      const th = (a.theme || w.theme || '');
+      const url = /^https:\/\//.test(a.url || '') ? a.url : '';
+      const end = a.ends ? 'Closes ' + day(a.ends) : 'No end date announced';
+      return '<li><div class="ad-logo">' + (logo ? '<img src="' + esc(logo) + '" alt="" loading="lazy" onerror="this.remove()">' : esc(a.project.slice(0, 1))) + '</div>' +
+                '<div class="ad-bd"><div class="ad-nm">' + esc(a.project) + (th ? '<span class="badge ' + (th === 'Quantum' ? 'q' : 'ai') + '">' + esc(th) + '</span>' : '') + '</div>' +
+        '<div class="ad-what">' + esc(a.what || '') + '</div>' +
+        '<div class="ad-meta"><span>' + esc(end) + '</span>' + (url ? '<a href="' + esc(url) + '" target="_blank" rel="noopener">Official link</a>' : '') + '</div></div>' +
+        '<div class="ad-sc ' + cls + '">' + (score == null ? '-' : score) + '<small>SCORE</small></div></li>';
+    }).join('');
+    box.innerHTML = '<div class="hd"><h2><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></span>Active airdrops</h2><span class="count">' + items.length + ' open</span></div><ul class="ad-list">' + rows + '</ul>';
+    box.hidden = false;
+  } catch (e) { console.warn('airdrops box', e); }
+}
+/*MYDESK-END*/
+function renderAll() { renderReport(); setTimeout(rpSync, 0); renderKPIs(); renderMarquee(); renderDigest(); renderAlerts(); renderDeadlines(); renderRadar(); renderUpdates(); renderWatch(); renderRejects(); /*MYDESK-START*/ renderAirdrops(); /*MYDESK-END*/ }
 function apply(data, src) {
   if (!data || typeof data !== 'object' || Array.isArray(data)) throw new Error('Feed is not a JSON object');
   const prev = source; feed = data; source = src;

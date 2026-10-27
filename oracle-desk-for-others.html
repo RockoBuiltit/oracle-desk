@@ -1470,7 +1470,7 @@ function setBot(state) {
 function comeAlive() { clearTimeout(settleT); setBot('scanning'); settleT = setTimeout(() => { settleT = null; setBot(feed?.status?.state || 'idle'); }, 5000); }
 
 /* ---------- data ---------- */
-function renderAll() { renderReport(); setTimeout(rpSync, 0); renderKPIs(); renderMarquee(); renderDigest(); renderAlerts(); renderDeadlines(); renderRadar(); renderUpdates(); renderWatch(); renderRejects(); }
+function renderAll() { renderReport(); setTimeout(rpSync, 0); renderKPIs(); renderMarquee(); renderDigest(); renderAlerts(); renderDeadlines(); renderRadar(); renderUpdates(); renderWatch(); renderRejects();  }
 function apply(data, src) {
   if (!data || typeof data !== 'object' || Array.isArray(data)) throw new Error('Feed is not a JSON object');
   const prev = source; feed = data; source = src;
