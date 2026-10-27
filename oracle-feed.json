@@ -814,14 +814,14 @@
  "report": {
   "updated": "2026-10-26T08:25:00-05:00",
   "intro": "Quiet night: no HIGH PRIORITY alerts (0 of 3). GenLayer's airdrop registration closes today, Mon 10/26, Flop's public Devnet opens in the coming days, and a reported Nov 22 DAC TGE is still unconfirmed by the project.",
-  "snapshots": "CoinGecko prices and SafeTrade tickers 8:15 AM CT Oct 26; X sweep since 8:05 PM CT Oct 25.",
+  "snapshots": "CoinGecko prices and SafeTrade tickers 8:15 AM CT Oct 26; X sweep since 8:05 PM CT Oct 25. Active-token prices, market caps and DEX routes rechecked 8:30 PM CT Oct 26 (CoinGecko, GeckoTerminal, DEXScreener).",
   "disclaimer": "Research, not financial advice. Snapshots only; verify every contract yourself.",
   "takeaways": [
    "No alerts. Closest are Ritual (74) and GenLayer (70); both lack a dated TGE and an audit, so they stay capped below 75.",
    "Open campaigns: GenLayer registration closes today (airdrop.genlayer.com); Quip Points open with no end date (points.quip.network); QMS testnet waitlist (qms.finance).",
    "Flop Labs: public Devnet in the coming days per Arthur Hayes; it earns no allocation, and there is still no FLOP token.",
    "DAC Chain: TGE reportedly moved to Nov 22 00:00 UTC; no @dac_chain post found, so it stays REJECT (48).",
-   "Axis runs a Binance Alpha trading competition (buy volume only); volume is over 4x its market cap, so expect swings.",
+   "Axis runs a Binance Alpha trading competition (buy volume only); volume was over 4x its market cap at the morning snapshot (about $75M now), so expect swings.",
    "Rejected: Ptah 'Proof of Agent' claim-link spam and InterLink (ITLG) AI-plus-quantum branding with no named PQ scheme."
   ],
   "prelaunch": [
@@ -909,8 +909,8 @@
     "theme": "Quantum",
     "category": "Post-quantum L1",
     "tier": "Strong",
-    "price": 71.83,
-    "market_cap": 21930065,
+    "price": 75.52,
+    "market_cap": 23100000,
     "volume_24h": 1253356,
     "score": 81,
     "dex": "Rhea Finance (NEAR)"
@@ -921,9 +921,9 @@
     "theme": "Quantum",
     "category": "Post-quantum L1",
     "tier": "Strong",
-    "price": 1.23,
-    "market_cap": 96517243,
-    "volume_24h": 71056,
+    "price": 1.21,
+    "market_cap": 94900000,
+    "volume_24h": 46000,
     "score": 77,
     "dex": ""
    },
@@ -933,20 +933,20 @@
     "theme": "Quantum",
     "category": "L1 with Falcon accounts",
     "tier": "Strong",
-    "price": 0.104375,
-    "market_cap": 947104308,
+    "price": 0.1047,
+    "market_cap": 950000000,
     "volume_24h": 41054959,
     "score": 78,
-    "dex": "Native Algorand DEXs"
+    "dex": "Tinyman v2 (Algorand)"
    },
    {
     "project": "Abelian",
     "ticker": "ABEL",
     "theme": "Quantum",
     "category": "Post-quantum L1",
-    "tier": "Strong",
-    "price": 0.113708,
-    "market_cap": 16409602,
+    "tier": "Watch",
+    "price": 0.1152,
+    "market_cap": 16500000,
     "volume_24h": 59011,
     "score": 67,
     "dex": ""
@@ -956,9 +956,9 @@
     "ticker": "SOQ",
     "theme": "Quantum",
     "category": "Post-quantum coin",
-    "tier": "Speculative",
-    "price": 0.00016344,
-    "market_cap": 388956,
+    "tier": "Watch",
+    "price": 0.000135,
+    "market_cap": 330000,
     "volume_24h": 194240,
     "score": 65,
     "dex": ""
@@ -968,24 +968,24 @@
     "ticker": "QANX",
     "theme": "Quantum",
     "category": "Post-quantum L1",
-    "tier": "Speculative",
-    "price": 0.01192086,
-    "market_cap": 20265475,
+    "tier": "Watch",
+    "price": 0.01129,
+    "market_cap": 19200000,
     "volume_24h": 177783,
     "score": 58,
-    "dex": "PancakeSwap (BSC) / Uniswap (ETH)"
+    "dex": "PancakeSwap v2 (BSC) / Uniswap v3 (ETH)"
    },
    {
     "project": "Cellframe",
     "ticker": "CELL",
     "theme": "Quantum",
     "category": "Post-quantum L0",
-    "tier": "Speculative",
-    "price": 0.067857,
-    "market_cap": 2521261,
+    "tier": "Watch",
+    "price": 0.066,
+    "market_cap": 2450000,
     "volume_24h": 24746,
     "score": 57,
-    "dex": "PancakeSwap (BSC) / Uniswap (ETH)"
+    "dex": "PancakeSwap v3 (BSC)"
    },
    {
     "project": "Neptune Cash",
@@ -993,32 +993,32 @@
     "theme": "Quantum",
     "category": "Post-quantum privacy",
     "tier": "Speculative",
-    "price": 0.249709,
-    "market_cap": 1123447,
+    "price": 0.2597,
+    "market_cap": 1170000,
     "volume_24h": 3130.01,
     "score": 52,
-    "dex": "wNPT Base (tiny)"
+    "dex": ""
    },
    {
     "project": "DATA Network",
     "ticker": "DATA",
     "theme": "AI",
-    "category": "Data",
-    "tier": "Speculative",
-    "price": 0.140843,
-    "market_cap": 50783662,
+    "category": "Data / IP (formerly Story)",
+    "tier": "Watch",
+    "price": 0.1409,
+    "market_cap": 50800000,
     "volume_24h": 10088261,
     "score": 69,
     "dex": ""
    },
    {
     "project": "Pearl",
-    "ticker": "PEARL",
+    "ticker": "PRL",
     "theme": "AI",
     "category": "Compute (PoUW)",
-    "tier": "Speculative",
-    "price": 1.82,
-    "market_cap": 652002513,
+    "tier": "Watch",
+    "price": 1.79,
+    "market_cap": 644000000,
     "volume_24h": 8191852,
     "score": 72,
     "dex": ""
@@ -1028,24 +1028,24 @@
     "ticker": "GNK",
     "theme": "AI",
     "category": "Compute",
-    "tier": "Speculative",
-    "price": 0.169802,
+    "tier": "Watch",
+    "price": 0.1897,
     "market_cap": null,
     "volume_24h": 2988.81,
     "score": 69,
-    "dex": "WGNK Uniswap (ETH)"
+    "dex": "WGNK Uniswap v3 (ETH, official bridge)"
    },
    {
     "project": "Axis Robotics",
     "ticker": "AXIS",
     "theme": "AI",
     "category": "Robotics data",
-    "tier": "Speculative",
-    "price": 0.262808,
-    "market_cap": 43363259,
-    "volume_24h": 191028853,
+    "tier": "Watch",
+    "price": 0.254,
+    "market_cap": 41900000,
+    "volume_24h": 75000000,
     "score": 57,
-    "dex": "Uniswap (Base)"
+    "dex": "Uniswap v4 (Base)"
    },
    {
     "project": "Clore.ai",
@@ -1053,11 +1053,11 @@
     "theme": "AI",
     "category": "GPU market",
     "tier": "Speculative",
-    "price": 0.00160478,
-    "market_cap": 1020187,
+    "price": 0.001618,
+    "market_cap": 1030000,
     "volume_24h": 68910,
     "score": 52,
-    "dex": "Uniswap (ETH)"
+    "dex": "Uniswap v3 (ETH), very thin"
    },
    {
     "project": "Crynux",
@@ -1065,11 +1065,11 @@
     "theme": "AI",
     "category": "Compute",
     "tier": "Speculative",
-    "price": 0.00147213,
-    "market_cap": 2556690,
+    "price": 0.00142,
+    "market_cap": 2470000,
     "volume_24h": 1004.61,
     "score": 51,
-    "dex": "Uniswap V4 (Base), thin"
+    "dex": "Uniswap v4 (Base), thin"
    }
   ],
   "impostors": [
@@ -1122,8 +1122,8 @@
     "project": "Quantus",
     "ticker": "QUANTUS",
     "theme": "Quantum",
-    "price": 71.83,
-    "market_cap": 21930065,
+    "price": 75.52,
+    "market_cap": 23100000,
     "volume_24h": 1253356,
     "score": 81,
     "tier": "Benchmark",
@@ -1135,8 +1135,8 @@
     "project": "Soqucoin",
     "ticker": "SOQ",
     "theme": "Quantum",
-    "price": 0.00016344,
-    "market_cap": 388956,
+    "price": 0.000135,
+    "market_cap": 330000,
     "volume_24h": 194240,
     "score": 65,
     "tier": "WATCH",
@@ -1148,52 +1148,52 @@
     "project": "Pearl",
     "ticker": "PEARL",
     "theme": "AI",
-    "price": 1.82,
-    "market_cap": 652002513,
+    "price": 1.79,
+    "market_cap": 644000000,
     "volume_24h": 8191852,
     "score": 72,
     "tier": "WATCH",
     "dex": "",
-    "note": "Trades on SafeTrade (USDT, USDC, BTC pairs); no official DEX route",
+    "note": "Trades on SafeTrade (USDT, USDC, BTC pairs); official ticker is PRL; no official DEX (WPRL on Uniswap is a third-party bridge)",
     "pair": "PEARL/USDT"
    },
    {
     "project": "Gonka",
     "ticker": "GNK",
     "theme": "AI",
-    "price": 0.169802,
+    "price": 0.1897,
     "market_cap": null,
     "volume_24h": 2988.81,
     "score": 69,
     "tier": "WATCH",
-    "dex": "WGNK Uniswap (ETH)",
-    "note": "Official wrapped token on Ethereum",
+    "dex": "WGNK Uniswap v3 (ETH, official bridge)",
+    "note": "GNK here is native; the Uniswap WGNK token is Gonka's official bridge",
     "pair": "GNK/USDT"
    },
    {
     "project": "Clore.ai",
     "ticker": "CLORE",
     "theme": "AI",
-    "price": 0.00160478,
-    "market_cap": 1020187,
+    "price": 0.001618,
+    "market_cap": 1030000,
     "volume_24h": 68910,
     "score": 52,
     "tier": "WATCH",
-    "dex": "Uniswap (ETH)",
-    "note": "GPU marketplace",
+    "dex": "Uniswap v3 (ETH), very thin",
+    "note": "GPU marketplace; DEX liquidity is only about $23k",
     "pair": "CLORE/USDT"
    },
    {
     "project": "Neptune Cash",
     "ticker": "NPT",
     "theme": "Quantum",
-    "price": 0.249709,
-    "market_cap": 1123447,
+    "price": 0.2597,
+    "market_cap": 1170000,
     "volume_24h": 3130.01,
     "score": 52,
     "tier": "WATCH",
-    "dex": "wNPT Base (tiny)",
-    "note": "Very thin volume",
+    "dex": "",
+    "note": "Very thin volume; wNPT on Base is SafeTrade's own wrapper, not an official route",
     "pair": "NPT/USDT"
    },
    {
@@ -1259,11 +1259,6 @@
    },
    {
     "section": "tokens",
-    "theme": "AI",
-    "text": "Axis volume ($191M) is over 4x its $43M market cap during the Binance Alpha competition; expect volatility."
-   },
-   {
-    "section": "tokens",
     "theme": "Quantum",
     "text": "Abelian's +24% came on about $59k volume (range $0.091 to $0.150); treat it as a thin-book move."
    },
@@ -1276,6 +1271,41 @@
     "section": "safetrade",
     "theme": "AI",
     "text": "Crynux (CNX/USDT) no longer appears in SafeTrade tickers on CoinGecko; its DEX route is Uniswap V4 on Base (thin)."
+   },
+   {
+    "section": "tokens",
+    "theme": "AI",
+    "text": "Tier comes from the Oracle Score (75+ Strong, 55 to 74 Watch, under 55 Speculative). It does not reflect market cap, and \"No DEX\" only means there is no official DEX route, not that a project is low quality."
+   },
+   {
+    "section": "tokens",
+    "theme": "AI",
+    "text": "Pearl (PRL) has no official DEX. WPRL on Uniswap comes from a third-party bridge, and the Solana \"PEARL\" pools showing tens of millions are fakes. Its $644M market cap is circulating; fully diluted value is about $3.8B."
+   },
+   {
+    "section": "tokens",
+    "theme": "AI",
+    "text": "DATA Network is the renamed Story Protocol token (a16z-backed; Upbit, OKX, Coinbase, Kraken). It is not Streamr DATA. Nearly all volume is on exchanges and it has no official DEX."
+   },
+   {
+    "section": "tokens",
+    "theme": "AI",
+    "text": "Gonka: price and DEX row use the official WGNK bridge on Uniswap; the SafeTrade pair is native GNK. Axis volume was $191M during the Binance Alpha competition and is about $75M now; its fully diluted value is about 6x market cap. Clore (about $23k DEX liquidity) and Crynux are thin."
+   },
+   {
+    "section": "tokens",
+    "theme": "Quantum",
+    "text": "Tier comes from the Oracle Score, not market cap. QRL and Abelian have no DEX because QRL and ABEL tokens on Base or Solana are impostors; Abelian also trades on only one exchange (MEXC)."
+   },
+   {
+    "section": "tokens",
+    "theme": "Quantum",
+    "text": "Quantus market cap is $23M but fully diluted value is about $435M; its DEX route is the bridged qtc.omft.near on Rhea (NEAR), which Quantus documents. Algorand trades about 99.8% on exchanges; its DEX route is Tinyman v2 ALGO/USDC (about $1.6M liquidity)."
+   },
+   {
+    "section": "tokens",
+    "theme": "Quantum",
+    "text": "Neptune Cash has no official DEX: wNPT on Base is SafeTrade's own wrapper. Cellframe's real DEX route is PancakeSwap v3 on BSC; the Uniswap v2 Ethereum pool is mispriced and nearly unused."
    }
   ],
   "sources": [
