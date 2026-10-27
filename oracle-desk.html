@@ -695,7 +695,8 @@ html.rp-open,html.rp-open body{overflow:hidden}
 }
 /*MYDESK-START*/
 /* Active airdrops box (owner desk only) */
-.a-left{grid-column:span 5;display:flex;flex-direction:column;gap:18px;align-self:start;min-width:0}
+.a-left{grid-column:span 5;display:flex;flex-direction:column;gap:18px;align-self:start;justify-self:stretch;width:100%;min-width:0}
+.a-left>.a-avatar,.a-left>.a-airdrops{width:100%;flex:none;box-sizing:border-box}
 @media (max-width:1180px){.a-left{grid-column:span 6}}
 @media (max-width:900px){.a-left{grid-column:1/-1!important}}
 .a-airdrops[hidden]{display:none}
