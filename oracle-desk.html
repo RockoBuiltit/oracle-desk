@@ -303,9 +303,16 @@ button{font:inherit;color:inherit;cursor:pointer}
 .dcd{font-family:var(--mono);font-weight:600;font-size:14px;white-space:nowrap}
 .ddate{font-size:12px;color:var(--muted);white-space:nowrap}
 .dlink{white-space:nowrap}
-.dmark,.dundo{margin-top:8px;display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line2);background:transparent;border-radius:9px;padding:5px 10px;font-size:12px;font-weight:600;color:var(--muted);min-height:32px;white-space:nowrap}
-.dmark:hover,.dundo:hover{color:#fff;border-color:rgba(255,255,255,.4);background:var(--s2)}
-.dmark svg{width:13px;height:13px}
+.dmark,.dundo,.dskip{margin-top:8px;display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line2);background:transparent;border-radius:9px;padding:5px 10px;font-size:12px;font-weight:600;color:var(--muted);min-height:32px;white-space:nowrap}
+.dmark:hover,.dundo:hover,.dskip:hover{color:#fff;border-color:rgba(255,255,255,.4);background:var(--s2)}
+.dmark svg,.dskip svg{width:13px;height:13px}
+.dbtns{display:flex;gap:6px;justify-content:flex-end;flex-wrap:wrap}
+.dskip{border-style:dashed}
+.dmark:focus-visible,.dundo:focus-visible,.dskip:focus-visible,.dbar:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.dl li.skipped{opacity:.5}
+.dst.skip{color:#8c8c8c;border:1px dashed rgba(255,255,255,.3)}
+.dl-skipped{margin-top:10px}
+@media (max-width:820px){.dbtns{flex-direction:column;align-items:stretch;gap:0}.dbtns .dskip{margin-top:6px}}
 .dl li.leaving{overflow:hidden;opacity:0;padding-top:0;padding-bottom:0;border-width:0;transition:height .28s ease,opacity .2s ease,padding .28s ease}
 .dbar{margin-top:10px;width:100%;display:flex;justify-content:center;align-items:center;gap:6px;border:1px dashed var(--line2);background:transparent;border-radius:12px;padding:9px;font-size:12.5px;color:var(--muted);font-weight:600;min-height:40px}
 .dbar:hover{color:#fff;border-color:rgba(255,255,255,.35)}
@@ -512,7 +519,7 @@ html,body{background:#000}
 .al{border-color:var(--line)}
 .al::before{background:var(--text)}
 /* inner boxes */
-.top3 li,.ev,.contract,.dgc,.dl li,.rl li,.dr-next,.dr-stats,.dr-list,.trig,.kv div,.spark-big,.chip,.ghost,.copy,.dmark,.dundo,.controls select,.controls .ctl,.seg,.x,.tbl tr{background-color:#121214;border-color:var(--line2)}
+.top3 li,.ev,.contract,.dgc,.dl li,.rl li,.dr-next,.dr-stats,.dr-list,.trig,.kv div,.spark-big,.chip,.ghost,.copy,.dmark,.dundo,.dskip,.controls select,.controls .ctl,.seg,.x,.tbl tr{background-color:#121214;border-color:var(--line2)}
 .tbl tbody tr:hover{background:#121214}
 .ov{background:rgba(0,0,0,.78)}
 /* bold white pills (like the site's white bubbles) */
@@ -531,7 +538,7 @@ html,body{background:#000}
 .c-official{color:var(--mint)}
 .dst.due{color:#000;background:var(--mint)}
 .dl li.due{background:var(--mint-bg);border-color:var(--mint-bd)}
-.dmark:hover,.dundo:hover{color:var(--mint-t);border-color:var(--mint-bd);background:var(--mint-bg)}
+.dmark:hover,.dundo:hover,.dskip:hover{color:var(--mint-t);border-color:var(--mint-bd);background:var(--mint-bg)}
 .prog i{background:var(--mint)}
 .segm i.on{background:var(--mint);box-shadow:0 0 10px rgba(125,224,180,.5)}
 .kpi.due .v{color:var(--mint-t)}
@@ -869,6 +876,7 @@ html.rp-open,html.rp-open body{overflow:hidden}
       <div class="hd"><h2><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg></span>To Do</h2><span class="count" id="dlCount"></span></div>
       <ul class="dl" id="deadlines"></ul>
       <div id="dlDone"></div>
+      <div id="dlSkip"></div>
     </section>
 
     <section class="card a-radar" aria-label="Pre-launch radar">
@@ -1298,13 +1306,13 @@ function dlDate(d) {
   return (d.approx ? '~' : '') + a + (b ? ' – ' + b : '');
 }
 const DL_KEY = 'oracle-deadlines-v1';
-let dlStore = null, dlShowDone = false;
+let dlStore = null, dlShowDone = false, dlShowSkip = false;
 const dlOn = v => !!v && !v.x;
 const dlKey = d => `${d.project || ''}|${d.title || ''}|${d.date || ''}`;
 function dlLoad() {
   if (dlStore) return dlStore;
-  try { const v = JSON.parse(localStorage.getItem(DL_KEY) || 'null'); if (v && typeof v === 'object') dlStore = { done: dlClean(v.done), seen: v.seen || {} }; } catch {}
-  return dlStore || (dlStore = { done: {}, seen: {} });
+  try { const v = JSON.parse(localStorage.getItem(DL_KEY) || 'null'); if (v && typeof v === 'object') dlStore = { done: dlClean(v.done), skip: dlClean(v.skip), seen: v.seen || {} }; } catch {}
+  return dlStore || (dlStore = { done: {}, skip: {}, seen: {} });
 }
 function dlSave() { try { localStorage.setItem(DL_KEY, JSON.stringify(dlStore)); } catch {} }
 function dlPrune() {
@@ -1315,6 +1323,7 @@ function dlPrune() {
     if ((isFinite(end) && now - end > D14) || (v && v.x && now - (v.t || 0) > D14) || (keys && !keys.has(k) && now - (v.t || 0) > D14)) delete st.done[k];
   }
   if (keys) for (const k of Object.keys(st.seen)) if (!keys.has(k)) delete st.seen[k];
+  for (const [k, v] of Object.entries(st.skip)) if ((keys && !keys.has(k)) || (v && v.x && now - (v.t || 0) > D14)) delete st.skip[k];
 }
 function dlOnFeed() {
   if (!feed || !Array.isArray(feed.deadlines)) return;
@@ -1323,13 +1332,19 @@ function dlOnFeed() {
   if (fresh) dlShowDone = false;
   dlPrune(); dlSave();
 }
+const ICON_SKIP = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 5l7 7-7 7M13 5l7 7-7 7"/></svg>';
 const ICON_TICK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
 function dlRow(d, k, st, opts) {
-  const done = opts.completed;
+  const done = opts.completed, sk = opts.skipped, nm = esc(d.title || 'Deadline');
+  if (sk) return `<li class="skipped" data-k="${esc(k)}">
+      <span class="dst skip">SKIPPED</span>
+      <div class="dmain"><div class="dtitle">${nm}</div><div class="dmeta"><b style="color:var(--text);font-weight:600">${esc(d.project || '')}</b>${d.theme ? badge(d.theme) : ''}${d.type ? `<span>${esc(d.type)}</span>` : ''}</div></div>
+      <div class="dwhen"><div class="dcd" data-dl="${esc(d.date || '')}" data-end="${esc(d.date_end || '')}">${esc(dlCountdown(d))}</div><div class="ddate">${esc(dlDate(d))}</div><button type="button" class="dundo" data-unskip="${esc(k)}" aria-label="Restore ${nm}">Restore</button></div>
+      <span class="dlink">${d.url ? ext(d.url, 'Official ↗', 'chip') : ''}</span></li>`;
   return `<li class="${done ? 'done' : st}" data-k="${esc(k)}">
       <span class="dst ${done ? 'done' : st}">${done ? 'DONE' : st === 'due' ? 'DUE SOON' : 'OPEN'}</span>
       <div class="dmain"><div class="dtitle">${esc(d.title || 'Deadline')}</div><div class="dmeta"><b style="color:var(--text);font-weight:600">${esc(d.project || '')}</b>${d.theme ? badge(d.theme) : ''}${d.type ? `<span>${esc(d.type)}</span>` : ''}</div></div>
-      <div class="dwhen"><div class="dcd" data-dl="${esc(d.date || '')}" data-end="${esc(d.date_end || '')}">${done ? 'done' : esc(dlCountdown(d))}</div><div class="ddate">${esc(dlDate(d))}</div>${done ? (opts.manual ? `<button class="dundo" data-undo="${esc(k)}">Undo</button>` : '') : `<button class="dmark" data-mark="${esc(k)}">${ICON_TICK}Mark done</button>`}</div>
+      <div class="dwhen"><div class="dcd" data-dl="${esc(d.date || '')}" data-end="${esc(d.date_end || '')}">${done ? 'done' : esc(dlCountdown(d))}</div><div class="ddate">${esc(dlDate(d))}</div>${done ? (opts.manual ? `<button class="dundo" data-undo="${esc(k)}">Undo</button>` : '') : `<div class="dbtns"><button type="button" class="dmark" data-mark="${esc(k)}">${ICON_TICK}Mark done</button><button type="button" class="dskip" data-skip="${esc(k)}" aria-label="Skip ${nm}" title="Not taking part: hide this item">${ICON_SKIP}Skip</button></div>`}</div>
       <span class="dlink">${d.url ? ext(d.url, 'Official ↗', 'chip') : ''}</span></li>`;
 }
 function renderDeadlines() {
@@ -1337,17 +1352,31 @@ function renderDeadlines() {
   /* completed items clear at each new morning report: anything that finished or was ticked before the latest report time is hidden everywhere */
   const cut = feed.report && feed.report.updated ? new Date(feed.report.updated).getTime() : 0;
   const stale = (d, k, s, manual) => { if (!isFinite(cut) || !cut) return false; if (manual) return (st.done[k].t || 0) < cut; if (s === 'done') { const e = new Date(d.date_end || d.date || 0).getTime(); return isFinite(e) && e < cut; } return false; };
-  const items = (feed.deadlines || []).filter(passT).map(d => { const k = dlKey(d), s = dlStatus(d), m = dlOn(st.done[k]) && s !== 'done'; return { d, k, st: s, manual: m, hide: stale(d, k, s, m) }; }).filter(x => !x.hide);
-  const active = items.filter(x => x.st !== 'done' && !x.manual).sort((a, b) => order[a.st] - order[b.st] || (new Date(a.d.date || 8.64e15) - new Date(b.d.date || 8.64e15)));
+  const items = (feed.deadlines || []).filter(passT).map(d => { const k = dlKey(d), s = dlStatus(d), m = dlOn(st.done[k]) && s !== 'done'; return { d, k, st: s, manual: m, skip: s !== 'done' && !m && dlOn(st.skip[k]), hide: stale(d, k, s, m) }; }).filter(x => !x.hide);
+  /* skipped = open items the user chose not to take part in: hidden from the list and the counts, restorable from the "N skipped" bar */
+  const skipped = items.filter(x => x.skip).sort((a, b) => new Date(a.d.date || 8.64e15) - new Date(b.d.date || 8.64e15));
+  const active = items.filter(x => x.st !== 'done' && !x.manual && !x.skip).sort((a, b) => order[a.st] - order[b.st] || (new Date(a.d.date || 8.64e15) - new Date(b.d.date || 8.64e15)));
   const completed = items.filter(x => x.st === 'done' || x.manual).sort((a, b) => new Date(b.d.date || 0) - new Date(a.d.date || 0));
   const nDue = active.filter(x => x.st === 'due').length;
   $('#dlCount').textContent = active.length ? `${nDue} due soon · ${active.length} to do` : '';
   $('#deadlines').innerHTML = active.length ? active.map(x => dlRow(x.d, x.k, x.st, { completed: false })).join('')
-    : (completed.length ? '<li class="dl-empty" style="border:0;background:none;display:block">All caught up</li>' : '');
+    : (completed.length || skipped.length ? '<li class="dl-empty" style="border:0;background:none;display:block">All caught up</li>' : '');
   $('#dlDone').innerHTML = completed.length
     ? `<button class="dbar" id="dlBar" aria-expanded="${dlShowDone}">${completed.length} completed · ${dlShowDone ? 'Hide' : 'Show'}</button>${dlShowDone ? `<ul class="dl dl-completed">${completed.map(x => dlRow(x.d, x.k, x.st, { completed: true, manual: x.manual })).join('')}</ul>` : ''}`
     : '';
+  if (!skipped.length) dlShowSkip = false;
+  $('#dlSkip').innerHTML = skipped.length
+    ? `<button type="button" class="dbar" id="dlSkipBar" aria-expanded="${dlShowSkip}">${skipped.length} skipped · ${dlShowSkip ? 'Hide' : 'Show'}</button>${dlShowSkip ? `<ul class="dl dl-skipped">${skipped.map(x => dlRow(x.d, x.k, x.st, { completed: false, skipped: true })).join('')}</ul>` : ''}`
+    : '';
 }
+function dlSkip(k, li) {
+  const st = dlLoad(); st.skip[k] = { t: Date.now(), end: null }; dlSave(); syncNow();
+  if (!li || reduced()) { renderDeadlines(); return; }
+  li.style.height = li.offsetHeight + 'px'; void li.offsetHeight;
+  li.classList.add('leaving'); li.style.height = '0px';
+  setTimeout(renderDeadlines, 300);
+}
+function dlUnskip(k) { const st = dlLoad(); st.skip[k] = { t: Date.now(), end: null, x: 1 }; dlSave(); renderDeadlines(); syncNow(); }
 function dlMark(k, li) {
   const st = dlLoad(); const d = (feed.deadlines || []).find(x => dlKey(x) === k);
   st.done[k] = { t: Date.now(), end: d ? (d.date_end || d.date || null) : null }; dlSave(); syncNow();
@@ -1374,12 +1403,13 @@ async function syncRun() {
   const r = await fetch(SYNC_URL + (SYNC_URL.includes('?') ? '&' : '?') + 't=' + Date.now(), { cache: 'no-store' });
   if (!r.ok) throw new Error('HTTP ' + r.status);
   const txt = (await r.text()).trim();
-  if (txt) { try { const j = JSON.parse(txt); remote = dlClean(j && j.done); } catch { remote = {}; } }
-  const before = dlSig(st.done);
-  st.done = dlMerge(remote, st.done); dlPrune();
-  if (dlSig(st.done) !== before) { dlSave(); if (feed) renderDeadlines(); }
-  if (dlSig(st.done) !== dlSig(remote)) {
-    const w = await fetch(SYNC_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify({ v: 1, done: st.done }) });
+  let rSkip = {};
+  if (txt) { try { const j = JSON.parse(txt); remote = dlClean(j && j.done); rSkip = dlClean(j && j.skip); } catch { remote = {}; rSkip = {}; } }
+  const before = dlSig(st.done) + dlSig(st.skip);
+  st.done = dlMerge(remote, st.done); st.skip = dlMerge(rSkip, st.skip); dlPrune();
+  if (dlSig(st.done) + dlSig(st.skip) !== before) { dlSave(); if (feed) renderDeadlines(); }
+  if (dlSig(st.done) !== dlSig(remote) || dlSig(st.skip) !== dlSig(rSkip)) {
+    const w = await fetch(SYNC_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify({ v: 1, done: st.done, skip: st.skip }) });
     if (!w.ok) throw new Error('HTTP ' + w.status);
   }
 }
@@ -1719,6 +1749,9 @@ $('#radar').addEventListener('click', e => { const g = e.target.closest('.dot');
 $('#radar').addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { const g = e.target.closest('.dot'); if (g) { e.preventDefault(); openDrawer(g.dataset.name); } } });
 $('.a-deadlines').addEventListener('click', e => {
   const m = e.target.closest('[data-mark]'); if (m) { dlMark(m.dataset.mark, m.closest('li')); return; }
+  const sk = e.target.closest('[data-skip]'); if (sk) { dlSkip(sk.dataset.skip, sk.closest('li')); return; }
+  const us = e.target.closest('[data-unskip]'); if (us) { dlUnskip(us.dataset.unskip); return; }
+  if (e.target.closest('#dlSkipBar')) { dlShowSkip = !dlShowSkip; renderDeadlines(); return; }
   const u = e.target.closest('[data-undo]'); if (u) { const dn = dlLoad().done, uk = u.dataset.undo; dn[uk] = { t: Date.now(), end: dn[uk] ? dn[uk].end || null : null, x: 1 }; dlSave(); renderDeadlines(); syncNow(); return; }
   if (e.target.closest('#dlBar')) { dlShowDone = !dlShowDone; renderDeadlines(); }
 });
