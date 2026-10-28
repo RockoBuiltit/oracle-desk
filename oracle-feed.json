@@ -1,22 +1,20 @@
 {
- "generated_at": "2026-10-27T16:03:00-05:00",
+ "generated_at": "2026-10-27T20:14:00-05:00",
  "status": {
   "state": "idle",
-  "last_scan": "2026-10-27T16:03:00-05:00",
-  "next_scan": "2026-10-27T20:00:00-05:00",
+  "last_scan": "2026-10-27T20:14:00-05:00",
+  "next_scan": "2026-10-28T08:00:00-05:00",
   "activity": [
-   "4 PM scan: no new HIGH PRIORITY (0 of 3 used today); no new open campaigns",
-   "GenLayer (official): ChainPatrol now watching for fake accounts and lookalike sites ahead of TGE; TGE still undated",
-   "Quip Network (official): recap of the Quantum Alliance launch with Quantus, Keystone, Abelian, Midnight and others; no TGE news",
-   "NaoX: community teaser for an announcement Wed 10/28 (unconfirmed by @NaoXprotocol)",
-   "Asentum (official): published a testnet airdrop playbook; radar only, team and PQ claims unverified",
-   "Crynux: Node v3.7.1 patch live (official)",
-   "Narratives: Stellar Protocol 30 testnet vote Nov 3, mainnet vote Nov 23 (third party); TRON PQ signatures on Nile testnet",
-   "SafeTrade: 47 bases, no new listings; no @safetrade posts"
+   "8 PM scan: no new HIGH PRIORITY (0 of 3 used today); no new open campaigns; nothing sent",
+   "AI: no launch news from GenLayer, Ritual, Fraction, DATA, Flop, TermiX, Axis, Crynux, Dataline or Pond this window",
+   "Flop: @FlopNetwork (a third-party analysis account, not @flop_labs) repeats the Nov 3 testnet target; still unconfirmed, no FLOP token exists",
+   "Quantum: NaoX (official) replies only, KuCoin GemSlot pool still running; Quip, QRL, Soqucoin, DAC, QMS quiet",
+   "Asentum: testnet airdrop farming wave continues (radar only); new tiny PQ testnets (ZERONYTH, an anonymous solo 'quantum-safe L1') skipped",
+   "SafeTrade: 46 bases on CoinGecko, no new listings (EVR missing from the feed this snapshot); no @safetrade posts"
   ],
   "alerts_used_today": 0,
   "alert_cap": 3,
-  "x_reads_left_today": 974
+  "x_reads_left_today": 992
  },
  "alerts": [],
  "watchlist": [
@@ -37,7 +35,7 @@
    "fdv": 500900000.0,
    "volume_24h": 1320203,
    "dex_route": "Rhea Finance (NEAR) qtc.omft.near (~$9.9M liq); InstaSwap via NEAR Intents. Solana/Base QTC tokens are impostors",
-   "next_milestone": "QTC lending on RHEA Lend (undated). Native QTC swaps live on InstaSwap via NEAR Intents (official, Tue 10/27)",
+   "next_milestone": "QTC lending on RHEA Lend (undated)",
    "milestone_date": null,
    "links": [
     {
@@ -87,7 +85,7 @@
    "fdv": null,
    "volume_24h": null,
    "dex_route": "Base/BSC bridged 0x256E...8C37; official Base pool about $6 liquidity, so no real DEX route (CEX: Coinbase, Gate, MEXC)",
-   "next_milestone": "Real DEX liquidity on Base or BSC, CoinGecko listing and an audit (all undated). Gate spot RITUAL/USDT opened Tue 10/27 8:00 AM CT; MEXC futures since Mon 10/26",
+   "next_milestone": "Real DEX liquidity on Base or BSC, CoinGecko listing and an audit (all undated)",
    "milestone_date": null,
    "links": [
     {
@@ -342,7 +340,7 @@
    "fdv": null,
    "volume_24h": 94197540,
    "dex_route": "Uniswap v4 (Base) 0x5be75e3b0aff5d1a042a5363ae36acb1d6d755ea",
-   "next_milestone": "OKX Wallet X Launch II trading contest ends Thu 10/29 5:00 AM CT; MEXC Airdrop+ ends Tue 11/3 7:00 AM CT (both need trading, not free); Verona data-verification partnership announced Tue 10/27; Coinbase enablement and unlock schedule undated",
+   "next_milestone": "OKX Wallet X Launch II trading contest ends Thu 10/29 5:00 AM CT; MEXC Airdrop+ ends Tue 11/3 7:00 AM CT (both need trading, not free); Coinbase enablement and unlock schedule undated",
    "milestone_date": "2026-10-29T05:00:00-05:00",
    "links": [
     {
@@ -1090,14 +1088,14 @@
    {
     "project": "GenLayer",
     "theme": "AI",
-    "fakes": "Base 0x457c…0f8D and 0x2322…c96C, flap.sh, four.meme and pump.fun GEN copies",
+    "fakes": "Base 0x457c\u20260f8D and 0x2322\u2026c96C, flap.sh, four.meme and pump.fun GEN copies",
     "official": "No token yet; links only from @GenLayer"
    },
    {
     "project": "Axis Robotics",
     "theme": "AI",
     "fakes": "Many copycat AXIS tokens on Solana, Base and Ethereum",
-    "official": "Base 0x5be7…d755ea (per CoinGecko)"
+    "official": "Base 0x5be7\u2026d755ea (per CoinGecko)"
    },
    {
     "project": "Quantus",
@@ -1108,7 +1106,7 @@
    {
     "project": "QRL",
     "theme": "Quantum",
-    "fakes": "Base 0x3769…5bA3 (disowned Oct 12) and other ERC-20/Solana 'QRL'",
+    "fakes": "Base 0x3769\u20265bA3 (disowned Oct 12) and other ERC-20/Solana 'QRL'",
     "official": "No token contract"
    },
    {
@@ -1144,13 +1142,13 @@
    {
     "project": "Ritual",
     "theme": "AI",
-    "fakes": "Base 0xfF2E…9E3572, Robinhood 0xC1F4…D5ec09B3, Solana pump.fun copies; \"claim guides\" asking you to connect a wallet through shared links",
-    "official": "Bridged Base/BSC 0x256E…8C37 (Unverified as a DEX route, about $6 liquidity); claims only at airdrop.ritualfoundation.org"
+    "fakes": "Base 0xfF2E\u20269E3572, Robinhood 0xC1F4\u2026D5ec09B3, Solana pump.fun copies; \"claim guides\" asking you to connect a wallet through shared links",
+    "official": "Bridged Base/BSC 0x256E\u20268C37 (Unverified as a DEX route, about $6 liquidity); claims only at airdrop.ritualfoundation.org"
    },
    {
     "project": "GenLayer",
     "theme": "AI",
-    "fakes": "Ethereum 0x4242…2a2f on a CoinGecko preview page is not posted by GenLayer (Unverified)",
+    "fakes": "Ethereum 0x4242\u20262a2f on a CoinGecko preview page is not posted by GenLayer (Unverified)",
     "official": "No official contract posted yet"
    }
   ],
