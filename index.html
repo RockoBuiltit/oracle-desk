@@ -716,6 +716,39 @@ html.rp-open,html.rp-open body{overflow:hidden}
 .botbox.b3d{width:92%;height:92%;animation:none!important}
 .botbox.b3d canvas{width:100%;height:100%;display:block}
 
+/* ===== single money-green avatar colour + talking-state quantum background ===== */
+/* One constant colour for the avatar in every state (3D shader reads --state; the SVG fallback eye, ears, core and halo use it too). */
+:root{--money:#1FD17A}
+.a-avatar.s-idle,.a-avatar.s-scanning,.a-avatar.s-alert{--state:var(--money)}
+/* TALKING: while #avatar has .talking the radar sweep and orbit rings fade out and the banner's quantum imagery (glowing eye over neural lines, quantum rings) fades in and drifts slowly. Not talking: radar as before, imagery hidden and its animation paused. */
+.stage .qbg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;opacity:0;transition:opacity .9s ease;pointer-events:none}
+.a-avatar.talking .stage .qbg{opacity:1}
+.stage .sweep,.stage svg.orbits{transition:opacity .9s ease}
+.a-avatar.talking .stage .sweep,.a-avatar.talking .stage svg.orbits{opacity:0}
+.qbg g{transform-box:view-box}
+.qbg .q-e{fill:var(--money);stroke:none}
+.qbg .q-n1{transform-origin:100px 200px;animation:qwave1 19s ease-in-out infinite alternate}
+.qbg .q-n2{transform-origin:100px 200px;animation:qwave2 24s ease-in-out -7s infinite alternate}
+.qbg .q-nodes{transform-origin:100px 200px;animation:qwave1 28s ease-in-out -12s infinite alternate}
+.qbg .q-eye{transform-origin:96px 112px;animation:qfloat 16s ease-in-out -3s infinite alternate}
+.qbg .q-eye-glow{animation:qpulse 3.6s ease-in-out infinite}
+.qbg .q-rings{transform-origin:300px 206px;animation:qfloat2 26s ease-in-out -5s infinite alternate}
+.qbg .q-ring{transform-origin:300px 206px}
+.qbg .q-r1{animation:qsway 14s ease-in-out infinite alternate}
+.qbg .q-r2{animation:qsway 19s ease-in-out -6s infinite alternate-reverse}
+.qbg .q-r3{animation:qsway 23s ease-in-out -11s infinite alternate}
+.qbg .q-r4{animation:qspin 30s linear infinite}
+.qbg *{animation-play-state:paused!important}
+.a-avatar.talking .qbg *{animation-play-state:running!important}
+@keyframes qwave1{0%{transform:translate(0,0) rotate(0)}50%{transform:translate(5px,-7px) rotate(1.4deg)}100%{transform:translate(-4px,6px) rotate(-1deg) scale(1.02)}}
+@keyframes qwave2{0%{transform:translate(0,0) rotate(0)}50%{transform:translate(-6px,5px) rotate(-1.6deg)}100%{transform:translate(4px,-6px) rotate(1deg) scale(.98)}}
+@keyframes qfloat{0%{transform:translate(0,0) scale(1)}50%{transform:translate(4px,-6px) scale(1.04)}100%{transform:translate(-3px,4px) scale(.98)}}
+@keyframes qfloat2{0%{transform:translate(0,0) rotate(0) scale(1)}50%{transform:translate(-5px,6px) rotate(3deg) scale(1.03)}100%{transform:translate(4px,-4px) rotate(-2deg) scale(.98)}}
+@keyframes qsway{from{transform:rotate(-9deg)}to{transform:rotate(9deg)}}
+@keyframes qspin{to{transform:rotate(360deg)}}
+@keyframes qpulse{0%,100%{opacity:.55}50%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.qbg *{animation:none!important}}
+
 /*MYDESK-START*/
 /* Active airdrops box (owner desk only) */
 .a-left{grid-column:span 5;display:flex;flex-direction:column;gap:18px;align-self:start;justify-self:stretch;width:100%;min-width:0}
@@ -793,6 +826,12 @@ html.rp-open,html.rp-open body{overflow:hidden}
       <div class="stage" id="stage">
         <div class="halo"></div>
         <div class="sweep"></div>
+        <svg class="qbg" viewBox="0 0 400 400" aria-hidden="true">
+          <defs><radialGradient id="qEyeG"><stop offset="0" stop-color="#eafff3"/><stop offset=".3" stop-color="#1FD17A"/><stop offset="1" stop-color="#1FD17A" stop-opacity="0"/></radialGradient><filter id="qGlow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="1.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+          <g class="q-neural" fill="none" stroke="#1FD17A" stroke-linecap="round" filter="url(#qGlow)"><g class="q-n1"><path d="M-10 36 C14 36 14 36 37 36 C60 36 60 59 83 59 C109 59 109 61 134 61 C160 61 160 60 186 60" stroke-width="0.7" stroke-opacity="0.45"/><path d="M-10 115 C15 115 15 122 39 122 C63 122 63 112 86 112 C115 112 115 110 143 110 C170 110 170 114 197 114" stroke-width="1.1" stroke-opacity="0.42"/><path d="M-10 171 C17 171 17 155 44 155 C73 155 73 170 102 170 C126 170 126 194 151 194 C174 194 174 191 198 191" stroke-width="0.7" stroke-opacity="0.59"/><path d="M-10 251 C20 251 20 268 49 268 C77 268 77 255 104 255 C132 255 132 239 160 239 C190 239 190 221 220 221" stroke-width="0.9" stroke-opacity="0.38"/><path d="M-10 304 C16 304 16 288 42 288 C71 288 71 278 100 278 C129 278 129 292 158 292 C184 292 184 301 209 301" stroke-width="1.5" stroke-opacity="0.65"/></g><g class="q-n2"><path d="M-10 66 C16 66 16 88 41 88 C65 88 65 82 88 82 C115 82 115 74 143 74 C169 74 169 69 196 69" stroke-width="0.6" stroke-opacity="0.69"/><path d="M-10 133 C13 133 13 124 36 124 C63 124 63 120 91 120 C116 120 116 132 141 132 C167 132 167 151 193 151" stroke-width="1.2" stroke-opacity="0.61"/><path d="M-10 210 C13 210 13 214 36 214 C64 214 64 227 92 227 C121 227 121 221 150 221 C178 221 178 207 206 207" stroke-width="1.0" stroke-opacity="0.51"/><path d="M-10 281 C13 281 13 287 35 287 C59 287 59 270 83 270 C106 270 106 252 129 252 C152 252 152 264 176 264" stroke-width="1.4" stroke-opacity="0.43"/><path d="M-10 339 C14 339 14 329 38 329 C62 329 62 335 86 335 C113 335 113 339 140 339 C163 339 163 334 185 334" stroke-width="1.1" stroke-opacity="0.42"/><path d="M48 287L51 309" stroke-width=".5" stroke-opacity=".35"/><path d="M76 111L101 150" stroke-width=".5" stroke-opacity=".35"/><path d="M165 298L190 317" stroke-width=".5" stroke-opacity=".35"/><path d="M59 206L47 168" stroke-width=".5" stroke-opacity=".35"/><path d="M25 129L5 145" stroke-width=".5" stroke-opacity=".35"/><path d="M183 183L218 222" stroke-width=".5" stroke-opacity=".35"/><path d="M182 157L160 135" stroke-width=".5" stroke-opacity=".35"/></g><g class="q-nodes" fill="#1FD17A" stroke="none"><circle cx="191" cy="265" r="1.7"/><circle cx="127" cy="260" r="1.1"/><circle cx="181" cy="295" r="2.2"/><circle cx="162" cy="163" r="1.6"/><circle cx="30" cy="246" r="1.1"/><circle cx="23" cy="101" r="1.2"/><circle cx="75" cy="48" r="1.0"/><circle cx="39" cy="64" r="1.5"/><circle cx="15" cy="327" r="1.9"/><circle cx="38" cy="116" r="1.5"/><circle cx="79" cy="72" r="2.2"/><circle cx="199" cy="188" r="1.7"/><circle cx="26" cy="65" r="1.5"/><circle cx="60" cy="312" r="1.2"/><circle cx="14" cy="353" r="1.7"/><circle cx="38" cy="215" r="1.0"/><circle cx="110" cy="363" r="2.2"/><circle cx="142" cy="119" r="1.5"/></g></g>
+          <g class="q-eye"><circle class="q-eye-glow" cx="96" cy="112" r="40" fill="url(#qEyeG)"/><path d="M58 112Q96 82 134 112Q96 142 58 112Z" fill="#041a10" fill-opacity=".85" stroke="#1FD17A" stroke-width="2"/><circle cx="96" cy="112" r="13" fill="none" stroke="#1FD17A" stroke-width="2"/><circle cx="96" cy="112" r="6.5" fill="#eafff3"/></g>
+          <g class="q-rings" fill="none" stroke="#1FD17A" stroke-width="1.3" stroke-opacity=".8" filter="url(#qGlow)"><circle class="q-nuc" cx="300" cy="206" r="6" fill="#1FD17A" stroke="none"/><g class="q-ring q-r1"><ellipse cx="300" cy="206" rx="92" ry="30" transform="rotate(-30 300 206)"/><circle class="q-e" cx="371" cy="187" r="3"/></g><g class="q-ring q-r2"><ellipse cx="300" cy="206" rx="92" ry="30" transform="rotate(30 300 206)"/><circle class="q-e" cx="242" cy="201" r="3"/></g><g class="q-ring q-r3"><ellipse cx="300" cy="206" rx="92" ry="30" transform="rotate(90 300 206)"/><circle class="q-e" cx="315" cy="126" r="3"/></g><g class="q-ring q-r4"><ellipse cx="300" cy="206" rx="70" ry="70" transform="rotate(0 300 206)" stroke-dasharray="2 6"/><circle class="q-e" cx="330" cy="143" r="3"/></g></g>
+        </svg>
         <svg class="orbits" viewBox="0 0 400 400" aria-hidden="true">
           <g class="o o1"><circle class="ring" cx="200" cy="200" r="186" stroke-dasharray="2 8"/><circle cx="200" cy="14" r="5" fill="#949494"/><circle cx="386" cy="200" r="3" fill="#b2b2b2"/></g>
           <g class="o o2"><circle class="ring" cx="200" cy="200" r="150"/><circle cx="50" cy="200" r="4.5" fill="#b2b2b2"/><circle cx="306" cy="306" r="3" fill="#949494"/></g>
@@ -1511,6 +1550,14 @@ function setGazeMode(m) {
     document.dispatchEvent(new CustomEvent('oracle-look', { detail: { x: 0, y: 0 } }));
   }
 }
+/* TALKING STATE: #avatar (and <body>) get class "talking" while the Oracle is talking with the user; CSS then swaps the radar for the quantum background. Turn it on with ?talk=1 in the URL or window.ORACLE_TALKING = true (false turns it off). In ?gaze=conversation mode it is also on while speech is heard and for TALK_HOLD_MS after. This only toggles a class; it does not touch the gaze logic. */
+const TALK_HOLD_MS = 4000;
+let talkManual = new URLSearchParams(location.search).get('talk') === '1', talkHeardUntil = 0;
+const isTalking = () => talkManual || performance.now() < talkHeardUntil;
+function applyTalking() { const on = isTalking(); document.body.classList.toggle('talking', on); const a = document.getElementById('avatar'); if (a) a.classList.toggle('talking', on); }
+Object.defineProperty(window, 'ORACLE_TALKING', { get: isTalking, set(v) { talkManual = !!v; applyTalking(); }, configurable: true });
+applyTalking();
+if (GAZE_CONVERSATION) setInterval(applyTalking, 250);
 if (GAZE_CONVERSATION) (async () => {
   let lastSpeech = performance.now(), loud = 0;
   setInterval(() => { if (GAZE === 'forward' && performance.now() - lastSpeech > QUIET_FALLBACK_MS) setGazeMode('text'); }, 500);
@@ -1523,7 +1570,7 @@ if (GAZE_CONVERSATION) (async () => {
       an.getFloatTimeDomainData(buf); let sum = 0; for (let i = 0; i < buf.length; i++) sum += buf[i] * buf[i];
       const rms = Math.sqrt(sum / buf.length);
       loud = rms > SPEECH_RMS ? loud + 1 : 0;
-      if (loud >= 2) { lastSpeech = performance.now(); setGazeMode('forward'); }
+      if (loud >= 2) { lastSpeech = performance.now(); talkHeardUntil = lastSpeech + TALK_HOLD_MS; setGazeMode('forward'); }
     }, 100);
   } catch (e) { /* no microphone: forward until the quiet timer runs out, then message-watching */ }
 })();
@@ -1787,7 +1834,7 @@ void main(){
   if(hit){
     vec3 n=nrm(p), v=-rd, q=MI*(p-HC), rf=reflect(rd,n);
     float fr=pow(1.-max(dot(n,v),0.),3.);
-    vec3 film=0.5+0.5*cos(6.2831*(vec3(0.0,0.33,0.67)+fr*0.9+dot(n,vec3(0.2,0.5,0.1))*0.6));
+    vec3 film=vec3(0.12,0.82,0.48);
     vec3 tint=mix(vec3(0.82,0.84,0.88),film,0.18+0.25*fr);
     col=env(rf)*tint*(0.85+0.4*fr);
     col+=uCol*fr*0.35;
@@ -1824,12 +1871,11 @@ void main(){
   const lerp = (a, b, k) => a + (b - a) * k;
   let col = [0.85, 0.85, 0.85], tgt = { x: 0, y: 0 }, cur = { x: 0, y: 0, yaw: 0, pitch: 0 };
   let nextBlink = 2, blinkT = -1, dbl = false, hopT = -10, wasAlert = false, scan = 0;
-  let reading = false, read = 0, hue = Math.random(), lastT = 0;
+  let reading = false, read = 0, lastT = 0;
   let wantRead = false, dwellUntil = 0;
   document.addEventListener('oracle-read', e => { const on = !!(e.detail && e.detail.on); if (!on && wantRead) dwellUntil = performance.now() + window.ORACLE_GAZE.dwell; wantRead = on; });
   const gazeReading = () => { if (window.ORACLE_GAZE.mode !== 'text') return false; return wantRead || performance.now() < dwellUntil; };
-  /* colour cycle: smooth hue shift over time, blended with the state colour; returns linear RGB */
-  const hsl = (h, s, l) => { const f = n => { const k = (n + h * 12) % 12, a = s * Math.min(l, 1 - l); return l - a * Math.max(-1, Math.min(k - 3, 9 - k, 1)); }; return [f(0), f(8), f(4)].map(v => Math.pow(v, 2.2)); };
+  /* one constant colour: the avatar is always the money green from --state (no hue cycling) */
   document.addEventListener('oracle-look', e => { if (window.ORACLE_GAZE.mode === 'forward') { tgt.x = 0; tgt.y = 0; return; } tgt.x = Math.max(-1, Math.min(1, e.detail.x)); tgt.y = Math.max(-1, Math.min(1, e.detail.y)); });
   const parseCol = s => {
     s = String(s || '').trim(); let m;
@@ -1851,7 +1897,6 @@ void main(){
     if (alert && !wasAlert) hopT = t; wasAlert = alert;
     scan = lerp(scan, scanning ? 1 : 0, 0.05);
     const dt = Math.min(Math.max(t - lastT, 0), 0.1); lastT = t;
-    hue = (hue + dt * (still ? 0.006 : alert ? 0.16 : scanning ? 0.08 : 0.03)) % 1;
     reading = gazeReading();
     read = lerp(read, reading ? 1 : 0, still ? 0.2 : 0.07);
     let tx = tgt.x, ty = tgt.y;
@@ -1871,8 +1916,8 @@ void main(){
     gl.uniform2f(U.uRes, cv.width, cv.height); gl.uniform1f(U.uTime, t);
     gl.uniform3f(U.uRot, cur.yaw, cur.pitch, -cur.yaw * 0.12);
     gl.uniform2f(U.uEye, cur.x * 0.13, cur.y * 0.06 - read * 0.03); gl.uniform1f(U.uBlink, blink);
-    const cyc = hsl(hue, 0.7, 0.6), mixK = alert ? 0.45 : 0.8, boost = 1 + (alert || scanning ? 0.3 * pulse : 0);
-    const cc = col.map((v, i) => lerp(v, cyc[i], mixK) * boost);
+    const boost = 1 + (alert || scanning ? 0.3 * pulse : 0); /* brightness pulse only, same hue */
+    const cc = col.map(v => v * boost);
     gl.uniform3f(U.uCol, cc[0], cc[1], cc[2]); gl.uniform1f(U.uBob, bob);
     gl.uniform1f(U.uScan, scan); gl.uniform1f(U.uPulse, pulse);
     gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT); gl.drawArrays(gl.TRIANGLES, 0, 3);
