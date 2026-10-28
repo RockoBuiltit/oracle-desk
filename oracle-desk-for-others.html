@@ -1455,11 +1455,51 @@ const BOT_SVG = `<svg class="bot" viewBox="0 20 200 140" aria-hidden="true">
   </g>
 </svg>`;
 function initAvatar() { $('#botbox').innerHTML = BOT_SVG; }
+/* AVATAR GAZE SWITCH: 'text' = looks down at the typed line (default, as before); 'wander' = glances around but never down at the text; 'forward' = looks straight ahead at the viewer. Override without editing: add ?gaze=forward (or wander / text) to the page URL. */
+/* GAZE_DWELL_MS (text mode only): counted from the moment a new line appears, the avatar looks down at it and holds that pose at least this long (default 3500 ms). When the hold ends the avatar goes back to wandering until the next line appears; a new line restarts the look-down. Keep this shorter than FEED_INTERVAL_MS or the avatar never gets a wander gap. Override with ?dwell=<ms> in the URL (0 turns the hold off). */
+const GAZE_DWELL_MS = (() => { const v = Number(new URLSearchParams(location.search).get('dwell')); return Number.isFinite(v) && new URLSearchParams(location.search).get('dwell') !== null && v >= 0 ? v : 3500; })();
+/* FEED_INTERVAL_MS: one new typed line appears below the avatar every this many ms, start to start (default 7500, middle of the 5000-10000 range). Override without editing with ?feed=<ms> in the URL (minimum 3000). Typing and erasing speed are unchanged; the hold between them stretches or shrinks so the cadence stays steady. */
+const FEED_INTERVAL_MS = (() => { const q = new URLSearchParams(location.search).get('feed'); const v = Number(q); return q !== null && Number.isFinite(v) && v >= 3000 ? v : 7500; })();
+const GAZE_PARAM = new URLSearchParams(location.search).get('gaze');
+const GAZE_CONVERSATION = GAZE_PARAM === 'conversation';
+let GAZE = GAZE_CONVERSATION ? 'forward' : (['text', 'wander', 'forward'].includes(GAZE_PARAM) ? GAZE_PARAM : 'text');
+/* CONVERSATION-AWARE GAZE (opt-in: ?gaze=conversation, otherwise none of this runs and no microphone is requested). Starts in forward gaze. The page listens to the microphone on the device it is open on, only to measure loudness (nothing is recorded or sent anywhere). While speech is heard the avatar looks forward at the speaker; once no speech has been heard for QUIET_FALLBACK_MS it switches to the message-watching behavior (wander, look down at each new line, hold GAZE_DWELL_MS). When speech returns it switches back to forward immediately. If the microphone is unavailable or denied, it behaves as forward for QUIET_FALLBACK_MS, then message-watching. Override with ?quiet=<ms> (default 30000) and ?mic=<0-1 loudness threshold> (default 0.02). */
+const QUIET_FALLBACK_MS = (() => { const q = new URLSearchParams(location.search).get('quiet'); const v = Number(q); return q !== null && Number.isFinite(v) && v >= 0 ? v : 30000; })();
+const SPEECH_RMS = (() => { const q = new URLSearchParams(location.search).get('mic'); const v = Number(q); return q !== null && Number.isFinite(v) && v > 0 && v < 1 ? v : 0.02; })();
+/* the 3D avatar runs in a separate script, so the gaze settings are shared through window.ORACLE_GAZE */
+window.ORACLE_GAZE = { get mode() { return GAZE; }, dwell: GAZE_DWELL_MS };
+function setGazeMode(m) {
+  if (GAZE === m) return;
+  GAZE = m;
+  if (m === 'forward') {
+    const g = document.getElementById('look'); if (g) g.style.transform = '';
+    const h = document.getElementById('b3Head'); if (h) h.style.transform = '';
+    document.dispatchEvent(new CustomEvent('oracle-look', { detail: { x: 0, y: 0 } }));
+  }
+}
+if (GAZE_CONVERSATION) (async () => {
+  let lastSpeech = performance.now(), loud = 0;
+  setInterval(() => { if (GAZE === 'forward' && performance.now() - lastSpeech > QUIET_FALLBACK_MS) setGazeMode('text'); }, 500);
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true } });
+    const ctx = new (window.AudioContext || window.webkitAudioContext)(); if (ctx.state === 'suspended') await ctx.resume();
+    const an = ctx.createAnalyser(); an.fftSize = 1024; ctx.createMediaStreamSource(stream).connect(an);
+    const buf = new Float32Array(an.fftSize);
+    setInterval(() => {
+      an.getFloatTimeDomainData(buf); let sum = 0; for (let i = 0; i < buf.length; i++) sum += buf[i] * buf[i];
+      const rms = Math.sqrt(sum / buf.length);
+      loud = rms > SPEECH_RMS ? loud + 1 : 0;
+      if (loud >= 2) { lastSpeech = performance.now(); setGazeMode('forward'); }
+    }, 100);
+  } catch (e) { /* no microphone: forward until the quiet timer runs out, then message-watching */ }
+})();
+
 function lookAround() {
-  const g = document.getElementById('look'); if (!g || reduced()) return;
+  if (reduced() || GAZE === 'forward') return;
+  const g = document.getElementById('look'); /* the SVG bot has #look; the 3D bot does not, so only the SVG transforms are optional */
   const range = botState === 'scanning' ? 11 : 6;
   const x = (Math.random() * 2 - 1) * range, y = (Math.random() * 2 - 1) * (range * 0.45);
-  g.style.transform = `translate(${x.toFixed(1)}px,${y.toFixed(1)}px)`;
+  if (g) g.style.transform = `translate(${x.toFixed(1)}px,${y.toFixed(1)}px)`;
   document.dispatchEvent(new CustomEvent('oracle-look', { detail: { x: x / range, y: y / (range * 0.45) } }));
   const h = document.getElementById('b3Head'); if (h) h.style.transform = `translateX(${(x * 0.35).toFixed(1)}px) rotate(${(x * 0.45).toFixed(1)}deg)`;
 }
@@ -1498,9 +1538,9 @@ function typeLoop(idx = 0) {
   const L = lines(); const raw = String(L[idx % L.length]); const text = raw.length > 64 ? raw.slice(0, 63).trimEnd() + '…' : raw; const el = $('#typed');
   const gen = typeLoop.g = (typeLoop.g || 0) + 1, readEv = on => { if (typeLoop.g === gen) document.dispatchEvent(new CustomEvent('oracle-read', { detail: { on } })); };
   readEv(true);
-  if (reduced()) { el.textContent = text; setTimeout(() => readEv(false), 1500); typeTimer = setTimeout(() => typeLoop(idx + 1), 3500); return; }
-  let i = 0;
-  const type = () => { el.textContent = text.slice(0, ++i); if (i < text.length) typeTimer = setTimeout(type, 22 + Math.random() * 30); else { setTimeout(() => readEv(false), 700); typeTimer = setTimeout(erase, botState === 'scanning' ? 1400 : 2600); } };
+  if (reduced()) { el.textContent = text; setTimeout(() => readEv(false), 1500); typeTimer = setTimeout(() => typeLoop(idx + 1), FEED_INTERVAL_MS); return; }
+  let i = 0; const t0 = performance.now();
+  const type = () => { el.textContent = text.slice(0, ++i); if (i < text.length) typeTimer = setTimeout(type, 22 + Math.random() * 30); else { setTimeout(() => readEv(false), 700); typeTimer = setTimeout(erase, Math.max(600, FEED_INTERVAL_MS - (performance.now() - t0) - text.length * 10 - 200)); } };
   const erase = () => { el.textContent = text.slice(0, --i); if (i > 0) typeTimer = setTimeout(erase, 10); else typeTimer = setTimeout(() => typeLoop(idx + 1), 200); };
   type();
 }
@@ -1709,10 +1749,12 @@ void main(){
   let col = [0.85, 0.85, 0.85], tgt = { x: 0, y: 0 }, cur = { x: 0, y: 0, yaw: 0, pitch: 0 };
   let nextBlink = 2, blinkT = -1, dbl = false, hopT = -10, wasAlert = false, scan = 0;
   let reading = false, read = 0, hue = Math.random(), lastT = 0;
-  document.addEventListener('oracle-read', e => { reading = !!(e.detail && e.detail.on); });
+  let wantRead = false, dwellUntil = 0;
+  document.addEventListener('oracle-read', e => { const on = !!(e.detail && e.detail.on); if (on) dwellUntil = performance.now() + window.ORACLE_GAZE.dwell; wantRead = on; });
+  const gazeReading = () => { if (window.ORACLE_GAZE.mode !== 'text') return false; return wantRead || performance.now() < dwellUntil; };
   /* colour cycle: smooth hue shift over time, blended with the state colour; returns linear RGB */
   const hsl = (h, s, l) => { const f = n => { const k = (n + h * 12) % 12, a = s * Math.min(l, 1 - l); return l - a * Math.max(-1, Math.min(k - 3, 9 - k, 1)); }; return [f(0), f(8), f(4)].map(v => Math.pow(v, 2.2)); };
-  document.addEventListener('oracle-look', e => { tgt.x = Math.max(-1, Math.min(1, e.detail.x)); tgt.y = Math.max(-1, Math.min(1, e.detail.y)); });
+  document.addEventListener('oracle-look', e => { if (window.ORACLE_GAZE.mode === 'forward') { tgt.x = 0; tgt.y = 0; return; } tgt.x = Math.max(-1, Math.min(1, e.detail.x)); tgt.y = Math.max(-1, Math.min(1, e.detail.y)); });
   const parseCol = s => {
     s = String(s || '').trim(); let m;
     if ((m = s.match(/^#([0-9a-f]{6})$/i))) { const n = parseInt(m[1], 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; }
@@ -1734,9 +1776,10 @@ void main(){
     scan = lerp(scan, scanning ? 1 : 0, 0.05);
     const dt = Math.min(Math.max(t - lastT, 0), 0.1); lastT = t;
     hue = (hue + dt * (still ? 0.006 : alert ? 0.16 : scanning ? 0.08 : 0.03)) % 1;
+    reading = gazeReading();
     read = lerp(read, reading ? 1 : 0, still ? 0.2 : 0.07);
     let tx = tgt.x, ty = tgt.y;
-    if (scanning && !still) { tx = Math.sin(t * 1.6); ty = Math.sin(t * 0.9) * 0.3; }
+    if (scanning && !still && window.ORACLE_GAZE.mode !== 'forward') { tx = Math.sin(t * 1.6); ty = Math.sin(t * 0.9) * 0.3; }
     tx = lerp(tx, tx * 0.2, read); ty = lerp(ty, -1, read);
     cur.x = lerp(cur.x, tx, 0.09); cur.y = lerp(cur.y, ty, 0.09);
     cur.yaw = lerp(cur.yaw, cur.x * 0.42 + (still ? 0 : Math.sin(t * 0.55) * 0.05), 0.05);
