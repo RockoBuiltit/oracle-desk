@@ -457,7 +457,7 @@
    ],
    "market_cap": null,
    "volume_24h": null,
-   "dex_route": "Unverified; Base DACT pair not linked by DAC",
+   "dex_route": "Base DACT pair not linked by DAC",
    "next_milestone": "AMA with CIO Davide Costa Fri 11/20 (third-party, time TBA); TGE Sun 11/22 00:00 UTC (Sat 11/21 6 PM CT) reported by many accounts, not posted by @dac_chain",
    "milestone_date": "2026-11-20T23:59:00-06:00",
    "links": [],
@@ -514,7 +514,7 @@
    "project": "GenLayer",
    "theme": "AI",
    "source_type": "rumor",
-   "text": "CoinGecko shows a GenLayer preview page with an Ethereum token address [address hidden]. GenLayer has not posted this address and said the token moves to Arbitrum, so treat it as Unverified. Airdrop registration closed Mon 10/26.",
+   "text": "CoinGecko shows a GenLayer preview page with an Ethereum token address [address hidden]. GenLayer has not posted this address and said the token moves to Arbitrum. Airdrop registration closed Mon 10/26.",
    "at": "2026-10-27T08:15:00-05:00",
    "url": "https://www.coingecko.com/en/coins/genlayer"
   },
@@ -556,7 +556,7 @@
   "top3": [
    {
     "name": "GenLayer",
-    "why": "Official GEN tokenomics are out (4.2B supply, ~24.4% float at TGE, insiders 12-month cliff), but there is still no TGE date, no audit and no official token address. The Ethereum address on CoinGecko's preview page is not posted by GenLayer, so it is Unverified.",
+    "why": "Official GEN tokenomics are out (4.2B supply, ~24.4% float at TGE, insiders 12-month cliff), but there is still no TGE date, no audit and no official token address. The Ethereum address on CoinGecko's preview page is not posted by GenLayer.",
     "logo": "logos/genlayer.png",
     "url": "https://genlayer.com"
    },
@@ -789,7 +789,7 @@
   "takeaways": [
    "No new alerts. Ritual (76) was alerted Mon 10/26; it is now on Coinbase, Gate and MEXC but still has no real DEX pool (official Base pool about $6).",
    "GenLayer: official tokenomics paper is live (4.2B supply, about 24.4% float at TGE, insiders on a 12-month cliff). Score 70 to 71; still needs a dated TGE, an audit and an official token address.",
-   "GenLayer airdrop registration closed Mon 10/26, so it is off the open-campaign list. A CoinGecko preview shows an Ethereum GEN token address that GenLayer has not posted: Unverified.",
+   "GenLayer airdrop registration closed Mon 10/26, so it is off the open-campaign list. A CoinGecko preview shows an Ethereum GEN token address that GenLayer has not posted: unconfirmed.",
    "Quantus: native QTC swaps live on InstaSwap through NEAR Intents (official); $74.52, +3.8%.",
    "NaoX is the renamed Naoris (NAORIS); KuCoin spot opened 5 AM CT with a trade-to-earn GemSlot until Tue 11/3. Score unchanged at 55 (closed-source client, 15% float).",
    "Open campaign still running: Quip Points (no end date). Axis, NaoX and TermiX promos this morning need trading or paid actions, so they are not free campaigns.",
@@ -1157,7 +1157,7 @@
     "score": null,
     "tier": "Radar",
     "dex": "",
-    "note": "Radar only: anonymous dev, PQ scheme unverified; 24h range $0.35 to $0.42; v2.1 and on-chain DEX/launchpad promised from Wed 11/4",
+    "note": "Radar only: anonymous dev, PQ scheme unconfirmed; 24h range $0.35 to $0.42; v2.1 and on-chain DEX/launchpad promised from Wed 11/4",
     "pair": "NOID/USDT"
    }
   ],
