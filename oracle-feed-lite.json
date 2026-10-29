@@ -1,17 +1,17 @@
 {
- "generated_at": "2026-10-29T12:15:00-05:00",
+ "generated_at": "2026-10-29T16:12:00-05:00",
  "status": {
   "state": "idle",
-  "last_scan": "2026-10-29T12:15:00-05:00",
-  "next_scan": "2026-10-29T16:00:00-05:00",
+  "last_scan": "2026-10-29T16:12:00-05:00",
+  "next_scan": "2026-10-29T20:00:00-05:00",
   "activity": [
-   "AI: Axis Robotics official statement on the 10/28-29 sell-off says no team or investor tokens were sold; GenLayer in CoinDesk on dispute recourse for AI agents; Flop Devnet instructions still due early next week",
-   "Quantum: Verona added to CoinGecko's Quantum-Resistant category (official post); Soqucoin explains AuxPoW merged mining with LTC/DOGE rigs; QRL starts a Quantum Threat 101 video series; no new Quip posts after the AMA",
-   "SafeTrade: no new listings since the morning (49 bases on CoinGecko); no AI or quantum listings",
-   "Open campaigns unchanged: Quip Points (no end date), GenLayer registration closes Sat 10/31",
+   "Quantum: Quip AMA recap (third-party) says the Quest and Mindshare points campaigns end Fri 10/30, with points paid out Monday; not yet posted by @quipnetwork. Soqucoin submitted a CoinMarketCap listing request (official). QRL live show Fri with PQ expert Dr. Joseph Kearney",
+   "AI: no new official milestones from watchlist projects; Teneo published web-data access research; Motes (Robinhood Chain NFT agents) airdrop chatter, not scored",
+   "SafeTrade: no new listings (49 bases on CoinGecko); no AI or quantum listings",
+   "Open campaigns: Quip Points (may end Fri 10/30, unconfirmed), GenLayer registration closes Sat 10/31",
    "Rejected: none new this scan"
   ],
-  "x_reads_left_today": 972
+  "x_reads_left_today": 957
  },
  "watchlist": [
   {
@@ -244,8 +244,8 @@
    "market_cap": null,
    "volume_24h": null,
    "dex_route": "No token yet; any QUIP token is a scam",
-   "next_milestone": "External chain audit, then mainnet and TGE (all undated, official). Quip Points open now",
-   "milestone_date": null,
+   "next_milestone": "Quest and Mindshare campaigns may end Fri 10/30 (third-party AMA recap, unconfirmed); external chain audit, then mainnet and TGE (undated, official)",
+   "milestone_date": "2026-10-30T23:59:00-05:00",
    "links": [
     {
      "label": "Quip docs",
@@ -254,7 +254,7 @@
    ],
    "upgrade_if": "Dated TGE, audit, mainnet",
    "downgrade_if": "More TGE slips",
-   "last_update": "2026-10-29T12:15:00-05:00",
+   "last_update": "2026-10-29T16:12:00-05:00",
    "price": null,
    "logo": "logos/quip-network.png",
    "website": "https://quip.network"
@@ -335,7 +335,7 @@
    "market_cap": 695604,
    "volume_24h": 200114,
    "dex_route": "No official DEX route; CEX: SafeTrade (SOQ/USDT), NonKYC",
-   "next_milestone": "CMC listing; team disclosure (both undated). Hashrate about 230 TH/s (official); price gave back the Tue 10/27 spike (-27% in 24h)",
+   "next_milestone": "CMC listing request submitted Thu 10/29 (official, ticket #1470300; not listed yet); team disclosure undated",
    "milestone_date": null,
    "links": [
     {
@@ -361,7 +361,7 @@
    ],
    "upgrade_if": "Identifiable founders, DEX liquidity",
    "downgrade_if": "Pool centralization returns or partner claims don't hold up",
-   "last_update": "2026-10-29T15:00:46-05:00",
+   "last_update": "2026-10-29T16:12:00-05:00",
    "price": 0.00024747,
    "logo": "logos/soqucoin.png",
    "website": "https://soqu.org",
@@ -608,6 +608,14 @@
  ],
  "prelaunch_updates": [
   {
+   "project": "Quip Network",
+   "theme": "Quantum",
+   "source_type": "rumor",
+   "text": "OPEN CAMPAIGN: AMA recap by a community account says the Quest and Mindshare points campaigns end Fri 10/30 and this week's points are paid Monday; each campaign has its own QUIP allocation. Not yet posted by @quipnetwork, so unconfirmed. Mainnet and TGE come after the external audit, still undated. Any QUIP token now is a scam.",
+   "at": "2026-10-29T16:12:00-05:00",
+   "url": "https://x.com/HVnS42442600/status/2115866150060101924"
+  },
+  {
    "project": "GenLayer",
    "theme": "AI",
    "source_type": "official",
@@ -678,14 +686,6 @@
    "text": "OPEN CAMPAIGN: GEN airdrop registration has reopened 'for a few more days' at airdrop.genlayer.com (the only official link). No new closing date or time given. Any token claiming GEN before an official token address is a scam.",
    "at": "2026-10-27T09:07:46-05:00",
    "url": "https://x.com/GenLayer/status/2115083033258938542"
-  },
-  {
-   "project": "Fraction AI",
-   "theme": "AI",
-   "source_type": "official",
-   "text": "CEO @0xshai joins @ronitA380 for a live talk on AI agents in finance, Wed 10/28 at 3 PM GMT (10 AM CT), on YouTube and X. No TGE confirmation yet; the Nov 11 date is still from the MiCA filing only.",
-   "at": "2026-10-27T09:56:39-05:00",
-   "url": "https://x.com/FractionAI_xyz/status/2115095337966702689"
   }
  ],
  "digest": {
@@ -799,7 +799,7 @@
   {
    "project": "Quip Network",
    "theme": "Quantum",
-   "title": "MANUAL (owner): Quip quests left: Telegram (25 pts, join t.me/quip_network, then claim) and YouTube (25 pts); Discord done (+50); no deadline announced",
+   "title": "MANUAL (owner): Quip quests left: Telegram (25 pts, join t.me/quip_network, then claim) and YouTube (25 pts); Discord done (+50). Quest campaign may end Fri 10/30 (third-party AMA recap, unconfirmed)",
    "type": "Airdrop",
    "date": "2026-12-31T23:59:00-06:00",
    "all_day": true,
@@ -871,7 +871,7 @@
    "all_day": true,
    "approx": true,
    "url": "https://x.com/quipnetwork/status/2115639207565873200",
-   "status": "open"
+   "status": "done"
   },
   {
    "project": "Gonka",
@@ -882,6 +882,18 @@
    "date_end": "2026-10-30T23:59:00-05:00",
    "all_day": true,
    "url": "https://x.com/gonka_ai/status/2115458563963236643",
+   "status": "open"
+  },
+  {
+   "project": "Quip Network",
+   "theme": "Quantum",
+   "title": "Quest and Mindshare points campaigns end (third-party AMA recap, not posted by @quipnetwork)",
+   "type": "Airdrop",
+   "date": "2026-10-30T00:00:00-05:00",
+   "date_end": "2026-10-30T23:59:00-05:00",
+   "all_day": true,
+   "approx": true,
+   "url": "https://points.quip.network",
    "status": "open"
   }
  ],
@@ -1439,7 +1451,7 @@
   {
    "project": "Quip Network",
    "theme": "Quantum",
-   "what": "Quip Points quests: Discord done; Telegram (25) and YouTube (25) left.",
+   "what": "Quip Points quests: Discord done; Telegram (25) and YouTube (25) left. Quest campaign may end Fri 10/30 (AMA recap, unconfirmed).",
    "ends": null,
    "url": "https://points.quip.network",
    "points_earned": 1086
