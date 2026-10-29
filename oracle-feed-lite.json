@@ -1,15 +1,15 @@
 {
- "generated_at": "2026-10-29T08:59:42-05:00",
+ "generated_at": "2026-10-29T12:15:00-05:00",
  "status": {
   "state": "idle",
-  "last_scan": "2026-10-29T08:59:42-05:00",
-  "next_scan": "2026-10-29T12:00:00-05:00",
+  "last_scan": "2026-10-29T12:15:00-05:00",
+  "next_scan": "2026-10-29T16:00:00-05:00",
   "activity": [
-   "Open campaigns: GenLayer registration now closes Sat 10/31 (official); Quip Points still open, Quip Discord AMA Thu 10/29 morning",
-   "AI: Dataline names its token DAT (Uniswap auction, dates TBA); Flop Devnet in days, no airdrop credit; Axis -34% after the OKX contest",
-   "Quantum: RHEA QTC lending live; Quip one step from mainnet (external audit); Verona Fermi upgrade adds NIST PQ signatures (new WATCH 66)",
-   "SafeTrade: listed BNT (privacy coin, out of scope); no AI or quantum listings",
-   "Rejected: ChyAI, MindZap AI (ZAP), Ozone Chain (OZO)"
+   "AI: Axis Robotics official statement on the 10/28-29 sell-off says no team or investor tokens were sold; GenLayer in CoinDesk on dispute recourse for AI agents; Flop Devnet instructions still due early next week",
+   "Quantum: Verona added to CoinGecko's Quantum-Resistant category (official post); Soqucoin explains AuxPoW merged mining with LTC/DOGE rigs; QRL starts a Quantum Threat 101 video series; no new Quip posts after the AMA",
+   "SafeTrade: no new listings since the morning (49 bases on CoinGecko); no AI or quantum listings",
+   "Open campaigns unchanged: Quip Points (no end date), GenLayer registration closes Sat 10/31",
+   "Rejected: none new this scan"
   ],
   "x_reads_left_today": 972
  },
@@ -244,8 +244,8 @@
    "market_cap": null,
    "volume_24h": null,
    "dex_route": "No token yet; any QUIP token is a scam",
-   "next_milestone": "Discord AMA on QVM Thu 10/29 morning US time (time TBA). Then the external chain audit, mainnet and TGE (all undated). Quip Points open now",
-   "milestone_date": "2026-10-29T23:59:00-05:00",
+   "next_milestone": "External chain audit, then mainnet and TGE (all undated, official). Quip Points open now",
+   "milestone_date": null,
    "links": [
     {
      "label": "Quip docs",
@@ -254,7 +254,7 @@
    ],
    "upgrade_if": "Dated TGE, audit, mainnet",
    "downgrade_if": "More TGE slips",
-   "last_update": "2026-10-29T08:59:42-05:00",
+   "last_update": "2026-10-29T12:15:00-05:00",
    "price": null,
    "logo": "logos/quip-network.png",
    "website": "https://quip.network"
@@ -392,7 +392,7 @@
    "market_cap": 23595215,
    "volume_24h": 139504132,
    "dex_route": "Uniswap v4 (Base) [address hidden]",
-   "next_milestone": "MEXC Airdrop+ ends Tue 11/3 7:00 AM CT (trading tasks, not free); Coinbase enablement and unlock schedule undated. Price fell about 34% after the OKX contest ended Thu 10/29",
+   "next_milestone": "MEXC Airdrop+ ends Tue 11/3 7:00 AM CT (trading tasks, not free); Coinbase enablement and unlock schedule undated. Official statement Thu 10/29: the 10/28-29 on-chain sell-off was not team or investor tokens",
    "milestone_date": "2026-11-03T07:00:00-06:00",
    "links": [
     {
@@ -410,7 +410,7 @@
    ],
    "upgrade_if": "Verified team, audit",
    "downgrade_if": "Heavy unlocks",
-   "last_update": "2026-10-29T12:03:57-05:00",
+   "last_update": "2026-10-29T12:15:00-05:00",
    "price": 0.142975,
    "logo": "logos/axis-robotics.png",
    "website": "https://axisrobotics.ai",
