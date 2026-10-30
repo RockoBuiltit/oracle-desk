@@ -834,31 +834,9 @@
    "status": "open"
   },
   {
-   "project": "Quip Network",
-   "theme": "Quantum",
-   "title": "MANUAL (owner): Quip quests left: Telegram (25 pts, join t.me/quip_network, then claim) and YouTube (25 pts); Discord done (+50). Quest campaign may end Fri 10/30 (third-party AMA recap, unconfirmed)",
-   "type": "Airdrop",
-   "date": "2026-12-31T23:59:00-06:00",
-   "all_day": true,
-   "url": "https://quest.quip.network/airdrop",
-   "status": "open",
-   "approx": true
-  },
-  {
-   "project": "QMS Network",
-   "theme": "Quantum",
-   "title": "QMS testnet waitlist: signed up for updates via X (done)",
-   "type": "Testnet",
-   "date": "2026-12-31T23:59:00-06:00",
-   "all_day": true,
-   "url": "https://qms.finance",
-   "status": "done",
-   "approx": true
-  },
-  {
    "project": "TermiX",
    "theme": "AI",
-   "title": "MANUAL (owner): TermiX Discord verify (500 TP): sign in to Discord on AIRDROP BOT's computer, then AIRDROP BOT clicks Verify at agent.family/points; no deadline announced",
+   "title": "TermiX Discord verify (500 TP): sign in to Discord on AIRDROP BOT's computer, then AIRDROP BOT clicks Verify at agent.family/points; no deadline announced",
    "type": "Airdrop",
    "date": "2026-12-31T23:59:00-06:00",
    "all_day": true,
@@ -888,17 +866,6 @@
    "status": "open"
   },
   {
-   "project": "GenLayer",
-   "theme": "AI",
-   "title": "GEN airdrop registration closes Sat 10/31 (time TBA)",
-   "type": "Sign-up deadline",
-   "date": "2026-10-27T09:07:00-05:00",
-   "date_end": "2026-10-31T23:59:00-05:00",
-   "approx": false,
-   "url": "https://x.com/GenLayer/status/2115753679206949121",
-   "status": "open"
-  },
-  {
    "project": "Gonka",
    "theme": "AI",
    "title": "Gonka Foundation AMA: board, structure, funding and plans (time TBA)",
@@ -907,18 +874,6 @@
    "date_end": "2026-10-30T23:59:00-05:00",
    "all_day": true,
    "url": "https://x.com/gonka_ai/status/2115458563963236643",
-   "status": "open"
-  },
-  {
-   "project": "Quip Network",
-   "theme": "Quantum",
-   "title": "Quest and Mindshare points campaigns end (third-party AMA recap, not posted by @quipnetwork)",
-   "type": "Airdrop",
-   "date": "2026-10-30T00:00:00-05:00",
-   "date_end": "2026-10-30T23:59:00-05:00",
-   "all_day": true,
-   "approx": true,
-   "url": "https://points.quip.network",
    "status": "open"
   }
  ],
