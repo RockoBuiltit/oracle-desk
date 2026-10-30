@@ -1,17 +1,17 @@
 {
- "generated_at": "2026-10-30T12:16:00-05:00",
+ "generated_at": "2026-10-30T16:12:00-05:00",
  "status": {
   "state": "idle",
-  "last_scan": "2026-10-30T12:16:00-05:00",
-  "next_scan": "2026-10-30T16:00:00-05:00",
+  "last_scan": "2026-10-30T16:12:00-05:00",
+  "next_scan": "2026-10-30T20:00:00-05:00",
   "activity": [
-   "Open campaigns: Quip Points (Quest and Mindshare may end Fri 10/30, unconfirmed); GenLayer registration closes Sat 10/31 (official)",
-   "Quantum: Verona added to CoinMarketCap's Quantum-Resistant category (official); Soqucoin notes NIST plans to retire RSA and ECDSA after 2030; QRL Show on the Binance hack",
-   "AI: quiet from tracked projects; Motes NFT-airdrop shilling continues (already rejected)",
-   "Flop: an unofficial fan account says the viral 'FLOP airdrop is live' guides are wrong. No FLOP token exists yet",
-   "SafeTrade: no new AI or quantum listings (CSD and XPM back on the page set)"
+   "Quip (official): Quest and Mindshare end Mon 11/2 at 7:00 AM CT with the final points payout; account fee waived through Sun 11/8; Echoes reveals refill Sun 11/1",
+   "GenLayer airdrop registration still closes Sat 10/31 (official)",
+   "AI: quiet from tracked projects; DATA Foundation promoted its Trace data audit tool (no migration news)",
+   "Quantum: more third-party Quip audit recaps; Asentum airdrop-farming spam continues (radar only)",
+   "SafeTrade: 50 bases, unchanged since noon; no new AI or quantum listings"
   ],
-  "x_reads_left_today": 976
+  "x_reads_left_today": 969
  },
  "watchlist": [
   {
@@ -264,8 +264,8 @@
    "market_cap": null,
    "volume_24h": null,
    "dex_route": "No token yet; any QUIP token is a scam",
-   "next_milestone": "Quest and Mindshare campaigns may end Fri 10/30 with points paid Mon 11/2 (third-party AMA recap, unconfirmed); then the external chain audit, mainnet and TGE (undated, official). AMA replay posted",
-   "milestone_date": "2026-10-30T23:59:00-05:00",
+   "next_milestone": "Quest and Mindshare campaigns end Mon 11/2 7:00 AM CT (13:00 UTC) with the final points distribution (official). Quip account creation fee waived through Sun 11/8; 4,000 sponsored Quantum Echoes reveals refill Sun 11/1 (official). Then the external chain audit, mainnet and TGE (undated)",
+   "milestone_date": "2026-11-02T07:00:00-06:00",
    "links": [
     {
      "label": "Quip docs",
@@ -664,28 +664,20 @@
  ],
  "prelaunch_updates": [
   {
+   "project": "Quip Network",
+   "theme": "Quantum",
+   "source_type": "official",
+   "text": "OPEN CAMPAIGN: @quipnetwork confirms Quest and Mindshare campaigns end Mon 11/2 at 13:00 UTC (7:00 AM CT) with the final points distribution. Also official: Quip account creation fee waived again through Sun 11/8, and 4,000 sponsored Quantum Echoes reveals refill Sun 11/1. No QUIP token yet; any QUIP token today is a scam.",
+   "at": "2026-10-30T16:12:00-05:00",
+   "url": "https://x.com/quipnetwork/status/2116272874235609120"
+  },
+  {
    "project": "Teneo",
    "theme": "AI",
    "source_type": "official",
    "text": "Teneo (radar only) replied that more information on its TGE is coming soon. No date, tokenomics or token address yet; any Teneo token today is unconfirmed.",
    "at": "2026-10-30T03:09:00-05:00",
    "url": "https://x.com/teneo_protocol/status/2116080158205415458"
-  },
-  {
-   "project": "Quip Network",
-   "theme": "Quantum",
-   "source_type": "official",
-   "text": "OPEN CAMPAIGN repeat: Quip Points still open (points.quip.network). A third-party AMA recap says Quest and Mindshare end Fri 10/30 with points paid Monday; @quipnetwork has not confirmed. AMA replay posted. No QUIP token yet.",
-   "at": "2026-10-29T21:17:00-05:00",
-   "url": "https://x.com/quipnetwork/status/2115991446105034805"
-  },
-  {
-   "project": "Quip Network",
-   "theme": "Quantum",
-   "source_type": "rumor",
-   "text": "OPEN CAMPAIGN: AMA recap by a community account says the Quest and Mindshare points campaigns end Fri 10/30 and this week's points are paid Monday; each campaign has its own QUIP allocation. Not yet posted by @quipnetwork, so unconfirmed. Mainnet and TGE come after the external audit, still undated. Any QUIP token now is a scam.",
-   "at": "2026-10-29T16:12:00-05:00",
-   "url": "https://x.com/HVnS42442600/status/2115866150060101924"
   },
   {
    "project": "GenLayer",
@@ -863,6 +855,15 @@
    "date_end": "2026-10-30T23:59:00-05:00",
    "all_day": true,
    "url": "https://x.com/gonka_ai/status/2115458563963236643",
+   "status": "open"
+  },
+  {
+   "project": "Quip Network",
+   "theme": "Quantum",
+   "title": "Quest and Mindshare campaigns end, final points distribution (official)",
+   "type": "Airdrop",
+   "date": "2026-11-02T07:00:00-06:00",
+   "url": "https://x.com/quipnetwork/status/2116272874235609120",
    "status": "open"
   }
  ],
