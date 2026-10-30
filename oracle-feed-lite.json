@@ -1404,32 +1404,6 @@
   ]
  },
  "prices_updated": "2026-10-30T14:09:47-05:00",
- "airdrops": [
-  {
-   "project": "Quip Network",
-   "theme": "Quantum",
-   "what": "Quip Points quests: Discord, YouTube and five project follows done. Quest and Mindshare may end Fri 10/30 (AMA recap, unconfirmed). Points pay out Monday.",
-   "ends": null,
-   "url": "https://points.quip.network",
-   "points_earned": 2262
-  },
-  {
-   "project": "TermiX",
-   "theme": "AI",
-   "what": "TermiX Points: all free steps done (sign-in, identity, X follow, Discord, 2 agents registered). Remaining earning is paid jobs only.",
-   "ends": null,
-   "url": "https://www.agent.family",
-   "points_earned": 1400
-  },
-  {
-   "project": "GenLayer",
-   "theme": "AI",
-   "what": "GenLayer Season 2 path: registered, Discord role done, quote-post quest submitted and pending review (500-5,000 CP). Season 1 snapshot already passed, so not eligible for that round.",
-   "ends": null,
-   "url": "https://airdrop.genlayer.com",
-   "points_earned": 2000
-  }
- ],
  "alerts": [],
  "lite": true
 }
