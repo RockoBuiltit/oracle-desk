@@ -1,21 +1,20 @@
 {
- "generated_at": "2026-10-30T08:11:23-05:00",
+ "generated_at": "2026-10-30T12:16:00-05:00",
  "status": {
   "state": "idle",
-  "last_scan": "2026-10-30T08:11:23-05:00",
-  "next_scan": "2026-10-30T12:00:00-05:00",
+  "last_scan": "2026-10-30T12:16:00-05:00",
+  "next_scan": "2026-10-30T16:00:00-05:00",
   "activity": [
-   "8 AM digest: no new HIGH PRIORITY (0 of 3)",
-   "Market: Binance lost about $6.3B from hot wallets on Thu 10/29 (X news summary); BTC dipped under $77k, most watchlist tokens down",
+   "Noon scan: no new HIGH PRIORITY (0 of 3), no new open campaigns",
    "Open campaigns: Quip Points (Quest and Mindshare may end Fri 10/30, unconfirmed); GenLayer registration closes Sat 10/31 (official)",
-   "AI: Axis cut to 52 after 42M multisig tokens were sold by an OTC counterparty; Teneo says TGE info soon; Gonka Foundation AMA Fri 10/30",
-   "Quantum: QoreChain ships ML-DSA-87 signing SDK; NIST PQ transition timeline discussed; Quip AMA replay posted",
-   "SafeTrade: CSD (Compute Substrate, PoW coordination chain) shows up; not AI or quantum",
-   "Rejected: Omniverse (OMC), CURVE on Robinhood Chain"
+   "Quantum: Verona added to CoinMarketCap's Quantum-Resistant category (official); Soqucoin notes NIST plans to retire RSA and ECDSA after 2030; QRL Show on the Binance hack",
+   "AI: quiet from tracked projects; Motes NFT-airdrop shilling continues (already rejected)",
+   "Flop: an unofficial fan account says the viral 'FLOP airdrop is live' guides are wrong. No FLOP token exists yet",
+   "SafeTrade: no new AI or quantum listings (CSD and XPM back on the page set)"
   ],
   "alerts_used_today": 0,
   "alert_cap": 3,
-  "x_reads_left_today": 990
+  "x_reads_left_today": 976
  },
  "alerts": [],
  "watchlist": [
@@ -650,7 +649,7 @@
    "market_cap": 10361439,
    "volume_24h": 531903,
    "dex_route": "None verified (CEX: Bithumb, Bybit, Bitget, KuCoin, Gate, MEXC, Kraken)",
-   "next_milestone": "Fermi (mainnet v32) live Wed 10/28: opt-in ML-DSA and SLH-DSA account keys. Next: audit of the PQ upgrade and real usage numbers (undated)",
+   "next_milestone": "Fermi (mainnet v32) live Wed 10/28 with opt-in ML-DSA and SLH-DSA account keys; added to CoinMarketCap Quantum-Resistant category Fri 10/30 (official). Next: audit of the PQ upgrade and real usage numbers (undated)",
    "milestone_date": null,
    "links": [
     {
@@ -664,11 +663,15 @@
     {
      "label": "GitHub burnt-labs",
      "url": "https://github.com/burnt-labs"
+    },
+    {
+     "label": "CMC category (official)",
+     "url": "https://x.com/verona_dev/status/2116166766879748343"
     }
    ],
    "upgrade_if": "Published audit of the PQ account upgrade, official docs naming the parameter sets, and an official DEX route",
    "downgrade_if": "PQ claims turn out marketing-only, or the paid promo wave is the only demand",
-   "last_update": "2026-10-30T12:10:57-05:00",
+   "last_update": "2026-10-30T12:16:00-05:00",
    "logo": "logos/verona.png",
    "website": "https://verona.dev",
    "cg_id": "verona",
@@ -813,7 +816,7 @@
    "at": "2026-10-30T08:11:23-05:00"
   }
  ],
- "snapshot_note": "CoinGecko prices and SafeTrade tickers 8:10 AM CT Fri Oct 30; X sweep since 8 PM CT Thu Oct 29.",
+ "snapshot_note": "SafeTrade tickers 12:13 PM CT Fri Oct 30; X sweep since 8 AM CT; prices from the hourly refresh.",
  "deadlines": [
   {
    "project": "Fraction AI",
@@ -1242,14 +1245,14 @@
    {
     "project": "GenLayer",
     "theme": "AI",
-    "fakes": "Base 0x457c…0f8D and 0x2322…c96C, flap.sh, four.meme and pump.fun GEN copies",
+    "fakes": "Base 0x457c\u20260f8D and 0x2322\u2026c96C, flap.sh, four.meme and pump.fun GEN copies",
     "official": "No token yet; links only from @GenLayer"
    },
    {
     "project": "Axis Robotics",
     "theme": "AI",
     "fakes": "Many copycat AXIS tokens on Solana, Base and Ethereum",
-    "official": "Base 0x5be7…d755ea (per CoinGecko)"
+    "official": "Base 0x5be7\u2026d755ea (per CoinGecko)"
    },
    {
     "project": "Quantus",
@@ -1260,7 +1263,7 @@
    {
     "project": "QRL",
     "theme": "Quantum",
-    "fakes": "Base 0x3769…5bA3 (disowned Oct 12) and other ERC-20/Solana 'QRL'",
+    "fakes": "Base 0x3769\u20265bA3 (disowned Oct 12) and other ERC-20/Solana 'QRL'",
     "official": "No token contract"
    },
    {
@@ -1296,13 +1299,13 @@
    {
     "project": "Ritual",
     "theme": "AI",
-    "fakes": "Base 0xfF2E…9E3572, Robinhood 0xC1F4…D5ec09B3, Solana pump.fun copies; \"claim guides\" asking you to connect a wallet through shared links",
-    "official": "Bridged Base/BSC 0x256E…8C37 (Unverified as a DEX route, about $6 liquidity); claims only at airdrop.ritualfoundation.org"
+    "fakes": "Base 0xfF2E\u20269E3572, Robinhood 0xC1F4\u2026D5ec09B3, Solana pump.fun copies; \"claim guides\" asking you to connect a wallet through shared links",
+    "official": "Bridged Base/BSC 0x256E\u20268C37 (Unverified as a DEX route, about $6 liquidity); claims only at airdrop.ritualfoundation.org"
    },
    {
     "project": "GenLayer",
     "theme": "AI",
-    "fakes": "Ethereum 0x4242…2a2f on a CoinGecko preview page is not posted by GenLayer (Unverified)",
+    "fakes": "Ethereum 0x4242\u20262a2f on a CoinGecko preview page is not posted by GenLayer (Unverified)",
     "official": "No official contract posted yet"
    },
    {
