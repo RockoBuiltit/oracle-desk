@@ -1,17 +1,17 @@
 {
- "generated_at": "2026-10-31T12:14:00-05:00",
+ "generated_at": "2026-10-31T16:12:00-05:00",
  "status": {
   "state": "idle",
-  "last_scan": "2026-10-31T12:14:00-05:00",
-  "next_scan": "2026-10-31T16:00:00-05:00",
+  "last_scan": "2026-10-31T16:12:00-05:00",
+  "next_scan": "2026-10-31T20:00:00-05:00",
   "activity": [
+   "New open campaign (AI): Amadeus Protocol's official account says Season 1 points end tonight and the road to TGE starts tomorrow; quests are on AMA Hub. The exact end time, a November TGE and a $10M raise are third-party claims only",
    "Open campaigns: Quip Quest and Mindshare end Mon 11/2 7:00 AM CT (official); GenLayer registration closes Sat 10/31 (official, time TBA; already registered)",
-   "Quantum: Soqucoin's official account says it currently runs a stagenet, with SOQUPOOL and genesis arriving at mainnet, planned for 2026; we had it as mainnet since 10/13, so that status needs checking (score unchanged at 65)",
-   "Quantum: Quip official account quiet; third-party recaps of the 11/2 campaign end. NaoX posted PQ-vs-hybrid discussion only",
-   "AI: tracked AI accounts quiet; keyword feed is mostly QWEN airdrop spam (already rejected) and Motes NFT promos",
-   "SafeTrade: 46 bases; CSD and URX back, ARB, CNX (Crynux), DAI, DGB and ZCL missing from the snapshot (page churn); no new AI or quantum listings"
+   "Quantum: Soqucoin's official account says LuxxPool and other mining pools are now joining, so mining is less tied to its own pool (score unchanged at 65). Quip official account quiet",
+   "AI: tracked AI accounts quiet; keyword feed is mostly QWEN airdrop spam (already rejected)",
+   "SafeTrade: 47 bases, DGB and ZCL back; no new AI or quantum listings"
   ],
-  "x_reads_left_today": 977
+  "x_reads_left_today": 964
  },
  "watchlist": [
   {
@@ -715,6 +715,14 @@
   }
  ],
  "prelaunch_updates": [
+  {
+   "project": "Amadeus Protocol",
+   "theme": "AI",
+   "source_type": "official",
+   "text": "OPEN CAMPAIGN: @ama_protocol says Season 1 ends tonight and the road to TGE starts tomorrow (11/1); points come from quests on AMA Hub. The 23:59 UTC end time, a November TGE and a $10M raise come only from third-party accounts. No AMA token or token address is official yet; any AMA token today is unconfirmed.",
+   "at": "2026-10-31T16:12:00-05:00",
+   "url": "https://x.com/ama_protocol/status/2116539033576702112"
+  },
   {
    "project": "Quip Network",
    "theme": "Quantum",
