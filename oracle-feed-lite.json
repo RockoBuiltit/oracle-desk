@@ -1,15 +1,16 @@
 {
- "generated_at": "2026-10-30T16:12:00-05:00",
+ "generated_at": "2026-10-30T20:14:00-05:00",
  "status": {
   "state": "idle",
-  "last_scan": "2026-10-30T16:12:00-05:00",
-  "next_scan": "2026-10-30T20:00:00-05:00",
+  "last_scan": "2026-10-30T20:14:00-05:00",
+  "next_scan": "2026-10-31T08:00:00-05:00",
   "activity": [
-   "Quip (official): Quest and Mindshare end Mon 11/2 at 7:00 AM CT with the final points payout; account fee waived through Sun 11/8; Echoes reveals refill Sun 11/1",
-   "GenLayer airdrop registration still closes Sat 10/31 (official)",
-   "AI: quiet from tracked projects; DATA Foundation promoted its Trace data audit tool (no migration news)",
-   "Quantum: more third-party Quip audit recaps; Asentum airdrop-farming spam continues (radar only)",
-   "SafeTrade: 50 bases, unchanged since noon; no new AI or quantum listings"
+   "No new official pre-launch updates or open campaigns since 4 PM",
+   "Quip: Quest and Mindshare still end Mon 11/2 at 7:00 AM CT (official); lots of third-party recaps",
+   "GenLayer airdrop registration closes Sat 10/31 (official); already registered",
+   "Quantum radar: Telos opened a quantum testnet with ML-DSA-65 signed blocks (official, no new token); Hegemon (HGN), a post-quantum privacy coin, is pre-mainnet (third-party only)",
+   "AI: tracked projects quiet; Motes NFT airdrop posts continue (already rejected)",
+   "SafeTrade: 50 pairs, no new AI or quantum listings"
   ],
   "x_reads_left_today": 969
  },
@@ -42,7 +43,7 @@
    "market_cap": 23250580,
    "volume_24h": 1338915,
    "dex_route": "Rhea Finance (NEAR) qtc.omft.near (~$9.9M liq); InstaSwap via NEAR Intents. Solana/Base QTC tokens are look-alike",
-   "next_milestone": "Native QTC lending on the Quantus chain (no bridge) and cross-chain borrowing via Noir wallet (both undated, third-party report). QTC lending on RHEA (NEAR) went live Wed 10/28",
+   "next_milestone": "Native QTC lending on the Quantus chain (no bridge) and cross-chain borrowing via Noir wallet (both undated, third-party report)",
    "milestone_date": null,
    "links": [
     {
@@ -633,7 +634,7 @@
    "market_cap": 10479387,
    "volume_24h": 373327,
    "dex_route": "None verified (CEX: Bithumb, Bybit, Bitget, KuCoin, Gate, MEXC, Kraken)",
-   "next_milestone": "Fermi (mainnet v32) live Wed 10/28 with opt-in ML-DSA and SLH-DSA account keys; added to CoinMarketCap Quantum-Resistant category Fri 10/30 (official). Next: audit of the PQ upgrade and real usage numbers (undated)",
+   "next_milestone": "Audit of the PQ upgrade (opt-in ML-DSA and SLH-DSA account keys, live since Fermi mainnet v32) and real usage numbers (undated)",
    "milestone_date": null,
    "links": [
     {
@@ -791,7 +792,7 @@
    "at": "2026-10-30T08:11:23-05:00"
   }
  ],
- "snapshot_note": "SafeTrade tickers 12:13 PM CT Fri Oct 30; X sweep since 8 AM CT; prices from the hourly refresh.",
+ "snapshot_note": "SafeTrade tickers 8:10 PM CT Fri Oct 30; X sweep since 4 PM CT; prices from the hourly refresh.",
  "deadlines": [
   {
    "project": "Fraction AI",
