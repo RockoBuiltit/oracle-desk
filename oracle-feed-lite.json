@@ -1,18 +1,17 @@
 {
- "generated_at": "2026-10-31T08:12:37-05:00",
+ "generated_at": "2026-10-31T12:14:00-05:00",
  "status": {
   "state": "idle",
-  "last_scan": "2026-10-31T08:10:00-05:00",
-  "next_scan": "2026-10-31T12:00:00-05:00",
+  "last_scan": "2026-10-31T12:14:00-05:00",
+  "next_scan": "2026-10-31T16:00:00-05:00",
   "activity": [
    "Open campaigns: Quip Quest and Mindshare end Mon 11/2 7:00 AM CT (official); GenLayer registration closes Sat 10/31 (official, time TBA; already registered)",
-   "Quantum: Ledger CTO Charles Guillemet flags two new elliptic-curve results (no key broken); Quantus and Algorand (3.5M PQ transactions) answer with PQ messaging",
-   "AI: tracked projects quiet; Recall Foundation (RECALL) shutting down with a 358.6M token burn (X news summary, not on the watchlist)",
-   "SafeTrade: 47 bases, no new AI or quantum listings",
-   "GitHub: pushes in the last day at Quantus, QRL, Quip, Gonka and Crynux",
-   "Rejected: QWEN airdrop spam, Ptah IAO presale, Agent MAO mint, Evolution Quantum Capital"
+   "Quantum: Soqucoin's official account says it currently runs a stagenet, with SOQUPOOL and genesis arriving at mainnet, planned for 2026; we had it as mainnet since 10/13, so that status needs checking (score unchanged at 65)",
+   "Quantum: Quip official account quiet; third-party recaps of the 11/2 campaign end. NaoX posted PQ-vs-hybrid discussion only",
+   "AI: tracked AI accounts quiet; keyword feed is mostly QWEN airdrop spam (already rejected) and Motes NFT promos",
+   "SafeTrade: 46 bases; CSD and URX back, ARB, CNX (Crynux), DAI, DGB and ZCL missing from the snapshot (page churn); no new AI or quantum listings"
   ],
-  "x_reads_left_today": 985
+  "x_reads_left_today": 977
  },
  "watchlist": [
   {
@@ -418,7 +417,7 @@
    ],
    "upgrade_if": "Identifiable founders, DEX liquidity",
    "downgrade_if": "Pool centralization returns or partner claims don't hold up",
-   "last_update": "2026-10-31T12:06:23-05:00",
+   "last_update": "2026-10-31T12:14:00-05:00",
    "price": 0.00018024,
    "logo": "logos/soqucoin.png",
    "website": "https://soqu.org",

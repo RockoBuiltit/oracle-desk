@@ -1,21 +1,20 @@
 {
- "generated_at": "2026-10-31T08:12:37-05:00",
+ "generated_at": "2026-10-31T12:14:00-05:00",
  "status": {
   "state": "idle",
-  "last_scan": "2026-10-31T08:10:00-05:00",
-  "next_scan": "2026-10-31T12:00:00-05:00",
+  "last_scan": "2026-10-31T12:14:00-05:00",
+  "next_scan": "2026-10-31T16:00:00-05:00",
   "activity": [
-   "8 AM digest: no new HIGH PRIORITY (0 of 3); quiet Halloween night",
+   "Noon scan: no new HIGH PRIORITY (0 of 3); no new open campaigns",
    "Open campaigns: Quip Quest and Mindshare end Mon 11/2 7:00 AM CT (official); GenLayer registration closes Sat 10/31 (official, time TBA; already registered)",
-   "Quantum: Ledger CTO Charles Guillemet flags two new elliptic-curve results (no key broken); Quantus and Algorand (3.5M PQ transactions) answer with PQ messaging",
-   "AI: tracked projects quiet; Recall Foundation (RECALL) shutting down with a 358.6M token burn (X news summary, not on the watchlist)",
-   "SafeTrade: 47 bases, no new AI or quantum listings",
-   "GitHub: pushes in the last day at Quantus, QRL, Quip, Gonka and Crynux",
-   "Rejected: QWEN airdrop spam, Ptah IAO presale, Agent MAO mint, Evolution Quantum Capital"
+   "Quantum: Soqucoin's official account says it currently runs a stagenet, with SOQUPOOL and genesis arriving at mainnet, planned for 2026; we had it as mainnet since 10/13, so that status needs checking (score unchanged at 65)",
+   "Quantum: Quip official account quiet; third-party recaps of the 11/2 campaign end. NaoX posted PQ-vs-hybrid discussion only",
+   "AI: tracked AI accounts quiet; keyword feed is mostly QWEN airdrop spam (already rejected) and Motes NFT promos",
+   "SafeTrade: 46 bases; CSD and URX back, ARB, CNX (Crynux), DAI, DGB and ZCL missing from the snapshot (page churn); no new AI or quantum listings"
   ],
   "alerts_used_today": 0,
   "alert_cap": 3,
-  "x_reads_left_today": 985
+  "x_reads_left_today": 977
  },
  "alerts": [],
  "watchlist": [
@@ -429,7 +428,7 @@
    ],
    "upgrade_if": "Identifiable founders, DEX liquidity",
    "downgrade_if": "Pool centralization returns or partner claims don't hold up",
-   "last_update": "2026-10-31T12:06:23-05:00",
+   "last_update": "2026-10-31T12:14:00-05:00",
    "price": 0.00018024,
    "logo": "logos/soqucoin.png",
    "website": "https://soqu.org",
@@ -1246,14 +1245,14 @@
    {
     "project": "GenLayer",
     "theme": "AI",
-    "fakes": "Base 0x457c…0f8D and 0x2322…c96C, flap.sh, four.meme and pump.fun GEN copies",
+    "fakes": "Base 0x457c\u20260f8D and 0x2322\u2026c96C, flap.sh, four.meme and pump.fun GEN copies",
     "official": "No token yet; links only from @GenLayer"
    },
    {
     "project": "Axis Robotics",
     "theme": "AI",
     "fakes": "Many copycat AXIS tokens on Solana, Base and Ethereum",
-    "official": "Base 0x5be7…d755ea (per CoinGecko)"
+    "official": "Base 0x5be7\u2026d755ea (per CoinGecko)"
    },
    {
     "project": "Quantus",
@@ -1264,7 +1263,7 @@
    {
     "project": "QRL",
     "theme": "Quantum",
-    "fakes": "Base 0x3769…5bA3 (disowned Oct 12) and other ERC-20/Solana 'QRL'",
+    "fakes": "Base 0x3769\u20265bA3 (disowned Oct 12) and other ERC-20/Solana 'QRL'",
     "official": "No token contract"
    },
    {
@@ -1300,13 +1299,13 @@
    {
     "project": "Ritual",
     "theme": "AI",
-    "fakes": "Base 0xfF2E…9E3572, Robinhood 0xC1F4…D5ec09B3, Solana pump.fun copies; \"claim guides\" asking you to connect a wallet through shared links",
-    "official": "Bridged Base/BSC 0x256E…8C37 (Unverified as a DEX route, about $6 liquidity); claims only at airdrop.ritualfoundation.org"
+    "fakes": "Base 0xfF2E\u20269E3572, Robinhood 0xC1F4\u2026D5ec09B3, Solana pump.fun copies; \"claim guides\" asking you to connect a wallet through shared links",
+    "official": "Bridged Base/BSC 0x256E\u20268C37 (Unverified as a DEX route, about $6 liquidity); claims only at airdrop.ritualfoundation.org"
    },
    {
     "project": "GenLayer",
     "theme": "AI",
-    "fakes": "Ethereum 0x4242…2a2f on a CoinGecko preview page is not posted by GenLayer (Unverified)",
+    "fakes": "Ethereum 0x4242\u20262a2f on a CoinGecko preview page is not posted by GenLayer (Unverified)",
     "official": "No official contract posted yet"
    },
    {
