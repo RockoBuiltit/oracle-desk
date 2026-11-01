@@ -1,17 +1,17 @@
 {
- "generated_at": "2026-10-31T16:12:00-05:00",
+ "generated_at": "2026-10-31T20:12:00-05:00",
  "status": {
   "state": "idle",
-  "last_scan": "2026-10-31T16:12:00-05:00",
-  "next_scan": "2026-10-31T20:00:00-05:00",
+  "last_scan": "2026-10-31T20:12:00-05:00",
+  "next_scan": "2026-11-01T08:00:00-06:00",
   "activity": [
-   "New open campaign (AI): Amadeus Protocol's official account says Season 1 points end tonight and the road to TGE starts tomorrow; quests are on AMA Hub. The exact end time, a November TGE and a $10M raise are third-party claims only",
-   "Open campaigns: Quip Quest and Mindshare end Mon 11/2 7:00 AM CT (official); GenLayer registration closes Sat 10/31 (official, time TBA; already registered)",
-   "Quantum: Soqucoin's official account says LuxxPool and other mining pools are now joining, so mining is less tied to its own pool (score unchanged at 65). Quip official account quiet",
-   "AI: tracked AI accounts quiet; keyword feed is mostly QWEN airdrop spam (already rejected)",
-   "SafeTrade: 47 bases, DGB and ZCL back; no new AI or quantum listings"
+   "Amadeus Protocol Season 1 points closed tonight, so it left the airdrops box; its official account has not posted the Road to TGE phase details yet",
+   "Open campaigns: Quip Quest and Mindshare end Mon 11/2 7:00 AM CST (official); GenLayer Season 2 points run until mainnet (registration closed 10/31; already registered)",
+   "Quantum: Soqucoin's official weekly update says BT-Miners is now an official global partner, network hashrate is about 250 TH/s and market cap hit a high of about $971k (score unchanged at 65). Quip official account quiet; posts about it are community recaps",
+   "AI: tracked AI accounts quiet; keyword feed is QWEN airdrop spam, Ptah IAO and Motes NFT promos (all already rejected)",
+   "SafeTrade: 48 bases, CNX back; no new AI or quantum listings"
   ],
-  "x_reads_left_today": 964
+  "x_reads_left_today": 994
  },
  "watchlist": [
   {
@@ -413,11 +413,15 @@
     {
      "label": "NonKYC listing post",
      "url": "https://x.com/soqucoin/status/2114206780641411156"
+    },
+    {
+     "label": "Weekly update (BT-Miners partner)",
+     "url": "https://x.com/soqucoin/status/2116697371350564893"
     }
    ],
    "upgrade_if": "Identifiable founders, DEX liquidity",
    "downgrade_if": "Pool centralization returns or partner claims don't hold up",
-   "last_update": "2026-10-31T19:59:46-05:00",
+   "last_update": "2026-10-31T20:12:00-05:00",
    "price": 0.00017242,
    "logo": "logos/soqucoin.png",
    "website": "https://soqu.org",
